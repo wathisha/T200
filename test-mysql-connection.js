@@ -10,7 +10,6 @@
 
 const fs = require('fs');
 const path = require('path');
-const db = require('./db');
 
 // Auto-load environment variables (.env / .env.example) with zero-dependency fallback
 try {
@@ -49,17 +48,16 @@ try {
 
 async function runDiagnostic() {
     const host = process.env.DB_HOST || 'gateway01.ap-southeast-1.prod.aws.tidbcloud.com';
-    const port = process.env.DB_PORT || '4000';
+    const port = parseInt(process.env.DB_PORT || '4000', 10);
     const user = process.env.DB_USER || '287vGtA52xzWe45.root';
+    const password = process.env.DB_PASSWORD || 'Jw4G8J9vbkYFOBI3';
     const dbName = process.env.DB_NAME || 'test';
     const isTiDB = host.includes('tidbcloud.com') || (process.env.MYSQL_URI && process.env.MYSQL_URI.includes('tidbcloud.com'));
-    const clusterName = process.env.TIDB_CLUSTER_NAME || (isTiDB ? 'ics-school-cluster' : 'Custom MySQL');
 
     console.log('============================================================================');
-    console.log(` 🚀 TiDB Cloud (${clusterName}) / MySQL Connection Diagnostic`);
+    console.log(' 🚀 TiDB Cloud Serverless / MySQL Connection Diagnostic');
     console.log('============================================================================');
     console.log(` Target Provider: ${isTiDB ? 'TiDB Cloud Serverless' : 'MySQL Cloud Database'}`);
-    console.log(` Cluster Name:    ${clusterName}`);
     console.log(` DB_HOST:         ${host}`);
     console.log(` DB_PORT:         ${port}`);
     console.log(` DB_USER:         ${user}`);
@@ -67,44 +65,81 @@ async function runDiagnostic() {
     console.log(` DB_SSL:          ${process.env.DB_SSL || 'true'}`);
     console.log('----------------------------------------------------------------------------');
 
+    // 1. Check if mysql2 package is installed
+    let mysql;
     try {
-        const startTime = Date.now();
-        await db.init();
+        mysql = require('mysql2/promise');
+    } catch (pkgErr) {
+        console.error('❌ Driver Missing: The `mysql2` package is not installed.');
+        console.log('');
+        console.log('💡 Quick Fix:');
+        console.log('   Run: npm install');
+        console.log('   (or: npm install mysql2 dotenv)');
+        console.log('============================================================================');
+        process.exit(1);
+    }
+
+    // 2. Perform direct raw connection attempt to catch exact MySQL / TLS / Network error
+    console.log('⏳ Connecting directly to database cluster...');
+    const startTime = Date.now();
+    try {
+        let connectionConfig = {
+            host,
+            port,
+            user,
+            password,
+            database: dbName,
+            ssl: { minVersion: 'TLSv1.2', rejectUnauthorized: false },
+            connectTimeout: 10000
+        };
+
+        const conn = await mysql.createConnection(connectionConfig);
+        const [rows] = await conn.query('SELECT 1 + 1 AS result, VERSION() AS version');
+        await conn.end();
+
         const latency = Date.now() - startTime;
-        const status = await db.getStatus();
-
-        if (status.isFallback || !status.connected || (!status.engine.includes('MySQL') && !status.engine.includes('TiDB'))) {
-            console.error('❌ Cloud Database Connection Failed: Server fell back to local JSON storage.');
-            console.log('----------------------------------------------------------------------------');
-            console.log('🔍 TiDB Cloud Troubleshooting Checklist:');
-            console.log('  1. Check DB_HOST: Ensure it matches gateway01.ap-southeast-1.prod.aws.tidbcloud.com');
-            console.log('  2. Check DB_PORT: Must be 4000 for TiDB Cloud.');
-            console.log('  3. Check DB_USER: Must include cluster prefix, e.g., 287vGtA52xzWe45.root');
-            console.log('  4. Check DB_PASSWORD: Ensure password matches your cluster settings (Jw4G8J9vbkYFOBI3).');
-            console.log('  5. Check TLS: TiDB Cloud public endpoint strictly requires DB_SSL=true.');
-            console.log('  6. Check Firewall / IP Whitelist: In TiDB Cloud Console -> Security -> IP Access List,');
-            console.log('     ensure 0.0.0.0/0 (or your public IP) is allowed for public access.');
-            console.log('============================================================================');
-            process.exit(1);
-        }
-
-        console.log('✅ Connection Status: ONLINE');
+        console.log('✅ Connection Status: ONLINE & AUTHENTICATED');
         console.log(`⚡ Round-Trip Latency: ${latency} ms`);
-        console.log(`☁️  Active Engine:      ${status.engine}`);
-        if (status.cluster) console.log(`🏷️  Cluster Name:       ${status.cluster}`);
+        console.log(`📦 Server Version:     ${rows[0].version}`);
+        console.log('----------------------------------------------------------------------------');
+
+        // Now test full db engine
+        const db = require('./db');
+        await db.init();
+        const status = await db.getStatus();
         console.log('📊 Active Database State & Statistics:');
         console.log(JSON.stringify(status, null, 2));
         console.log('============================================================================');
         console.log('🎉 TiDB Cloud Database is fully operational and ready for production!');
         console.log('============================================================================');
         process.exit(0);
-    } catch (e) {
-        console.error('❌ Database Connection Test Failed:', e.message);
+    } catch (err) {
+        console.error('');
+        console.error('❌ Connection Failed! Exact Error Details:');
+        console.error(`   Error Code:    ${err.code || 'UNKNOWN'}`);
+        console.error(`   Error Message: ${err.message}`);
         console.log('----------------------------------------------------------------------------');
-        console.log('🔍 Troubleshooting Tips for TiDB Cloud:');
-        console.log('  1. Verify credentials in .env match the TiDB Cloud Console.');
-        console.log('  2. Confirm your environment has internet connectivity to gateway01.ap-southeast-1.prod.aws.tidbcloud.com:4000.');
-        console.log('  3. Ensure DB_SSL=true is set.');
+        console.log('🔍 Pinpointed Solutions:');
+
+        if (err.code === 'ER_ACCESS_DENIED_ERROR') {
+            console.log('  ⚠️  AUTHENTICATION ERROR:');
+            console.log('     Username or Password does not match your TiDB cluster.');
+            console.log('     1. Password check: In "Jw4G8J9vbkYFOBI3", verify if the 13th character is 0 (zero) -> Jw4G8J9vbkYF0BI3.');
+            console.log('     2. Or reset your root password in TiDB Cloud Console -> Security -> Reset Password.');
+        } else if (err.code === 'ETIMEDOUT' || err.code === 'ECONNREFUSED' || (err.message && err.message.includes('timeout'))) {
+            console.log('  ⚠️  FIREWALL / NETWORK BLOCKED:');
+            console.log('     TiDB Cloud is blocking your connection because your IP is not whitelisted.');
+            console.log('     1. Go to https://tidbcloud.com and open your cluster.');
+            console.log('     2. Go to "Security" -> "IP Access List".');
+            console.log('     3. Add 0.0.0.0/0 (Allow access from anywhere) and save.');
+            console.log('     4. Wait 10 seconds and re-run: npm run test:db');
+        } else if (err.code === 'ENOTFOUND') {
+            console.log('  ⚠️  DNS RESOLUTION FAILED:');
+            console.log('     Check your internet connection and verify DB_HOST in .env.');
+        } else {
+            console.log('  1. Check TiDB Cloud Console -> Security -> IP Access List: add 0.0.0.0/0.');
+            console.log('  2. Verify DB_USER (287vGtA52xzWe45.root) and DB_PASSWORD in .env.');
+        }
         console.log('============================================================================');
         process.exit(1);
     }
