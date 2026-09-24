@@ -204,7 +204,7 @@ async function init() {
             const host = process.env.DB_HOST || 'gateway01.ap-southeast-1.prod.aws.tidbcloud.com';
             const port = parseInt(process.env.DB_PORT || '4000', 10);
             const user = process.env.DB_USER || '287vGtA52xzWe45.root';
-            const password = process.env.DB_PASSWORD || 'Jw4G8J9vbkYFOBI3';
+            const password = process.env.DB_PASSWORD || 'Jw4G8J9vbkYF0BI3';
             const targetDb = process.env.DB_NAME || 'test';
             const isTiDB = host.includes('tidbcloud.com') || (process.env.MYSQL_URI && process.env.MYSQL_URI.includes('tidbcloud.com'));
             const sslRequired = process.env.DB_SSL === 'false' ? false : true;
