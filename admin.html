@@ -1,0 +1,3075 @@
+<!DOCTYPE html>
+<html lang="en" class="theme-light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Educator & Multi-Admin Management Portal | Science with Laknath ERP</title>
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Rajdhani:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script>
+        if (sessionStorage.getItem('admin_authenticated') !== 'true') {
+            window.location.href = 'admin_login.html';
+        }
+
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        cinzel: ['Cinzel', 'serif'],
+                        rajdhani: ['Rajdhani', 'sans-serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="antialiased text-slate-100 min-h-screen flex flex-col justify-between selection:bg-amber-500 selection:text-slate-950">
+
+    <!-- Header Navigation -->
+    <header class="bg-slate-950/95 border-b border-rose-900/40 sticky top-0 z-50 backdrop-blur-md no-print">
+        <div class="max-w-7xl mx-auto px-4 flex justify-between items-center h-20">
+            
+            <!-- Academy Branding -->
+            <div class="flex items-center space-x-3">
+                <img src="assets/images/logo.png" alt="Logo" class="h-10 w-10 sm:h-12 sm:w-12 object-contain rounded-xl border border-amber-500/30 p-1 bg-slate-950 shadow-md branding-logo">
+                <div>
+                    <h1 class="text-base sm:text-xl font-bold font-cinzel text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-yellow-400 to-rose-400 branding-academy-name">
+                        SCIENCE with LAKNATH
+                    </h1>
+                    <div class="flex items-center gap-2">
+                        <p class="text-[10px] sm:text-xs text-amber-400 font-rajdhani tracking-widest uppercase">Educator LMS Management Hub</p>
+                        <span id="headerDeviceBadge" class="hidden sm:inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30">
+                            <i class="fa-solid fa-desktop"></i> PC
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Controls & Current User Profile Widget -->
+            <div class="flex items-center space-x-2 sm:space-x-3">
+                
+                <!-- Logged-in User Profile Dropdown Pill -->
+                <div class="relative">
+                    <button id="userProfileBtn" onclick="toggleUserDropdown()" class="flex items-center space-x-2 bg-slate-900/90 hover:bg-slate-800 border border-slate-700 hover:border-amber-500/50 px-2.5 sm:px-3 py-1.5 rounded-xl transition shadow-sm text-left">
+                        <img id="headerUserAvatar" src="assets/images/teacher_banner.png" alt="User Avatar" class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg object-cover border border-amber-400/60 bg-slate-950">
+                        <div class="hidden md:block leading-tight">
+                            <p id="headerUserName" class="text-xs font-bold text-slate-200 truncate max-w-[120px]">Mr. Laknath</p>
+                            <p id="headerUserRole" class="text-[10px] text-amber-400 font-semibold font-mono">Super Admin</p>
+                        </div>
+                        <i class="fa-solid fa-chevron-down text-[10px] text-slate-400 ml-1"></i>
+                    </button>
+
+                    <!-- User Dropdown Menu -->
+                    <div id="userDropdownMenu" class="hidden absolute right-0 mt-2 w-64 bg-slate-950 border border-slate-700 rounded-2xl shadow-2xl p-3 z-50 space-y-2">
+                        <div class="p-2 border-b border-slate-800">
+                            <p class="text-xs font-bold text-slate-200" id="dropdownFullName">Mr. Laknath Amarasinghe</p>
+                            <p class="text-[11px] text-amber-400 font-mono" id="dropdownUserRole">Super Admin (Head Specialist)</p>
+                            <p class="text-[10px] text-slate-400 mt-1" id="dropdownDeviceDetail">Device: PC / Desktop (Windows)</p>
+                        </div>
+                        <div class="space-y-1">
+                            <button onclick="switchAdminTab('users')" class="w-full text-left px-3 py-2 text-xs text-slate-300 hover:text-amber-300 hover:bg-slate-900 rounded-lg flex items-center gap-2 transition">
+                                <i class="fa-solid fa-users-gear text-amber-400"></i> Manage Admin Users
+                            </button>
+                            <button onclick="openSwitchUserModal()" class="w-full text-left px-3 py-2 text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900 rounded-lg flex items-center gap-2 transition">
+                                <i class="fa-solid fa-user-tag text-cyan-400"></i> Switch Account
+                            </button>
+                            <button onclick="window.LMSCore.exportFullDatabaseBundle()" class="w-full text-left px-3 py-2 text-xs text-slate-300 hover:text-emerald-300 hover:bg-slate-900 rounded-lg flex items-center gap-2 transition">
+                                <i class="fa-solid fa-database text-emerald-400"></i> Backup Full JSON DB
+                            </button>
+                        </div>
+                        <div class="pt-2 border-t border-slate-800">
+                            <button onclick="window.LMSCore.logoutUser()" class="w-full text-left px-3 py-2 text-xs font-bold text-red-400 hover:bg-red-500/10 rounded-lg flex items-center gap-2 transition">
+                                <i class="fa-solid fa-right-from-bracket"></i> Log Out
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Live Cloud Sync Button -->
+                <button type="button" onclick="refreshGlobalDataFromCloud()" class="bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-500/40 px-2.5 sm:px-3 py-2 rounded-xl text-xs font-bold flex items-center space-x-1.5 transition shadow-sm" title="Real-time multi-device sync">
+                    <i class="fa-solid fa-rotate text-xs"></i>
+                    <span class="hidden lg:inline">Sync DB</span>
+                </button>
+
+                <!-- Light / Dark Mode Toggle Button -->
+                <button type="button" onclick="window.LMSCore.toggleTheme()" class="theme-toggle-btn shadow-sm text-xs px-2.5 py-2 rounded-xl border border-slate-700 bg-slate-900" title="Toggle Theme">
+                    <i class="fa-solid fa-moon text-indigo-400 mr-1"></i>
+                    <span class="hidden sm:inline">Theme</span>
+                </button>
+
+                <!-- Navigation Links -->
+                <a href="students_directory.html" class="hidden sm:flex bg-slate-900 hover:bg-slate-800 text-amber-300 border border-amber-500/40 px-3 py-2 rounded-xl text-xs font-bold items-center space-x-1.5 transition">
+                    <i class="fa-solid fa-address-book"></i>
+                    <span class="hidden md:inline">Directory</span>
+                </a>
+
+                <a href="teacher_documents.html" class="hidden sm:flex bg-slate-900 hover:bg-slate-800 text-cyan-300 border border-cyan-500/40 px-3 py-2 rounded-xl text-xs font-bold items-center space-x-1.5 transition">
+                    <i class="fa-solid fa-folder-tree"></i>
+                    <span class="hidden md:inline">Vault</span>
+                </a>
+
+                <!-- Register Student Button -->
+                <button onclick="toggleRegisterModal()" class="bg-gradient-to-r from-amber-500 to-yellow-400 hover:from-amber-400 hover:to-yellow-300 text-slate-950 px-3 sm:px-3.5 py-2 rounded-xl text-xs font-extrabold flex items-center space-x-1.5 shadow-md transition transform active:scale-95">
+                    <i class="fa-solid fa-user-plus"></i>
+                    <span class="hidden sm:inline">Register</span>
+                </button>
+
+                <!-- Logout -->
+                <button id="logoutBtn" onclick="window.LMSCore.logoutUser()" class="bg-red-500/20 hover:bg-red-500/30 text-red-300 border border-red-500/40 px-2.5 sm:px-3 py-2 rounded-xl text-xs font-bold flex items-center space-x-1.5 transition" title="Logout">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 flex-grow w-full space-y-8">
+
+        <!-- Top Teacher Showcase & Live Classroom (WhatsApp / Zoom) Launcher Banner -->
+        <section class="glass-panel p-5 sm:p-8 relative overflow-hidden border-rose-500/30">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+                
+                <!-- Teacher Profile Info & Credentials Artwork -->
+                <div class="flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-6 lg:col-span-7">
+                    <div class="relative">
+                        <img src="assets/images/teacher_banner.png" alt="Teacher Avatar" class="branding-teacher-photo w-24 h-28 sm:w-28 sm:h-32 object-cover rounded-2xl border-2 border-amber-400 shadow-2xl bg-slate-950">
+                        <span class="absolute -bottom-2 -right-2 bg-amber-500 text-slate-950 text-[10px] font-black px-2 py-0.5 rounded-full uppercase shadow">Grade 6-11</span>
+                    </div>
+                    <div class="space-y-1.5">
+                        <div class="flex flex-wrap items-center gap-2">
+                            <span class="px-3 py-0.5 bg-rose-500/20 border border-rose-500/40 text-rose-300 text-xs font-bold rounded-full uppercase tracking-wider">
+                                Head Science Specialist
+                            </span>
+                            <span class="px-3 py-0.5 bg-amber-500/20 border border-amber-500/40 text-amber-300 text-xs font-mono font-bold rounded-full branding-motto">
+                                UNDERSTAND TODAY, SUCCEED TOMORROW
+                            </span>
+                        </div>
+                        <h2 class="text-2xl sm:text-3xl font-extrabold font-cinzel text-slate-100 branding-teacher-name">
+                            Mr. Laknath Amarasinghe
+                        </h2>
+                        <p class="text-xs text-amber-300 font-bold branding-teacher-title">
+                            B.Sc. (Chemistry Special), Grad.Chem (IChem)
+                        </p>
+                        <p class="text-xs text-slate-300 font-mono flex items-center gap-2">
+                            <i class="fa-solid fa-phone text-rose-400"></i>
+                            <span class="branding-hotlines">071 355 8648</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Live Classroom Launcher Box (WhatsApp Broadcast & Zoom Integration) -->
+                <div class="lg:col-span-5 bg-slate-950/90 border border-emerald-500/40 p-5 rounded-2xl space-y-3 shadow-2xl no-print">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-2">
+                            <span class="w-3 h-3 rounded-full bg-emerald-500 animate-ping"></span>
+                            <h3 class="text-sm font-bold text-emerald-400 font-cinzel tracking-wider">LIVE CLASSROOM BROADCAST</h3>
+                        </div>
+                        <span id="liveClassBadge" class="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase bg-emerald-500/20 text-emerald-400 border border-emerald-500/40">
+                            LIVE ON WHATSAPP
+                        </span>
+                    </div>
+
+                    <div class="space-y-1">
+                        <p id="liveSessionTitleDisplay" class="text-sm font-bold text-slate-100">Grade 06 Science - Live Q&A and Practical Session</p>
+                        <div class="flex items-center justify-between text-xs text-slate-400">
+                            <span>Target: <strong id="liveTargetGradeDisplay" class="text-amber-400">06 - Science</strong></span>
+                            <span>Direct Hotline: <strong id="liveWaPhoneDisplay" class="text-emerald-400 font-mono">+94 71 781 2092</strong></span>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="grid grid-cols-2 gap-3 pt-2">
+                        <a id="launchWhatsappBtn" href="#" target="_blank" class="bg-gradient-to-r from-emerald-600 to-green-500 hover:from-emerald-500 hover:to-green-400 text-white font-bold py-2.5 px-3 rounded-xl text-xs flex items-center justify-center space-x-2 shadow-lg shadow-emerald-500/20 transition">
+                            <i class="fa-brands fa-whatsapp text-sm"></i>
+                            <span>WhatsApp Q&A</span>
+                        </a>
+
+                        <button id="launchZoomBtn" class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold py-2.5 px-3 rounded-xl text-xs flex items-center justify-center space-x-2 shadow-lg shadow-blue-500/20 transition">
+                            <i class="fa-solid fa-video text-sm"></i>
+                            <span>Launch Zoom Live</span>
+                        </button>
+                    </div>
+
+                    <div class="flex items-center justify-between pt-1">
+                        <span class="text-[10px] text-slate-400">Class group discussion & video broadcast</span>
+                        <button id="editClassroomModalBtn" class="text-[11px] text-amber-400 hover:underline font-bold flex items-center gap-1">
+                            <i class="fa-solid fa-gear"></i> Configure Links
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Navigation Tabs for LMS Management -->
+        <nav class="flex border-b border-slate-700 space-x-4 sm:space-x-6 text-sm font-bold no-print overflow-x-auto pb-1 scrollbar-thin">
+            <button onclick="switchAdminTab('students')" id="nav-tab-students" class="pb-3 text-amber-400 border-b-2 border-amber-400 flex items-center gap-2 whitespace-nowrap">
+                <i class="fa-solid fa-users-gear"></i> Student Evaluation & Marks
+            </button>
+            <button onclick="switchAdminTab('users')" id="nav-tab-users" class="pb-3 text-slate-400 hover:text-slate-200 flex items-center gap-2 whitespace-nowrap">
+                <i class="fa-solid fa-crown text-amber-400"></i> Admin Users & Roles
+            </button>
+            <button onclick="switchAdminTab('notifications')" id="nav-tab-notifications" class="pb-3 text-slate-400 hover:text-slate-200 flex items-center gap-2 whitespace-nowrap">
+                <i class="fa-solid fa-bullhorn"></i> Grade-Wise Notifications
+            </button>
+            <button onclick="switchAdminTab('calendar')" id="nav-tab-calendar" class="pb-3 text-slate-400 hover:text-slate-200 flex items-center gap-2 whitespace-nowrap">
+                <i class="fa-solid fa-calendar-days"></i> Academic Calendar
+            </button>
+            <button onclick="switchAdminTab('files')" id="nav-tab-files" class="pb-3 text-slate-400 hover:text-slate-200 flex items-center gap-2 whitespace-nowrap">
+                <i class="fa-solid fa-folder-open"></i> Study Files
+            </button>
+            <button onclick="switchAdminTab('custom')" id="nav-tab-custom" class="pb-3 text-slate-400 hover:text-slate-200 flex items-center gap-2 whitespace-nowrap">
+                <i class="fa-solid fa-sliders"></i> ERP Customizer & Pure JSON DB
+            </button>
+        </nav>
+
+        <!-- =========================================================================
+             VIEW 1: STUDENT EVALUATION, WEEKLY TABLES & TERM MARKS
+             ========================================================================= -->
+        <div id="view-students" class="space-y-8">
+
+            <!-- Search & Student Tabs Navigation + Actions -->
+            <section class="space-y-4">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 no-print">
+                    <div class="relative flex-grow max-w-md">
+                        <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+                        <input type="text" id="adminSearchInput" placeholder="Search student name, ID or tab..." class="w-full bg-slate-950 border border-slate-700 rounded-xl pl-11 pr-4 py-2.5 text-sm focus:outline-none focus:border-amber-400 text-slate-100">
+                    </div>
+                    
+                    <div class="flex items-center gap-3">
+                        <a href="students_directory.html" class="bg-slate-900 hover:bg-slate-800 text-amber-300 border border-amber-500/40 px-4 py-2.5 rounded-xl text-xs font-bold flex items-center space-x-1.5 transition">
+                            <i class="fa-solid fa-address-book text-xs"></i>
+                            <span>All Students Directory</span>
+                        </a>
+
+                        <button onclick="toggleRegisterModal()" class="bg-gradient-to-r from-amber-500 to-yellow-400 text-slate-950 font-extrabold px-4 py-2.5 rounded-xl text-xs flex items-center space-x-2 shadow-lg hover:brightness-110 transition">
+                            <i class="fa-solid fa-user-plus"></i>
+                            <span>Register Student</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="border-b border-slate-700/80 overflow-x-auto no-print">
+                    <div id="adminStudentTabsContainer" class="flex space-x-2 min-w-max pb-1">
+                        <!-- Student Tabs rendered by JS -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Selected Student Profile View -->
+            <section class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                
+                <!-- Left Column: Student Details + Practical Pie Chart + Actions -->
+                <div class="lg:col-span-1 glass-panel p-6 space-y-6">
+                    <div class="flex items-center justify-between pb-6 border-b border-slate-700">
+                        <div class="flex items-center space-x-4">
+                            <img id="adminStAvatar" src="" alt="Student Avatar" class="w-20 h-20 rounded-2xl border-2 border-amber-400/50 bg-slate-900 p-1 shadow-md object-cover">
+                            <div>
+                                <h3 id="adminStName" class="text-2xl font-bold font-cinzel text-amber-300">Loading...</h3>
+                                <p class="text-xs font-mono text-cyan-400">ID: <span id="adminStId">...</span></p>
+                                <p class="text-xs text-slate-400">Class: <span id="adminStGrade" class="text-slate-200 font-semibold">...</span></p>
+                                <p class="text-[11px] text-amber-400 font-medium">Teacher: <span id="adminStHomeroom">Mr. Laknath Amarasinghe</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Metrics Summary Card -->
+                    <div class="grid grid-cols-3 gap-3">
+                        <div class="bg-slate-950/80 p-3 rounded-xl border border-slate-800 text-center">
+                            <p class="text-[10px] text-slate-400 uppercase font-bold">Attendance</p>
+                            <p id="adminStAttendance" class="text-lg font-bold font-mono text-emerald-400">95%</p>
+                        </div>
+                        <div class="bg-slate-950/80 p-3 rounded-xl border border-slate-800 text-center">
+                            <p class="text-[10px] text-slate-400 uppercase font-bold">Unit Test Avg</p>
+                            <p id="adminStAvgScore" class="text-lg font-bold font-mono text-amber-400">0</p>
+                        </div>
+                        <div class="bg-slate-950/80 p-3 rounded-xl border border-slate-800 text-center">
+                            <p class="text-[10px] text-slate-400 uppercase font-bold">Status</p>
+                            <p id="adminStStatus" class="text-xs font-bold text-cyan-400 mt-1 truncate">Active</p>
+                        </div>
+                    </div>
+
+                    <!-- Custom Evaluation Column Quick Pie Chart -->
+                    <div class="space-y-2">
+                        <div class="flex items-center justify-between gap-1">
+                            <h4 class="text-xs font-bold text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
+                                <i class="fa-solid fa-chart-pie text-amber-400"></i> Column Pie Chart
+                            </h4>
+                            <select id="adminColumnPieSelect" onchange="changeAdminSidebarPie(this.value)" class="bg-slate-950 border border-slate-700 rounded-lg px-2 py-0.5 text-[10px] text-amber-300 focus:outline-none max-w-[130px] truncate">
+                                <!-- Populated dynamically -->
+                            </select>
+                        </div>
+                        <div class="h-44 relative flex items-center justify-center bg-slate-950/60 rounded-xl p-2 border border-slate-800" id="adminSidebarPieContainer">
+                            <canvas id="adminPracticalPieChart"></canvas>
+                        </div>
+                        <div id="adminSidebarPieLegend" class="text-[10px] text-slate-400 text-center font-mono"></div>
+                    </div>
+
+                    <!-- Parent WhatsApp & Actions -->
+                    <div class="space-y-3 pt-2 border-t border-slate-800">
+                        <a id="adminParentWaBtn" href="#" target="_blank" class="w-full bg-emerald-600/20 hover:bg-emerald-600/30 text-emerald-300 border border-emerald-500/40 font-bold py-2.5 px-4 rounded-xl text-xs flex items-center justify-center space-x-2 transition shadow-sm">
+                            <i class="fa-brands fa-whatsapp text-sm"></i>
+                            <span>Message Parent on WhatsApp</span>
+                        </a>
+
+                        <div class="grid grid-cols-2 gap-2">
+                            <button onclick="openEditStudentModal()" class="bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700 py-2 px-3 rounded-xl text-xs font-bold flex items-center justify-center space-x-1.5 transition">
+                                <i class="fa-solid fa-pen-to-square text-amber-400"></i>
+                                <span>Edit Profile</span>
+                            </button>
+                            <button onclick="openResetPasswordModal()" class="bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700 py-2 px-3 rounded-xl text-xs font-bold flex items-center justify-center space-x-1.5 transition">
+                                <i class="fa-solid fa-key text-cyan-400"></i>
+                                <span>Reset Pass</span>
+                            </button>
+                        </div>
+
+                        <div class="flex gap-2">
+                            <a id="adminDirectPortalLink" href="#" target="_blank" class="flex-1 bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 font-bold py-2 px-3 rounded-xl text-xs flex items-center justify-center space-x-1.5 transition">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                <span>View Student Portal</span>
+                            </a>
+                            <button id="adminDeleteStudentBtn" onclick="deleteCurrentStudent()" class="bg-red-500/20 hover:bg-red-500/30 text-red-300 border border-red-500/40 p-2 rounded-xl text-xs font-bold transition" title="Delete Student Record">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- QR Code Display -->
+                    <div class="bg-slate-950/90 p-4 rounded-2xl border border-slate-800 flex items-center justify-between">
+                        <div class="space-y-1">
+                            <p class="text-xs font-bold text-slate-200">Student Direct QR Code</p>
+                            <p class="text-[10px] text-slate-400">Scan via phone/tablet for instant portal access</p>
+                            <span id="adminQrKey" class="text-[10px] font-mono text-cyan-400">QR-STU-001</span>
+                        </div>
+                        <div id="adminQrCodeContainer" class="p-1 bg-white rounded-xl shadow-md"></div>
+                    </div>
+
+                </div>
+
+                <!-- Right Column: 12 Months Selector, Dynamic Weekly Evaluation Table & Term Marks -->
+                <div class="lg:col-span-2 space-y-6">
+                    
+                    <!-- Month Selector Pills -->
+                    <div class="glass-panel p-4 overflow-x-auto no-print">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs font-bold text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
+                                <i class="fa-solid fa-calendar-week text-amber-400"></i> Select Academic Month
+                            </span>
+                            <span class="text-[11px] text-amber-400 font-mono font-bold" id="currentSelectedMonthBadge">January 2026</span>
+                        </div>
+                        <div id="adminMonthSelector" class="flex space-x-2 min-w-max pb-1">
+                            <!-- Months injected via JS -->
+                        </div>
+                    </div>
+
+                    <!-- Dynamic Weekly Evaluation Progress Table with Dynamic Column Support -->
+                    <div class="glass-panel p-6 space-y-4">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-700">
+                            <div>
+                                <h4 class="text-base font-bold font-cinzel text-amber-300 flex items-center gap-2">
+                                    <i class="fa-solid fa-table-list text-amber-400"></i>
+                                    <span>Weekly Progress Evaluation - <span id="tableMonthTitle" class="text-slate-100">January</span></span>
+                                </h4>
+                                <p class="text-xs text-slate-400">Configure columns, modify selections across 4 weeks, and save table directly to JSON DB.</p>
+                            </div>
+                            
+                            <div class="flex items-center gap-2 no-print">
+                                <button onclick="openColumnConfigModal()" class="bg-cyan-600/20 hover:bg-cyan-600/30 text-cyan-300 border border-cyan-500/40 px-3 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1.5 transition shadow-sm" title="Add, edit or delete evaluation columns">
+                                    <i class="fa-solid fa-plus-circle text-cyan-400"></i>
+                                    <span>Add / Manage Columns</span>
+                                </button>
+                                <button onclick="saveCurrentStudentWeeklyTable()" class="bg-gradient-to-r from-emerald-600 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-white font-extrabold px-4 py-1.5 rounded-xl text-xs flex items-center gap-1.5 shadow-lg transition">
+                                    <i class="fa-solid fa-floppy-disk"></i>
+                                    <span>Save Weekly Table</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Scrollable Data Grid -->
+                        <div class="overflow-x-auto scrollbar-thin">
+                            <table class="w-full text-left text-sm text-slate-300 border-collapse">
+                                <thead id="weeklyTableHead" class="text-[11px] uppercase bg-slate-950/90 text-amber-400 border-b border-slate-800">
+                                    <!-- Dynamic headers rendered by JS -->
+                                </thead>
+                                <tbody id="weeklyTableBody" class="divide-y divide-slate-800/80 bg-slate-900/40 font-mono text-xs">
+                                    <!-- 4 Weeks rendered by JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Custom Evaluation Columns Summary - Dynamic Pie Charts Section -->
+                    <div class="glass-panel p-6 space-y-4 border-amber-500/30">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-700">
+                            <div>
+                                <h4 class="text-base font-bold font-cinzel text-amber-300 flex items-center gap-2">
+                                    <i class="fa-solid fa-chart-pie text-amber-400 text-lg"></i>
+                                    <span>Weekly Evaluation Summary (Pie Charts)</span>
+                                </h4>
+                                <p class="text-xs text-slate-400">Real-time visual distribution for all manually added evaluation criteria and rating metrics.</p>
+                            </div>
+                            
+                            <!-- Scope Selector -->
+                            <div class="flex items-center gap-1.5 no-print bg-slate-950 p-1 rounded-xl border border-slate-800">
+                                <span class="text-[10px] text-slate-400 px-1 font-semibold uppercase">Scope:</span>
+                                <button type="button" id="pieScopeMonthBtn" onclick="setPieScope('month')" class="px-2.5 py-1 rounded-lg text-xs font-bold bg-amber-500 text-slate-950 shadow transition">
+                                    <span id="pieScopeMonthName">Selected Month</span>
+                                </button>
+                                <button type="button" id="pieScopeYearBtn" onclick="setPieScope('year')" class="px-2.5 py-1 rounded-lg text-xs font-bold text-slate-400 hover:text-slate-200 transition">
+                                    Full Year (12 Months)
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Dynamic Grid of Pie Charts (one for each manually added column) -->
+                        <div id="adminAllColumnsPieGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                            <!-- Populated dynamically by JS -->
+                        </div>
+                    </div>
+
+                    <!-- Term Assessments (Blank by Default with Term 1, Term 2, Final Exam) -->
+                    <div class="glass-panel p-6 space-y-4">
+                        <div class="flex items-center justify-between pb-3 border-b border-slate-700">
+                            <div>
+                                <h4 class="text-base font-bold font-cinzel text-amber-300 flex items-center gap-2">
+                                    <i class="fa-solid fa-graduation-cap text-amber-400"></i> Term Examination Marks
+                                </h4>
+                                <p class="text-xs text-slate-400">Blank-default term examination marks. Enter scores (0-100) and save.</p>
+                            </div>
+                            <button onclick="saveStudentTermMarks()" class="bg-gradient-to-r from-emerald-600 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-white font-extrabold px-4 py-1.5 rounded-xl text-xs flex items-center gap-1.5 shadow-lg transition no-print">
+                                <i class="fa-solid fa-floppy-disk"></i>
+                                <span>Save Term Marks</span>
+                            </button>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4" id="termMarksContainer">
+                            <!-- Term Assessment Cards rendered by JS -->
+                        </div>
+                    </div>
+
+                    <!-- Teacher Remarks & Homeroom Notes -->
+                    <div class="glass-panel p-6 space-y-4">
+                        <div class="flex items-center justify-between pb-3 border-b border-slate-700">
+                            <h4 class="text-base font-bold font-cinzel text-amber-300 flex items-center gap-2">
+                                <i class="fa-solid fa-comment-medical text-amber-400"></i> Teacher Confidential Remarks & Notes
+                            </h4>
+                            <button onclick="saveTeacherNotes()" class="bg-gradient-to-r from-emerald-600 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-white font-extrabold px-4 py-1.5 rounded-xl text-xs flex items-center gap-1.5 shadow-lg transition no-print">
+                                <i class="fa-solid fa-floppy-disk"></i>
+                                <span>Save Remarks</span>
+                            </button>
+                        </div>
+                        <textarea id="adminTeacherNotes" rows="3" class="w-full bg-slate-950 border border-slate-700 rounded-xl p-3 text-xs text-slate-200 focus:outline-none focus:border-amber-400 font-sans" placeholder="Enter personalized pedagogical notes and suggestions for this student..."></textarea>
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+        <!-- =========================================================================
+             VIEW 2: ADMIN USERS & ROLE PRIVILEGE MANAGEMENT (RBAC) - NEW
+             ========================================================================= -->
+        <div id="view-users" class="hidden space-y-8">
+            
+            <div class="glass-panel p-6 sm:p-8 space-y-6">
+                
+                <!-- Section Header -->
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-700">
+                    <div>
+                        <h3 class="text-2xl font-bold font-cinzel text-transparent bg-clip-text bg-gradient-to-r from-amber-200 to-rose-400 flex items-center gap-2">
+                            <i class="fa-solid fa-crown text-amber-400"></i> Admin User Accounts & Privilege Management
+                        </h3>
+                        <p class="text-xs text-slate-400">Manage multi-user administrative accounts, assign role privileges, and monitor multi-device sessions across PC, Tablet, and Mobile devices.</p>
+                    </div>
+
+                    <div class="flex items-center gap-3">
+                        <button onclick="window.LMSCore.exportUsersJson()" class="bg-slate-900 hover:bg-slate-800 text-cyan-300 border border-cyan-500/40 px-3.5 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 transition">
+                            <i class="fa-solid fa-file-export"></i>
+                            <span>Export users.json</span>
+                        </button>
+
+                        <button onclick="openAddUserModal()" class="bg-gradient-to-r from-amber-500 to-yellow-400 text-slate-950 font-extrabold px-4 py-2 rounded-xl text-xs flex items-center gap-2 shadow-lg hover:brightness-110 transition">
+                            <i class="fa-solid fa-user-plus"></i>
+                            <span>Add New Admin User</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Stats Summary Cards -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                    <div class="bg-slate-950/80 p-4 rounded-2xl border border-slate-800 space-y-1">
+                        <p class="text-xs text-slate-400 uppercase font-bold">Total Staff Users</p>
+                        <p id="statsTotalUsers" class="text-2xl font-black font-mono text-amber-400">7</p>
+                        <p class="text-[10px] text-slate-500">Configured in JSON DB</p>
+                    </div>
+                    <div class="bg-slate-950/80 p-4 rounded-2xl border border-slate-800 space-y-1">
+                        <p class="text-xs text-slate-400 uppercase font-bold">Super Admins</p>
+                        <p id="statsSuperAdmins" class="text-2xl font-black font-mono text-rose-400">3</p>
+                        <p class="text-[10px] text-slate-500">Full System Control</p>
+                    </div>
+                    <div class="bg-slate-950/80 p-4 rounded-2xl border border-slate-800 space-y-1">
+                        <p class="text-xs text-slate-400 uppercase font-bold">Teaching Faculty</p>
+                        <p id="statsTeachers" class="text-2xl font-black font-mono text-emerald-400">2</p>
+                        <p class="text-[10px] text-slate-500">Senior & Assistants</p>
+                    </div>
+                    <div class="bg-slate-950/80 p-4 rounded-2xl border border-slate-800 space-y-1">
+                        <p class="text-xs text-slate-400 uppercase font-bold">Multi-Device Access</p>
+                        <p id="statsActiveDevices" class="text-2xl font-black font-mono text-cyan-400">PC / Tab / Phone</p>
+                        <p class="text-[10px] text-slate-500">Universal Login Enabled</p>
+                    </div>
+                </div>
+
+                <!-- Role Filter Chips -->
+                <div class="flex items-center space-x-2 overflow-x-auto pb-1 text-xs">
+                    <span class="text-slate-400 font-bold uppercase text-[10px]">Filter:</span>
+                    <button onclick="filterUserRoster('all')" class="user-filter-btn px-3 py-1 rounded-lg bg-amber-500/20 text-amber-300 border border-amber-500/40 font-bold" data-role="all">All Roles</button>
+                    <button onclick="filterUserRoster('super_admin')" class="user-filter-btn px-3 py-1 rounded-lg bg-slate-900 text-slate-400 border border-slate-800 hover:text-slate-200" data-role="super_admin">Super Admins</button>
+                    <button onclick="filterUserRoster('teacher')" class="user-filter-btn px-3 py-1 rounded-lg bg-slate-900 text-slate-400 border border-slate-800 hover:text-slate-200" data-role="teacher">Teachers</button>
+                    <button onclick="filterUserRoster('assistant_teacher')" class="user-filter-btn px-3 py-1 rounded-lg bg-slate-900 text-slate-400 border border-slate-800 hover:text-slate-200" data-role="assistant_teacher">Assistant Teachers</button>
+                    <button onclick="filterUserRoster('staff')" class="user-filter-btn px-3 py-1 rounded-lg bg-slate-900 text-slate-400 border border-slate-800 hover:text-slate-200" data-role="staff">Staff & Registrars</button>
+                </div>
+
+                <!-- User Directory Table -->
+                <div class="overflow-x-auto rounded-2xl border border-slate-800">
+                    <table class="w-full text-left text-sm text-slate-300">
+                        <thead class="text-xs uppercase bg-slate-950 text-amber-400 border-b border-slate-800">
+                            <tr>
+                                <th class="p-3.5">User Profile</th>
+                                <th class="p-3.5">Role & Privilege Level</th>
+                                <th class="p-3.5">Assigned Permissions</th>
+                                <th class="p-3.5">Contact Details</th>
+                                <th class="p-3.5">Last Logged Device</th>
+                                <th class="p-3.5">Status</th>
+                                <th class="p-3.5 text-right">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="adminUsersTableBody" class="divide-y divide-slate-800/80 bg-slate-900/40 text-xs">
+                            <!-- Rendered by JS -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Role Privilege Matrix Visual Guide -->
+                <div class="glass-panel p-6 space-y-4 border border-slate-800">
+                    <h4 class="text-sm font-bold font-cinzel text-amber-300 flex items-center gap-2">
+                        <i class="fa-solid fa-matrix text-amber-400"></i> Role & Privilege Access Matrix
+                    </h4>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-xs text-slate-300 border-collapse border border-slate-800">
+                            <thead class="bg-slate-950 text-amber-400 uppercase text-[10px]">
+                                <tr>
+                                    <th class="p-2.5 border border-slate-800">Role Name</th>
+                                    <th class="p-2.5 border border-slate-800 text-center">Manage Users</th>
+                                    <th class="p-2.5 border border-slate-800 text-center">System Settings</th>
+                                    <th class="p-2.5 border border-slate-800 text-center">Student Roster</th>
+                                    <th class="p-2.5 border border-slate-800 text-center">Grade Weekly Marks</th>
+                                    <th class="p-2.5 border border-slate-800 text-center">Delete Students</th>
+                                    <th class="p-2.5 border border-slate-800 text-center">Teacher Vault</th>
+                                    <th class="p-2.5 border border-slate-800 text-center">Database Admin</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-800 text-[11px]">
+                                <tr class="bg-amber-500/5 font-semibold">
+                                    <td class="p-2.5 border border-slate-800 text-amber-300"><i class="fa-solid fa-crown mr-1.5 text-amber-400"></i> Super Admin</td>
+                                    <td class="p-2.5 border border-slate-800 text-center text-emerald-400"><i class="fa-solid fa-check"></i></td>
+                                    <td class="p-2.5 border border-slate-800 text-center text-emerald-400"><i class="fa-solid fa-check"></i></td>
+                                    <td class="p-2.5 border border-slate-800 text-center text-emerald-400"><i class="fa-solid fa-check"></i></td>
+                                    <td class="p-2.5 border border-slate-800 text-center text-emerald-400"><i class="fa-solid fa-check"></i></td>
+                                    <td class="p-2.5 border border-slate-800 text-center text-emerald-400"><i class="fa-solid fa-check"></i></td>
+                                    <td class="p-2.5 border border-slate-800 text-center text-emerald-400"><i class="fa-solid fa-check"></i></td>
+                                    <td class="p-2.5 border border-slate-800 text-center text-emerald-400"><i class="fa-solid fa-check"></i></td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2.5 border border-slate-800 text-indigo-300"><i class="fa-solid fa-shield-halved mr-1.5 text-indigo-400"></i> Administrator</td>
+                                    <td class="p-2.5 border border-slate-800 text-center text-slate-600"><i class="fa-solid fa-minus"></i></td>
+                                    <td class="p-2.5 border border-slate-800 text-center text-slate-600"><i class="fa-solid fa-minus"></i></td>
+                                    <td class="p-2.5 border border-slate-800 text-center text-emerald-400"><i class="fa-solid fa-check"></i></td>
+                                    <td class="p-2.5 border border-slate-800 text-center text-emerald-400"><i class="fa-solid fa-check"></i></td>
+                                    <td class="p-2.5 border border-slate-800 text-center text-slate-600"><i class="fa-solid fa-minus"></i></td>
+                                    <td class="p-2.5 border border-slate-800 text-center text-emerald-400"><i class="fa-solid fa-check"></i></td>
+                                    <td class="p-2.5 border border-slate-800 text-center text-slate-600"><i class="fa-solid fa-minus"></i></td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2.5 border border-slate-800 text-emerald-300"><i class="fa-solid fa-chalkboard-user mr-1.5 text-emerald-400"></i> Senior Teacher</td>
+                                    <td class="p-2.5 border border-slate-800 text-center text-slate-600"><i class="fa-solid fa-minus"></i></td>
+                                    <td class="p-2.5 border border-slate-800 text-center text-slate-600"><i class="fa-solid fa-minus"></i></td>
+                                    <td class="p-2.5 border border-slate-800 text-center text-slate-400">View Only</td>
+                                    <td class="p-2.5 border border-slate-800 text-center text-emerald-400"><i class="fa-solid fa-check"></i></td>
+                                    <td class="p-2.5 border border-slate-800 text-center text-slate-600"><i class="fa-solid fa-minus"></i></td>
+                                    <td class="p-2.5 border border-slate-800 text-center text-emerald-400"><i class="fa-solid fa-check"></i></td>
+                                    <td class="p-2.5 border border-slate-800 text-center text-slate-600"><i class="fa-solid fa-minus"></i></td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2.5 border border-slate-800 text-teal-300"><i class="fa-solid fa-user-pen mr-1.5 text-teal-400"></i> Assistant Teacher</td>
+                                    <td class="p-2.5 border border-slate-800 text-center text-slate-600"><i class="fa-solid fa-minus"></i></td>
+                                    <td class="p-2.5 border border-slate-800 text-center text-slate-600"><i class="fa-solid fa-minus"></i></td>
+                                    <td class="p-2.5 border border-slate-800 text-center text-slate-400">View Only</td>
+                                    <td class="p-2.5 border border-slate-800 text-center text-emerald-400"><i class="fa-solid fa-check"></i></td>
+                                    <td class="p-2.5 border border-slate-800 text-center text-slate-600"><i class="fa-solid fa-minus"></i></td>
+                                    <td class="p-2.5 border border-slate-800 text-center text-slate-600"><i class="fa-solid fa-minus"></i></td>
+                                    <td class="p-2.5 border border-slate-800 text-center text-slate-600"><i class="fa-solid fa-minus"></i></td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2.5 border border-slate-800 text-purple-300"><i class="fa-solid fa-clipboard-user mr-1.5 text-purple-400"></i> Staff / Registrar</td>
+                                    <td class="p-2.5 border border-slate-800 text-center text-slate-600"><i class="fa-solid fa-minus"></i></td>
+                                    <td class="p-2.5 border border-slate-800 text-center text-slate-600"><i class="fa-solid fa-minus"></i></td>
+                                    <td class="p-2.5 border border-slate-800 text-center text-emerald-400"><i class="fa-solid fa-check"></i></td>
+                                    <td class="p-2.5 border border-slate-800 text-center text-slate-600"><i class="fa-solid fa-minus"></i></td>
+                                    <td class="p-2.5 border border-slate-800 text-center text-slate-600"><i class="fa-solid fa-minus"></i></td>
+                                    <td class="p-2.5 border border-slate-800 text-center text-slate-600"><i class="fa-solid fa-minus"></i></td>
+                                    <td class="p-2.5 border border-slate-800 text-center text-slate-600"><i class="fa-solid fa-minus"></i></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Multi-Device Login History & Audit Trail -->
+                <div class="glass-panel p-6 space-y-4 border border-slate-800">
+                    <div class="flex items-center justify-between">
+                        <h4 class="text-sm font-bold font-cinzel text-cyan-300 flex items-center gap-2">
+                            <i class="fa-solid fa-clock-rotate-left text-cyan-400"></i> Multi-Device Activity Log & Audit Trail
+                        </h4>
+                        <span class="text-[10px] text-slate-400">Chronological action events</span>
+                    </div>
+
+                    <div class="overflow-x-auto rounded-xl border border-slate-800">
+                        <table class="w-full text-left text-xs text-slate-300">
+                            <thead class="bg-slate-950 text-slate-400 uppercase text-[10px]">
+                                <tr>
+                                    <th class="p-2.5">Timestamp</th>
+                                    <th class="p-2.5">User</th>
+                                    <th class="p-2.5">Role</th>
+                                    <th class="p-2.5">Action</th>
+                                    <th class="p-2.5">Device Type</th>
+                                    <th class="p-2.5">Details</th>
+                                </tr>
+                            </thead>
+                            <tbody id="activityLogsTableBody" class="divide-y divide-slate-800/60 bg-slate-900/30 font-mono text-[11px]">
+                                <!-- Injected via JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- =========================================================================
+             VIEW 3: GRADE-WISE NOTIFICATIONS
+             ========================================================================= -->
+        <div id="view-notifications" class="hidden space-y-6">
+            <div class="glass-panel p-6 sm:p-8 space-y-6">
+                <div class="flex items-center justify-between pb-4 border-b border-slate-700">
+                    <div>
+                        <h3 class="text-2xl font-bold font-cinzel text-amber-300 flex items-center gap-2">
+                            <i class="fa-solid fa-bullhorn text-amber-400"></i> Grade-Wise Notifications & Exam Broadcasts
+                        </h3>
+                        <p class="text-xs text-slate-400">Publish announcements and notifications visible on student dashboards.</p>
+                    </div>
+                </div>
+
+                <!-- Add Notification Form -->
+                <form id="addNotificationForm" class="bg-slate-950/80 p-5 rounded-2xl border border-slate-800 space-y-4">
+                    <h4 class="text-xs font-bold text-amber-400 uppercase tracking-wider">Publish New Announcement</h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <div>
+                            <label class="block text-[11px] text-slate-400 mb-1">Title:</label>
+                            <input type="text" id="notifTitle" required placeholder="e.g. Unit 4 Lab Exam Date" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-100 focus:outline-none focus:border-amber-400">
+                        </div>
+                        <div>
+                            <label class="block text-[11px] text-slate-400 mb-1">Target Grade:</label>
+                            <select id="notifGrade" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-100 focus:outline-none focus:border-amber-400">
+                                <option value="All Grades">All Grades (Global Broadcast)</option>
+                                <option value="06 - Science">06 - Science</option>
+                                <option value="07 - Science">07 - Science</option>
+                                <option value="08 - Science">08 - Science</option>
+                                <option value="09 - Science">09 - Science</option>
+                                <option value="10 - Science">10 - Science</option>
+                                <option value="11 - Science">11 - Science</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-[11px] text-slate-400 mb-1">Priority / Category:</label>
+                            <select id="notifPriority" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-100 focus:outline-none focus:border-amber-400">
+                                <option value="General">General Announcement</option>
+                                <option value="Exam Alert">Exam Alert</option>
+                                <option value="Live Class">Live Class</option>
+                                <option value="Homework">Homework / Assignment</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-[11px] text-slate-400 mb-1">Message Content:</label>
+                        <textarea id="notifMessage" rows="2" required placeholder="Enter announcement text for students..." class="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 text-xs text-slate-100 focus:outline-none focus:border-amber-400"></textarea>
+                    </div>
+                    <button type="submit" class="bg-gradient-to-r from-amber-500 to-yellow-400 text-slate-950 font-bold px-4 py-2 rounded-xl text-xs flex items-center gap-1.5 shadow-md">
+                        <i class="fa-solid fa-paper-plane"></i>
+                        <span>Publish Notification</span>
+                    </button>
+                </form>
+
+                <!-- Notifications List -->
+                <div class="space-y-3">
+                    <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">Active Broadcasts</h4>
+                    <div id="notificationsListContainer" class="space-y-3">
+                        <!-- Rendered by JS -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- =========================================================================
+             VIEW 4: ACADEMIC CALENDAR (GOOGLE CALENDAR STYLE)
+             ========================================================================= -->
+        <div id="view-calendar" class="hidden space-y-6">
+            <div class="glass-panel p-6 sm:p-8 space-y-6">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-700">
+                    <div>
+                        <h3 class="text-2xl font-bold font-cinzel text-amber-300 flex items-center gap-2">
+                            <i class="fa-solid fa-calendar-days text-amber-400"></i> Academic Calendar & Live Class Schedule
+                        </h3>
+                        <p class="text-xs text-slate-400">Interactive academic calendar with exam schedules, live classes, and deadlines.</p>
+                    </div>
+
+                    <!-- Month Controls -->
+                    <div class="flex items-center space-x-2">
+                        <button onclick="prevCalendarMonth()" class="p-2 bg-slate-900 border border-slate-700 rounded-xl hover:bg-slate-800 text-xs">
+                            <i class="fa-solid fa-chevron-left"></i>
+                        </button>
+                        <span id="calendarMonthYearDisplay" class="font-cinzel font-bold text-amber-300 text-sm px-3 py-1.5 bg-slate-950 border border-slate-800 rounded-xl">August 2026</span>
+                        <button onclick="nextCalendarMonth()" class="p-2 bg-slate-900 border border-slate-700 rounded-xl hover:bg-slate-800 text-xs">
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </button>
+                        <button onclick="setCalendarToday()" class="bg-amber-500/20 text-amber-300 border border-amber-500/40 px-3 py-1.5 rounded-xl text-xs font-bold">Today</button>
+                    </div>
+                </div>
+
+                <!-- Calendar Grid -->
+                <div class="grid grid-cols-7 gap-1 text-center font-bold text-xs text-slate-400 pb-2 border-b border-slate-800">
+                    <div>SUN</div><div>MON</div><div>TUE</div><div>WED</div><div>THU</div><div>FRI</div><div>SAT</div>
+                </div>
+                <div id="calendarGridDays" class="grid grid-cols-7 gap-2 text-xs">
+                    <!-- Days rendered by JS -->
+                </div>
+
+                <!-- Add Event Form & Agenda -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 pt-4 border-t border-slate-800">
+                    <form id="addCalendarEventForm" class="bg-slate-950/80 p-4 rounded-2xl border border-slate-800 space-y-3">
+                        <h4 class="text-xs font-bold text-amber-400 uppercase tracking-wider">Schedule New Academic Event</h4>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-[11px] text-slate-400 mb-1">Title:</label>
+                                <input type="text" id="evtTitle" required placeholder="e.g. Unit 3 Test" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-100">
+                            </div>
+                            <div>
+                                <label class="block text-[11px] text-slate-400 mb-1">Date:</label>
+                                <input type="date" id="evtDate" required class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-100">
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-[11px] text-slate-400 mb-1">Time:</label>
+                                <input type="text" id="evtTime" placeholder="e.g. 08:30 AM - 10:30 AM" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-100">
+                            </div>
+                            <div>
+                                <label class="block text-[11px] text-slate-400 mb-1">Category:</label>
+                                <select id="evtCategory" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-100">
+                                    <option value="Exam">Exam</option>
+                                    <option value="Class">Live Class</option>
+                                    <option value="Assignment">Assignment</option>
+                                    <option value="Holiday">Holiday</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button type="submit" class="bg-gradient-to-r from-amber-500 to-yellow-400 text-slate-950 font-bold px-4 py-2 rounded-xl text-xs flex items-center gap-1.5 shadow-md">
+                            <i class="fa-solid fa-calendar-plus"></i>
+                            <span>Add Event</span>
+                        </button>
+                    </form>
+
+                    <!-- Upcoming Events List -->
+                    <div class="bg-slate-950/80 p-4 rounded-2xl border border-slate-800 space-y-3">
+                        <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">Scheduled Events</h4>
+                        <div id="calendarAgendaList" class="space-y-2 max-h-60 overflow-y-auto scrollbar-thin">
+                            <!-- Agenda rendered by JS -->
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- =========================================================================
+             VIEW 5: STUDY FILES & MATERIAL SHARING
+             ========================================================================= -->
+        <div id="view-files" class="hidden space-y-6">
+            <div class="glass-panel p-6 sm:p-8 space-y-6">
+                <div class="flex items-center justify-between pb-4 border-b border-slate-700">
+                    <div>
+                        <h3 class="text-2xl font-bold font-cinzel text-amber-300 flex items-center gap-2">
+                            <i class="fa-solid fa-folder-open text-amber-400"></i> Student Study Material & File Distribution
+                        </h3>
+                        <p class="text-xs text-slate-400">Distribute Science Master Guidebooks, model papers, and revision files to students.</p>
+                    </div>
+                </div>
+
+                <!-- Add File Form -->
+                <form id="addFileForm" class="bg-slate-950/80 p-5 rounded-2xl border border-slate-800 space-y-4">
+                    <h4 class="text-xs font-bold text-amber-400 uppercase tracking-wider">Upload / Publish Study Material</h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <div>
+                            <label class="block text-[11px] text-slate-400 mb-1">File Title:</label>
+                            <input type="text" id="fileTitle" required placeholder="e.g. Master Guidebook 03" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-100">
+                        </div>
+                        <div>
+                            <label class="block text-[11px] text-slate-400 mb-1">Category:</label>
+                            <select id="fileCategory" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-100">
+                                <option value="Master Guide">Master Guidebook</option>
+                                <option value="Past Papers">Past Papers & Marking</option>
+                                <option value="Short Notes">Short Notes</option>
+                                <option value="Model Paper">Model Paper</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-[11px] text-slate-400 mb-1">Target Grade:</label>
+                            <select id="fileGrade" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-100">
+                                <option value="06 - Science">06 - Science</option>
+                                <option value="07 - Science">07 - Science</option>
+                                <option value="08 - Science">08 - Science</option>
+                                <option value="09 - Science">09 - Science</option>
+                                <option value="10 - Science">10 - Science</option>
+                                <option value="11 - Science">11 - Science</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-[11px] text-slate-400 mb-1">File Download URL (PDF):</label>
+                            <input type="url" id="fileUrlInput" required placeholder="https://..." class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-100">
+                        </div>
+                        <div>
+                            <label class="block text-[11px] text-slate-400 mb-1">File Size:</label>
+                            <input type="text" id="fileSizeInput" placeholder="e.g. 15.4 MB" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-100">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-[11px] text-slate-400 mb-1">Description:</label>
+                        <textarea id="fileDesc" rows="2" placeholder="Summary of topics covered..." class="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 text-xs text-slate-100"></textarea>
+                    </div>
+                    <button type="submit" class="bg-gradient-to-r from-amber-500 to-yellow-400 text-slate-950 font-bold px-4 py-2 rounded-xl text-xs flex items-center gap-1.5 shadow-md">
+                        <i class="fa-solid fa-cloud-arrow-up"></i>
+                        <span>Publish Study Material</span>
+                    </button>
+                </form>
+
+                <!-- Files Cards -->
+                <div id="studyFilesListContainer" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- Files rendered by JS -->
+                </div>
+            </div>
+        </div>
+
+        <!-- =========================================================================
+             VIEW 6: ERP CUSTOMIZER STUDIO & PURE JSON DATABASE MANAGER
+             ========================================================================= -->
+        <div id="view-custom" class="hidden space-y-8">
+            
+            <div class="glass-panel p-6 sm:p-8 space-y-6">
+                
+                <!-- Section 1: Pure JSON Cloud Database Manager -->
+                <div class="p-6 rounded-2xl bg-slate-950/90 border border-cyan-500/40 space-y-5 shadow-2xl">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-slate-800">
+                        <div>
+                            <h3 class="text-xl font-bold font-cinzel text-cyan-300 flex items-center gap-2">
+                                <i class="fa-solid fa-database text-cyan-400"></i> Pure JSON Database Control Center
+                            </h3>
+                            <p class="text-xs text-slate-400">100% Pure JSON Database Engine (No Spreadsheets / No Excel required). Seamless multi-device real-time sync.</p>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 flex items-center gap-1.5">
+                                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> REST API Active
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- 1-Click JSON Download / Export Bar -->
+                    <div class="space-y-2">
+                        <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider">1-Click JSON Database Backups:</label>
+                        <div class="grid grid-cols-2 sm:grid-cols-5 gap-3 text-xs font-bold">
+                            <button onclick="window.LMSCore.exportStudentsJson()" class="p-2.5 bg-slate-900 hover:bg-slate-800 text-amber-300 border border-amber-500/40 rounded-xl flex items-center justify-center gap-1.5 transition">
+                                <i class="fa-solid fa-download"></i> students.json
+                            </button>
+                            <button onclick="window.LMSCore.exportErpConfigJson()" class="p-2.5 bg-slate-900 hover:bg-slate-800 text-indigo-300 border border-indigo-500/40 rounded-xl flex items-center justify-center gap-1.5 transition">
+                                <i class="fa-solid fa-download"></i> erp-config.json
+                            </button>
+                            <button onclick="window.LMSCore.exportUsersJson()" class="p-2.5 bg-slate-900 hover:bg-slate-800 text-rose-300 border border-rose-500/40 rounded-xl flex items-center justify-center gap-1.5 transition">
+                                <i class="fa-solid fa-download"></i> users.json
+                            </button>
+                            <button onclick="downloadTeacherDocsJson()" class="p-2.5 bg-slate-900 hover:bg-slate-800 text-emerald-300 border border-emerald-500/40 rounded-xl flex items-center justify-center gap-1.5 transition">
+                                <i class="fa-solid fa-download"></i> teacher-docs.json
+                            </button>
+                            <button onclick="window.LMSCore.exportFullDatabaseBundle()" class="col-span-2 sm:col-span-1 p-2.5 bg-gradient-to-r from-cyan-600 to-blue-600 text-white rounded-xl flex items-center justify-center gap-1.5 shadow-md hover:brightness-110 transition">
+                                <i class="fa-solid fa-box-archive"></i> Full DB Bundle
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 1-Click JSON Restore / Import Box -->
+                    <div class="space-y-2 pt-3 border-t border-slate-800">
+                        <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider">1-Click JSON Database Import / Restore:</label>
+                        <div class="flex items-center gap-3">
+                            <input type="file" id="importJsonFileInput" accept=".json" class="text-xs text-slate-400 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-cyan-500/20 file:text-cyan-300 hover:file:bg-cyan-500/30 cursor-pointer">
+                            <button onclick="executeJsonDatabaseImport()" class="bg-cyan-600 hover:bg-cyan-500 text-white px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 transition shadow">
+                                <i class="fa-solid fa-upload"></i> Restore JSON
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Cloud MySQL Database Integration & Live Status Card -->
+                    <div class="mt-4 pt-4 border-t border-slate-800 space-y-3">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                            <div>
+                                <label class="block text-xs font-bold text-cyan-300 uppercase tracking-wider flex items-center gap-1.5">
+                                    <i class="fa-solid fa-server text-cyan-400"></i> Cloud MySQL Database Engine Status:
+                                </label>
+                                <p class="text-[11px] text-slate-400">Connect to free cloud MySQL hosting (TiDB Cloud Serverless / Aiven / Clever Cloud / Railway).</p>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <button onclick="checkLiveDatabaseEngineStatus()" class="px-3 py-1.5 bg-cyan-950/70 hover:bg-cyan-900 border border-cyan-500/50 text-cyan-300 rounded-xl text-xs font-bold flex items-center gap-1.5 transition">
+                                    <i class="fa-solid fa-rotate text-xs"></i> Check DB Status
+                                </button>
+                                <button onclick="window.LMSCore.downloadMysqlSchema()" class="px-3 py-1.5 bg-slate-900 hover:bg-slate-800 border border-indigo-500/40 text-indigo-300 rounded-xl text-xs font-bold flex items-center gap-1.5 transition">
+                                    <i class="fa-solid fa-file-code text-xs"></i> Download schema.sql
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Live Status Indicator Box -->
+                        <div id="mysqlStatusDisplay" class="p-3 bg-slate-950/80 border border-slate-800 rounded-xl text-xs flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                            <div class="flex items-center gap-2">
+                                <span id="dbEngineBadge" class="px-2.5 py-0.5 rounded-full font-bold bg-slate-800 text-slate-300 border border-slate-700">Loading DB Engine...</span>
+                                <span id="dbEngineDetail" class="text-slate-400 text-[11px]">Checking database configuration...</span>
+                            </div>
+                            <div id="dbStatsSummary" class="text-[11px] text-slate-400 font-mono">
+                                --
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Section 2: ERP Customizer Form -->
+                <form id="erpCustomizerForm" class="space-y-6">
+                    <h3 class="text-xl font-bold font-cinzel text-amber-300 flex items-center gap-2">
+                        <i class="fa-solid fa-palette text-amber-400"></i> Academy Branding & ERP Settings
+                    </h3>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-300 mb-1">Academy Name:</label>
+                            <input type="text" id="custAcademyName" required class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-100">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-300 mb-1">Tagline:</label>
+                            <input type="text" id="custTagline" required class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-100">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-300 mb-1">Educator Name:</label>
+                            <input type="text" id="custTeacherName" required class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-100">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-300 mb-1">Teacher Title & Credentials:</label>
+                            <input type="text" id="custTeacherTitle" required class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-100">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-300 mb-1">Hotline Phone Numbers:</label>
+                            <input type="text" id="custHotlines" required class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-100 font-mono">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-300 mb-1">Motto:</label>
+                            <input type="text" id="custMotto" required class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-100">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-slate-300 mb-1">Global Broadcast Announcement:</label>
+                        <textarea id="custAnnouncement" rows="2" class="w-full bg-slate-950 border border-slate-700 rounded-xl p-3 text-xs text-slate-100"></textarea>
+                    </div>
+
+                    <!-- Photo & Visual Artwork Customization Suite -->
+                    <div class="p-5 rounded-2xl bg-slate-950/80 border border-slate-800 space-y-4">
+                        <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+                            <h4 class="text-xs font-bold text-amber-400 uppercase tracking-wider flex items-center gap-2">
+                                <i class="fa-solid fa-image text-amber-400"></i> Customize Photos & Visual Branding Assets
+                            </h4>
+                            <span class="text-[10px] text-slate-400">Direct File Upload or Image URL</span>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <!-- 1. Teacher Photo Customization -->
+                            <div class="p-3.5 rounded-xl bg-slate-900 border border-slate-800 space-y-3 flex flex-col justify-between">
+                                <div>
+                                    <div class="flex items-center justify-between mb-2">
+                                        <span class="text-xs font-bold text-slate-200">Teacher Photo / Banner</span>
+                                        <span class="text-[9px] text-amber-400 font-mono">Portrait</span>
+                                    </div>
+                                    <div class="flex items-center gap-3 mb-3">
+                                        <img id="previewTeacherPhoto" src="assets/images/teacher_banner.png" alt="Teacher Preview" class="w-14 h-16 object-cover rounded-xl border border-amber-400/60 bg-slate-950 shadow">
+                                        <div class="space-y-1">
+                                            <p class="text-[11px] text-slate-300 font-semibold">Educator Profile</p>
+                                            <p class="text-[10px] text-slate-500">Banner & Avatar display</p>
+                                        </div>
+                                    </div>
+                                    <label class="block text-[10px] text-slate-400 mb-1">Image URL or Local Path:</label>
+                                    <input type="text" id="custTeacherPhoto" oninput="updatePreviewImage('previewTeacherPhoto', this.value)" placeholder="assets/images/teacher_banner.png" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-2.5 py-1.5 text-xs text-slate-100 font-mono">
+                                </div>
+                                <div class="flex items-center gap-2 pt-2 border-t border-slate-800">
+                                    <label class="cursor-pointer flex-1 bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 text-center py-1.5 px-2 rounded-lg text-xs font-bold transition flex items-center justify-center gap-1">
+                                        <i class="fa-solid fa-cloud-arrow-up"></i> Upload Photo
+                                        <input type="file" id="uploadTeacherFile" accept="image/*" class="hidden" onchange="handleFileUpload(this, 'custTeacherPhoto', 'previewTeacherPhoto')">
+                                    </label>
+                                    <button type="button" onclick="resetPhotoField('custTeacherPhoto', 'previewTeacherPhoto', 'assets/images/teacher_banner.png')" class="text-slate-400 hover:text-slate-200 text-xs px-2 py-1.5 rounded-lg border border-slate-700 bg-slate-950" title="Reset to default">
+                                        <i class="fa-solid fa-rotate-left"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- 2. ERP Icon / Logo Photo Customization -->
+                            <div class="p-3.5 rounded-xl bg-slate-900 border border-slate-800 space-y-3 flex flex-col justify-between">
+                                <div>
+                                    <div class="flex items-center justify-between mb-2">
+                                        <span class="text-xs font-bold text-slate-200">ERP Icon / Logo Photo</span>
+                                        <span class="text-[9px] text-blue-400 font-mono">Square / Squircle</span>
+                                    </div>
+                                    <div class="flex items-center gap-3 mb-3">
+                                        <img id="previewLogoPhoto" src="assets/images/logo.png" alt="Logo Preview" class="w-14 h-14 object-contain rounded-xl border border-blue-400/60 bg-white p-1 shadow branding-logo">
+                                        <div class="space-y-1">
+                                            <p class="text-[11px] text-slate-300 font-semibold">ERP Emblem</p>
+                                            <p class="text-[10px] text-slate-500">Navigation & App Icon</p>
+                                        </div>
+                                    </div>
+                                    <label class="block text-[10px] text-slate-400 mb-1">Image URL or Local Path:</label>
+                                    <input type="text" id="custLogoPhoto" oninput="updatePreviewImage('previewLogoPhoto', this.value)" placeholder="assets/images/logo.png" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-2.5 py-1.5 text-xs text-slate-100 font-mono">
+                                </div>
+                                <div class="flex items-center gap-2 pt-2 border-t border-slate-800">
+                                    <label class="cursor-pointer flex-1 bg-blue-500/20 hover:bg-blue-500/30 text-blue-300 border border-blue-500/40 text-center py-1.5 px-2 rounded-lg text-xs font-bold transition flex items-center justify-center gap-1">
+                                        <i class="fa-solid fa-cloud-arrow-up"></i> Upload Icon
+                                        <input type="file" id="uploadLogoFile" accept="image/*" class="hidden" onchange="handleFileUpload(this, 'custLogoPhoto', 'previewLogoPhoto')">
+                                    </label>
+                                    <button type="button" onclick="resetPhotoField('custLogoPhoto', 'previewLogoPhoto', 'assets/images/logo.png')" class="text-slate-400 hover:text-slate-200 text-xs px-2 py-1.5 rounded-lg border border-slate-700 bg-slate-950" title="Reset to default">
+                                        <i class="fa-solid fa-rotate-left"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- 3. Background Photo / Wallpaper Customization -->
+                            <div class="p-3.5 rounded-xl bg-slate-900 border border-slate-800 space-y-3 flex flex-col justify-between">
+                                <div>
+                                    <div class="flex items-center justify-between mb-2">
+                                        <span class="text-xs font-bold text-slate-200">Background Wallpaper</span>
+                                        <span class="text-[9px] text-emerald-400 font-mono">1920 x 1080</span>
+                                    </div>
+                                    <div class="flex items-center gap-3 mb-3">
+                                        <div id="previewBgThumbnail" class="w-16 h-14 rounded-xl border border-slate-700 bg-cover bg-center shadow" style="background-image: url('assets/images/lms_background.png');"></div>
+                                        <div class="space-y-1">
+                                            <p class="text-[11px] text-slate-300 font-semibold">Portal Backdrop</p>
+                                            <p class="text-[10px] text-slate-500">iPhone light / custom</p>
+                                        </div>
+                                    </div>
+                                    <label class="block text-[10px] text-slate-400 mb-1">Image URL or Local Path:</label>
+                                    <input type="text" id="custBgImage" oninput="updatePreviewBg('previewBgThumbnail', this.value)" placeholder="assets/images/lms_background.png" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-2.5 py-1.5 text-xs text-slate-100 font-mono">
+                                </div>
+                                <div class="flex items-center gap-2 pt-2 border-t border-slate-800">
+                                    <label class="cursor-pointer flex-1 bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-500/40 text-center py-1.5 px-2 rounded-lg text-xs font-bold transition flex items-center justify-center gap-1">
+                                        <i class="fa-solid fa-cloud-arrow-up"></i> Upload Wallpaper
+                                        <input type="file" id="uploadBgFile" accept="image/*" class="hidden" onchange="handleFileUploadBg(this, 'custBgImage', 'previewBgThumbnail')">
+                                    </label>
+                                    <button type="button" onclick="resetBgField()" class="text-slate-400 hover:text-slate-200 text-xs px-2 py-1.5 rounded-lg border border-slate-700 bg-slate-950" title="Reset to default wallpaper">
+                                        <i class="fa-solid fa-rotate-left"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cloud JSON & Node Server Endpoint Configuration -->
+                    <div class="p-4 rounded-2xl bg-slate-950/80 border border-slate-800 space-y-3">
+                        <h4 class="text-xs font-bold text-amber-400 uppercase tracking-wider">Multi-Device REST & Cloud Endpoints</h4>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-[11px] text-slate-400 mb-1">Node.js Server Base URL (Optional):</label>
+                                <input type="text" id="custNodeServerUrl" placeholder="http://localhost:3000 or http://192.168.1.10:3000" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-100 font-mono">
+                            </div>
+                            <div>
+                                <label class="block text-[11px] text-slate-400 mb-1">Cloud JSON Endpoint URL (e.g. npoint.io):</label>
+                                <input type="url" id="custCloudJsonUrl" placeholder="https://api.npoint.io/..." class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-100 font-mono">
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="bg-gradient-to-r from-amber-500 to-yellow-400 text-slate-950 font-extrabold px-6 py-2.5 rounded-xl text-xs uppercase tracking-wider shadow-lg hover:brightness-110 transition">
+                        <i class="fa-solid fa-floppy-disk mr-1"></i> Save ERP Settings
+                    </button>
+                </form>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- =========================================================================
+         MODALS
+         ========================================================================= -->
+    
+    <!-- 1. Add New Admin User Modal -->
+    <div id="addUserModal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div class="glass-panel p-6 max-w-lg w-full space-y-4 border-amber-500/40 shadow-2xl relative">
+            <div class="flex items-center justify-between pb-3 border-b border-slate-700">
+                <h3 class="text-lg font-bold font-cinzel text-amber-300 flex items-center gap-2">
+                    <i class="fa-solid fa-user-plus text-amber-400"></i> Add New Admin / Staff User
+                </h3>
+                <button onclick="closeAddUserModal()" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+
+            <form id="addUserForm" class="space-y-4">
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-[11px] text-slate-300 font-bold mb-1">Full Name:</label>
+                        <input type="text" id="addUserName" required placeholder="e.g. Mrs. Nilani Silva" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-100">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] text-slate-300 font-bold mb-1">Username / Login ID:</label>
+                        <input type="text" id="addUserUsername" required placeholder="e.g. nilani" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-100 font-mono">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-[11px] text-slate-300 font-bold mb-1">Password:</label>
+                        <input type="password" id="addUserPassword" required placeholder="••••••••" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-100 font-mono">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] text-slate-300 font-bold mb-1">Role / Privilege Level:</label>
+                        <select id="addUserRole" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-100">
+                            <option value="super_admin">Super Admin (Full Access)</option>
+                            <option value="admin">Administrator</option>
+                            <option value="teacher" selected>Senior Science Educator</option>
+                            <option value="assistant_teacher">Assistant Teacher</option>
+                            <option value="staff">Staff / Student Registrar</option>
+                            <option value="viewer">Auditor / Viewer (Read Only)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-[11px] text-slate-300 font-bold mb-1">Email Address:</label>
+                        <input type="email" id="addUserEmail" placeholder="user@scienceacademy.lk" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-100">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] text-slate-300 font-bold mb-1">Phone Number:</label>
+                        <input type="text" id="addUserPhone" placeholder="07x xxx xxxx" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-100 font-mono">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-[11px] text-slate-300 font-bold mb-1">Designation / Title:</label>
+                    <input type="text" id="addUserTitle" placeholder="e.g. Science Specialist (Grade 6-8)" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-100">
+                </div>
+
+                <div class="flex justify-end gap-2 pt-2">
+                    <button type="button" onclick="closeAddUserModal()" class="px-4 py-2 bg-slate-900 border border-slate-700 rounded-xl text-xs text-slate-300">Cancel</button>
+                    <button type="submit" class="px-4 py-2 bg-gradient-to-r from-amber-500 to-yellow-400 text-slate-950 font-extrabold rounded-xl text-xs shadow-md">Create User</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 2. Edit User Modal -->
+    <div id="editUserModal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div class="glass-panel p-6 max-w-lg w-full space-y-4 border-cyan-500/40 shadow-2xl relative">
+            <div class="flex items-center justify-between pb-3 border-b border-slate-700">
+                <h3 class="text-lg font-bold font-cinzel text-cyan-300 flex items-center gap-2">
+                    <i class="fa-solid fa-user-pen text-cyan-400"></i> Edit Admin User & Privileges
+                </h3>
+                <button onclick="closeEditUserModal()" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+
+            <form id="editUserForm" class="space-y-4">
+                <input type="hidden" id="editUserId">
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-[11px] text-slate-300 font-bold mb-1">Full Name:</label>
+                        <input type="text" id="editUserName" required class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-100">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] text-slate-300 font-bold mb-1">Username (Read-Only):</label>
+                        <input type="text" id="editUserUsername" readonly class="w-full bg-slate-900/80 border border-slate-800 rounded-xl px-3 py-2 text-xs text-slate-400 font-mono cursor-not-allowed">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-[11px] text-slate-300 font-bold mb-1">Role / Privilege Level:</label>
+                        <select id="editUserRole" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-100">
+                            <option value="super_admin">Super Admin (Full Access)</option>
+                            <option value="admin">Administrator</option>
+                            <option value="teacher">Senior Science Educator</option>
+                            <option value="assistant_teacher">Assistant Teacher</option>
+                            <option value="staff">Staff / Student Registrar</option>
+                            <option value="viewer">Auditor / Viewer (Read Only)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-[11px] text-slate-300 font-bold mb-1">Account Status:</label>
+                        <select id="editUserStatus" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-100">
+                            <option value="active">Active</option>
+                            <option value="disabled">Disabled / Inactive</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-[11px] text-slate-300 font-bold mb-1">Email Address:</label>
+                        <input type="email" id="editUserEmail" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-100">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] text-slate-300 font-bold mb-1">Phone Number:</label>
+                        <input type="text" id="editUserPhone" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-100 font-mono">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-[11px] text-slate-300 font-bold mb-1">Designation / Title:</label>
+                    <input type="text" id="editUserTitle" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-100">
+                </div>
+
+                <div class="flex justify-end gap-2 pt-2">
+                    <button type="button" onclick="closeEditUserModal()" class="px-4 py-2 bg-slate-900 border border-slate-700 rounded-xl text-xs text-slate-300">Cancel</button>
+                    <button type="submit" class="px-4 py-2 bg-gradient-to-r from-cyan-600 to-blue-600 text-white font-extrabold rounded-xl text-xs shadow-md">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 3. Reset User Password Modal -->
+    <div id="resetUserPassModal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div class="glass-panel p-6 max-w-sm w-full space-y-4 border-rose-500/40 shadow-2xl relative">
+            <div class="flex items-center justify-between pb-3 border-b border-slate-700">
+                <h3 class="text-base font-bold font-cinzel text-rose-300 flex items-center gap-2">
+                    <i class="fa-solid fa-key text-rose-400"></i> Reset User Password
+                </h3>
+                <button onclick="closeResetUserPassModal()" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+            <form id="resetUserPassForm" class="space-y-3">
+                <input type="hidden" id="resetPassUserId">
+                <p class="text-xs text-slate-300">Set new password for <strong id="resetPassUserName" class="text-amber-400">...</strong>:</p>
+                <input type="password" id="resetPassNewValue" required placeholder="New Password" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-100 font-mono">
+                <div class="flex justify-end gap-2 pt-2">
+                    <button type="button" onclick="closeResetUserPassModal()" class="px-3 py-1.5 bg-slate-900 border border-slate-700 rounded-xl text-xs text-slate-300">Cancel</button>
+                    <button type="submit" class="px-3 py-1.5 bg-rose-600 hover:bg-rose-500 text-white font-bold rounded-xl text-xs">Update Password</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 4. Quick Switch Account Modal -->
+    <div id="switchUserModal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div class="glass-panel p-6 max-w-md w-full space-y-4 border-amber-500/40 shadow-2xl relative">
+            <div class="flex items-center justify-between pb-3 border-b border-slate-700">
+                <h3 class="text-base font-bold font-cinzel text-amber-300 flex items-center gap-2">
+                    <i class="fa-solid fa-user-tag text-amber-400"></i> Switch Active Admin Profile
+                </h3>
+                <button onclick="closeSwitchUserModal()" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+            <p class="text-xs text-slate-400">Select an admin account to switch session instantly:</p>
+            <div id="switchUserList" class="space-y-2 max-h-72 overflow-y-auto scrollbar-thin">
+                <!-- User items rendered by JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. Register Student Modal -->
+    <div id="registerModal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div class="glass-panel p-6 max-w-md w-full space-y-4 border-amber-500/40 shadow-2xl relative">
+            <div class="flex items-center justify-between pb-3 border-b border-slate-700">
+                <h3 class="text-lg font-bold font-cinzel text-amber-300 flex items-center gap-2">
+                    <i class="fa-solid fa-user-plus text-amber-400"></i> Register New Student
+                </h3>
+                <button onclick="toggleRegisterModal()" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+            <form id="registerStudentForm" class="space-y-3">
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-[11px] text-slate-400 mb-1">Student Full Name:</label>
+                        <input type="text" id="regName" required placeholder="e.g. Kasun Silva" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-100">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] text-slate-400 mb-1">Student ID:</label>
+                        <input type="text" id="regId" required placeholder="e.g. STU-015" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-100 font-mono">
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-[11px] text-slate-400 mb-1">Grade Class:</label>
+                        <select id="regGrade" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-100">
+                            <option value="06 - Science">06 - Science</option>
+                            <option value="07 - Science">07 - Science</option>
+                            <option value="08 - Science">08 - Science</option>
+                            <option value="09 - Science">09 - Science</option>
+                            <option value="10 - Science">10 - Science</option>
+                            <option value="11 - Science">11 - Science</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-[11px] text-slate-400 mb-1">Parent WhatsApp:</label>
+                        <input type="text" id="regParentWa" placeholder="+9477xxxxxxx" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-100 font-mono">
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-[11px] text-slate-400 mb-1">Username:</label>
+                        <input type="text" id="regUsername" placeholder="kasun" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-100 font-mono">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] text-slate-400 mb-1">Initial Password:</label>
+                        <input type="password" id="regPassword" placeholder="student123" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-100 font-mono">
+                    </div>
+                </div>
+                <div class="flex justify-end gap-2 pt-2">
+                    <button type="button" onclick="toggleRegisterModal()" class="px-4 py-2 bg-slate-900 border border-slate-700 rounded-xl text-xs text-slate-300">Cancel</button>
+                    <button type="submit" class="px-4 py-2 bg-gradient-to-r from-amber-500 to-yellow-400 text-slate-950 font-extrabold rounded-xl text-xs shadow-md">Register Record</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 6. Edit Student Profile Modal -->
+    <div id="editStudentModal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div class="glass-panel p-6 max-w-md w-full space-y-4 border-cyan-500/40 shadow-2xl relative">
+            <div class="flex items-center justify-between pb-3 border-b border-slate-700">
+                <h3 class="text-base font-bold font-cinzel text-cyan-300 flex items-center gap-2">
+                    <i class="fa-solid fa-user-pen text-cyan-400"></i> Edit Student Profile
+                </h3>
+                <button onclick="closeEditStudentModal()" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+            <form id="editStudentForm" class="space-y-3">
+                <div>
+                    <label class="block text-[11px] text-slate-400 mb-1">Full Name:</label>
+                    <input type="text" id="editStName" required class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-100">
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-[11px] text-slate-400 mb-1">Grade Class:</label>
+                        <select id="editStGrade" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-100">
+                            <option value="06 - Science">06 - Science</option>
+                            <option value="07 - Science">07 - Science</option>
+                            <option value="08 - Science">08 - Science</option>
+                            <option value="09 - Science">09 - Science</option>
+                            <option value="10 - Science">10 - Science</option>
+                            <option value="11 - Science">11 - Science</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-[11px] text-slate-400 mb-1">Parent WhatsApp:</label>
+                        <input type="text" id="editStParentWa" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-100 font-mono">
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-[11px] text-slate-400 mb-1">Attendance Rate:</label>
+                        <input type="text" id="editStAttendance" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-100 font-mono">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] text-slate-400 mb-1">Progress Status:</label>
+                        <input type="text" id="editStOverallStatus" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-100">
+                    </div>
+                </div>
+                <div class="flex justify-end gap-2 pt-2">
+                    <button type="button" onclick="closeEditStudentModal()" class="px-4 py-2 bg-slate-900 border border-slate-700 rounded-xl text-xs text-slate-300">Cancel</button>
+                    <button type="submit" class="px-4 py-2 bg-gradient-to-r from-cyan-600 to-blue-600 text-white font-extrabold rounded-xl text-xs shadow-md">Update Profile</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 7. Reset Student Password Modal -->
+    <div id="resetStudentPassModal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div class="glass-panel p-6 max-w-sm w-full space-y-4 border-amber-500/40 shadow-2xl relative">
+            <div class="flex items-center justify-between pb-3 border-b border-slate-700">
+                <h3 class="text-base font-bold font-cinzel text-amber-300 flex items-center gap-2">
+                    <i class="fa-solid fa-key text-amber-400"></i> Reset Student Password
+                </h3>
+                <button onclick="closeResetPasswordModal()" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+            <form id="resetStudentPassForm" class="space-y-3">
+                <p class="text-xs text-slate-300">Set new login password for <strong id="resetPassStudentName" class="text-amber-400">...</strong>:</p>
+                <input type="password" id="resetStNewPassword" required placeholder="New Password" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-100 font-mono">
+                <div class="flex justify-end gap-2 pt-2">
+                    <button type="button" onclick="closeResetPasswordModal()" class="px-3 py-1.5 bg-slate-900 border border-slate-700 rounded-xl text-xs text-slate-300">Cancel</button>
+                    <button type="submit" class="px-3 py-1.5 bg-amber-500 text-slate-950 font-bold rounded-xl text-xs">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 8. Configure Classroom Links Modal -->
+    <div id="classroomModal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div class="glass-panel p-6 max-w-md w-full space-y-4 border-emerald-500/40 shadow-2xl relative">
+            <div class="flex items-center justify-between pb-3 border-b border-slate-700">
+                <h3 class="text-base font-bold font-cinzel text-emerald-300 flex items-center gap-2">
+                    <i class="fa-solid fa-gear text-emerald-400"></i> Configure Live Broadcast Links
+                </h3>
+                <button onclick="closeClassroomModal()" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+            <form id="classroomConfigForm" class="space-y-3">
+                <div>
+                    <label class="block text-[11px] text-slate-400 mb-1">Broadcast Title:</label>
+                    <input type="text" id="modalClassTitle" required class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-100">
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-[11px] text-slate-400 mb-1">Target Grade:</label>
+                        <select id="modalClassGrade" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-100">
+                            <option value="06 - Science">06 - Science</option>
+                            <option value="07 - Science">07 - Science</option>
+                            <option value="08 - Science">08 - Science</option>
+                            <option value="09 - Science">09 - Science</option>
+                            <option value="10 - Science">10 - Science</option>
+                            <option value="11 - Science">11 - Science</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-[11px] text-slate-400 mb-1">Teacher WhatsApp Hotline:</label>
+                        <input type="text" id="modalWaPhone" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-100 font-mono">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-[11px] text-slate-400 mb-1">WhatsApp Group URL:</label>
+                    <input type="url" id="modalWaGroupUrl" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-100 font-mono">
+                </div>
+                <div>
+                    <label class="block text-[11px] text-slate-400 mb-1">Zoom Meeting Join URL:</label>
+                    <input type="url" id="modalZoomUrl" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-100 font-mono">
+                </div>
+                <div class="flex justify-end gap-2 pt-2">
+                    <button type="button" onclick="closeClassroomModal()" class="px-4 py-2 bg-slate-900 border border-slate-700 rounded-xl text-xs text-slate-300">Cancel</button>
+                    <button type="submit" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold rounded-xl text-xs shadow-md">Save Settings</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 9. Column Config Modal -->
+    <div id="columnConfigModal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div class="glass-panel p-6 max-w-md w-full space-y-4 border-cyan-500/40 shadow-2xl relative">
+            <div class="flex items-center justify-between pb-3 border-b border-slate-700">
+                <h3 class="text-base font-bold font-cinzel text-cyan-300 flex items-center gap-2">
+                    <i class="fa-solid fa-table-columns text-cyan-400"></i> Configure Weekly Table Columns
+                </h3>
+                <button onclick="closeColumnConfigModal()" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+            
+            <div class="space-y-2" id="existingColumnsList">
+                <!-- Column tags rendered by JS -->
+            </div>
+
+            <form id="addNewColumnForm" class="pt-3 border-t border-slate-800 space-y-3">
+                <h4 class="text-xs font-bold text-slate-300 uppercase flex items-center gap-1.5">
+                    <i class="fa-solid fa-plus text-cyan-400"></i> Add New Custom Evaluation Column:
+                </h4>
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-[10px] text-slate-400 mb-1 font-semibold">Column Title / Name:</label>
+                        <input type="text" id="newColLabel" required placeholder="e.g. Theory Workbook, Lab Viva..." class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-100 focus:outline-none focus:border-cyan-400">
+                    </div>
+                    <div>
+                        <label class="block text-[10px] text-slate-400 mb-1 font-semibold">Column Evaluation Type:</label>
+                        <select id="newColType" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-100 focus:outline-none focus:border-cyan-400">
+                            <option value="dropdown">Status Dropdown (Completed, Average, Pending...)</option>
+                            <option value="number">Numeric Score (Marks 0 - 100)</option>
+                            <option value="text">Short Text / Observation Note</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="flex justify-between items-center pt-2 border-t border-slate-800/80">
+                    <button type="button" onclick="clearAllColumnsAction()" class="text-xs text-rose-400 hover:text-rose-300 flex items-center gap-1 font-semibold transition" title="Remove all columns from table">
+                        <i class="fa-solid fa-trash-can"></i> Delete All Columns
+                    </button>
+                    <button type="submit" class="bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-bold px-4 py-2 rounded-xl text-xs shadow-md flex items-center gap-1.5 transition">
+                        <i class="fa-solid fa-plus"></i> Add Column
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 border-t border-slate-900 py-6 text-center text-xs text-slate-500 no-print">
+        <p>&copy; 2026 Science with Laknath. Pure JSON Database Multi-User Engine.</p>
+    </footer>
+
+    <!-- Core LMS Engine & Scripts -->
+    <script src="assets/js/lms-core.js"></script>
+    <script>
+        const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        const STATUS_OPTIONS = ["Completed", "Incomplete", "0.5 Done", "Pending", "Still not attended"];
+
+        let allStudents = [];
+        let allUsers = [];
+        let curIndex = 0;
+        let selectedMonth = "January";
+        let annualChart = null;
+        let practicalPieChart = null;
+
+        let calCurrentYear = 2026;
+        let calCurrentMonth = 7; // August (0-indexed)
+
+        // Dropdown toggle
+        function toggleUserDropdown() {
+            const menu = document.getElementById('userDropdownMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        document.addEventListener('click', (e) => {
+            const menu = document.getElementById('userDropdownMenu');
+            const btn = document.getElementById('userProfileBtn');
+            if (menu && btn && !btn.contains(e.target) && !menu.contains(e.target)) {
+                menu.classList.add('hidden');
+            }
+        });
+
+        // Initialize on DOM Ready
+        document.addEventListener('DOMContentLoaded', async () => {
+            if (window.LMSCore) {
+                window.LMSCore.applyThemeAndBranding();
+                refreshHeaderUserInfo();
+                refreshLiveClassroomDisplay();
+                renderFilesList();
+                renderCalendarGrid();
+                renderCalendarAgenda();
+                renderNotificationsList();
+                loadCustomizationForm();
+            }
+
+            allStudents = await window.LMSCore.getStudents();
+            renderTabs();
+            selectAdminStudent(0);
+
+            // Load Users & Activity Logs
+            await refreshUsersView();
+
+            // Background Real-Time Auto-Sync (every 8s)
+            window.LMSCore.startRealtimeSync(8000, (type, data) => {
+                if (type === 'students') {
+                    allStudents = data;
+                    renderTabs();
+                    if (allStudents[curIndex]) {
+                        renderSelectedStudent(allStudents[curIndex]);
+                    }
+                }
+            });
+        });
+
+        // Refresh Header User Info with Active User & Device
+        function refreshHeaderUserInfo() {
+            const currentUser = window.LMSCore.getCurrentUser();
+            const devInfo = window.LMSCore.getDeviceInfo();
+
+            document.getElementById('headerUserName').textContent = currentUser.name || 'Admin User';
+            document.getElementById('headerUserRole').textContent = currentUser.roleName || currentUser.role || 'Staff';
+            document.getElementById('dropdownFullName').textContent = currentUser.name || 'Admin User';
+            document.getElementById('dropdownUserRole').textContent = currentUser.roleName || currentUser.role || 'Staff';
+            document.getElementById('dropdownDeviceDetail').textContent = `Device: ${devInfo.summary}`;
+
+            if (currentUser.avatar) {
+                document.getElementById('headerUserAvatar').src = currentUser.avatar;
+            }
+
+            const headerDeviceBadge = document.getElementById('headerDeviceBadge');
+            if (headerDeviceBadge) {
+                headerDeviceBadge.innerHTML = window.LMSCore.getDeviceBadgeHtml(devInfo.deviceType);
+            }
+        }
+
+        // Tab Switching
+        function switchAdminTab(tabName) {
+            ['students', 'users', 'notifications', 'calendar', 'files', 'custom'].forEach(t => {
+                const view = document.getElementById(`view-${t}`);
+                const nav = document.getElementById(`nav-tab-${t}`);
+                if (view && nav) {
+                    if (t === tabName) {
+                        view.classList.remove('hidden');
+                        nav.className = "pb-3 text-amber-400 border-b-2 border-amber-400 flex items-center gap-2 whitespace-nowrap";
+                    } else {
+                        view.classList.add('hidden');
+                        nav.className = "pb-3 text-slate-400 hover:text-slate-200 flex items-center gap-2 whitespace-nowrap";
+                    }
+                }
+            });
+            if (tabName === 'calendar') {
+                renderCalendarGrid();
+            }
+            if (tabName === 'users') {
+                refreshUsersView();
+            }
+        }
+
+        // =========================================================================
+        // MULTI-USER ROSTER & RBAC ENGINE (VIEW 2)
+        // =========================================================================
+        async function refreshUsersView() {
+            allUsers = await window.LMSCore.getUsers(true);
+            renderUsersRoster(allUsers);
+            renderActivityLogs();
+
+            // Update stats
+            document.getElementById('statsTotalUsers').textContent = allUsers.length;
+            const superAdmins = allUsers.filter(u => u.role === 'super_admin');
+            document.getElementById('statsSuperAdmins').textContent = superAdmins.length;
+            const teachers = allUsers.filter(u => u.role === 'teacher' || u.role === 'assistant_teacher');
+            document.getElementById('statsTeachers').textContent = teachers.length;
+        }
+
+        function filterUserRoster(role) {
+            document.querySelectorAll('.user-filter-btn').forEach(btn => {
+                if (btn.getAttribute('data-role') === role) {
+                    btn.className = "user-filter-btn px-3 py-1 rounded-lg bg-amber-500/20 text-amber-300 border border-amber-500/40 font-bold";
+                } else {
+                    btn.className = "user-filter-btn px-3 py-1 rounded-lg bg-slate-900 text-slate-400 border border-slate-800 hover:text-slate-200";
+                }
+            });
+
+            if (role === 'all') {
+                renderUsersRoster(allUsers);
+            } else {
+                const filtered = allUsers.filter(u => u.role === role);
+                renderUsersRoster(filtered);
+            }
+        }
+
+        function renderUsersRoster(usersList) {
+            const tbody = document.getElementById('adminUsersTableBody');
+            if (!tbody) return;
+            tbody.innerHTML = '';
+
+            usersList.forEach(u => {
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-slate-900/80 transition";
+
+                let roleBadgeColor = "bg-slate-800 text-slate-300 border-slate-700";
+                let roleIcon = "fa-user";
+                if (u.role === 'super_admin') {
+                    roleBadgeColor = "bg-amber-500/20 text-amber-300 border-amber-500/40";
+                    roleIcon = "fa-crown";
+                } else if (u.role === 'admin') {
+                    roleBadgeColor = "bg-indigo-500/20 text-indigo-300 border-indigo-500/40";
+                    roleIcon = "fa-shield-halved";
+                } else if (u.role === 'teacher') {
+                    roleBadgeColor = "bg-emerald-500/20 text-emerald-300 border-emerald-500/40";
+                    roleIcon = "fa-chalkboard-user";
+                } else if (u.role === 'assistant_teacher') {
+                    roleBadgeColor = "bg-teal-500/20 text-teal-300 border-teal-500/40";
+                    roleIcon = "fa-user-pen";
+                } else if (u.role === 'staff') {
+                    roleBadgeColor = "bg-purple-500/20 text-purple-300 border-purple-500/40";
+                    roleIcon = "fa-clipboard-user";
+                }
+
+                const permChips = (u.permissions || []).map(p => {
+                    const label = p.replace(/_/g, ' ');
+                    return `<span class="px-1.5 py-0.5 rounded bg-slate-950 text-slate-400 border border-slate-800 text-[9px] uppercase font-mono mr-1">${label}</span>`;
+                }).join('') || '<span class="text-slate-600 italic">Read-only</span>';
+
+                const statusBadge = (u.status === 'disabled')
+                    ? '<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-red-500/10 text-red-400 border border-red-500/30">Disabled</span>'
+                    : '<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">Active</span>';
+
+                const deviceBadge = window.LMSCore.getDeviceBadgeHtml(u.lastDevice || 'PC / Desktop');
+
+                tr.innerHTML = `
+                    <td class="p-3.5 flex items-center space-x-3">
+                        <img src="${u.avatar || 'assets/images/teacher_banner.png'}" class="w-9 h-9 rounded-xl object-cover border border-slate-700 bg-slate-950 shadow">
+                        <div>
+                            <p class="font-bold text-slate-100">${u.name}</p>
+                            <p class="text-[10px] text-amber-400 font-mono">@${u.username}</p>
+                            <p class="text-[10px] text-slate-500">${u.title || ''}</p>
+                        </div>
+                    </td>
+                    <td class="p-3.5">
+                        <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-bold border ${roleBadgeColor}">
+                            <i class="fa-solid ${roleIcon}"></i> ${u.roleName || u.role}
+                        </span>
+                    </td>
+                    <td class="p-3.5 max-w-xs">
+                        <div class="flex flex-wrap gap-1">${permChips}</div>
+                    </td>
+                    <td class="p-3.5">
+                        <p class="text-slate-300 font-mono">${u.email || '-'}</p>
+                        <p class="text-[10px] text-slate-500">${u.phone || '-'}</p>
+                    </td>
+                    <td class="p-3.5">
+                        <div class="space-y-0.5">
+                            <div>${deviceBadge}</div>
+                            <p class="text-[10px] text-slate-500">${u.lastLogin || 'Never'}</p>
+                        </div>
+                    </td>
+                    <td class="p-3.5">${statusBadge}</td>
+                    <td class="p-3.5 text-right space-x-1.5 whitespace-nowrap">
+                        <button onclick="openEditUserModal('${u.id}')" class="p-1.5 bg-slate-900 hover:bg-slate-800 text-cyan-300 border border-cyan-500/40 rounded-lg" title="Edit Privileges">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </button>
+                        <button onclick="openResetUserPassModal('${u.id}', '${u.name}')" class="p-1.5 bg-slate-900 hover:bg-slate-800 text-amber-300 border border-amber-500/40 rounded-lg" title="Reset Password">
+                            <i class="fa-solid fa-key"></i>
+                        </button>
+                        <button onclick="deleteAdminUser('${u.id}')" class="p-1.5 bg-slate-900 hover:bg-red-500/20 text-red-400 border border-red-500/40 rounded-lg" title="Delete User">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        async function renderActivityLogs() {
+            const logs = await window.LMSCore.getActivityLogs();
+            const tbody = document.getElementById('activityLogsTableBody');
+            if (!tbody) return;
+            tbody.innerHTML = '';
+
+            logs.slice(0, 15).forEach(l => {
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-slate-950/60";
+                const devBadge = window.LMSCore.getDeviceBadgeHtml(l.deviceType || 'PC');
+                tr.innerHTML = `
+                    <td class="p-2.5 text-slate-400">${l.timestamp}</td>
+                    <td class="p-2.5 text-amber-300 font-bold">${l.username}</td>
+                    <td class="p-2.5 text-slate-400">${l.role || '-'}</td>
+                    <td class="p-2.5 text-cyan-400 font-bold">${l.action}</td>
+                    <td class="p-2.5">${devBadge}</td>
+                    <td class="p-2.5 text-slate-300 font-sans">${l.details || ''}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        // Add User Modal
+        function openAddUserModal() {
+            document.getElementById('addUserForm').reset();
+            document.getElementById('addUserModal').classList.remove('hidden');
+        }
+        function closeAddUserModal() {
+            document.getElementById('addUserModal').classList.add('hidden');
+        }
+
+        document.getElementById('addUserForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const name = document.getElementById('addUserName').value.trim();
+            const username = document.getElementById('addUserUsername').value.trim();
+            const password = document.getElementById('addUserPassword').value.trim();
+            const role = document.getElementById('addUserRole').value;
+            const email = document.getElementById('addUserEmail').value.trim();
+            const phone = document.getElementById('addUserPhone').value.trim();
+            const title = document.getElementById('addUserTitle').value.trim();
+
+            try {
+                await window.LMSCore.addUser({
+                    name,
+                    username,
+                    password,
+                    role,
+                    email,
+                    phone,
+                    title
+                });
+                closeAddUserModal();
+                await refreshUsersView();
+                alert(`New administrator account '${username}' created successfully!`);
+            } catch (err) {
+                alert(err.message || 'Failed to create user');
+            }
+        });
+
+        // Edit User Modal
+        function openEditUserModal(userId) {
+            const user = allUsers.find(u => u.id === userId);
+            if (!user) return;
+
+            document.getElementById('editUserId').value = user.id;
+            document.getElementById('editUserName').value = user.name;
+            document.getElementById('editUserUsername').value = user.username;
+            document.getElementById('editUserRole').value = user.role;
+            document.getElementById('editUserStatus').value = user.status || 'active';
+            document.getElementById('editUserEmail').value = user.email || '';
+            document.getElementById('editUserPhone').value = user.phone || '';
+            document.getElementById('editUserTitle').value = user.title || '';
+
+            document.getElementById('editUserModal').classList.remove('hidden');
+        }
+        function closeEditUserModal() {
+            document.getElementById('editUserModal').classList.add('hidden');
+        }
+
+        document.getElementById('editUserForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const userId = document.getElementById('editUserId').value;
+            const name = document.getElementById('editUserName').value.trim();
+            const role = document.getElementById('editUserRole').value;
+            const status = document.getElementById('editUserStatus').value;
+            const email = document.getElementById('editUserEmail').value.trim();
+            const phone = document.getElementById('editUserPhone').value.trim();
+            const title = document.getElementById('editUserTitle').value.trim();
+
+            const res = await window.LMSCore.updateUser(userId, {
+                name,
+                role,
+                status,
+                email,
+                phone,
+                title
+            });
+
+            if (res.success) {
+                closeEditUserModal();
+                await refreshUsersView();
+                refreshHeaderUserInfo();
+                alert('User details and privileges updated!');
+            } else {
+                alert(res.error || 'Update failed');
+            }
+        });
+
+        // Reset User Password Modal
+        function openResetUserPassModal(userId, userName) {
+            document.getElementById('resetPassUserId').value = userId;
+            document.getElementById('resetPassUserName').textContent = userName;
+            document.getElementById('resetPassNewValue').value = '';
+            document.getElementById('resetUserPassModal').classList.remove('hidden');
+        }
+        function closeResetUserPassModal() {
+            document.getElementById('resetUserPassModal').classList.add('hidden');
+        }
+
+        document.getElementById('resetUserPassForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const userId = document.getElementById('resetPassUserId').value;
+            const newPass = document.getElementById('resetPassNewValue').value.trim();
+
+            const res = await window.LMSCore.updateUser(userId, { password: newPass });
+            if (res.success) {
+                closeResetUserPassModal();
+                alert('Password reset successfully!');
+            } else {
+                alert(res.error || 'Failed to reset password');
+            }
+        });
+
+        async function deleteAdminUser(userId) {
+            const user = allUsers.find(u => u.id === userId);
+            if (!user) return;
+            if (!confirm(`Are you sure you want to delete user account '${user.username}' (${user.name})?`)) return;
+
+            const res = await window.LMSCore.deleteUser(userId);
+            if (res.success) {
+                await refreshUsersView();
+                alert(`User account '${user.username}' deleted.`);
+            } else {
+                alert(res.error || 'Cannot delete user.');
+            }
+        }
+
+        // Switch User Account Modal
+        function openSwitchUserModal() {
+            const container = document.getElementById('switchUserList');
+            container.innerHTML = '';
+
+            allUsers.forEach(u => {
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = "w-full text-left p-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 flex items-center justify-between transition group";
+                btn.innerHTML = `
+                    <div class="flex items-center space-x-3">
+                        <img src="${u.avatar || 'assets/images/teacher_banner.png'}" class="w-8 h-8 rounded-lg object-cover border border-amber-400/50 bg-slate-950">
+                        <div>
+                            <p class="font-bold text-xs text-slate-100 group-hover:text-amber-300">${u.name}</p>
+                            <p class="text-[10px] text-slate-400 font-mono">@${u.username} · ${u.roleName || u.role}</p>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-arrow-right-to-bracket text-xs text-slate-500 group-hover:text-amber-400"></i>
+                `;
+                btn.onclick = () => {
+                    window.LMSCore.setCurrentUser(u);
+                    refreshHeaderUserInfo();
+                    closeSwitchUserModal();
+                    alert(`Switched active profile to ${u.name} (${u.roleName || u.role})`);
+                };
+                container.appendChild(btn);
+            });
+
+            document.getElementById('switchUserModal').classList.remove('hidden');
+        }
+        function closeSwitchUserModal() {
+            document.getElementById('switchUserModal').classList.add('hidden');
+        }
+
+        // Download teacher-docs.json helper
+        async function downloadTeacherDocsJson() {
+            const docs = await window.LMSCore.getTeacherDocs();
+            window.LMSCore.downloadFile('teacher-docs.json', JSON.stringify(docs, null, 2), 'application/json');
+        }
+
+        // Execute JSON Database Restore
+        async function executeJsonDatabaseImport() {
+            const fileInput = document.getElementById('importJsonFileInput');
+            if (!fileInput.files || fileInput.files.length === 0) {
+                alert('Please select a .json database backup file to restore.');
+                return;
+            }
+
+            const file = fileInput.files[0];
+            const reader = new FileReader();
+            reader.onload = async (e) => {
+                try {
+                    const parsed = JSON.parse(e.target.result);
+                    if (parsed.students && Array.isArray(parsed.students)) {
+                        // Full database bundle
+                        await window.LMSCore.saveStudents(parsed.students);
+                        if (parsed.users) await window.LMSCore.saveUsers(parsed.users);
+                        if (parsed.config && parsed.config.settings) await window.LMSCore.saveSettings(parsed.config.settings);
+                        alert('Full JSON database bundle restored successfully!');
+                    } else if (Array.isArray(parsed)) {
+                        // Students array or Users array
+                        if (parsed[0] && parsed[0].student_info) {
+                            await window.LMSCore.saveStudents(parsed);
+                            alert(`Restored ${parsed.length} student records!`);
+                        } else if (parsed[0] && parsed[0].username) {
+                            await window.LMSCore.saveUsers(parsed);
+                            alert(`Restored ${parsed.length} admin user records!`);
+                        }
+                    }
+                    location.reload();
+                } catch (err) {
+                    alert('Invalid JSON database format: ' + err.message);
+                }
+            };
+            reader.readAsText(file);
+        }
+
+        // =========================================================================
+        // STUDENT EVALUATION & DATA RENDERING (VIEW 1)
+        // =========================================================================
+        function renderTabs() {
+            const container = document.getElementById('adminStudentTabsContainer');
+            container.innerHTML = '';
+
+            const q = (document.getElementById('adminSearchInput').value || '').trim().toLowerCase();
+
+            allStudents.forEach((st, origIdx) => {
+                const match = !q ||
+                    st.student_info.name.toLowerCase().includes(q) ||
+                    st.student_info.student_id.toLowerCase().includes(q) ||
+                    st.tab_name.toLowerCase().includes(q);
+
+                if (!match) return;
+
+                const btn = document.createElement('button');
+                btn.className = `student-tab-btn flex items-center space-x-2 px-4 py-2.5 text-xs font-bold rounded-xl transition ${origIdx === curIndex ? 'bg-amber-500 text-slate-950 shadow-md shadow-amber-500/20' : 'bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-700'}`;
+                btn.innerHTML = `<i class="fa-solid fa-user-graduate"></i><span>${st.student_info.name.split(' ')[0]} (${st.student_info.student_id})</span>`;
+                btn.onclick = () => selectAdminStudent(origIdx);
+                container.appendChild(btn);
+            });
+
+            renderMonthSelector();
+        }
+
+        function selectAdminStudent(idx) {
+            if (idx < 0 || idx >= allStudents.length) return;
+            curIndex = idx;
+            const st = allStudents[curIndex];
+            renderTabs();
+            renderSelectedStudent(st);
+        }
+
+        function renderMonthSelector() {
+            const container = document.getElementById('adminMonthSelector');
+            container.innerHTML = '';
+
+            MONTHS.forEach(m => {
+                const btn = document.createElement('button');
+                btn.className = `px-3.5 py-1.5 text-xs font-bold rounded-xl transition ${m === selectedMonth ? 'bg-amber-500 text-slate-950 shadow' : 'bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800'}`;
+                btn.textContent = m;
+                btn.onclick = () => {
+                    selectedMonth = m;
+                    document.getElementById('currentSelectedMonthBadge').textContent = `${m} 2026`;
+                    document.getElementById('tableMonthTitle').textContent = m;
+                    renderMonthSelector();
+                    renderSelectedStudent(allStudents[curIndex]);
+                };
+                container.appendChild(btn);
+            });
+        }
+
+        function renderSelectedStudent(st) {
+            if (!st || !st.student_info) return;
+
+            document.getElementById('adminStAvatar').src = st.student_info.avatar || 'assets/images/teacher_banner.png';
+            document.getElementById('adminStName').textContent = st.student_info.name;
+            document.getElementById('adminStId').textContent = st.student_info.student_id;
+            document.getElementById('adminStGrade').textContent = st.student_info.grade_class || '06 - Science';
+            document.getElementById('adminStHomeroom').textContent = st.student_info.homeroom_teacher || 'Mr. Laknath Amarasinghe';
+
+            document.getElementById('adminStAttendance').textContent = (st.summary && st.summary.attendance) || '95%';
+            document.getElementById('adminStAvgScore').textContent = (st.summary && st.summary.average_unit_test) || '0';
+            document.getElementById('adminStStatus').textContent = (st.summary && st.summary.overall_status) || 'Active';
+
+            document.getElementById('adminTeacherNotes').value = st.teacher_notes || '';
+
+            // Direct Portal URL
+            const directUrl = window.LMSCore.getStudentDirectUrl(st.student_info.student_id);
+            document.getElementById('adminDirectPortalLink').href = directUrl;
+
+            // Parent WhatsApp Button
+            const parentPhone = (st.student_info.parent_whatsapp || '+94771614260').replace(/[^0-9]/g, '');
+            document.getElementById('adminParentWaBtn').href = `https://wa.me/${parentPhone}?text=` + encodeURIComponent(`Hello, this is Mr. Laknath Amarasinghe regarding ${st.student_info.name}'s Science performance.`);
+
+            // QR Code
+            renderAdminQrCode(directUrl, st.student_info.student_id);
+
+            // Render Dynamic Weekly Progress Table
+            renderWeeklyProgressTable(st);
+
+            // Render Term Assessments (Blank by Default)
+            renderTermAssessments(st);
+
+            // Render Practical Ratings Pie Chart
+            renderAllColumnPieCharts(st);
+        }
+
+        function renderAdminQrCode(url, stId) {
+            const container = document.getElementById('adminQrCodeContainer');
+            container.innerHTML = '';
+            document.getElementById('adminQrKey').textContent = `QR-${stId}`;
+            new QRCode(container, {
+                text: url,
+                width: 64,
+                height: 64,
+                colorDark: "#0f172a",
+                colorLight: "#ffffff",
+                correctLevel: QRCode.CorrectLevel.M
+            });
+        }
+
+        // Render Fully Customizable Weekly Progress Table
+        function renderWeeklyProgressTable(st) {
+            const cols = window.LMSCore.getWeeklyColumns();
+            const thead = document.getElementById('weeklyTableHead');
+            const tbody = document.getElementById('weeklyTableBody');
+
+            // 1. Build Header with delete buttons for full customization
+            let headHtml = '<tr><th class="p-3 border-r border-slate-800 w-24">Week</th>';
+            if (cols.length === 0) {
+                headHtml += '<th class="p-3 border-r border-slate-800 text-center text-slate-400">No Evaluation Columns Configured</th>';
+            } else {
+                cols.forEach(c => {
+                    const badgeType = c.type === 'number' ? 'Score' : (c.type === 'text' ? 'Text' : 'Dropdown');
+                    headHtml += `
+                        <th class="p-3 border-r border-slate-800 text-center">
+                            <div class="flex items-center justify-center gap-1.5 flex-wrap">
+                                <span class="font-bold text-amber-300">${c.label}</span>
+                                <span class="text-[9px] px-1.5 py-0.5 rounded bg-slate-800 text-slate-400 font-mono">[${badgeType}]</span>
+                                <button type="button" onclick="deleteColumnDirect('${c.key}')" class="text-slate-500 hover:text-red-400 text-xs ml-1 transition" title="Delete column '${c.label}'">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </button>
+                            </div>
+                        </th>
+                    `;
+                });
+            }
+            headHtml += '</tr>';
+            thead.innerHTML = headHtml;
+
+            // 2. Build 4 Weeks Body
+            tbody.innerHTML = '';
+
+            if (cols.length === 0) {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td colspan="2" class="p-8 text-center bg-slate-950/40 text-slate-400 text-sm">
+                        <div class="space-y-2">
+                            <i class="fa-solid fa-table-columns text-2xl text-cyan-400 mb-1"></i>
+                            <p class="font-semibold text-slate-300">No Evaluation Columns Active</p>
+                            <p class="text-xs text-slate-400">You can customize the Weekly Progress Evaluation table with any columns you need.</p>
+                            <button type="button" onclick="openColumnConfigModal()" class="mt-2 px-4 py-2 rounded-xl bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-bold text-xs shadow-md inline-flex items-center gap-1.5">
+                                <i class="fa-solid fa-plus"></i> Add Custom Evaluation Column
+                            </button>
+                        </div>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+                return;
+            }
+
+            const monthWeeks = (st.monthly_progress && st.monthly_progress[selectedMonth]) || [
+                { week: "1 week" },
+                { week: "2 week" },
+                { week: "3 week" },
+                { week: "4 week" }
+            ];
+
+            monthWeeks.forEach((wData, wIdx) => {
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-slate-950/60 transition";
+
+                let rowHtml = `<td class="p-3 font-bold text-amber-300 border-r border-slate-800">${wData.week || `${wIdx + 1} week`}</td>`;
+
+                cols.forEach(c => {
+                    const val = wData[c.key];
+                    if (c.type === 'dropdown') {
+                        let opts = '';
+                        STATUS_OPTIONS.forEach(opt => {
+                            const isSelected = (val === opt) || (opt === 'Still not attended' && (!val || String(val).toLowerCase().includes('not attended')));
+                            opts += `<option value="${opt}" ${isSelected ? 'selected' : ''}>${opt}</option>`;
+                        });
+                        rowHtml += `
+                            <td class="p-2 border-r border-slate-800 text-center">
+                                <select data-week="${wIdx}" data-col="${c.key}" class="weekly-cell-select bg-slate-950 border border-slate-700 rounded-lg px-2 py-1 text-xs text-slate-200 focus:outline-none focus:border-amber-400">
+                                    ${opts}
+                                </select>
+                            </td>
+                        `;
+                    } else if (c.type === 'number') {
+                        const numVal = (typeof val === 'number' && !isNaN(val)) ? val : '';
+                        rowHtml += `
+                            <td class="p-2 border-r border-slate-800 text-center">
+                                <input type="number" min="0" max="100" data-week="${wIdx}" data-col="${c.key}" value="${numVal}" placeholder="--" class="weekly-cell-input w-20 bg-slate-950 border border-slate-700 rounded-lg px-2 py-1 text-xs text-center text-amber-300 font-bold focus:outline-none focus:border-amber-400">
+                            </td>
+                        `;
+                    } else {
+                        rowHtml += `
+                            <td class="p-2 border-r border-slate-800 text-center">
+                                <input type="text" data-week="${wIdx}" data-col="${c.key}" value="${val || ''}" placeholder="Enter remarks..." class="weekly-cell-input w-full bg-slate-950 border border-slate-700 rounded-lg px-2 py-1 text-xs text-slate-200 focus:outline-none focus:border-amber-400">
+                            </td>
+                        `;
+                    }
+                });
+
+                tr.innerHTML = rowHtml;
+                tbody.appendChild(tr);
+            });
+        }
+
+        async function deleteColumnDirect(columnKey) {
+            const cols = window.LMSCore.getWeeklyColumns();
+            const col = cols.find(c => c.key === columnKey);
+            const label = col ? col.label : columnKey;
+            if (confirm(`Are you sure you want to delete evaluation column "${label}"?`)) {
+                await window.LMSCore.removeWeeklyColumn(columnKey);
+                renderWeeklyProgressTable(allStudents[curIndex]);
+                renderAllColumnPieCharts(allStudents[curIndex]);
+            }
+        }
+
+        async function saveCurrentStudentWeeklyTable() {
+            const st = allStudents[curIndex];
+            if (!st) return;
+
+            const cols = window.LMSCore.getWeeklyColumns();
+            const updatedRows = [];
+
+            for (let w = 0; w < 4; w++) {
+                const rowObj = { week: `${w + 1} week` };
+                cols.forEach(c => {
+                    if (c.type === 'dropdown') {
+                        const sel = document.querySelector(`.weekly-cell-select[data-week="${w}"][data-col="${c.key}"]`);
+                        rowObj[c.key] = sel ? sel.value : "Still not attended";
+                    } else if (c.type === 'number') {
+                        const inp = document.querySelector(`.weekly-cell-input[data-week="${w}"][data-col="${c.key}"]`);
+                        const val = inp && inp.value.trim() !== '' ? parseFloat(inp.value) : null;
+                        rowObj[c.key] = val;
+                    } else {
+                        const inp = document.querySelector(`.weekly-cell-input[data-week="${w}"][data-col="${c.key}"]`);
+                        rowObj[c.key] = inp ? inp.value.trim() : "";
+                    }
+                });
+                updatedRows.push(rowObj);
+            }
+
+            allStudents = await window.LMSCore.saveStudentWeeklyTable(st.student_info.student_id, selectedMonth, updatedRows);
+            renderSelectedStudent(allStudents[curIndex]);
+            alert(`Weekly evaluation table saved for ${st.student_info.name} (${selectedMonth})!`);
+        }
+
+        // Render Term Assessments (Blank by Default)
+        function renderTermAssessments(st) {
+            const container = document.getElementById('termMarksContainer');
+            container.innerHTML = '';
+
+            const defaultTerms = [
+                { term: "Term 1 Exam", score: null },
+                { term: "Term 2 Exam", score: null },
+                { term: "Final Exam", score: null }
+            ];
+
+            const terms = (st.assessments && Array.isArray(st.assessments) && st.assessments.length > 0) ? st.assessments : defaultTerms;
+
+            terms.forEach((t, tIdx) => {
+                const card = document.createElement('div');
+                card.className = "bg-slate-950/80 p-4 rounded-2xl border border-slate-800 space-y-2";
+                const scoreVal = (t.score !== null && t.score !== undefined && !isNaN(t.score)) ? t.score : '';
+                card.innerHTML = `
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-bold text-slate-300 font-cinzel">${t.term}</span>
+                        <span class="text-[10px] text-amber-400 font-mono">Score / 100</span>
+                    </div>
+                    <div class="relative">
+                        <input type="number" min="0" max="100" data-term-idx="${tIdx}" value="${scoreVal}" placeholder="Enter marks (blank default)" class="term-score-input w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-sm font-bold text-amber-300 font-mono focus:outline-none focus:border-amber-400">
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        async function saveStudentTermMarks() {
+            const st = allStudents[curIndex];
+            if (!st) return;
+
+            const inputs = document.querySelectorAll('.term-score-input');
+            const updatedTerms = [];
+            const termNames = ["Term 1 Exam", "Term 2 Exam", "Final Exam"];
+
+            inputs.forEach((inp, idx) => {
+                const val = inp.value.trim() !== '' ? parseFloat(inp.value) : null;
+                updatedTerms.push({
+                    term: termNames[idx] || `Term ${idx + 1}`,
+                    score: val
+                });
+            });
+
+            allStudents = await window.LMSCore.saveStudentTermMarks(st.student_info.student_id, updatedTerms);
+            alert(`Term marks saved for ${st.student_info.name}!`);
+        }
+
+        async function saveTeacherNotes() {
+            const st = allStudents[curIndex];
+            if (!st) return;
+            const notes = document.getElementById('adminTeacherNotes').value.trim();
+            const res = await window.LMSCore.updateStudent(st.student_info.student_id, { teacher_notes: notes });
+            if (res.success) {
+                allStudents = res.students;
+                alert('Teacher remarks saved!');
+            }
+        }
+
+        // =========================================================================
+        // DYNAMIC PIE CHARTS ENGINE FOR ALL MANUALLY ADDED EVALUATION COLUMNS
+        // =========================================================================
+        let adminColumnCharts = {};
+        let pieScope = 'month'; // 'month' or 'year'
+        let activeSidebarColKey = '';
+
+        function setPieScope(scope) {
+            pieScope = scope;
+            const mBtn = document.getElementById('pieScopeMonthBtn');
+            const yBtn = document.getElementById('pieScopeYearBtn');
+            if (scope === 'month') {
+                mBtn.className = "px-2.5 py-1 rounded-lg text-xs font-bold bg-amber-500 text-slate-950 shadow transition";
+                yBtn.className = "px-2.5 py-1 rounded-lg text-xs font-bold text-slate-400 hover:text-slate-200 transition";
+            } else {
+                yBtn.className = "px-2.5 py-1 rounded-lg text-xs font-bold bg-amber-500 text-slate-950 shadow transition";
+                mBtn.className = "px-2.5 py-1 rounded-lg text-xs font-bold text-slate-400 hover:text-slate-200 transition";
+            }
+            const st = allStudents[curIndex];
+            if (st) renderAllColumnPieCharts(st);
+        }
+
+        function changeAdminSidebarPie(colKey) {
+            activeSidebarColKey = colKey;
+            const st = allStudents[curIndex];
+            if (st) renderSidebarPie(st, colKey);
+        }
+
+        function renderSidebarPie(st, colKey) {
+            const ctx = document.getElementById('adminPracticalPieChart');
+            if (!ctx) return;
+
+            if (practicalPieChart) {
+                practicalPieChart.destroy();
+                practicalPieChart = null;
+            }
+
+            const pData = window.LMSCore.getColumnPieData(st, colKey, pieScope === 'month' ? selectedMonth : 'all');
+            const legendDiv = document.getElementById('adminSidebarPieLegend');
+
+            if (!pData || pData.labels.length === 0 || pData.totalEntries === 0) {
+                if (legendDiv) legendDiv.textContent = 'No evaluation data recorded.';
+                return;
+            }
+
+            practicalPieChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: pData.labels,
+                    datasets: [{
+                        data: pData.data,
+                        backgroundColor: pData.colors,
+                        borderColor: '#0f172a',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'right', labels: { boxWidth: 8, color: '#cbd5e1', font: { size: 9 } } },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                    const val = context.raw;
+                                    const pct = total > 0 ? ((val / total) * 100).toFixed(1) : 0;
+                                    return ` ${context.label}: ${val} (${pct}%)`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            if (legendDiv) {
+                legendDiv.textContent = `${pData.totalEvaluated} / ${pData.totalEntries} evaluated (${pieScope === 'month' ? selectedMonth : 'All Months'})`;
+            }
+        }
+
+        function renderAllColumnPieCharts(st) {
+            // Update scope button text
+            const scopeLabel = document.getElementById('pieScopeMonthName');
+            if (scopeLabel) scopeLabel.textContent = selectedMonth;
+
+            // Destroy previous chart instances
+            Object.keys(adminColumnCharts).forEach(key => {
+                if (adminColumnCharts[key]) {
+                    adminColumnCharts[key].destroy();
+                }
+            });
+            adminColumnCharts = {};
+
+            const cols = window.LMSCore.getWeeklyColumns();
+            const grid = document.getElementById('adminAllColumnsPieGrid');
+            const sidebarSelect = document.getElementById('adminColumnPieSelect');
+
+            // 1. Update Sidebar Selector
+            if (sidebarSelect) {
+                sidebarSelect.innerHTML = '';
+                if (cols.length === 0) {
+                    sidebarSelect.innerHTML = '<option value="">No columns</option>';
+                    renderSidebarPie(st, '');
+                } else {
+                    cols.forEach(c => {
+                        const opt = document.createElement('option');
+                        opt.value = c.key;
+                        opt.textContent = c.label;
+                        if (c.key === activeSidebarColKey) opt.selected = true;
+                        sidebarSelect.appendChild(opt);
+                    });
+                    if (!activeSidebarColKey || !cols.some(c => c.key === activeSidebarColKey)) {
+                        activeSidebarColKey = cols[0].key;
+                    }
+                    renderSidebarPie(st, activeSidebarColKey);
+                }
+            }
+
+            // 2. Render Main Section Grid
+            if (!grid) return;
+            grid.innerHTML = '';
+
+            if (cols.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full p-8 text-center bg-slate-950/40 rounded-2xl border border-slate-800 space-y-2">
+                        <i class="fa-solid fa-chart-pie text-3xl text-slate-600 mb-1"></i>
+                        <h5 class="text-sm font-bold text-slate-300">No Custom Evaluation Columns Active</h5>
+                        <p class="text-xs text-slate-400 max-w-md mx-auto">
+                            The previous default columns have been removed. Add your custom columns (e.g. Workbook Check, Lab Viva, Model Paper Score) in the table above. Pie charts will automatically generate here for every column!
+                        </p>
+                        <button type="button" onclick="openColumnConfigModal()" class="mt-2 px-4 py-2 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-bold shadow-md inline-flex items-center gap-1">
+                            <i class="fa-solid fa-plus"></i> Add Evaluation Column
+                        </button>
+                    </div>
+                `;
+                return;
+            }
+
+            // Render a dedicated Pie Chart for every manually added column
+            cols.forEach(c => {
+                const pData = window.LMSCore.getColumnPieData(st, c.key, pieScope === 'month' ? selectedMonth : 'all');
+                
+                const card = document.createElement('div');
+                card.className = "p-4 rounded-2xl bg-slate-950/70 border border-slate-800 flex flex-col justify-between space-y-3 shadow-lg hover:border-amber-500/30 transition";
+
+                // Build legend breakdown
+                let legendHtml = '<div class="space-y-1">';
+                pData.labels.forEach((lbl, idx) => {
+                    const count = pData.data[idx];
+                    const total = pData.data.reduce((a, b) => a + b, 0);
+                    const pct = total > 0 ? ((count / total) * 100).toFixed(0) : 0;
+                    legendHtml += `
+                        <div class="flex items-center justify-between text-[11px]">
+                            <span class="flex items-center gap-1.5 truncate">
+                                <span class="w-2.5 h-2.5 rounded-full inline-block flex-shrink-0" style="background-color: ${pData.colors[idx]}"></span>
+                                <span class="text-slate-300 truncate">${lbl}</span>
+                            </span>
+                            <span class="font-mono text-slate-400 font-semibold">${count} <span class="text-slate-500 text-[10px]">(${pct}%)</span></span>
+                        </div>
+                    `;
+                });
+                legendHtml += '</div>';
+
+                card.innerHTML = `
+                    <div class="flex items-center justify-between border-b border-slate-800/80 pb-2">
+                        <div class="truncate mr-2">
+                            <h5 class="text-xs font-bold text-amber-300 truncate flex items-center gap-1.5">
+                                <i class="fa-solid fa-chart-pie text-amber-400"></i> ${pData.columnLabel}
+                            </h5>
+                            <span class="text-[9px] text-slate-400 font-mono">[${pData.columnType === 'number' ? 'Marks (0-100)' : (pData.columnType === 'text' ? 'Text Status' : 'Dropdown')}]</span>
+                        </div>
+                        <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/30 flex-shrink-0">
+                            ${pData.totalEvaluated} / ${pData.totalEntries} Eval
+                        </span>
+                    </div>
+
+                    <div class="relative h-44 w-full flex items-center justify-center">
+                        <canvas id="colChart_${pData.columnKey}"></canvas>
+                    </div>
+
+                    <div class="pt-2 border-t border-slate-800/80">
+                        ${legendHtml}
+                    </div>
+                `;
+
+                grid.appendChild(card);
+
+                // Initialize Chart.js Pie Chart
+                setTimeout(() => {
+                    const canvasEl = document.getElementById(`colChart_${pData.columnKey}`);
+                    if (canvasEl) {
+                        adminColumnCharts[pData.columnKey] = new Chart(canvasEl.getContext('2d'), {
+                            type: 'pie',
+                            data: {
+                                labels: pData.labels,
+                                datasets: [{
+                                    data: pData.data,
+                                    backgroundColor: pData.colors,
+                                    borderColor: '#0f172a',
+                                    borderWidth: 2
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                plugins: {
+                                    legend: { display: false },
+                                    tooltip: {
+                                        callbacks: {
+                                            label: function(context) {
+                                                const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                                const val = context.raw;
+                                                const pct = total > 0 ? ((val / total) * 100).toFixed(1) : 0;
+                                                return ` ${context.label}: ${val} (${pct}%)`;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        });
+                    }
+                }, 10);
+            });
+        }
+
+        // Student Search Filter
+        document.getElementById('adminSearchInput').addEventListener('input', () => {
+            renderTabs();
+        });
+
+        // Register Student Modal
+        function toggleRegisterModal() {
+            const m = document.getElementById('registerModal');
+            m.classList.toggle('hidden');
+        }
+
+        document.getElementById('registerStudentForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const name = document.getElementById('regName').value.trim();
+            const student_id = document.getElementById('regId').value.trim();
+            const grade_class = document.getElementById('regGrade').value;
+            const parent_whatsapp = document.getElementById('regParentWa').value.trim();
+            const username = document.getElementById('regUsername').value.trim();
+            const password = document.getElementById('regPassword').value.trim();
+
+            const res = await window.LMSCore.registerStudent({
+                name,
+                student_id,
+                grade_class,
+                parent_whatsapp,
+                username,
+                password
+            });
+
+            allStudents = res.students;
+            toggleRegisterModal();
+            renderTabs();
+            selectAdminStudent(allStudents.length - 1);
+            alert(`Student ${name} (${student_id}) registered successfully!`);
+        });
+
+        // Edit Student Modal
+        function openEditStudentModal() {
+            const st = allStudents[curIndex];
+            if (!st) return;
+
+            document.getElementById('editStName').value = st.student_info.name;
+            document.getElementById('editStGrade').value = st.student_info.grade_class || '06 - Science';
+            document.getElementById('editStParentWa').value = st.student_info.parent_whatsapp || '+94771614260';
+            document.getElementById('editStAttendance').value = (st.summary && st.summary.attendance) || '95%';
+            document.getElementById('editStOverallStatus').value = (st.summary && st.summary.overall_status) || 'Active Progress';
+
+            document.getElementById('editStudentModal').classList.remove('hidden');
+        }
+        function closeEditStudentModal() {
+            document.getElementById('editStudentModal').classList.add('hidden');
+        }
+
+        document.getElementById('editStudentForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const st = allStudents[curIndex];
+            if (!st) return;
+
+            const name = document.getElementById('editStName').value.trim();
+            const grade_class = document.getElementById('editStGrade').value;
+            const parent_whatsapp = document.getElementById('editStParentWa').value.trim();
+            const attendance = document.getElementById('editStAttendance').value.trim();
+            const overall_status = document.getElementById('editStOverallStatus').value.trim();
+
+            const res = await window.LMSCore.updateStudent(st.student_info.student_id, {
+                name,
+                grade_class,
+                parent_whatsapp,
+                attendance,
+                overall_status
+            });
+
+            if (res.success) {
+                allStudents = res.students;
+                closeEditStudentModal();
+                renderTabs();
+                renderSelectedStudent(allStudents[curIndex]);
+                alert('Student profile updated!');
+            }
+        });
+
+        // Reset Student Password Modal
+        function openResetPasswordModal() {
+            const st = allStudents[curIndex];
+            if (!st) return;
+            document.getElementById('resetPassStudentName').textContent = st.student_info.name;
+            document.getElementById('resetStNewPassword').value = '';
+            document.getElementById('resetStudentPassModal').classList.remove('hidden');
+        }
+        function closeResetPasswordModal() {
+            document.getElementById('resetStudentPassModal').classList.add('hidden');
+        }
+
+        document.getElementById('resetStudentPassForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const st = allStudents[curIndex];
+            if (!st) return;
+            const newPass = document.getElementById('resetStNewPassword').value.trim();
+            const res = await window.LMSCore.resetStudentPassword(st.student_info.student_id, newPass);
+            if (res.success) {
+                closeResetPasswordModal();
+                alert(`Password updated for ${st.student_info.name}!`);
+            }
+        });
+
+        async function deleteCurrentStudent() {
+            const st = allStudents[curIndex];
+            if (!st) return;
+            if (!confirm(`Are you sure you want to delete ${st.student_info.name} (${st.student_info.student_id}) from the database?`)) return;
+
+            allStudents = await window.LMSCore.deleteStudent(st.student_info.student_id);
+            curIndex = Math.max(0, curIndex - 1);
+            renderTabs();
+            if (allStudents.length > 0) {
+                selectAdminStudent(curIndex);
+            }
+            alert('Student record removed.');
+        }
+
+        // =========================================================================
+        // NOTIFICATIONS (VIEW 3)
+        // =========================================================================
+        function renderNotificationsList() {
+            const notifs = window.LMSCore.getNotifications();
+            const container = document.getElementById('notificationsListContainer');
+            if (!container) return;
+            container.innerHTML = '';
+
+            notifs.forEach(n => {
+                const card = document.createElement('div');
+                card.className = "p-4 rounded-2xl bg-slate-950/80 border border-slate-800 flex items-start justify-between gap-4";
+                card.innerHTML = `
+                    <div class="space-y-1">
+                        <div class="flex items-center gap-2">
+                            <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-amber-500/20 text-amber-300 border border-amber-500/40">${n.priority || 'General'}</span>
+                            <span class="text-[10px] text-cyan-400 font-mono">${n.grade || 'All Grades'}</span>
+                            <span class="text-[10px] text-slate-500">${n.date} · ${n.time}</span>
+                        </div>
+                        <h4 class="text-sm font-bold text-slate-100">${n.title}</h4>
+                        <p class="text-xs text-slate-300">${n.message}</p>
+                    </div>
+                    <button onclick="deleteNotificationItem('${n.id}')" class="text-red-400 hover:text-red-300 p-2"><i class="fa-solid fa-trash"></i></button>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        document.getElementById('addNotificationForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const title = document.getElementById('notifTitle').value.trim();
+            const grade = document.getElementById('notifGrade').value;
+            const priority = document.getElementById('notifPriority').value;
+            const message = document.getElementById('notifMessage').value.trim();
+
+            await window.LMSCore.addNotification({ title, grade, priority, message });
+            document.getElementById('addNotificationForm').reset();
+            renderNotificationsList();
+            alert('Notification broadcast published!');
+        });
+
+        async function deleteNotificationItem(id) {
+            await window.LMSCore.deleteNotification(id);
+            renderNotificationsList();
+        }
+
+        // =========================================================================
+        // CALENDAR (VIEW 4)
+        // =========================================================================
+        function renderCalendarGrid() {
+            const grid = document.getElementById('calendarGridDays');
+            if (!grid) return;
+            grid.innerHTML = '';
+
+            const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+            document.getElementById('calendarMonthYearDisplay').textContent = `${monthNames[calCurrentMonth]} ${calCurrentYear}`;
+
+            const firstDay = new Date(calCurrentYear, calCurrentMonth, 1).getDay();
+            const daysInMonth = new Date(calCurrentYear, calCurrentMonth + 1, 0).getDate();
+            const events = window.LMSCore.getCalendarEvents();
+
+            for (let i = 0; i < firstDay; i++) {
+                const empty = document.createElement('div');
+                empty.className = "h-20 bg-slate-950/20 rounded-xl border border-slate-900";
+                grid.appendChild(empty);
+            }
+
+            for (let day = 1; day <= daysInMonth; day++) {
+                const dayStr = `${calCurrentYear}-${String(calCurrentMonth + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+                const dayEvts = events.filter(e => e.date === dayStr);
+
+                const cell = document.createElement('div');
+                cell.className = "h-20 bg-slate-950/80 rounded-xl border border-slate-800 p-1.5 flex flex-col justify-between hover:border-amber-500/40 transition";
+
+                let evtsBadge = '';
+                if (dayEvts.length > 0) {
+                    evtsBadge = dayEvts.map(e => `<span class="block truncate text-[9px] px-1 py-0.5 rounded bg-amber-500/20 text-amber-300 font-bold">${e.title}</span>`).join('');
+                }
+
+                cell.innerHTML = `
+                    <span class="font-bold text-[11px] text-slate-300">${day}</span>
+                    <div class="space-y-0.5 overflow-hidden">${evtsBadge}</div>
+                `;
+                grid.appendChild(cell);
+            }
+        }
+
+        function renderCalendarAgenda() {
+            const container = document.getElementById('calendarAgendaList');
+            if (!container) return;
+            container.innerHTML = '';
+
+            const events = window.LMSCore.getCalendarEvents();
+            events.forEach(e => {
+                const item = document.createElement('div');
+                item.className = "p-2.5 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-between";
+                item.innerHTML = `
+                    <div>
+                        <p class="font-bold text-xs text-amber-300">${e.title}</p>
+                        <p class="text-[10px] text-slate-400">${e.date} · ${e.time || 'All Day'} · <span class="text-cyan-400 font-semibold">${e.category}</span></p>
+                    </div>
+                    <button onclick="deleteCalendarEventItem('${e.id}')" class="text-red-400 hover:text-red-300 p-1"><i class="fa-solid fa-trash"></i></button>
+                `;
+                container.appendChild(item);
+            });
+        }
+
+        function prevCalendarMonth() {
+            calCurrentMonth--;
+            if (calCurrentMonth < 0) { calCurrentMonth = 11; calCurrentYear--; }
+            renderCalendarGrid();
+        }
+        function nextCalendarMonth() {
+            calCurrentMonth++;
+            if (calCurrentMonth > 11) { calCurrentMonth = 0; calCurrentYear++; }
+            renderCalendarGrid();
+        }
+        function setCalendarToday() {
+            const now = new Date();
+            calCurrentYear = now.getFullYear();
+            calCurrentMonth = now.getMonth();
+            renderCalendarGrid();
+        }
+
+        document.getElementById('addCalendarEventForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const title = document.getElementById('evtTitle').value.trim();
+            const date = document.getElementById('evtDate').value;
+            const time = document.getElementById('evtTime').value.trim();
+            const category = document.getElementById('evtCategory').value;
+
+            await window.LMSCore.addCalendarEvent({ title, date, time, category });
+            document.getElementById('addCalendarEventForm').reset();
+            renderCalendarGrid();
+            renderCalendarAgenda();
+            alert('Event added to calendar!');
+        });
+
+        async function deleteCalendarEventItem(id) {
+            await window.LMSCore.deleteCalendarEvent(id);
+            renderCalendarGrid();
+            renderCalendarAgenda();
+        }
+
+        // =========================================================================
+        // STUDY FILES (VIEW 5)
+        // =========================================================================
+        function renderFilesList() {
+            const files = window.LMSCore.getFiles();
+            const container = document.getElementById('studyFilesListContainer');
+            if (!container) return;
+            container.innerHTML = '';
+
+            files.forEach(f => {
+                const card = document.createElement('div');
+                card.className = "p-4 rounded-2xl bg-slate-950/80 border border-slate-800 space-y-2";
+                card.innerHTML = `
+                    <div class="flex items-start justify-between">
+                        <div class="space-y-1">
+                            <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-cyan-500/20 text-cyan-300 border border-cyan-500/40">${f.category || 'Guide'}</span>
+                            <span class="text-[10px] text-amber-400 font-mono ml-2">${f.grade || 'All'}</span>
+                            <h4 class="text-sm font-bold text-slate-100">${f.title}</h4>
+                            <p class="text-xs text-slate-400">${f.description || ''}</p>
+                        </div>
+                        <button onclick="deleteFileItem('${f.id}')" class="text-red-400 hover:text-red-300 p-1"><i class="fa-solid fa-trash"></i></button>
+                    </div>
+                    <div class="flex items-center justify-between pt-2 border-t border-slate-800 text-[10px] text-slate-500">
+                        <span>${f.fileSize || 'PDF Document'}</span>
+                        <a href="${f.fileUrl || '#'}" target="_blank" class="text-amber-400 hover:underline font-bold flex items-center gap-1">
+                            <i class="fa-solid fa-download"></i> Download File
+                        </a>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        document.getElementById('addFileForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const title = document.getElementById('fileTitle').value.trim();
+            const category = document.getElementById('fileCategory').value;
+            const grade = document.getElementById('fileGrade').value;
+            const fileUrl = document.getElementById('fileUrlInput').value.trim();
+            const fileSize = document.getElementById('fileSizeInput').value.trim() || '12 MB';
+            const description = document.getElementById('fileDesc').value.trim();
+
+            await window.LMSCore.addFile({ title, category, grade, fileUrl, fileSize, description });
+            document.getElementById('addFileForm').reset();
+            renderFilesList();
+            alert('Study material uploaded!');
+        });
+
+        async function deleteFileItem(id) {
+            await window.LMSCore.deleteFile(id);
+            renderFilesList();
+        }
+
+        // =========================================================================
+        // ERP CUSTOMIZER (VIEW 6)
+        // =========================================================================
+        function loadCustomizationForm() {
+            const s = window.LMSCore.getSettings();
+            const cloud = window.LMSCore.getCloudConfig();
+
+            document.getElementById('custAcademyName').value = s.academyName || '';
+            document.getElementById('custTagline').value = s.tagline || '';
+            document.getElementById('custTeacherName').value = s.teacherName || '';
+            document.getElementById('custTeacherTitle').value = s.teacherTitle || '';
+            document.getElementById('custHotlines').value = s.hotlines || '';
+            document.getElementById('custMotto').value = s.motto || '';
+            document.getElementById('custAnnouncement').value = s.announcement || '';
+
+            const teacherPhotoVal = s.teacherPhoto || 'assets/images/teacher_banner.png';
+            document.getElementById('custTeacherPhoto').value = teacherPhotoVal;
+            updatePreviewImage('previewTeacherPhoto', teacherPhotoVal);
+
+            const logoVal = s.logoImage || s.logo || 'assets/images/logo.png';
+            document.getElementById('custLogoPhoto').value = logoVal;
+            updatePreviewImage('previewLogoPhoto', logoVal);
+
+            const bgVal = s.bgImage || 'assets/images/lms_background.png';
+            document.getElementById('custBgImage').value = bgVal;
+            updatePreviewBg('previewBgThumbnail', bgVal);
+
+            document.getElementById('custNodeServerUrl').value = cloud.nodeServerUrl || '';
+            document.getElementById('custCloudJsonUrl').value = cloud.cloudJsonStudentsUrl || '';
+        }
+
+        document.getElementById('erpCustomizerForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const academyName = document.getElementById('custAcademyName').value.trim();
+            const tagline = document.getElementById('custTagline').value.trim();
+            const teacherName = document.getElementById('custTeacherName').value.trim();
+            const teacherTitle = document.getElementById('custTeacherTitle').value.trim();
+            const hotlines = document.getElementById('custHotlines').value.trim();
+            const motto = document.getElementById('custMotto').value.trim();
+            const announcement = document.getElementById('custAnnouncement').value.trim();
+
+            const nodeServerUrl = document.getElementById('custNodeServerUrl').value.trim();
+            const cloudJsonStudentsUrl = document.getElementById('custCloudJsonUrl').value.trim();
+
+            const teacherPhoto = document.getElementById('custTeacherPhoto').value.trim() || 'assets/images/teacher_banner.png';
+            const logoImage = document.getElementById('custLogoPhoto').value.trim() || 'assets/images/logo.png';
+            const bgImage = document.getElementById('custBgImage').value.trim() || 'assets/images/lms_background.png';
+
+            await window.LMSCore.saveSettings({ academyName, tagline, teacherName, teacherTitle, hotlines, motto, announcement, teacherPhoto, logoImage, bgImage });
+            window.LMSCore.saveCloudConfig({ nodeServerUrl, cloudJsonStudentsUrl });
+
+            alert('ERP Settings & Endpoints saved successfully!');
+        });
+
+        // =========================================================================
+        // DYNAMIC COLUMNS MODAL
+        // =========================================================================
+        function openColumnConfigModal() {
+            const list = document.getElementById('existingColumnsList');
+            list.innerHTML = '';
+            const cols = window.LMSCore.getWeeklyColumns();
+
+            if (cols.length === 0) {
+                list.innerHTML = '<div class="p-4 rounded-xl bg-slate-950 border border-slate-800 text-center text-xs text-slate-400">No evaluation columns configured yet. Create your custom columns below.</div>';
+            } else {
+                cols.forEach(c => {
+                    const tag = document.createElement('div');
+                    tag.className = "p-2.5 rounded-xl bg-slate-950 border border-slate-800 flex items-center justify-between text-xs";
+                    tag.innerHTML = `
+                        <div class="flex items-center gap-2">
+                            <strong class="text-slate-200">${c.label}</strong>
+                            <span class="text-[10px] px-1.5 py-0.5 rounded bg-slate-800 text-amber-400 font-mono">[${c.type}]</span>
+                        </div>
+                        <button type="button" onclick="removeWeeklyCol('${c.key}')" class="text-red-400 hover:text-red-300 text-xs px-2 py-1 rounded hover:bg-red-500/10 transition" title="Delete column">
+                            <i class="fa-solid fa-trash-can mr-1"></i> Delete
+                        </button>
+                    `;
+                    list.appendChild(tag);
+                });
+            }
+
+            document.getElementById('columnConfigModal').classList.remove('hidden');
+        }
+        function closeColumnConfigModal() {
+            document.getElementById('columnConfigModal').classList.add('hidden');
+        }
+
+        document.getElementById('addNewColumnForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const label = document.getElementById('newColLabel').value.trim();
+            const type = document.getElementById('newColType').value;
+            if (!label) return;
+            await window.LMSCore.addWeeklyColumn(label, type);
+            document.getElementById('newColLabel').value = '';
+            closeColumnConfigModal();
+            renderWeeklyProgressTable(allStudents[curIndex]);
+            renderAllColumnPieCharts(allStudents[curIndex]);
+        });
+
+        async function removeWeeklyCol(key) {
+            await window.LMSCore.removeWeeklyColumn(key);
+            openColumnConfigModal();
+            renderWeeklyProgressTable(allStudents[curIndex]);
+            renderAllColumnPieCharts(allStudents[curIndex]);
+        }
+
+        async function clearAllColumnsAction() {
+            if (confirm("Delete ALL weekly evaluation columns?")) {
+                await window.LMSCore.clearAllWeeklyColumns();
+                openColumnConfigModal();
+                renderWeeklyProgressTable(allStudents[curIndex]);
+                renderAllColumnPieCharts(allStudents[curIndex]);
+            }
+        }
+
+        // Live classroom configuration
+        function refreshLiveClassroomDisplay() {
+            const wa = window.LMSCore.getWhatsappSession();
+            document.getElementById('liveSessionTitleDisplay').textContent = wa.title;
+            document.getElementById('liveTargetGradeDisplay').textContent = wa.grade || "06 - Science";
+            document.getElementById('liveWaPhoneDisplay').textContent = wa.teacherWhatsappNumber ? "+" + wa.teacherWhatsappNumber : "+94 71 781 2092";
+            document.getElementById('launchWhatsappBtn').href = window.LMSCore.getWhatsappDirectUri();
+        }
+
+        document.getElementById('launchZoomBtn').addEventListener('click', () => {
+            const z = window.LMSCore.getZoomSession();
+            window.LMSCore.toggleZoomLive(true);
+            window.open(z.meetingUrl, '_blank');
+        });
+
+        document.getElementById('editClassroomModalBtn').addEventListener('click', () => {
+            const wa = window.LMSCore.getWhatsappSession();
+            const zoom = window.LMSCore.getZoomSession();
+            document.getElementById('modalClassTitle').value = wa.title;
+            document.getElementById('modalClassGrade').value = wa.grade || "06 - Science";
+            document.getElementById('modalWaPhone').value = wa.teacherWhatsappNumber || "94717812092";
+            document.getElementById('modalWaGroupUrl').value = wa.whatsappGroupUrl || "";
+            document.getElementById('modalZoomUrl').value = zoom.meetingUrl || "";
+            document.getElementById('classroomModal').classList.remove('hidden');
+        });
+
+        function closeClassroomModal() {
+            document.getElementById('classroomModal').classList.add('hidden');
+        }
+
+        document.getElementById('classroomConfigForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const title = document.getElementById('modalClassTitle').value.trim();
+            const grade = document.getElementById('modalClassGrade').value;
+            const teacherWhatsappNumber = document.getElementById('modalWaPhone').value.trim();
+            const whatsappGroupUrl = document.getElementById('modalWaGroupUrl').value.trim();
+            const meetingUrl = document.getElementById('modalZoomUrl').value.trim();
+
+            await window.LMSCore.saveWhatsappSession({ title, grade, teacherWhatsappNumber, whatsappGroupUrl });
+            await window.LMSCore.saveZoomSession({ title, grade, meetingUrl });
+            closeClassroomModal();
+            refreshLiveClassroomDisplay();
+            alert('Live broadcast links updated!');
+        });
+
+        async function refreshGlobalDataFromCloud() {
+            await window.LMSCore.initGlobalSync();
+            allStudents = await window.LMSCore.getStudents(true);
+            renderTabs();
+            selectAdminStudent(curIndex);
+            await refreshUsersView();
+            alert('Synchronized all databases (students, users, config, logs) from central server!');
+        }
+    
+        async function checkLiveDatabaseEngineStatus() {
+            const badge = document.getElementById('dbEngineBadge');
+            const detail = document.getElementById('dbEngineDetail');
+            const stats = document.getElementById('dbStatsSummary');
+            if (badge) badge.innerText = 'Checking...';
+            
+            try {
+                const res = await window.LMSCore.checkDatabaseHealth();
+                if (res && res.database) {
+                    const dbInfo = res.database;
+                    if (dbInfo.engine && dbInfo.engine.includes('MySQL')) {
+                        badge.className = 'px-2.5 py-0.5 rounded-full font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/40';
+                        badge.innerHTML = '<i class="fa-solid fa-cloud text-xs"></i> ' + dbInfo.engine;
+                        detail.innerText = `Host: ${dbInfo.host || 'Cloud'} | DB: ${dbInfo.database || 'science_lms_db'} | SSL: ${dbInfo.ssl ? 'Enabled' : 'Off'}`;
+                    } else {
+                        badge.className = 'px-2.5 py-0.5 rounded-full font-bold bg-cyan-500/20 text-cyan-300 border border-cyan-500/40';
+                        badge.innerHTML = '<i class="fa-solid fa-file-code text-xs"></i> ' + (dbInfo.engine || 'JSON Storage');
+                        detail.innerText = 'Running on Local/Server JSON files. Set DB_TYPE=mysql in .env to use Cloud MySQL.';
+                    }
+                    if (dbInfo.stats) {
+                        stats.innerText = `Students: ${dbInfo.stats.studentsCount} | Users: ${dbInfo.stats.usersCount} | Docs: ${dbInfo.stats.teacherDocsCount}`;
+                    }
+                } else {
+                    badge.className = 'px-2.5 py-0.5 rounded-full font-bold bg-amber-500/20 text-amber-300 border border-amber-500/40';
+                    badge.innerText = 'Client Mode / Static';
+                    detail.innerText = 'LMS is running in standalone static browser mode.';
+                }
+            } catch (e) {
+                if (badge) {
+                    badge.className = 'px-2.5 py-0.5 rounded-full font-bold bg-rose-500/20 text-rose-300 border border-rose-500/40';
+                    badge.innerText = 'Connection Error';
+                    detail.innerText = e.message;
+                }
+            }
+        }
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(checkLiveDatabaseEngineStatus, 1500);
+        });
+        
+
+        // Image Customization Preview & File Handlers
+        function updatePreviewImage(imgId, val) {
+            const el = document.getElementById(imgId);
+            if (el && val) el.src = val;
+        }
+
+        function updatePreviewBg(divId, val) {
+            const el = document.getElementById(divId);
+            if (el && val) el.style.backgroundImage = `url("${val}")`;
+        }
+
+        function handleFileUpload(input, targetInputId, previewImgId) {
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const dataUrl = e.target.result;
+                    document.getElementById(targetInputId).value = dataUrl;
+                    document.getElementById(previewImgId).src = dataUrl;
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function handleFileUploadBg(input, targetInputId, previewDivId) {
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const dataUrl = e.target.result;
+                    document.getElementById(targetInputId).value = dataUrl;
+                    document.getElementById(previewDivId).style.backgroundImage = `url("${dataUrl}")`;
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function resetPhotoField(inputId, previewId, defaultPath) {
+            document.getElementById(inputId).value = defaultPath;
+            document.getElementById(previewId).src = defaultPath;
+        }
+
+        function resetBgField() {
+            document.getElementById('custBgImage').value = 'assets/images/lms_background.png';
+            document.getElementById('previewBgThumbnail').style.backgroundImage = "url('assets/images/lms_background.png')";
+        }
+    </script>
+</body>
+</html>

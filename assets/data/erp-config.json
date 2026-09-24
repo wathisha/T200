@@ -1,0 +1,133 @@
+{
+  "adminAuth": {
+    "username": "laknath",
+    "password": "password123"
+  },
+  "settings": {
+    "academyName": "Science with Laknath",
+    "tagline": "GRADE 6-11 SCIENCE SPECIALIST & ACADEMIC ERP",
+    "motto": "UNDERSTAND TODAY, SUCCEED TOMORROW",
+    "teacherName": "Mr. Laknath Amarasinghe",
+    "teacherTitle": "Head Science Specialist & IT Systems Lead",
+    "hotlines": "071 781 2092 | 077 161 4260",
+    "teacherPhoto": "assets/images/teacher_banner.png",
+    "bgImage": "assets/images/lms_background.png",
+    "subjectList": [
+      "06 - Science",
+      "07 - Science",
+      "08 - Science",
+      "09 - Science",
+      "10 - Science",
+      "11 - Science"
+    ],
+    "announcement": "Welcome to Science with Laknath ERP! Grade 06-11 Science Master Guidebooks, past paper revisions, WhatsApp & Zoom live classes are active.",
+    "offerings": [
+      "Clear Explanations",
+      "Exam Focused Learning",
+      "Concept Building",
+      "Past Paper Practice",
+      "Live Practical Sessions on Classroom"
+    ],
+    "gradingScale": {
+      "A": 75,
+      "B": 65,
+      "C": 50,
+      "S": 35
+    },
+    "logoImage": "assets/images/logo.png"
+  },
+  "whatsapp": {
+    "isLive": true,
+    "teacherWhatsappNumber": "94717812092",
+    "whatsappGroupUrl": "https://chat.whatsapp.com/ScienceWithLaknath",
+    "title": "Grade 06 Science - Live Class WhatsApp Q&A & Support",
+    "grade": "06 - Science",
+    "broadcastText": "Hello students, today's Science Master Guidebook and practical review questions are now published.",
+    "statusText": "LIVE ON WHATSAPP"
+  },
+  "zoom": {
+    "isLive": true,
+    "title": "Grade 06 Science - Live Theory & Practical Zoom Session",
+    "grade": "06 - Science",
+    "meetingUrl": "https://zoom.us/j/9876543210?pwd=SCIENCE2026CLASS",
+    "meetingId": "987 654 3210",
+    "passcode": "SCIENCE2026",
+    "hostName": "Mr. Laknath Amarasinghe",
+    "startTime": "Saturday 8:00 AM - 10:30 AM",
+    "statusText": "LIVE ON ZOOM"
+  },
+  "weeklyColumns": [],
+  "userRoles": [
+    {
+      "key": "super_admin",
+      "name": "Super Admin (Head Specialist & Tech Lead)",
+      "badgeColor": "from-amber-500 to-rose-500",
+      "icon": "fa-crown",
+      "description": "Full and unrestricted access to all student evaluations, user administration, system config, and database engines.",
+      "permissions": [
+        "manage_users",
+        "edit_system_settings",
+        "manage_students",
+        "delete_students",
+        "grade_students",
+        "manage_content",
+        "view_teacher_vault",
+        "database_admin"
+      ]
+    },
+    {
+      "key": "admin",
+      "name": "Administrator",
+      "badgeColor": "from-indigo-500 to-cyan-500",
+      "icon": "fa-shield-halved",
+      "description": "Full academic and student management, notices, study files, and view access to user roster.",
+      "permissions": [
+        "manage_students",
+        "grade_students",
+        "manage_content",
+        "view_teacher_vault"
+      ]
+    },
+    {
+      "key": "teacher",
+      "name": "Senior Science Educator",
+      "badgeColor": "from-emerald-500 to-teal-500",
+      "icon": "fa-chalkboard-user",
+      "description": "Enter and update student weekly evaluations, unit tests, model paper grades, and access confidential teacher documents.",
+      "permissions": [
+        "grade_students",
+        "manage_content",
+        "view_teacher_vault"
+      ]
+    },
+    {
+      "key": "assistant_teacher",
+      "name": "Assistant Teacher / Demonstrator",
+      "badgeColor": "from-teal-500 to-cyan-600",
+      "icon": "fa-user-pen",
+      "description": "Mark student attendance, weekly practical checks, and guidebooks.",
+      "permissions": [
+        "grade_students",
+        "manage_content"
+      ]
+    },
+    {
+      "key": "staff",
+      "name": "Student Registrar & Data Officer",
+      "badgeColor": "from-purple-500 to-indigo-600",
+      "icon": "fa-clipboard-user",
+      "description": "Register new students, update contact information, parent WhatsApp numbers, and student directory.",
+      "permissions": [
+        "manage_students"
+      ]
+    },
+    {
+      "key": "viewer",
+      "name": "Auditor / Viewer",
+      "badgeColor": "from-slate-500 to-slate-700",
+      "icon": "fa-eye",
+      "description": "Read-only access to academic progress and analytics.",
+      "permissions": []
+    }
+  ]
+}

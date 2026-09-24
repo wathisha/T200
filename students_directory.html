@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class-Wise Student Directory (Teacher / Admin Access Only) | Science with Laknath</title>
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Rajdhani:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script>
+        // STRICT ACCESS CONTROL: ONLY TEACHER OR ADMIN CAN ACCESS
+        if (sessionStorage.getItem('admin_authenticated') !== 'true') {
+            window.location.href = 'admin_login.html';
+        }
+
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        cinzel: ['Cinzel', 'serif'],
+                        rajdhani: ['Rajdhani', 'sans-serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="antialiased text-slate-100 min-h-screen flex flex-col justify-between">
+
+    <!-- Header Navigation -->
+    <header class="bg-slate-950/90 border-b border-rose-900/40 sticky top-0 z-50 backdrop-blur-md no-print">
+        <div class="max-w-7xl mx-auto px-4 flex justify-between items-center h-20">
+            <div class="flex items-center space-x-3">
+                <img src="assets/images/logo.png" alt="Logo" class="h-12 w-12 object-contain rounded-xl border border-amber-500/30 p-1 bg-slate-950 branding-logo">
+                <div>
+                    <h1 class="text-xl font-bold font-cinzel text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-yellow-400 to-rose-400 branding-academy-name">
+                        SCIENCE with LAKNATH
+                    </h1>
+                    <p class="text-xs text-amber-400 font-rajdhani tracking-widest uppercase">Class-Wise Student Directory • Teacher Protected</p>
+                </div>
+            </div>
+
+            <!-- Action Controls -->
+            <div class="flex items-center space-x-3">
+                <button type="button" onclick="refreshDirFromCloud()" class="bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-700 dark:text-emerald-300 border border-emerald-500/40 px-3 py-2 rounded-xl text-xs font-bold flex items-center space-x-1.5 transition shadow-sm" title="Sync live updates from phone / cloud">
+                    <i class="fa-solid fa-rotate text-xs"></i>
+                    <span class="hidden sm:inline">Sync Cloud</span>
+                </button>
+                <button type="button" onclick="window.LMSCore.toggleTheme()" class="theme-toggle-btn shadow-sm" title="Toggle Light/Dark Theme">
+                    <i class="fa-solid fa-moon text-indigo-600 mr-1.5"></i>
+                    <span>Dark Mode</span>
+                </button>
+                <a href="teacher_documents.html" class="bg-slate-900 hover:bg-slate-800 text-cyan-300 border border-cyan-500/40 px-3.5 py-2 rounded-xl text-xs font-bold flex items-center space-x-1.5 transition">
+                    <i class="fa-solid fa-folder-tree"></i>
+                    <span>Teacher Vault</span>
+                </a>
+                <a href="admin.html" class="bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 px-3.5 py-2 rounded-xl text-xs font-bold flex items-center space-x-1.5 transition">
+                    <i class="fa-solid fa-sliders"></i>
+                    <span>Teacher Dashboard</span>
+                </a>
+                <button onclick="logoutAdmin()" class="bg-red-500/20 hover:bg-red-500/30 text-red-300 border border-red-500/40 px-3.5 py-2 rounded-xl text-xs font-bold flex items-center space-x-1.5 transition">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span>Logout</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow w-full space-y-8">
+
+        <!-- Top Directory Showcase Banner -->
+        <section class="glass-panel p-6 sm:p-8 relative overflow-hidden border-rose-500/30">
+            <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+                <div class="flex items-center space-x-5">
+                    <img src="assets/images/teacher_banner.png" alt="Teacher Avatar" class="branding-teacher-photo w-20 h-24 sm:w-24 sm:h-28 object-cover rounded-2xl border-2 border-amber-400 shadow-xl bg-slate-950">
+                    <div class="space-y-1">
+                        <div class="flex items-center space-x-2">
+                            <span class="px-3 py-0.5 bg-rose-500/20 border border-rose-500/40 text-rose-300 text-xs font-bold rounded-full uppercase tracking-wider">
+                                Restricted Teacher Area
+                            </span>
+                            <span class="px-3 py-0.5 bg-amber-500/20 border border-amber-500/40 text-amber-300 text-xs font-mono font-bold rounded-full branding-motto">
+                                UNDERSTAND TODAY, SUCCEED TOMORROW
+                            </span>
+                        </div>
+                        <h2 class="text-2xl sm:text-3xl font-bold font-cinzel text-slate-100">All Enrolled Students Directory (Class-Wise)</h2>
+                        <p class="text-xs text-slate-300">
+                            Teacher master records across Grade 6, 7, 8, 9, 10, and 11. Edit student profiles, reset passwords, delete accounts, generate QR passes, or send direct WhatsApp alerts.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+                    <div class="bg-slate-950/90 border border-slate-700 px-4 py-2.5 rounded-2xl text-center">
+                        <span class="text-xs text-slate-400 block">Total Students</span>
+                        <span id="totalStudentsCount" class="text-xl font-bold font-cinzel text-amber-300">13</span>
+                    </div>
+                    <div class="bg-slate-950/90 border border-slate-700 px-4 py-2.5 rounded-2xl text-center">
+                        <span class="text-xs text-slate-400 block">Active Grades</span>
+                        <span class="text-xl font-bold font-cinzel text-cyan-300">6 Grades</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Search Bar and Class-Wise Filter Buttons -->
+        <section class="space-y-4">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div class="relative flex-grow max-w-md">
+                    <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+                    <input type="text" id="dirSearchInput" placeholder="Search student name, ID or grade..." class="w-full bg-slate-950 border border-slate-700 rounded-xl pl-11 pr-4 py-2.5 text-sm focus:outline-none focus:border-amber-400 text-slate-100">
+                </div>
+
+                <div class="flex items-center space-x-2 text-xs text-slate-400 font-mono">
+                    <i class="fa-solid fa-filter text-amber-400"></i>
+                    <span>Filter By Class:</span>
+                </div>
+            </div>
+
+            <!-- Grade Filter Pills -->
+            <div id="gradeFilterContainer" class="flex flex-wrap gap-2 pt-1 pb-2 overflow-x-auto">
+                <button onclick="filterByGrade('All')" class="grade-filter-btn px-4 py-2 text-xs font-bold rounded-xl border border-amber-400 bg-amber-500 text-slate-950 transition active font-extrabold" data-grade="All">
+                    All Grades
+                </button>
+                <button onclick="filterByGrade('06 - Science')" class="grade-filter-btn px-4 py-2 text-xs font-bold rounded-xl border border-slate-700 bg-slate-900/80 text-slate-300 hover:border-amber-400/50 transition" data-grade="06 - Science">
+                    Grade 06
+                </button>
+                <button onclick="filterByGrade('07 - Science')" class="grade-filter-btn px-4 py-2 text-xs font-bold rounded-xl border border-slate-700 bg-slate-900/80 text-slate-300 hover:border-amber-400/50 transition" data-grade="07 - Science">
+                    Grade 07
+                </button>
+                <button onclick="filterByGrade('08 - Science')" class="grade-filter-btn px-4 py-2 text-xs font-bold rounded-xl border border-slate-700 bg-slate-900/80 text-slate-300 hover:border-amber-400/50 transition" data-grade="08 - Science">
+                    Grade 08
+                </button>
+                <button onclick="filterByGrade('09 - Science')" class="grade-filter-btn px-4 py-2 text-xs font-bold rounded-xl border border-slate-700 bg-slate-900/80 text-slate-300 hover:border-amber-400/50 transition" data-grade="09 - Science">
+                    Grade 09
+                </button>
+                <button onclick="filterByGrade('10 - Science')" class="grade-filter-btn px-4 py-2 text-xs font-bold rounded-xl border border-slate-700 bg-slate-900/80 text-slate-300 hover:border-amber-400/50 transition" data-grade="10 - Science">
+                    Grade 10
+                </button>
+                <button onclick="filterByGrade('11 - Science')" class="grade-filter-btn px-4 py-2 text-xs font-bold rounded-xl border border-slate-700 bg-slate-900/80 text-slate-300 hover:border-amber-400/50 transition" data-grade="11 - Science">
+                    Grade 11
+                </button>
+            </div>
+        </section>
+
+        <!-- Students Directory Grid -->
+        <section id="studentsGridContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Populated via JavaScript -->
+        </section>
+
+    </main>
+
+    <!-- QR Pass Modal -->
+    <div id="dirQrModal" class="fixed inset-0 bg-slate-950/85 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4">
+        <div class="bg-slate-900 border border-amber-500/50 rounded-3xl p-6 sm:p-8 max-w-sm w-full space-y-4 text-center shadow-2xl">
+            <div class="flex justify-between items-center pb-2 border-b border-slate-800">
+                <h3 class="text-sm font-bold font-cinzel text-amber-300 uppercase tracking-wider">Student QR Pass</h3>
+                <button onclick="closeDirQrModal()" class="text-slate-400 hover:text-slate-200"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+            <div>
+                <h4 id="qrModalStudentName" class="text-lg font-bold font-cinzel text-slate-100">Alex Johnson</h4>
+                <p id="qrModalStudentId" class="text-xs font-mono text-cyan-400">ID: ST-84092</p>
+            </div>
+            <div class="bg-white p-3 rounded-2xl inline-block shadow-md mx-auto">
+                <div id="dirModalQrBox"></div>
+            </div>
+            <a id="dirModalDirectLink" href="#" target="_blank" class="block text-xs text-cyan-400 hover:underline font-mono">
+                Open Student Dashboard
+            </a>
+            <button onclick="closeDirQrModal()" class="w-full bg-slate-800 hover:bg-slate-700 text-slate-300 py-2 rounded-xl text-xs font-bold">Close</button>
+        </div>
+    </div>
+
+    <!-- Quick Reset Student Password Modal -->
+    <div id="dirResetPassModal" class="fixed inset-0 bg-slate-950/85 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4">
+        <div class="bg-slate-900 border border-cyan-500/50 rounded-3xl p-6 max-w-md w-full space-y-4 shadow-2xl">
+            <div class="flex justify-between items-center pb-2 border-b border-slate-800">
+                <h3 class="text-base font-bold font-cinzel text-cyan-300"><i class="fa-solid fa-key mr-2"></i>Reset Student Password</h3>
+                <button onclick="closeDirResetPassModal()" class="text-slate-400 hover:text-slate-200"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+
+            <div>
+                <p class="text-xs text-slate-400">Student: <strong id="dirResetStName" class="text-slate-100">...</strong> (<span id="dirResetStId" class="font-mono text-cyan-400">...</span>)</p>
+            </div>
+
+            <form id="dirResetPassForm" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-400 mb-1">New Password:</label>
+                    <input type="text" id="dirNewPassInput" required placeholder="Enter new password" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-slate-100 focus:border-cyan-400 font-mono">
+                </div>
+
+                <div class="flex items-center justify-between text-xs">
+                    <button type="button" onclick="setDirRandomPass()" class="text-cyan-400 hover:underline text-[11px] font-bold">Generate Random</button>
+                    <button type="button" onclick="setDirDefaultPass()" class="text-amber-400 hover:underline text-[11px] font-bold">Set Default (student123)</button>
+                </div>
+
+                <div class="flex justify-end space-x-3 pt-3 border-t border-slate-800">
+                    <button type="button" onclick="closeDirResetPassModal()" class="px-4 py-2 bg-slate-800 text-slate-300 rounded-xl text-xs">Cancel</button>
+                    <button type="submit" class="px-5 py-2 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-extrabold rounded-xl text-xs">Update Password</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Edit Student Profile Modal -->
+    <div id="dirEditStudentModal" class="fixed inset-0 bg-slate-950/85 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4 overflow-y-auto">
+        <div class="bg-slate-900 border border-amber-500/50 rounded-3xl p-6 sm:p-8 max-w-xl w-full space-y-6 shadow-2xl my-8">
+            <div class="flex justify-between items-center pb-3 border-b border-slate-800">
+                <div>
+                    <h3 class="text-xl font-bold font-cinzel text-amber-300"><i class="fa-solid fa-user-pen mr-2"></i>Edit Student Profile</h3>
+                    <p class="text-xs text-slate-400">Update student details, photo, and WhatsApp number.</p>
+                </div>
+                <button onclick="closeDirEditModal()" class="text-slate-400 hover:text-slate-200"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+
+            <form id="dirEditStudentForm" class="space-y-4">
+                <div class="flex items-center space-x-4 p-4 bg-slate-950 rounded-2xl border border-slate-800">
+                    <img id="dirEditAvatarPreview" src="" alt="Student Avatar" class="w-16 h-16 rounded-xl border-2 border-amber-500/40 bg-slate-900 object-cover">
+                    <div class="flex-grow space-y-1">
+                        <label class="block text-xs font-bold text-slate-300">Change Profile Photo:</label>
+                        <input type="file" id="dirEditPhotoInput" accept="image/*" class="text-xs text-slate-400 file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-amber-500/20 file:text-amber-300 hover:file:bg-amber-500/30 cursor-pointer">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-400 mb-1">Full Student Name:</label>
+                        <input type="text" id="dirEditNameInput" required class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2 text-xs text-slate-100 focus:border-amber-400">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-400 mb-1">Student ID (Read-only):</label>
+                        <input type="text" id="dirEditIdInput" readonly class="w-full bg-slate-950/50 border border-slate-800 rounded-xl px-3.5 py-2 text-xs text-slate-400 font-mono">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-400 mb-1">Grade / Class:</label>
+                        <select id="dirEditGradeInput" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2 text-xs text-slate-100 focus:border-amber-400">
+                            <option value="06 - Science">06 - Science</option>
+                            <option value="07 - Science">07 - Science</option>
+                            <option value="08 - Science">08 - Science</option>
+                            <option value="09 - Science">09 - Science</option>
+                            <option value="10 - Science">10 - Science</option>
+                            <option value="11 - Science">11 - Science</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-400 mb-1">Parent WhatsApp:</label>
+                        <input type="text" id="dirEditParentWaInput" required class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2 text-xs text-slate-100 focus:border-amber-400 font-mono">
+                    </div>
+                </div>
+
+                <div class="flex justify-end space-x-3 pt-3 border-t border-slate-800">
+                    <button type="button" onclick="closeDirEditModal()" class="px-4 py-2 bg-slate-800 text-slate-300 rounded-xl text-xs">Cancel</button>
+                    <button type="submit" class="px-5 py-2 bg-amber-500 text-slate-950 font-bold rounded-xl text-xs">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 border-t border-slate-800 py-6 text-center text-xs text-slate-500 no-print">
+        <p>&copy; 2026 Science with Laknath. Class-Wise Student Records Directory • Teacher Protected.</p>
+    </footer>
+
+    <!-- Core LMS Engine & Scripts -->
+    <script src="assets/js/lms-core.js"></script>
+    <script>
+        let allStudents = [];
+        let activeGradeFilter = 'All';
+        let dirEditPhotoBase64 = null;
+        let editingStudentId = null;
+        let resettingStId = null;
+
+        
+        // --- REAL-TIME MULTI-DEVICE AUTO-REFRESH & FOCUS LISTENER ---
+        async function refreshDirFromCloud() {
+            if (window.LMSCore) {
+                await window.LMSCore.initGlobalSync();
+                allStudents = await window.LMSCore.getStudents(true);
+                document.getElementById('totalStudentsCount').textContent = allStudents.length;
+                renderStudentsGrid();
+                alert("Directory synchronized with cloud!");
+            }
+        }
+
+        
+        // Live auto-poll every 6 seconds: fetches live JSON from npoint.io across all devices
+        setInterval(async () => {
+            if (document.visibilityState === 'visible' && window.LMSCore) {
+                const cloud = window.LMSCore.getCloudConfig();
+                if (cloud.cloudJsonStudentsUrl && cloud.cloudJsonStudentsUrl.trim() !== '') {
+                    const fresh = await window.LMSCore.getStudents(false);
+                    if (fresh && Array.isArray(fresh) && fresh.length > 0) {
+                        if (JSON.stringify(fresh) !== JSON.stringify(allStudents)) {
+                            allStudents = fresh;
+                            document.getElementById('totalStudentsCount').textContent = allStudents.length;
+                            renderStudentsGrid();
+                        }
+                    }
+                }
+            }
+        }, 6000);
+
+        window.addEventListener('focus', async () => {
+            if (window.LMSCore) {
+                await window.LMSCore.initGlobalSync();
+                allStudents = await window.LMSCore.getStudents(true);
+                document.getElementById('totalStudentsCount').textContent = allStudents.length;
+                renderStudentsGrid();
+            }
+        });
+
+        function logoutAdmin() {
+            if (window.LMSCore) { window.LMSCore.logoutUser(); } else { sessionStorage.removeItem('admin_authenticated'); window.location.href = 'admin_login.html'; }
+        }
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            if (window.LMSCore) {
+                window.LMSCore.applyThemeAndBranding();
+            }
+
+            allStudents = await window.LMSCore.getStudents();
+            document.getElementById('totalStudentsCount').textContent = allStudents.length;
+            renderStudentsGrid();
+        });
+
+        function filterByGrade(grade) {
+            activeGradeFilter = grade;
+            document.querySelectorAll('.grade-filter-btn').forEach(btn => {
+                if (btn.getAttribute('data-grade') === grade) {
+                    btn.className = "grade-filter-btn px-4 py-2 text-xs font-bold rounded-xl border border-amber-400 bg-amber-500 text-slate-950 transition active font-extrabold";
+                } else {
+                    btn.className = "grade-filter-btn px-4 py-2 text-xs font-bold rounded-xl border border-slate-700 bg-slate-900/80 text-slate-300 hover:border-amber-400/50 transition";
+                }
+            });
+            renderStudentsGrid();
+        }
+
+        function renderStudentsGrid() {
+            const container = document.getElementById('studentsGridContainer');
+            container.innerHTML = '';
+
+            const searchVal = document.getElementById('dirSearchInput').value.toLowerCase().trim();
+
+            const filtered = allStudents.filter(st => {
+                const info = st.student_info || {};
+                const matchGrade = (activeGradeFilter === 'All') || (info.grade_class && info.grade_class.toLowerCase().includes(activeGradeFilter.toLowerCase()));
+                const matchSearch = !searchVal || 
+                    (info.name && info.name.toLowerCase().includes(searchVal)) ||
+                    (info.student_id && info.student_id.toLowerCase().includes(searchVal)) ||
+                    (info.grade_class && info.grade_class.toLowerCase().includes(searchVal));
+                return matchGrade && matchSearch;
+            });
+
+            if (filtered.length === 0) {
+                container.innerHTML = `
+                    <div class="col-span-full glass-panel p-12 text-center space-y-3">
+                        <i class="fa-solid fa-users-slash text-3xl text-slate-500"></i>
+                        <h4 class="text-lg font-bold font-cinzel text-slate-300">No Students Found</h4>
+                        <p class="text-xs text-slate-400">No student profiles match your search criteria or selected grade filter.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            filtered.forEach(st => {
+                const info = st.student_info || {};
+                const summary = st.summary || {};
+                const avatar = info.avatar || ("https://api.dicebear.com/7.x/avataaars/svg?seed=" + encodeURIComponent(info.name));
+                const studentUrl = window.LMSCore.getStudentDirectUrl(info.student_id);
+                const parentWa = info.parent_whatsapp || "+94717812092";
+                const waUrl = `https://wa.me/${parentWa.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(`Hello ${info.name}, here is your latest Science academic progress report: ${studentUrl}`)}`;
+
+                const card = document.createElement('div');
+                card.className = "glass-panel p-6 space-y-5 hover:border-amber-400/50 transition relative overflow-hidden flex flex-col justify-between";
+
+                card.innerHTML = `
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-4">
+                            <img src="${avatar}" alt="${info.name}" class="w-16 h-16 rounded-2xl border-2 border-amber-400/40 bg-slate-950 p-1 object-cover shadow-md">
+                            <div>
+                                <h3 class="text-lg font-bold font-cinzel text-slate-100">${info.name}</h3>
+                                <p class="text-xs font-mono text-cyan-400">ID: ${info.student_id}</p>
+                                <span class="inline-block mt-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-rose-500/20 text-rose-300 border border-rose-500/40">
+                                    ${info.grade_class}
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-2 bg-slate-950/80 p-3 rounded-xl border border-slate-800 text-xs">
+                            <div>
+                                <span class="text-slate-400 block text-[10px]">Annual Unit Avg:</span>
+                                <span class="font-bold text-amber-300">${summary.average_unit_test || 0} / 100</span>
+                            </div>
+                            <div>
+                                <span class="text-slate-400 block text-[10px]">Attendance:</span>
+                                <span class="font-semibold text-emerald-400">${summary.attendance || '95%'}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 border-t border-slate-800 space-y-2">
+                        <div class="grid grid-cols-2 gap-2">
+                            <a href="${studentUrl}" target="_blank" class="bg-gradient-to-r from-amber-500 to-yellow-400 hover:from-amber-400 text-slate-950 font-extrabold py-2 px-3 rounded-xl text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 transition shadow-md">
+                                <i class="fa-solid fa-chart-user text-xs"></i>
+                                <span>Dashboard</span>
+                            </a>
+                            <button onclick="openDirEditModal('${info.student_id}')" class="bg-slate-900 hover:bg-slate-800 text-amber-300 border border-amber-500/30 py-2 rounded-xl text-xs font-bold flex items-center justify-center gap-1 transition">
+                                <i class="fa-solid fa-user-pen text-xs"></i>
+                                <span>Edit Profile</span>
+                            </button>
+                        </div>
+
+                        <div class="grid grid-cols-3 gap-2">
+                            <button onclick="openDirResetPass('${info.student_id}', '${info.name}')" class="bg-slate-900 hover:bg-slate-800 text-cyan-300 border border-cyan-500/30 py-1.5 rounded-xl text-xs font-bold flex items-center justify-center gap-1 transition" title="Reset Password">
+                                <i class="fa-solid fa-key text-xs"></i>
+                                <span>Password</span>
+                            </button>
+                            <button onclick="openDirQrModal('${info.name}', '${info.student_id}')" class="bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-700 py-1.5 rounded-xl text-xs font-bold flex items-center justify-center gap-1 transition">
+                                <i class="fa-solid fa-qrcode text-xs"></i>
+                                <span>QR Pass</span>
+                            </button>
+                            <a href="${waUrl}" target="_blank" class="bg-emerald-600/20 hover:bg-emerald-600/30 text-emerald-300 border border-emerald-500/40 py-1.5 rounded-xl text-xs font-bold flex items-center justify-center gap-1 transition">
+                                <i class="fa-brands fa-whatsapp text-xs text-emerald-400"></i>
+                                <span>WhatsApp</span>
+                            </a>
+                        </div>
+                        
+                        <button onclick="confirmDirDelete('${info.student_id}', '${info.name}')" class="w-full bg-red-500/10 hover:bg-red-500/20 text-red-400 border border-red-500/30 py-1.5 rounded-xl text-[11px] font-bold flex items-center justify-center gap-1 transition">
+                            <i class="fa-solid fa-trash-can text-xs"></i>
+                            <span>Delete Student Account</span>
+                        </button>
+                    </div>
+                `;
+
+                container.appendChild(card);
+            });
+        }
+
+        document.getElementById('dirSearchInput').addEventListener('input', () => {
+            renderStudentsGrid();
+        });
+
+        function openDirQrModal(name, id) {
+            document.getElementById('qrModalStudentName').textContent = name;
+            document.getElementById('qrModalStudentId').textContent = "ID: " + id;
+            const fullUrl = window.LMSCore.getStudentDirectUrl(id);
+            document.getElementById('dirModalDirectLink').href = fullUrl;
+
+            const qrBox = document.getElementById('dirModalQrBox');
+            qrBox.innerHTML = '';
+            new QRCode(qrBox, { text: fullUrl, width: 140, height: 140, colorDark: "#0c0710", colorLight: "#ffffff" });
+
+            document.getElementById('dirQrModal').classList.remove('hidden');
+        }
+
+        function closeDirQrModal() {
+            document.getElementById('dirQrModal').classList.add('hidden');
+        }
+
+        // --- PASSWORD RESET IN DIRECTORY ---
+        function openDirResetPass(id, name) {
+            resettingStId = id;
+            document.getElementById('dirResetStName').textContent = name;
+            document.getElementById('dirResetStId').textContent = id;
+            document.getElementById('dirNewPassInput').value = 'student123';
+            document.getElementById('dirResetPassModal').classList.remove('hidden');
+        }
+
+        function closeDirResetPassModal() {
+            document.getElementById('dirResetPassModal').classList.add('hidden');
+        }
+
+        function setDirRandomPass() {
+            const random = 'sci' + Math.floor(1000 + Math.random() * 9000);
+            document.getElementById('dirNewPassInput').value = random;
+        }
+
+        function setDirDefaultPass() {
+            document.getElementById('dirNewPassInput').value = 'student123';
+        }
+
+        document.getElementById('dirResetPassForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            if (!resettingStId) return;
+            const newPass = document.getElementById('dirNewPassInput').value.trim();
+            const res = await window.LMSCore.resetStudentPassword(resettingStId, newPass);
+            if (res.success) {
+                allStudents = await window.LMSCore.getStudents();
+                closeDirResetPassModal();
+                renderStudentsGrid();
+                alert(`Password updated for ${res.student.student_info.name}! New Password: ${newPass}`);
+            }
+        });
+
+        // --- DELETE STUDENT IN DIRECTORY ---
+        async function confirmDirDelete(id, name) {
+            if (confirm(`Are you sure you want to permanently delete student account ${name} (${id})?`)) {
+                allStudents = await window.LMSCore.deleteStudent(id);
+                document.getElementById('totalStudentsCount').textContent = allStudents.length;
+                renderStudentsGrid();
+                alert(`Student account ${name} (${id}) deleted successfully.`);
+            }
+        }
+
+        // --- EDIT PROFILE IN DIRECTORY ---
+        function openDirEditModal(studentId) {
+            const st = allStudents.find(s => s.student_info && s.student_info.student_id === studentId);
+            if (!st) return;
+            editingStudentId = studentId;
+
+            document.getElementById('dirEditNameInput').value = st.student_info.name;
+            document.getElementById('dirEditIdInput').value = st.student_info.student_id;
+            document.getElementById('dirEditGradeInput').value = st.student_info.grade_class;
+            document.getElementById('dirEditParentWaInput').value = st.student_info.parent_whatsapp || '+94771614260';
+            document.getElementById('dirEditAvatarPreview').src = st.student_info.avatar || ("https://api.dicebear.com/7.x/avataaars/svg?seed=" + encodeURIComponent(st.student_info.name));
+            dirEditPhotoBase64 = null;
+
+            document.getElementById('dirEditStudentModal').classList.remove('hidden');
+        }
+
+        function closeDirEditModal() {
+            document.getElementById('dirEditStudentModal').classList.add('hidden');
+        }
+
+        document.getElementById('dirEditPhotoInput').addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = (evt) => {
+                dirEditPhotoBase64 = evt.target.result;
+                document.getElementById('dirEditAvatarPreview').src = dirEditPhotoBase64;
+            };
+            reader.readAsDataURL(file);
+        });
+
+        document.getElementById('dirEditStudentForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            if (!editingStudentId) return;
+
+            const res = await window.LMSCore.updateStudent(editingStudentId, {
+                name: document.getElementById('dirEditNameInput').value.trim(),
+                avatar: dirEditPhotoBase64 || undefined,
+                grade_class: document.getElementById('dirEditGradeInput').value,
+                parent_whatsapp: document.getElementById('dirEditParentWaInput').value.trim()
+            });
+
+            if (res.success) {
+                allStudents = res.students;
+                closeDirEditModal();
+                renderStudentsGrid();
+                alert(`Student profile updated for ${res.student.student_info.name}!`);
+            }
+        });
+    </script>
+</body>
+</html>

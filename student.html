@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Academic Results & Progress Portal | Science with Laknath ERP</title>
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Rajdhani:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        cinzel: ['Cinzel', 'serif'],
+                        rajdhani: ['Rajdhani', 'sans-serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="antialiased text-slate-100 min-h-screen flex flex-col justify-between">
+
+    <!-- Header Navigation -->
+    <header class="bg-slate-950/90 border-b border-rose-900/40 sticky top-0 z-50 backdrop-blur-md no-print">
+        <div class="max-w-7xl mx-auto px-4 flex justify-between items-center h-20">
+            <div class="flex items-center space-x-3">
+                <img src="assets/images/logo.png" alt="Logo" class="h-12 w-12 object-contain rounded-xl border border-amber-500/30 p-1 bg-slate-950 branding-logo">
+                <div>
+                    <h1 class="text-xl font-bold font-cinzel text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-yellow-400 to-rose-400 branding-academy-name">
+                        SCIENCE with LAKNATH
+                    </h1>
+                    <p class="text-xs text-cyan-400 font-rajdhani tracking-widest uppercase branding-tagline">Student Academic Portal</p>
+                </div>
+            </div>
+
+            <!-- Header Actions -->
+            <div class="flex items-center space-x-3">
+                <button type="button" onclick="window.LMSCore.toggleTheme()" class="theme-toggle-btn shadow-sm" title="Toggle Light/Dark Theme">
+                    <i class="fa-solid fa-moon text-indigo-600 mr-1.5"></i>
+                    <span>Dark Mode</span>
+                </button>
+                <button onclick="window.print()" class="bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700 px-3.5 py-2 rounded-xl text-xs font-semibold flex items-center space-x-1.5 transition">
+                    <i class="fa-solid fa-print"></i>
+                    <span class="hidden sm:inline">Print Scorecard</span>
+                </button>
+                <a href="index.html" class="bg-rose-500/20 hover:bg-rose-500/30 text-rose-300 border border-rose-500/40 px-3.5 py-2 rounded-xl text-xs font-bold flex items-center space-x-1.5 transition">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span>Portal Home</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow w-full space-y-8">
+
+        <!-- Error State (If no student found) -->
+        <div id="errorContainer" class="hidden glass-panel p-8 text-center space-y-4 max-w-xl mx-auto my-12">
+            <div class="w-16 h-16 rounded-full bg-red-500/20 text-red-400 flex items-center justify-center mx-auto text-2xl border border-red-500/30">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+            </div>
+            <h2 class="text-2xl font-bold font-cinzel text-slate-100">Student Profile Not Found</h2>
+            <p id="errorMessage" class="text-xs text-slate-400">Please provide a valid Student ID or scan your authorized Student QR Code.</p>
+            <a href="index.html" class="inline-block bg-gradient-to-r from-amber-500 to-yellow-400 text-slate-950 font-extrabold px-6 py-2.5 rounded-xl text-xs uppercase tracking-wider shadow-lg">
+                Return to Login Hub
+            </a>
+        </div>
+
+        <!-- Student Profile Content -->
+        <div id="studentProfileContent" class="space-y-8">
+
+            <!-- Class-Wise Live WhatsApp & Zoom Session Alert Banner -->
+            <section id="stLiveClassBanner" class="hidden bg-gradient-to-r from-emerald-950/90 via-slate-900 to-rose-950/90 border-2 border-emerald-400/60 p-6 rounded-3xl relative overflow-hidden shadow-2xl no-print animate-pulse">
+                <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 rounded-2xl bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 flex items-center justify-center text-2xl animate-bounce">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </div>
+                        <div>
+                            <div class="flex items-center space-x-2">
+                                <span class="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase bg-emerald-500 text-slate-950">LIVE NOW</span>
+                                <span id="stClassGrade" class="text-xs text-amber-300 font-bold">06 - Science</span>
+                            </div>
+                            <h3 id="stClassTitle" class="text-lg font-bold font-cinzel text-slate-100">Grade 06 Science - Live Class Q&A & Support</h3>
+                            <p class="text-xs text-slate-300">Teacher WhatsApp: <strong id="stWaPhoneDisplay" class="text-emerald-300 font-mono">+94 71 781 2092</strong></p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap gap-2 w-full md:w-auto">
+                        <a id="stJoinWaGroupBtn" href="#" target="_blank" class="flex-grow md:flex-grow-0 bg-gradient-to-r from-emerald-600 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-slate-950 font-extrabold px-5 py-3 rounded-2xl text-xs uppercase tracking-wider shadow-lg flex items-center justify-center space-x-2 transition">
+                            <i class="fa-brands fa-whatsapp text-sm"></i>
+                            <span>Join WhatsApp Group</span>
+                        </a>
+                        <a id="stDirectWaBtn" href="#" target="_blank" class="flex-grow md:flex-grow-0 bg-slate-900 hover:bg-slate-800 text-emerald-300 border border-emerald-500/40 font-bold px-4 py-3 rounded-2xl text-xs uppercase tracking-wider flex items-center justify-center space-x-1.5 transition">
+                            <i class="fa-solid fa-comment-dots text-xs"></i>
+                            <span>Message Teacher</span>
+                        </a>
+                        <a id="stJoinZoomBtn" href="#" target="_blank" class="hidden flex-grow md:flex-grow-0 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-extrabold px-4 py-3 rounded-2xl text-xs uppercase tracking-wider shadow-lg flex items-center justify-center space-x-1.5 transition">
+                            <i class="fa-solid fa-video text-xs"></i>
+                            <span>Join Zoom</span>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Student Portal Navigation Tabs -->
+            <nav class="flex border-b border-slate-700 space-x-6 text-sm font-bold no-print overflow-x-auto">
+                <button onclick="switchStTab('dash')" id="st-tab-btn-dash" class="pb-3 text-amber-400 border-b-2 border-amber-400 flex items-center gap-2 whitespace-nowrap">
+                    <i class="fa-solid fa-chart-line"></i> Performance Analytics & Weekly Tables
+                </button>
+                <button onclick="switchStTab('notifs')" id="st-tab-btn-notifs" class="pb-3 text-slate-400 hover:text-slate-200 flex items-center gap-2 whitespace-nowrap relative">
+                    <i class="fa-solid fa-bullhorn"></i> Class Notices & Announcements
+                    <span id="stNotifBadgeCount" class="ml-1.5 px-1.5 py-0.2 bg-rose-500 text-white text-[10px] font-bold rounded-full">3</span>
+                </button>
+                <button onclick="switchStTab('cal')" id="st-tab-btn-cal" class="pb-3 text-slate-400 hover:text-slate-200 flex items-center gap-2 whitespace-nowrap">
+                    <i class="fa-solid fa-calendar-days"></i> Academic Calendar (Google Calendar View)
+                </button>
+                <button onclick="switchStTab('files')" id="st-tab-btn-files" class="pb-3 text-slate-400 hover:text-slate-200 flex items-center gap-2 whitespace-nowrap">
+                    <i class="fa-solid fa-folder-open"></i> Shared Study Files
+                </button>
+            </nav>
+
+            <!-- TAB 1: DASHBOARD & ANALYTICS -->
+            <div id="st-tab-dash" class="space-y-8">
+                
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    
+                    <!-- Left Column: Student Details + Practical Results Pie Chart + QR Code Pass -->
+                    <div class="lg:col-span-1 glass-panel p-6 space-y-6">
+                        <div class="flex items-center space-x-4 pb-6 border-b border-slate-700">
+                            <img id="stAvatar" src="" alt="Student Avatar" class="w-20 h-20 rounded-2xl border-2 border-amber-400/50 bg-slate-900 p-1 shadow-md object-cover">
+                            <div>
+                                <h3 id="stName" class="text-2xl font-bold font-cinzel text-slate-100">Loading...</h3>
+                                <p class="text-xs font-mono text-cyan-400">ID: <span id="stId">...</span></p>
+                                <div class="mt-2 inline-block px-3 py-0.5 bg-slate-800 border border-slate-600 rounded-full text-xs text-slate-300 font-semibold">
+                                    <i class="fa-solid fa-chalkboard-user mr-1 text-amber-400"></i><span id="stGrade">06 - Science</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Custom Evaluation Column Breakdown Pie Chart -->
+                        <div class="bg-slate-950/90 border border-emerald-500/30 p-5 rounded-2xl space-y-3">
+                            <div class="flex items-center justify-between gap-1">
+                                <h4 class="text-xs font-bold font-cinzel text-emerald-300 uppercase tracking-wider flex items-center gap-1.5">
+                                    <i class="fa-solid fa-chart-pie text-emerald-400"></i> Evaluation Pie Chart
+                                </h4>
+                                <select id="stColumnPieSelect" onchange="changeStudentSidebarPie(this.value)" class="bg-slate-900 border border-slate-700 rounded-lg px-2 py-0.5 text-[10px] text-emerald-400 focus:outline-none max-w-[120px] truncate">
+                                    <!-- Populated dynamically -->
+                                </select>
+                            </div>
+                            <div class="h-48 relative flex items-center justify-center">
+                                <canvas id="stPracticalPieChart"></canvas>
+                            </div>
+                            <div id="stSidebarPieLegend" class="text-[10px] text-slate-400 text-center font-mono"></div>
+                        </div>
+
+                        <!-- Student Statistics & Verification QR -->
+                        <div class="space-y-3 text-sm">
+                            <div class="flex justify-between items-center text-slate-300">
+                                <span class="text-slate-400">Homeroom Educator:</span>
+                                <span id="stTeacher" class="font-semibold text-slate-200 branding-teacher-name">Mr. Laknath Amarasinghe</span>
+                            </div>
+                            <div class="flex justify-between items-center text-slate-300">
+                                <span class="text-slate-400">Annual Unit Test Avg:</span>
+                                <span id="stAvg" class="font-bold text-amber-300">0.0 / 100</span>
+                            </div>
+                            <div class="flex justify-between items-center text-slate-300">
+                                <span class="text-slate-400">Class Attendance:</span>
+                                <span id="stAttendance" class="font-semibold text-emerald-400">95%</span>
+                            </div>
+                            <div class="flex justify-between items-center text-slate-300">
+                                <span class="text-slate-400">Academic Standing:</span>
+                                <span id="stStatus" class="font-bold text-cyan-300">Active Progress</span>
+                            </div>
+
+                            <!-- Student QR Code Pass -->
+                            <div class="pt-3 border-t border-slate-700/70 text-center space-y-1">
+                                <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">Authorized Student QR Pass</span>
+                                <div class="bg-white p-2 rounded-xl inline-block shadow-md mx-auto">
+                                    <div id="stStudentQrBox"></div>
+                                </div>
+                                <p id="stQrKeyDisplay" class="text-[10px] font-mono text-cyan-300">QR-ST-84092</p>
+                            </div>
+
+                            <div class="pt-3 border-t border-slate-700/70 space-y-1">
+                                <span class="text-xs font-bold text-slate-300">Teacher Remarks:</span>
+                                <p id="stTeacherRemarks" class="text-xs text-slate-400 bg-slate-950/90 p-3 rounded-xl border border-slate-800 leading-relaxed italic">
+                                    Demonstrates excellent understanding in weekly practicals and unit revision tests.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Month Selector, Weekly Progress Table & Charts -->
+                    <div class="lg:col-span-2 space-y-8">
+                        
+                        <!-- Month Selector Tabs -->
+                        <div class="glass-panel p-4 space-y-3 no-print">
+                            <div class="flex items-center justify-between">
+                                <span class="text-xs font-bold uppercase text-amber-400 tracking-wider"><i class="fa-solid fa-calendar-days mr-1"></i> Select Academic Month:</span>
+                                <span id="selectedMonthLabel" class="text-xs font-bold text-cyan-300 uppercase">January</span>
+                            </div>
+                            <div id="monthTabsContainer" class="flex flex-wrap gap-2 pt-1">
+                                <!-- Month Buttons -->
+                            </div>
+                        </div>
+
+                        <!-- Selected Month Weekly Progress Table with Dynamic Columns & (Still not attended) State -->
+                        <div class="glass-panel p-6 space-y-4">
+                            <div class="pb-2 border-b border-slate-700">
+                                <h4 class="text-lg font-bold font-cinzel text-slate-100"><span id="tableMonthTitle">January</span> Weekly Progress Table</h4>
+                                <p class="text-xs text-slate-400">Weekly guidebook completion, past paper status, practical ratings & unit scores</p>
+                            </div>
+
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-left text-sm text-slate-300">
+                                    <thead class="bg-slate-950/90 text-slate-300 font-semibold uppercase text-xs border-b border-slate-700">
+                                        <tr id="stWeeklyTableHeadRow">
+                                            <!-- Dynamically populated from LMSCore.getWeeklyColumns() -->
+                                        </tr>
+                                    </thead>
+                                    <tbody id="stWeeklyTableBody" class="divide-y divide-slate-800">
+                                        <!-- Dynamically populated -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Weekly Evaluation Columns Pie Charts Summary Gallery -->
+                        <div class="glass-panel p-6 space-y-4 border-emerald-500/30">
+                            <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+                                <div>
+                                    <h4 class="text-base font-bold font-cinzel text-emerald-400 flex items-center gap-2">
+                                        <i class="fa-solid fa-chart-pie text-emerald-400 text-lg"></i>
+                                        <span>Weekly Evaluation Summary (Pie Charts)</span>
+                                    </h4>
+                                    <p class="text-xs text-slate-400">Visual performance breakdowns across all customized evaluation criteria for <span id="stPieScopeLabel" class="text-amber-400 font-bold">January</span>.</p>
+                                </div>
+                                <span class="text-[10px] text-slate-400 font-mono bg-slate-900 px-3 py-1 rounded-full border border-slate-800">
+                                    All Columns Breakdown
+                                </span>
+                            </div>
+
+                            <!-- Dynamic Grid of Pie Charts (one per manually added column) -->
+                            <div id="stAllColumnsPieGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                                <!-- Populated dynamically by JS -->
+                            </div>
+                        </div>
+
+                        <!-- Charts Row (Default 0 for unrecorded months & Blank-Default Term Marks) -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="glass-panel p-5 space-y-3">
+                                <div class="flex justify-between items-center">
+                                    <h5 class="text-sm font-bold text-slate-200 font-cinzel"><i class="fa-solid fa-chart-line text-amber-400 mr-2"></i>12-Month Unit Test Trend</h5>
+                                    <span class="text-[10px] text-slate-400 font-mono">Default 0 Baseline</span>
+                                </div>
+                                <div class="h-56 relative">
+                                    <canvas id="stAnnualTrendChart"></canvas>
+                                </div>
+                            </div>
+
+                            <div class="glass-panel p-5 space-y-3">
+                                <div class="flex justify-between items-center">
+                                    <h5 class="text-sm font-bold text-slate-200 font-cinzel"><i class="fa-solid fa-chart-column text-rose-400 mr-2"></i>Term Assessment Marks</h5>
+                                    <span class="text-[10px] text-slate-400 font-mono">Blank by Default</span>
+                                </div>
+                                <div class="h-56 relative">
+                                    <canvas id="stTermChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- TAB 2: GRADE-WISE NOTIFICATIONS & ANNOUNCEMENTS -->
+            <div id="st-tab-notifs" class="hidden space-y-6">
+                <div class="glass-panel p-6 space-y-6 border-amber-500/30">
+                    <div class="flex justify-between items-center pb-4 border-b border-slate-700">
+                        <div>
+                            <h3 class="text-xl font-bold font-cinzel text-slate-100"><i class="fa-solid fa-bullhorn mr-2 text-amber-400"></i>Class Notices & Announcements</h3>
+                            <p class="text-xs text-slate-400">Official broadcast notifications delivered specifically to your grade level.</p>
+                        </div>
+                    </div>
+
+                    <div id="stNotifsContainer" class="space-y-4">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 3: ACADEMIC CALENDAR (GOOGLE CALENDAR LAYOUT) -->
+            <div id="st-tab-cal" class="hidden space-y-6">
+                <div class="glass-panel p-6 space-y-6 border-emerald-500/30">
+                    
+                    <!-- Google Calendar Top Bar -->
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 pb-4 border-b border-slate-700">
+                        <div class="flex items-center space-x-3">
+                            <button id="stCalTodayBtn" class="border border-slate-700 hover:bg-slate-800 text-slate-200 px-4 py-1.5 rounded-full text-xs font-semibold transition">
+                                Today
+                            </button>
+                            <div class="flex items-center space-x-1">
+                                <button id="stCalPrevBtn" class="w-8 h-8 rounded-full hover:bg-slate-800 text-slate-300 flex items-center justify-center transition">
+                                    <i class="fa-solid fa-chevron-left text-xs"></i>
+                                </button>
+                                <button id="stCalNextBtn" class="w-8 h-8 rounded-full hover:bg-slate-800 text-slate-300 flex items-center justify-center transition">
+                                    <i class="fa-solid fa-chevron-right text-xs"></i>
+                                </button>
+                            </div>
+                            <h3 id="stCalMonthYearLabel" class="text-xl font-bold font-sans text-slate-100 pl-2">
+                                August 2026
+                            </h3>
+                        </div>
+
+                        <!-- Legend Chips -->
+                        <div class="flex items-center space-x-3 text-xs">
+                            <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-blue-500"></span> Live Class</span>
+                            <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-red-500"></span> Exam</span>
+                            <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span> Assignment</span>
+                            <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span> Holiday</span>
+                        </div>
+                    </div>
+
+                    <!-- Month Calendar Grid (Google Calendar Layout) -->
+                    <div class="bg-slate-950/90 rounded-2xl border border-slate-800 overflow-hidden shadow-2xl">
+                        <div class="grid grid-cols-7 text-center font-bold text-[11px] text-slate-400 py-3 bg-slate-900/60 border-b border-slate-800 tracking-wider uppercase">
+                            <div>MON</div>
+                            <div>TUE</div>
+                            <div>WED</div>
+                            <div>THU</div>
+                            <div>FRI</div>
+                            <div>SAT</div>
+                            <div>SUN</div>
+                        </div>
+                        <div id="stCalendarGridCells" class="grid grid-cols-7 gap-[1px] bg-slate-800">
+                            <!-- Populated dynamically by JS -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 4: SHARED STUDY FILES -->
+            <div id="st-tab-files" class="hidden space-y-6">
+                <div class="glass-panel p-6 space-y-6">
+                    <div>
+                        <h3 class="text-xl font-bold font-cinzel text-slate-100">Shared Study Files & Guidebooks</h3>
+                        <p class="text-xs text-slate-400">Download theory guidebooks, past paper sets, and practical worksheets shared by your educator.</p>
+                    </div>
+
+                    <div id="stFilesContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- Populated via JS -->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 border-t border-slate-800 py-6 text-center text-xs text-slate-500 no-print">
+        <p>&copy; 2026 Science with Laknath. Student Academic Results Portal.</p>
+    </footer>
+
+    <!-- Core LMS Engine & Scripts -->
+    <script src="assets/js/lms-core.js"></script>
+    <script>
+        const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+        let currentStudent = null;
+        let selectedMonth = "January";
+        let annualChart = null;
+        let termChart = null;
+        let stPracticalPieChart = null;
+
+        let stCalYear = 2026;
+        let stCalMonth = 7; // August
+
+        
+        // Live auto-refresh when window is focused or every 10 seconds
+        window.addEventListener('focus', async () => {
+            if (window.LMSCore && currentStudent) {
+                const students = await window.LMSCore.getStudents(true);
+                const updated = students.find(s => s.student_info && s.student_info.student_id === currentStudent.student_info.student_id);
+                if (updated) {
+                    currentStudent = updated;
+                    renderStudentPage();
+                }
+            }
+        });
+
+        setInterval(async () => {
+            if (document.visibilityState === 'visible' && window.LMSCore && currentStudent) {
+                const students = await window.LMSCore.getStudents(true);
+                const updated = students.find(s => s.student_info && s.student_info.student_id === currentStudent.student_info.student_id);
+                if (updated && JSON.stringify(updated) !== JSON.stringify(currentStudent)) {
+                    currentStudent = updated;
+                    renderStudentPage();
+                }
+            }
+        }, 8000);
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            if (window.LMSCore) {
+                window.LMSCore.applyThemeAndBranding();
+            }
+
+            const params = new URLSearchParams(window.location.search);
+            let queryId = (params.get('id') || params.get('student_id') || params.get('qr') || params.get('user') || '').trim().toLowerCase();
+
+            if (!queryId && window.location.hash) {
+                const hash = window.location.hash.replace('#', '').trim().toLowerCase();
+                queryId = hash.replace('id=', '').replace('qr=', '').trim();
+            }
+
+            const errorContainer = document.getElementById('errorContainer');
+            const studentProfileContent = document.getElementById('studentProfileContent');
+
+            const students = await window.LMSCore.getStudents();
+
+            if (queryId) {
+                currentStudent = students.find(s => {
+                    const info = s.student_info || {};
+                    return (info.student_id && info.student_id.toLowerCase() === queryId) ||
+                           (info.qr_code_key && info.qr_code_key.toLowerCase() === queryId) ||
+                           (info.qr_code_key && info.qr_code_key.toLowerCase() === ('qr-' + queryId)) ||
+                           (info.username && info.username.toLowerCase() === queryId) ||
+                           (info.name && info.name.toLowerCase() === queryId) ||
+                           (s.tab_name && s.tab_name.toLowerCase() === queryId);
+                });
+            }
+
+            if (!currentStudent && students.length > 0) {
+                currentStudent = students[0];
+            }
+
+            if (!currentStudent) {
+                errorContainer.classList.remove('hidden');
+                studentProfileContent.classList.add('hidden');
+                document.getElementById('errorMessage').textContent = `No student record found.`;
+                return;
+            }
+
+            checkLiveClassroomSession(currentStudent);
+            renderStudentPage();
+            renderStudentNotifications(currentStudent);
+            renderStudentCalendarGrid();
+            renderStudentFiles();
+        });
+
+        function checkLiveClassroomSession(student) {
+            const wa = window.LMSCore.getWhatsappSession();
+            const zoom = window.LMSCore.getZoomSession();
+            const banner = document.getElementById('stLiveClassBanner');
+            const stGrade = ((student.student_info && student.student_info.grade_class) || '').toLowerCase();
+            
+            const targetGrade = (wa.grade || zoom.grade || '').toLowerCase();
+            const isMatch = (wa.isLive || zoom.isLive) && (targetGrade === 'all classes' || targetGrade === 'all grades' || targetGrade.includes(stGrade) || stGrade.includes(targetGrade));
+
+            if (isMatch) {
+                banner.classList.remove('hidden');
+                document.getElementById('stClassTitle').textContent = wa.title || zoom.title || "Grade 06 Science - Live Class Q&A";
+                document.getElementById('stClassGrade').textContent = wa.grade || zoom.grade || "Class Session";
+                document.getElementById('stWaPhoneDisplay').textContent = wa.teacherWhatsappNumber ? "+" + wa.teacherWhatsappNumber : "+94 71 781 2092";
+
+                document.getElementById('stJoinWaGroupBtn').href = window.LMSCore.getWhatsappGroupUri();
+                document.getElementById('stDirectWaBtn').href = window.LMSCore.getWhatsappDirectUri(`Hello Teacher, I am joining from ${student.student_info.name} (${student.student_info.student_id}).`);
+
+                const zoomBtn = document.getElementById('stJoinZoomBtn');
+                if (zoom.meetingUrl && zoom.isLive) {
+                    zoomBtn.classList.remove('hidden');
+                    zoomBtn.href = zoom.meetingUrl;
+                } else {
+                    zoomBtn.classList.add('hidden');
+                }
+            } else {
+                banner.classList.add('hidden');
+            }
+        }
+
+        function switchStTab(tabKey) {
+            ['dash', 'notifs', 'cal', 'files'].forEach(t => {
+                const view = document.getElementById(`st-tab-${t}`);
+                const btn = document.getElementById(`st-tab-btn-${t}`);
+                if (view && btn) {
+                    if (t === tabKey) {
+                        view.classList.remove('hidden');
+                        btn.className = "pb-3 text-amber-400 border-b-2 border-amber-400 flex items-center gap-2 whitespace-nowrap";
+                    } else {
+                        view.classList.add('hidden');
+                        btn.className = "pb-3 text-slate-400 hover:text-slate-200 flex items-center gap-2 whitespace-nowrap";
+                    }
+                }
+            });
+            if (tabKey === 'cal') {
+                renderStudentCalendarGrid();
+            }
+        }
+
+        function renderStudentPage() {
+            const info = currentStudent.student_info;
+            document.getElementById('stName').textContent = info.name;
+            document.getElementById('stId').textContent = info.student_id;
+            document.getElementById('stGrade').textContent = info.grade_class;
+            document.getElementById('stTeacher').textContent = info.homeroom_teacher;
+            document.getElementById('stAvatar').src = info.avatar || ("https://api.dicebear.com/7.x/avataaars/svg?seed=" + encodeURIComponent(info.name));
+            document.getElementById('stAvg').textContent = (currentStudent.summary.average_unit_test || 0) + ' / 100';
+            document.getElementById('stAttendance').textContent = currentStudent.summary.attendance || '95%';
+            document.getElementById('stStatus').textContent = currentStudent.summary.overall_status || 'Active Progress';
+            document.getElementById('stTeacherRemarks').textContent = currentStudent.teacher_notes || "Demonstrates strong understanding in weekly practicals and unit revision tests.";
+
+            // Render Student QR Pass
+            const qrBox = document.getElementById('stStudentQrBox');
+            qrBox.innerHTML = '';
+            const fullUrl = window.LMSCore.getStudentDirectUrl(info.student_id);
+            new QRCode(qrBox, { text: fullUrl, width: 85, height: 85, colorDark: "#0c0710", colorLight: "#ffffff" });
+            document.getElementById('stQrKeyDisplay').textContent = info.qr_code_key || ("QR-" + info.student_id);
+
+            renderMonthTabs();
+            selectMonth(selectedMonth || "January");
+            renderCharts();
+        }
+
+        function renderStudentNotifications(student) {
+            const stGrade = student.student_info.grade_class || "06 - Science";
+            const notifs = window.LMSCore.getNotificationsForGrade(stGrade);
+            const container = document.getElementById('stNotifsContainer');
+            container.innerHTML = '';
+
+            document.getElementById('stNotifBadgeCount').textContent = notifs.length;
+
+            if (notifs.length === 0) {
+                container.innerHTML = `
+                    <div class="p-8 text-center text-slate-400">
+                        <i class="fa-solid fa-bell-slash text-2xl mb-2 text-slate-500"></i>
+                        <p class="text-xs">No active announcements for ${stGrade} at the moment.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            notifs.forEach(n => {
+                const card = document.createElement('div');
+                card.className = "bg-slate-950 p-5 rounded-2xl border border-slate-800 space-y-2";
+                
+                const getPriorityBadge = (p) => {
+                    if (p.includes('Exam')) return 'bg-rose-500/20 text-rose-300 border-rose-500/40';
+                    if (p.includes('Live')) return 'bg-sky-500/20 text-sky-300 border-sky-500/40';
+                    if (p.includes('Homework')) return 'bg-amber-500/20 text-amber-300 border-amber-500/40';
+                    return 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40';
+                };
+
+                card.innerHTML = `
+                    <div class="flex items-center justify-between">
+                        <span class="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase ${getPriorityBadge(n.priority)}">${n.priority}</span>
+                        <span class="text-xs font-mono text-slate-400">${n.date} • ${n.time}</span>
+                    </div>
+                    <h4 class="text-base font-bold font-cinzel text-slate-100">${n.title}</h4>
+                    <p class="text-xs text-slate-300 leading-relaxed">${n.message}</p>
+                    <div class="pt-2 flex justify-between items-center text-[11px] text-slate-400 border-t border-slate-900">
+                        <span>Sender: <strong class="text-amber-300">${n.sender}</strong></span>
+                        <span class="font-mono text-cyan-300">Target: ${n.grade}</span>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // --- GOOGLE CALENDAR STYLED MONTH GRID ---
+        function renderStudentCalendarGrid() {
+            const grid = document.getElementById('stCalendarGridCells');
+            grid.innerHTML = '';
+
+            const date = new Date(stCalYear, stCalMonth, 1);
+            const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+            document.getElementById('stCalMonthYearLabel').textContent = `${monthNames[stCalMonth]} ${stCalYear}`;
+
+            const firstDayIndex = (date.getDay() + 6) % 7;
+            const lastDay = new Date(stCalYear, stCalMonth + 1, 0).getDate();
+            const prevLastDay = new Date(stCalYear, stCalMonth, 0).getDate();
+
+            const events = window.LMSCore.getCalendarEvents();
+
+            for (let x = firstDayIndex; x > 0; x--) {
+                const cell = document.createElement('div');
+                cell.className = "min-h-[100px] p-2 bg-slate-950/40 opacity-35 border-b border-r border-slate-800/80 text-xs";
+                cell.innerHTML = `<span class="font-sans text-slate-500 text-[11px] font-medium">${prevLastDay - x + 1}</span>`;
+                grid.appendChild(cell);
+            }
+
+            const today = new Date();
+            for (let i = 1; i <= lastDay; i++) {
+                const cell = document.createElement('div');
+                const isToday = (today.getFullYear() === stCalYear && today.getMonth() === stCalMonth && today.getDate() === i);
+                
+                const curDateStr = `${stCalYear}-${String(stCalMonth + 1).padStart(2, '0')}-${String(i).padStart(2, '0')}`;
+                const dayEvents = events.filter(e => e.date === curDateStr);
+
+                cell.className = `min-h-[100px] p-2 bg-slate-950/95 border-b border-r border-slate-800/80 transition flex flex-col justify-between`;
+                
+                let eventsHtml = '';
+                dayEvents.forEach(ev => {
+                    let color = 'bg-red-500/20 text-red-300 border-l-2 border-red-500';
+                    if (ev.category === 'Class') color = 'bg-blue-500/20 text-blue-300 border-l-2 border-blue-500';
+                    if (ev.category === 'Assignment') color = 'bg-amber-500/20 text-amber-300 border-l-2 border-amber-500';
+                    if (ev.category === 'Holiday') color = 'bg-emerald-500/20 text-emerald-300 border-l-2 border-emerald-500';
+
+                    eventsHtml += `
+                        <div class="text-[10px] px-1.5 py-0.5 rounded truncate font-medium ${color}" title="${ev.title} (${ev.time})">
+                            <span class="font-bold">${ev.time.split(' ')[0]}</span> ${ev.title}
+                        </div>
+                    `;
+                });
+
+                cell.innerHTML = `
+                    <div class="flex justify-between items-center mb-1">
+                        ${isToday 
+                            ? `<span class="w-6 h-6 rounded-full bg-blue-600 text-white font-bold text-xs flex items-center justify-center shadow">${i}</span>` 
+                            : `<span class="font-sans text-[12px] font-semibold text-slate-300">${i}</span>`
+                        }
+                    </div>
+                    <div class="space-y-1 overflow-y-auto max-h-16 py-0.5">
+                        ${eventsHtml}
+                    </div>
+                `;
+
+                grid.appendChild(cell);
+            }
+
+            // Next month trailing days
+            const totalCells = firstDayIndex + lastDay;
+            const remaining = (7 - (totalCells % 7)) % 7;
+            for (let y = 1; y <= remaining; y++) {
+                const cell = document.createElement('div');
+                cell.className = "min-h-[100px] p-2 bg-slate-950/40 opacity-35 border-b border-r border-slate-800/80 text-xs";
+                cell.innerHTML = `<span class="font-sans text-slate-500 text-[11px] font-medium">${y}</span>`;
+                grid.appendChild(cell);
+            }
+        }
+
+        document.getElementById('stCalPrevBtn').addEventListener('click', () => {
+            stCalMonth--;
+            if (stCalMonth < 0) { stCalMonth = 11; stCalYear--; }
+            renderStudentCalendarGrid();
+        });
+
+        document.getElementById('stCalNextBtn').addEventListener('click', () => {
+            stCalMonth++;
+            if (stCalMonth > 11) { stCalMonth = 0; stCalYear++; }
+            renderStudentCalendarGrid();
+        });
+
+        document.getElementById('stCalTodayBtn').addEventListener('click', () => {
+            const d = new Date();
+            stCalYear = d.getFullYear();
+            stCalMonth = d.getMonth();
+            renderStudentCalendarGrid();
+        });
+
+        function renderMonthTabs() {
+            const container = document.getElementById('monthTabsContainer');
+            container.innerHTML = '';
+
+            MONTHS.forEach(m => {
+                const btn = document.createElement('button');
+                btn.className = `px-3 py-1.5 text-xs font-bold rounded-lg border transition ${m === selectedMonth ? 'bg-amber-500 text-slate-950 border-amber-400 font-extrabold' : 'bg-slate-900/80 text-slate-300 border-slate-700 hover:border-amber-400/50'}`;
+                btn.textContent = m.substring(0, 3).toUpperCase();
+                btn.addEventListener('click', () => selectMonth(m));
+                container.appendChild(btn);
+            });
+        }
+
+        // --- WEEKLY TABLE WITH DYNAMIC COLUMNS ---
+        function selectMonth(monthName) {
+            selectedMonth = monthName;
+            document.getElementById('selectedMonthLabel').textContent = monthName;
+            document.getElementById('tableMonthTitle').textContent = monthName;
+            renderMonthTabs();
+            if (typeof renderStudentAllColumnPieCharts === 'function') {
+                renderStudentAllColumnPieCharts();
+            }
+
+            const theadRow = document.getElementById('stWeeklyTableHeadRow');
+            const tbody = document.getElementById('stWeeklyTableBody');
+            
+            theadRow.innerHTML = `<th class="px-4 py-3">Week</th>`;
+            tbody.innerHTML = '';
+
+            const cols = window.LMSCore.getWeeklyColumns();
+            cols.forEach(col => {
+                const th = document.createElement('th');
+                th.className = "px-4 py-3";
+                th.textContent = col.label;
+                theadRow.appendChild(th);
+            });
+
+            let monthData = (currentStudent.monthly_progress && currentStudent.monthly_progress[monthName]) ? currentStudent.monthly_progress[monthName] : [];
+            monthData = monthData.filter(r => r && String(r.week).toLowerCase() !== 'weeks');
+            while (monthData.length < 4) {
+                const blankRow = { week: `${monthData.length + 1} week` };
+                cols.forEach(c => {
+                    blankRow[c.key] = (c.type === 'number') ? null : "(Still not attended)";
+                });
+                monthData.push(blankRow);
+            }
+
+            const getBadgeClass = (val) => {
+                const s = String(val || '').trim().toLowerCase();
+                if (s === 'completed' || s === 'good' || s === 'excellent') return 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30';
+                if (s === '0.5 done' || s === 'average') return 'bg-amber-500/20 text-amber-300 border border-amber-500/30';
+                if (s === 'pending') return 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/30';
+                if (s === 'incomplete' || s === 'bad' || s === 'needs improvement') return 'bg-rose-500/20 text-rose-300 border border-rose-500/30';
+                return 'bg-slate-800/80 text-slate-400 border border-slate-700'; // (Still not attended)
+            };
+
+            const formatVal = (val) => {
+                const s = String(val || '').trim();
+                if (!s || s.toUpperCase() === 'NULL' || s.toLowerCase().includes('not attended')) return '(Still not attended)';
+                return s;
+            };
+
+            monthData.forEach((row, idx) => {
+                const tr = document.createElement('tr');
+                tr.className = idx % 2 === 0 ? 'bg-slate-900/50' : 'bg-slate-950/40';
+
+                let cellsHtml = `<td class="px-4 py-3.5 font-bold text-cyan-400">${row.week || `${idx + 1} week`}</td>`;
+
+                cols.forEach(c => {
+                    const val = row[c.key];
+                    if (c.type === 'number') {
+                        let utDisplay = `<span class="px-2.5 py-1 rounded-full text-xs font-semibold bg-slate-800/80 text-slate-400 border border-slate-700">(Still not attended)</span>`;
+                        if (val !== null && val !== undefined && !isNaN(val)) {
+                            utDisplay = `<span class="font-bold text-emerald-400">${val}</span> <span class="text-xs text-slate-400">/ 100</span>`;
+                        }
+                        cellsHtml += `<td class="px-4 py-3.5">${utDisplay}</td>`;
+                    } else if (c.type === 'text') {
+                        cellsHtml += `<td class="px-4 py-3.5"><span class="font-mono text-xs text-slate-300">${val || '-'}</span></td>`;
+                    } else { // dropdown
+                        cellsHtml += `<td class="px-4 py-3.5"><span class="px-2.5 py-1 rounded-full text-xs font-semibold ${getBadgeClass(val)}">${formatVal(val)}</span></td>`;
+                    }
+                });
+
+                tr.innerHTML = cellsHtml;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function renderStudentFiles() {
+            const files = window.LMSCore.getFiles();
+            const container = document.getElementById('stFilesContainer');
+            container.innerHTML = '';
+
+            files.forEach(f => {
+                const card = document.createElement('div');
+                card.className = "glass-panel p-6 space-y-4 hover:border-amber-400/50 transition";
+                card.innerHTML = `
+                    <div class="flex items-start justify-between">
+                        <div class="p-3 bg-amber-500/10 border border-amber-500/30 text-amber-300 rounded-2xl">
+                            <i class="fa-solid fa-file-pdf text-2xl"></i>
+                        </div>
+                        <span class="bg-cyan-500/10 text-cyan-300 border border-cyan-500/30 text-[11px] font-bold px-2.5 py-1 rounded-full">${f.category}</span>
+                    </div>
+                    <div>
+                        <h4 class="font-extrabold text-slate-100 text-base font-cinzel">${f.title}</h4>
+                        <p class="text-xs text-slate-400 mt-1">${f.description}</p>
+                    </div>
+                    <div class="pt-3 border-t border-slate-700/60 flex justify-between items-center text-xs">
+                        <span class="text-slate-400 font-mono">${f.fileSize} • ${f.uploadDate}</span>
+                        <a href="${f.fileUrl}" target="_blank" class="bg-gradient-to-r from-amber-500 to-yellow-400 hover:from-amber-400 hover:to-yellow-300 text-slate-950 font-extrabold px-4 py-2 rounded-xl flex items-center gap-1.5 transition shadow-md">
+                            <i class="fa-solid fa-download text-xs"></i> Download
+                        </a>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function renderCharts() {
+            if (annualChart) annualChart.destroy();
+            if (termChart) termChart.destroy();
+            if (stPracticalPieChart) stPracticalPieChart.destroy();
+
+            // 1. 12-Month Unit Test Line Chart (Default 0 for unrecorded months)
+            const monthlyAverages = MONTHS.map(m => {
+                const weeks = (currentStudent.monthly_progress && currentStudent.monthly_progress[m]) ? currentStudent.monthly_progress[m] : [];
+                return window.LMSCore.calculateMonthlyUnitTestAverage(weeks); // Returns 0 if no tests done!
+            });
+
+            annualChart = new Chart(document.getElementById('stAnnualTrendChart').getContext('2d'), {
+                type: 'line',
+                data: {
+                    labels: MONTHS.map(m => m.substring(0, 3)),
+                    datasets: [{
+                        label: 'Monthly Unit Test Average (Default 0)',
+                        data: monthlyAverages,
+                        borderColor: '#fbbf24',
+                        backgroundColor: 'rgba(251, 191, 36, 0.15)',
+                        borderWidth: 3,
+                        fill: true,
+                        tension: 0.35,
+                        pointBackgroundColor: '#e11d48',
+                        pointBorderColor: '#0c0710',
+                        pointBorderWidth: 2,
+                        pointRadius: 5,
+                        pointHoverRadius: 7
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { labels: { color: '#cbd5e1', font: { family: 'Rajdhani', size: 12 } } },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const val = context.raw;
+                                    const mName = MONTHS[context.dataIndex];
+                                    const weeks = (currentStudent.monthly_progress && currentStudent.monthly_progress[mName]) || [];
+                                    const done = weeks.filter(w => w && typeof w.unit_test === 'number' && !isNaN(w.unit_test) && w.unit_test !== null).length;
+                                    return ` Avg: ${val} / 100 (${done} of ${weeks.length} tests completed)`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: { ticks: { color: '#94a3b8' }, grid: { color: 'rgba(255, 255, 255, 0.05)' } },
+                        y: { min: 0, max: 100, ticks: { color: '#94a3b8' }, grid: { color: 'rgba(255, 255, 255, 0.05)' } }
+                    }
+                }
+            });
+
+            // 2. Term Assessment Marks Bar Chart (Blank/0 by default)
+            const termLabels = (currentStudent.assessments || []).map(a => a.term);
+            const termScores = (currentStudent.assessments || []).map(a => (a.score !== null && a.score !== undefined) ? a.score : 0);
+
+            termChart = new Chart(document.getElementById('stTermChart').getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels: termLabels,
+                    datasets: [{
+                        label: 'Assessment Score',
+                        data: termScores,
+                        backgroundColor: ['rgba(225, 29, 72, 0.85)', 'rgba(245, 158, 11, 0.85)', 'rgba(14, 165, 233, 0.85)', 'rgba(16, 185, 129, 0.85)', 'rgba(168, 85, 247, 0.85)'],
+                        borderColor: ['#e11d48', '#f59e0b', '#0ea5e9', '#10b981', '#a855f7'],
+                        borderWidth: 2,
+                        borderRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const orig = (currentStudent.assessments && currentStudent.assessments[context.dataIndex]) ? currentStudent.assessments[context.dataIndex].score : null;
+                                    if (orig === null || orig === undefined) return ' Score: Not Entered (Blank)';
+                                    return ` Score: ${orig} / 100`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: { ticks: { color: '#94a3b8' }, grid: { display: false } },
+                        y: { min: 0, max: 100, ticks: { color: '#94a3b8' }, grid: { color: 'rgba(255, 255, 255, 0.05)' } }
+                    }
+                }
+            });
+
+            // 3. Render Custom Evaluation Columns Pie Charts Suite
+            renderStudentAllColumnPieCharts();
+        }
+
+        let studentColumnCharts = {};
+        let activeStudentColKey = '';
+
+        function changeStudentSidebarPie(colKey) {
+            activeStudentColKey = colKey;
+            renderStudentSidebarPie(colKey);
+        }
+
+        function renderStudentSidebarPie(colKey) {
+            const canvasEl = document.getElementById('stPracticalPieChart');
+            if (!canvasEl) return;
+
+            if (stPracticalPieChart) {
+                stPracticalPieChart.destroy();
+                stPracticalPieChart = null;
+            }
+
+            const pData = window.LMSCore.getColumnPieData(currentStudent, colKey, selectedMonth);
+            const legendDiv = document.getElementById('stSidebarPieLegend');
+
+            if (!pData || pData.labels.length === 0 || pData.totalEntries === 0) {
+                if (legendDiv) legendDiv.textContent = 'No evaluation data recorded.';
+                return;
+            }
+
+            stPracticalPieChart = new Chart(canvasEl.getContext('2d'), {
+                type: 'doughnut',
+                data: {
+                    labels: pData.labels,
+                    datasets: [{
+                        data: pData.data,
+                        backgroundColor: pData.colors,
+                        borderColor: '#0c0710',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'bottom', labels: { color: '#cbd5e1', font: { size: 9 }, boxWidth: 10 } },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                    const val = context.raw;
+                                    const pct = total > 0 ? ((val / total) * 100).toFixed(1) : 0;
+                                    return ` ${context.label}: ${val} (${pct}%)`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            if (legendDiv) {
+                legendDiv.textContent = `${pData.totalEvaluated} / ${pData.totalEntries} evaluated (${selectedMonth})`;
+            }
+        }
+
+        function renderStudentAllColumnPieCharts() {
+            // Update scope label text
+            const scopeLabel = document.getElementById('stPieScopeLabel');
+            if (scopeLabel) scopeLabel.textContent = selectedMonth;
+
+            // Destroy previous chart instances
+            Object.keys(studentColumnCharts).forEach(key => {
+                if (studentColumnCharts[key]) {
+                    studentColumnCharts[key].destroy();
+                }
+            });
+            studentColumnCharts = {};
+
+            const cols = window.LMSCore.getWeeklyColumns();
+            const grid = document.getElementById('stAllColumnsPieGrid');
+            const sidebarSelect = document.getElementById('stColumnPieSelect');
+
+            // 1. Sidebar select dropdown
+            if (sidebarSelect) {
+                sidebarSelect.innerHTML = '';
+                if (cols.length === 0) {
+                    sidebarSelect.innerHTML = '<option value="">No columns</option>';
+                    renderStudentSidebarPie('');
+                } else {
+                    cols.forEach(c => {
+                        const opt = document.createElement('option');
+                        opt.value = c.key;
+                        opt.textContent = c.label;
+                        if (c.key === activeStudentColKey) opt.selected = true;
+                        sidebarSelect.appendChild(opt);
+                    });
+                    if (!activeStudentColKey || !cols.some(c => c.key === activeStudentColKey)) {
+                        activeStudentColKey = cols[0].key;
+                    }
+                    renderStudentSidebarPie(activeStudentColKey);
+                }
+            }
+
+            // 2. Main Grid
+            if (!grid) return;
+            grid.innerHTML = '';
+
+            if (cols.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full p-8 text-center bg-slate-950/40 rounded-2xl border border-slate-800 space-y-2">
+                        <i class="fa-solid fa-chart-pie text-3xl text-slate-600 mb-1"></i>
+                        <h5 class="text-sm font-bold text-slate-300">No Evaluation Columns Configured</h5>
+                        <p class="text-xs text-slate-400 max-w-md mx-auto">
+                            The teacher has not added customized weekly evaluation columns yet. Once columns are added, real-time Pie Chart summaries will appear here.
+                        </p>
+                    </div>
+                `;
+                return;
+            }
+
+            // Render a card for every manually added column
+            cols.forEach(c => {
+                const pData = window.LMSCore.getColumnPieData(currentStudent, c.key, selectedMonth);
+
+                const card = document.createElement('div');
+                card.className = "p-4 rounded-2xl bg-slate-950/70 border border-slate-800 flex flex-col justify-between space-y-3 shadow-lg hover:border-emerald-500/30 transition";
+
+                let legendHtml = '<div class="space-y-1">';
+                pData.labels.forEach((lbl, idx) => {
+                    const count = pData.data[idx];
+                    const total = pData.data.reduce((a, b) => a + b, 0);
+                    const pct = total > 0 ? ((count / total) * 100).toFixed(0) : 0;
+                    legendHtml += `
+                        <div class="flex items-center justify-between text-[11px]">
+                            <span class="flex items-center gap-1.5 truncate">
+                                <span class="w-2.5 h-2.5 rounded-full inline-block flex-shrink-0" style="background-color: ${pData.colors[idx]}"></span>
+                                <span class="text-slate-300 truncate">${lbl}</span>
+                            </span>
+                            <span class="font-mono text-slate-400 font-semibold">${count} <span class="text-slate-500 text-[10px]">(${pct}%)</span></span>
+                        </div>
+                    `;
+                });
+                legendHtml += '</div>';
+
+                card.innerHTML = `
+                    <div class="flex items-center justify-between border-b border-slate-800/80 pb-2">
+                        <div class="truncate mr-2">
+                            <h5 class="text-xs font-bold text-emerald-300 truncate flex items-center gap-1.5">
+                                <i class="fa-solid fa-chart-pie text-emerald-400"></i> ${pData.columnLabel}
+                            </h5>
+                            <span class="text-[9px] text-slate-400 font-mono">[${pData.columnType === 'number' ? 'Marks (0-100)' : (pData.columnType === 'text' ? 'Text Status' : 'Dropdown')}]</span>
+                        </div>
+                        <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 flex-shrink-0">
+                            ${pData.totalEvaluated} / ${pData.totalEntries} Eval
+                        </span>
+                    </div>
+
+                    <div class="relative h-44 w-full flex items-center justify-center">
+                        <canvas id="stColChart_${pData.columnKey}"></canvas>
+                    </div>
+
+                    <div class="pt-2 border-t border-slate-800/80">
+                        ${legendHtml}
+                    </div>
+                `;
+
+                grid.appendChild(card);
+
+                setTimeout(() => {
+                    const canvas = document.getElementById(`stColChart_${pData.columnKey}`);
+                    if (canvas) {
+                        studentColumnCharts[pData.columnKey] = new Chart(canvas.getContext('2d'), {
+                            type: 'pie',
+                            data: {
+                                labels: pData.labels,
+                                datasets: [{
+                                    data: pData.data,
+                                    backgroundColor: pData.colors,
+                                    borderColor: '#0c0710',
+                                    borderWidth: 2
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                plugins: {
+                                    legend: { display: false },
+                                    tooltip: {
+                                        callbacks: {
+                                            label: function(context) {
+                                                const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                                const val = context.raw;
+                                                const pct = total > 0 ? ((val / total) * 100).toFixed(1) : 0;
+                                                return ` ${context.label}: ${val} (${pct}%)`;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        });
+                    }
+                }, 10);
+            });
+        }
+    </script>
+</body>
+</html>

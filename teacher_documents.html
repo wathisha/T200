@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Document Storage Vault by Grade (Teacher Access Only) | Science with Laknath</title>
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <script>
+        // STRICT ACCESS CONTROL: ONLY TEACHER OR ADMIN CAN ACCESS
+        if (sessionStorage.getItem('admin_authenticated') !== 'true') {
+            window.location.href = 'admin_login.html?redirect=teacher_documents.html';
+        }
+
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        cinzel: ['Cinzel', 'serif'],
+                        rajdhani: ['Rajdhani', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="antialiased text-slate-100 min-h-screen flex flex-col justify-between">
+
+    <!-- Header Navigation -->
+    <header class="bg-slate-950/90 border-b border-rose-900/40 sticky top-0 z-50 backdrop-blur-md no-print">
+        <div class="max-w-7xl mx-auto px-4 flex justify-between items-center h-20">
+            <div class="flex items-center space-x-3">
+                <img src="assets/images/logo.png" alt="Logo" class="h-12 w-12 object-contain rounded-xl border border-amber-500/30 p-1 bg-slate-950 branding-logo">
+                <div>
+                    <h1 class="text-xl font-bold font-cinzel text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-yellow-400 to-rose-400 branding-academy-name">
+                        SCIENCE with LAKNATH
+                    </h1>
+                    <p class="text-xs text-amber-400 font-rajdhani tracking-widest uppercase">Teacher Document Storage Vault</p>
+                </div>
+            </div>
+
+            <!-- Action Controls -->
+            <div class="flex items-center space-x-3">
+                <a href="students_directory.html" class="bg-slate-900 hover:bg-slate-800 text-amber-300 border border-amber-500/40 px-3.5 py-2 rounded-xl text-xs font-bold flex items-center space-x-1.5 transition">
+                    <i class="fa-solid fa-users"></i>
+                    <span>Students Directory</span>
+                </a>
+                <a href="admin.html" class="bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 px-3.5 py-2 rounded-xl text-xs font-bold flex items-center space-x-1.5 transition">
+                    <i class="fa-solid fa-sliders"></i>
+                    <span>Teacher Dashboard</span>
+                </a>
+                <button onclick="logoutAdmin()" class="bg-red-500/20 hover:bg-red-500/30 text-red-300 border border-red-500/40 px-3.5 py-2 rounded-xl text-xs font-bold flex items-center space-x-1.5 transition">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span>Logout</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow w-full space-y-8">
+
+        <!-- Top Showcase Banner -->
+        <section class="glass-panel p-6 sm:p-8 relative overflow-hidden border-rose-500/30">
+            <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+                <div class="flex items-center space-x-5">
+                    <img src="assets/images/teacher_banner.png" alt="Teacher Avatar" class="branding-teacher-photo w-20 h-24 sm:w-24 sm:h-28 object-cover rounded-2xl border-2 border-amber-400 shadow-xl bg-slate-950">
+                    <div class="space-y-1">
+                        <div class="flex items-center space-x-2">
+                            <span class="px-3 py-0.5 bg-rose-500/20 border border-rose-500/40 text-rose-300 text-xs font-bold rounded-full uppercase tracking-wider">
+                                Restricted Teacher Vault
+                            </span>
+                            <span class="px-3 py-0.5 bg-amber-500/20 border border-amber-500/40 text-amber-300 text-xs font-mono font-bold rounded-full branding-motto">
+                                UNDERSTAND TODAY, SUCCEED TOMORROW
+                            </span>
+                        </div>
+                        <h2 class="text-2xl sm:text-3xl font-bold font-cinzel text-slate-100">Teacher Grade-Wise Document Storage Vault</h2>
+                        <p class="text-xs text-slate-300">
+                            Private repository for lesson plans, term examination papers, official marking rubrics, question banks, and confidential practical manuals.
+                        </p>
+                    </div>
+                </div>
+
+                <button onclick="toggleUploadDocModal()" class="bg-gradient-to-r from-amber-500 to-yellow-400 hover:from-amber-400 hover:to-yellow-300 text-slate-950 font-extrabold px-5 py-3 rounded-2xl text-xs uppercase tracking-wider shadow-lg flex items-center space-x-2 transition">
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                    <span>Store New Document</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Grade Folder Tabs & Search -->
+        <section class="space-y-4">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div class="relative flex-grow max-w-md">
+                    <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+                    <input type="text" id="docSearchInput" placeholder="Search document title, category or notes..." class="w-full bg-slate-950 border border-slate-700 rounded-xl pl-11 pr-4 py-2.5 text-sm focus:outline-none focus:border-amber-400 text-slate-100">
+                </div>
+
+                <div class="flex items-center space-x-2 text-xs text-slate-400 font-mono">
+                    <i class="fa-solid fa-folder-open text-amber-400"></i>
+                    <span>Filter By Grade Folder:</span>
+                </div>
+            </div>
+
+            <!-- Grade Folder Tabs -->
+            <div id="gradeDocTabsContainer" class="flex flex-wrap gap-2 pt-1 pb-2 overflow-x-auto">
+                <button onclick="filterDocsByGrade('All')" class="grade-doc-tab px-4 py-2 text-xs font-bold rounded-xl border border-amber-400 bg-amber-500 text-slate-950 transition active font-extrabold" data-grade="All">
+                    All Grade Folders
+                </button>
+                <button onclick="filterDocsByGrade('06 - Science')" class="grade-doc-tab px-4 py-2 text-xs font-bold rounded-xl border border-slate-700 bg-slate-900/80 text-slate-300 hover:border-amber-400/50 transition" data-grade="06 - Science">
+                    Grade 06 Folder
+                </button>
+                <button onclick="filterDocsByGrade('07 - Science')" class="grade-doc-tab px-4 py-2 text-xs font-bold rounded-xl border border-slate-700 bg-slate-900/80 text-slate-300 hover:border-amber-400/50 transition" data-grade="07 - Science">
+                    Grade 07 Folder
+                </button>
+                <button onclick="filterDocsByGrade('08 - Science')" class="grade-doc-tab px-4 py-2 text-xs font-bold rounded-xl border border-slate-700 bg-slate-900/80 text-slate-300 hover:border-amber-400/50 transition" data-grade="08 - Science">
+                    Grade 08 Folder
+                </button>
+                <button onclick="filterDocsByGrade('09 - Science')" class="grade-doc-tab px-4 py-2 text-xs font-bold rounded-xl border border-slate-700 bg-slate-900/80 text-slate-300 hover:border-amber-400/50 transition" data-grade="09 - Science">
+                    Grade 09 Folder
+                </button>
+                <button onclick="filterDocsByGrade('10 - Science')" class="grade-doc-tab px-4 py-2 text-xs font-bold rounded-xl border border-slate-700 bg-slate-900/80 text-slate-300 hover:border-amber-400/50 transition" data-grade="10 - Science">
+                    Grade 10 Folder
+                </button>
+                <button onclick="filterDocsByGrade('11 - Science')" class="grade-doc-tab px-4 py-2 text-xs font-bold rounded-xl border border-slate-700 bg-slate-900/80 text-slate-300 hover:border-amber-400/50 transition" data-grade="11 - Science">
+                    Grade 11 Folder
+                </button>
+                <button onclick="filterDocsByGrade('Confidential Master Files')" class="grade-doc-tab px-4 py-2 text-xs font-bold rounded-xl border border-slate-700 bg-slate-900/80 text-slate-300 hover:border-amber-400/50 transition" data-grade="Confidential Master Files">
+                    Confidential Master Vault
+                </button>
+            </div>
+        </section>
+
+        <!-- Documents Grid -->
+        <section id="teacherDocsContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Populated via JavaScript -->
+        </section>
+
+    </main>
+
+    <!-- Upload Document Modal -->
+    <div id="uploadDocModal" class="fixed inset-0 bg-slate-950/85 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4 overflow-y-auto">
+        <div class="bg-slate-900 border border-amber-500/50 rounded-3xl p-6 sm:p-8 max-w-xl w-full space-y-6 shadow-2xl my-8">
+            <div class="flex justify-between items-center pb-3 border-b border-slate-800">
+                <div>
+                    <h3 class="text-xl font-bold font-cinzel text-amber-300"><i class="fa-solid fa-file-shield mr-2"></i>Store Document in Teacher Vault</h3>
+                    <p class="text-xs text-slate-400">Classify document by specific grade folder for organized access.</p>
+                </div>
+                <button onclick="toggleUploadDocModal()" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+
+            <form id="uploadDocForm" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1">Document Title:</label>
+                    <input type="text" id="docTitleInput" required placeholder="e.g. Grade 08 Term 2 Model Paper with Marking Rubric" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-slate-100 focus:outline-none focus:border-amber-400">
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1">Grade Folder:</label>
+                        <select id="docGradeSelect" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2.5 text-sm text-slate-100 focus:outline-none focus:border-amber-400">
+                            <option value="06 - Science">Grade 06 Folder</option>
+                            <option value="07 - Science">Grade 07 Folder</option>
+                            <option value="08 - Science">Grade 08 Folder</option>
+                            <option value="09 - Science">Grade 09 Folder</option>
+                            <option value="10 - Science">Grade 10 Folder</option>
+                            <option value="11 - Science">Grade 11 Folder</option>
+                            <option value="Confidential Master Files">Confidential Master Vault</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1">Category / Document Type:</label>
+                        <select id="docCategorySelect" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2.5 text-sm text-slate-100 focus:outline-none focus:border-amber-400">
+                            <option value="Official Marking Scheme">Official Marking Scheme</option>
+                            <option value="Lesson Plan">Lesson Plan & Syllabus</option>
+                            <option value="Question Bank">Question Bank / Model Paper</option>
+                            <option value="Lab Practical Protocol">Lab Practical Protocol</option>
+                            <option value="Secretarial Record">Secretarial & Evaluation Roster</option>
+                            <option value="Revision Guide">Revision Guide</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1">Upload File or Enter URL:</label>
+                    <div class="space-y-2">
+                        <input type="file" id="docFileInput" class="w-full bg-slate-950 border border-slate-700 rounded-xl p-2 text-xs text-slate-300 file:mr-3 file:py-1 file:px-3 file:rounded-lg file:border-0 file:bg-amber-500 file:text-slate-950 file:font-bold file:text-xs">
+                        <input type="url" id="docUrlInput" placeholder="Or paste external PDF / Cloud storage link..." class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-2 text-xs text-slate-100 focus:outline-none focus:border-amber-400">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1">Confidential Notes / Description:</label>
+                    <textarea id="docDescInput" rows="2" placeholder="Notes for instructional use, question highlights, marking boundaries..." class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-2 text-xs text-slate-100 focus:outline-none focus:border-amber-400"></textarea>
+                </div>
+
+                <div class="flex justify-end space-x-3 pt-3 border-t border-slate-800">
+                    <button type="button" onclick="toggleUploadDocModal()" class="px-5 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl text-xs font-bold transition">Cancel</button>
+                    <button type="submit" class="px-6 py-2.5 bg-gradient-to-r from-amber-500 to-yellow-400 hover:from-amber-400 hover:to-yellow-300 text-slate-950 font-extrabold rounded-xl text-xs uppercase tracking-wider shadow-lg transition flex items-center space-x-1.5">
+                        <i class="fa-solid fa-lock"></i>
+                        <span>Securely Store Document</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Floating Background Customizer Quick Action -->
+    <div class="fixed bottom-4 right-4 z-40 no-print">
+        <button onclick="toggleQuickBgModal()" title="Customize Page Background" class="bg-slate-900/90 hover:bg-slate-800 text-amber-400 border border-amber-500/40 px-3.5 py-2.5 rounded-full text-xs font-bold shadow-2xl flex items-center space-x-2 backdrop-blur-md transition">
+            <i class="fa-solid fa-palette text-sm"></i>
+            <span class="hidden sm:inline">Edit Background</span>
+        </button>
+    </div>
+
+    <!-- Quick Background Modal -->
+    <div id="quickBgModal" class="fixed inset-0 bg-slate-950/85 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4">
+        <div class="bg-slate-900 border border-amber-500/50 rounded-3xl p-6 max-w-md w-full space-y-4 shadow-2xl">
+            <div class="flex justify-between items-center pb-2 border-b border-slate-800">
+                <h3 class="text-base font-bold font-cinzel text-amber-300"><i class="fa-solid fa-image mr-2"></i>Edit Page Background</h3>
+                <button onclick="toggleQuickBgModal()" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <p class="text-xs text-slate-400">Teacher / Admin control to customize background photo for this page or globally.</p>
+            <div class="space-y-3">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1">Upload Photo / Image:</label>
+                    <input type="file" id="quickBgFile" accept="image/*" class="w-full bg-slate-950 border border-slate-700 rounded-xl p-2 text-xs text-slate-300 file:mr-3 file:py-1 file:px-3 file:rounded-lg file:border-0 file:bg-amber-500 file:text-slate-950 file:font-bold file:text-xs">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1">Or Image URL:</label>
+                    <input type="url" id="quickBgUrl" placeholder="https://example.com/photo.jpg" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-100 focus:outline-none focus:border-amber-400">
+                </div>
+                <div class="flex items-center space-x-2 pt-2">
+                    <button onclick="applyQuickBg(false)" class="flex-1 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold py-2 rounded-xl text-xs transition">Apply This Page</button>
+                    <button onclick="applyQuickBg(true)" class="flex-1 bg-rose-600 hover:bg-rose-500 text-white font-bold py-2 rounded-xl text-xs transition">Apply Globally</button>
+                </div>
+                <button onclick="resetQuickBg()" class="w-full bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs py-1.5 rounded-xl border border-slate-700 transition">Reset to Default</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 border-t border-slate-800 py-6 text-center text-xs text-slate-500">
+        <p>&copy; 2026 Science with Laknath. Confidential Teacher Document Storage Vault.</p>
+    </footer>
+
+    <!-- Core LMS Engine & Document Scripts -->
+    <script src="assets/js/lms-core.js"></script>
+    <script>
+        let currentGradeFilter = "All";
+
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.LMSCore) {
+                window.LMSCore.applyThemeAndBranding('teacher_documents');
+                renderTeacherDocs();
+            }
+
+            document.getElementById('docSearchInput').addEventListener('input', (e) => {
+                renderTeacherDocs(e.target.value);
+            });
+
+            document.getElementById('uploadDocForm').addEventListener('submit', (e) => {
+                e.preventDefault();
+                const title = document.getElementById('docTitleInput').value.trim();
+                const grade = document.getElementById('docGradeSelect').value;
+                const category = document.getElementById('docCategorySelect').value;
+                const desc = document.getElementById('docDescInput').value.trim();
+                const fileInput = document.getElementById('docFileInput');
+                const urlInput = document.getElementById('docUrlInput').value.trim();
+
+                let fileUrl = urlInput || "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf";
+                let fileSize = "5.0 MB";
+
+                if (fileInput.files && fileInput.files[0]) {
+                    const file = fileInput.files[0];
+                    fileSize = (file.size / (1024 * 1024)).toFixed(1) + " MB";
+                    const reader = new FileReader();
+                    reader.onload = function (event) {
+                        window.LMSCore.addTeacherDoc({
+                            title,
+                            grade,
+                            category,
+                            fileUrl: event.target.result,
+                            fileSize,
+                            description: desc || "Confidential instructional material for teacher use."
+                        });
+                        document.getElementById('uploadDocForm').reset();
+                        toggleUploadDocModal();
+                        renderTeacherDocs();
+                        alert(`Document "${title}" securely stored in ${grade} folder!`);
+                    };
+                    reader.readAsDataURL(file);
+                } else {
+                    window.LMSCore.addTeacherDoc({
+                        title,
+                        grade,
+                        category,
+                        fileUrl,
+                        fileSize,
+                        description: desc || "Confidential instructional material for teacher use."
+                    });
+                    document.getElementById('uploadDocForm').reset();
+                    toggleUploadDocModal();
+                    renderTeacherDocs();
+                    alert(`Document "${title}" securely stored in ${grade} folder!`);
+                }
+            });
+        });
+
+        function logoutAdmin() {
+            if (window.LMSCore) { window.LMSCore.logoutUser(); } else { sessionStorage.removeItem('admin_authenticated'); window.location.href = 'admin_login.html'; }
+        }
+
+        function toggleUploadDocModal() {
+            document.getElementById('uploadDocModal').classList.toggle('hidden');
+        }
+
+        function filterDocsByGrade(grade) {
+            currentGradeFilter = grade;
+            document.querySelectorAll('.grade-doc-tab').forEach(tab => {
+                if (tab.getAttribute('data-grade') === grade) {
+                    tab.classList.add('border-amber-400', 'bg-amber-500', 'text-slate-950', 'active', 'font-extrabold');
+                    tab.classList.remove('border-slate-700', 'bg-slate-900/80', 'text-slate-300');
+                } else {
+                    tab.classList.remove('border-amber-400', 'bg-amber-500', 'text-slate-950', 'active', 'font-extrabold');
+                    tab.classList.add('border-slate-700', 'bg-slate-900/80', 'text-slate-300');
+                }
+            });
+            renderTeacherDocs(document.getElementById('docSearchInput').value);
+        }
+
+        function renderTeacherDocs(query = "") {
+            const container = document.getElementById('teacherDocsContainer');
+            container.innerHTML = "";
+
+            if (!window.LMSCore) return;
+            const docs = window.LMSCore.getTeacherDocs();
+            const cleanQ = query.trim().toLowerCase();
+
+            const filtered = docs.filter(d => {
+                const matchesGrade = (currentGradeFilter === "All") || 
+                                     (d.grade && d.grade.toLowerCase().includes(currentGradeFilter.toLowerCase())) ||
+                                     (currentGradeFilter.toLowerCase().includes((d.grade || '').toLowerCase()));
+                
+                const matchesQuery = !cleanQ || 
+                                     (d.title && d.title.toLowerCase().includes(cleanQ)) ||
+                                     (d.category && d.category.toLowerCase().includes(cleanQ)) ||
+                                     (d.description && d.description.toLowerCase().includes(cleanQ));
+
+                return matchesGrade && matchesQuery;
+            });
+
+            if (filtered.length === 0) {
+                container.innerHTML = `
+                    <div class="col-span-full glass-panel p-12 text-center space-y-3">
+                        <i class="fa-solid fa-folder-open text-4xl text-slate-500"></i>
+                        <h4 class="text-lg font-bold font-cinzel text-slate-300">No documents in this grade folder</h4>
+                        <p class="text-xs text-slate-400">Click "Store New Document" above to upload lesson plans, marking rubrics, or past paper solutions.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            filtered.forEach(doc => {
+                const card = document.createElement('div');
+                card.className = "glass-panel p-6 space-y-4 hover:border-amber-400/50 transition duration-300 flex flex-col justify-between";
+
+                card.innerHTML = `
+                    <div class="space-y-3">
+                        <div class="flex items-start justify-between gap-2">
+                            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-500/20 border border-amber-500/40 text-amber-300 uppercase font-mono">
+                                ${doc.grade || '06 - Science'}
+                            </span>
+                            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-rose-500/20 border border-rose-500/40 text-rose-300 uppercase font-mono">
+                                ${doc.category || 'Official Document'}
+                            </span>
+                        </div>
+
+                        <h4 class="text-base font-bold font-cinzel text-slate-100 leading-snug">${doc.title}</h4>
+                        <p class="text-xs text-slate-300 leading-relaxed">${doc.description || 'Confidential document stored by educator.'}</p>
+
+                        <div class="flex items-center justify-between text-[11px] text-slate-400 font-mono pt-2 border-t border-slate-800">
+                            <span><i class="fa-regular fa-calendar-check mr-1 text-amber-400"></i>${doc.uploadDate || '2026-08-15'}</span>
+                            <span><i class="fa-solid fa-file-pdf mr-1 text-rose-400"></i>${doc.fileSize || '3.5 MB'}</span>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center space-x-2 pt-3 border-t border-slate-800">
+                        <a href="${doc.fileUrl || '#'}" target="_blank" download class="flex-grow bg-slate-900 hover:bg-slate-800 text-amber-300 border border-amber-500/40 py-2 rounded-xl text-xs font-bold flex items-center justify-center space-x-1.5 transition">
+                            <i class="fa-solid fa-eye text-xs"></i>
+                            <span>View / Download</span>
+                        </a>
+                        <button onclick="confirmDeleteDoc('${doc.id}', '${doc.title}')" class="bg-red-500/20 hover:bg-red-500/30 text-red-300 border border-red-500/40 p-2 rounded-xl text-xs transition" title="Delete Document">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </button>
+                    </div>
+                `;
+
+                container.appendChild(card);
+            });
+        }
+
+        function confirmDeleteDoc(docId, docTitle) {
+            if (confirm(`Are you sure you want to delete "${docTitle}" from the confidential teacher vault?`)) {
+                window.LMSCore.deleteTeacherDoc(docId);
+                renderTeacherDocs(document.getElementById('docSearchInput').value);
+                alert(`Document "${docTitle}" successfully deleted.`);
+            }
+        }
+
+        function toggleQuickBgModal() {
+            document.getElementById('quickBgModal').classList.toggle('hidden');
+        }
+
+        function applyQuickBg(isGlobal) {
+            const fileInput = document.getElementById('quickBgFile');
+            const urlInput = document.getElementById('quickBgUrl');
+            const targetKey = isGlobal ? 'global' : 'teacher_documents';
+
+            if (fileInput.files && fileInput.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    window.LMSCore.savePageBackground(targetKey, e.target.result);
+                    window.LMSCore.applyBackground('teacher_documents');
+                    toggleQuickBgModal();
+                    alert(`Background photo saved ${isGlobal ? 'globally for all pages' : 'for this page'}!`);
+                };
+                reader.readAsDataURL(fileInput.files[0]);
+            } else if (urlInput.value.trim() !== '') {
+                window.LMSCore.savePageBackground(targetKey, urlInput.value.trim());
+                window.LMSCore.applyBackground('teacher_documents');
+                toggleQuickBgModal();
+                alert(`Background photo saved ${isGlobal ? 'globally for all pages' : 'for this page'}!`);
+            } else {
+                alert('Please upload an image file or enter an image URL.');
+            }
+        }
+
+        function resetQuickBg() {
+            window.LMSCore.savePageBackground('teacher_documents', '');
+            window.LMSCore.applyBackground('teacher_documents');
+            toggleQuickBgModal();
+            alert('Background reset to default.');
+        }
+    </script>
+</body>
+</html>

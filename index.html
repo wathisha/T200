@@ -1,0 +1,1773 @@
+<!DOCTYPE html>
+<html lang="en" class="theme-light scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Science with Laknath | Personalised Science Education in Sri Lanka (Grades 6–11)</title>
+    <meta name="description" content="Sri Lanka's premier modern science academy delivering a personalised Cambridge & National syllabus for Grade 6-11 students. Led by Mr. Laknath Amarasinghe.">
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Cinzel:wght@500;600;700;800&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome 6 CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Local ERP Styles -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+                        cinzel: ['Cinzel', 'serif'],
+                        rajdhani: ['Rajdhani', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                        },
+                        accent: {
+                            500: '#f59e0b',
+                            600: '#d97706',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Smooth section transitions & pill aesthetics matching theicschool.com */
+        .pill-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+        .ics-quote {
+            position: relative;
+        }
+        .ics-quote::before {
+            content: "“";
+            position: absolute;
+            top: -1.5rem;
+            left: -1rem;
+            font-size: 5rem;
+            font-family: serif;
+            opacity: 0.15;
+            line-height: 1;
+        }
+        .custom-card-hover {
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .custom-card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.08);
+        }
+    </style>
+</head>
+<body class="theme-light antialiased min-h-screen flex flex-col justify-between selection:bg-blue-600 selection:text-white">
+
+    <!-- Top Announcement Strip -->
+    <div class="bg-gradient-to-r from-blue-700 via-indigo-700 to-blue-900 text-white text-[11px] font-semibold py-2 px-4">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-1">
+            <div class="flex items-center space-x-2 text-center sm:text-left">
+                <span class="bg-amber-400 text-slate-900 text-[9px] font-black px-2 py-0.5 rounded-full uppercase tracking-wider">Live</span>
+                <span class="branding-announcement">Term 2 Revisions & Master Guidebooks Active | WhatsApp Q&A & Zoom Classroom Live</span>
+            </div>
+            <div class="flex items-center space-x-4 text-slate-200">
+                <span><i class="fa-solid fa-phone text-amber-300 mr-1"></i> Hotlines: <strong class="text-white branding-hotlines">071 355 8648</strong></span>
+                <a href="#student-portal" class="hover:text-amber-300 transition underline underline-offset-2">Student Portal Demo &rarr;</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation Bar (Clean Minimalist Frosted Glass) -->
+    <header class="py-3.5 backdrop-blur-md sticky top-0 z-50 transition border-b border-slate-200/70 header-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+            
+            <!-- Brand Logo & Title -->
+            <a href="index.html" class="flex items-center space-x-3 group">
+                <img src="assets/images/logo.png" alt="Logo" class="h-11 w-11 object-contain rounded-2xl border border-blue-500/20 p-1 bg-white shadow-sm branding-logo transition-transform group-hover:scale-105">
+                <div>
+                    <h1 class="text-lg sm:text-xl font-bold font-cinzel text-slate-400 tracking-tight leading-none branding-academy-name">
+                        SCIENCE with LAKNATH
+                    </h1>
+                    <p class="text-[10px] text-blue-600 font-rajdhani tracking-widest uppercase font-bold mt-1 branding-tagline">
+                        GRADE 6-11 SCIENCE SPECIALIST & ACADEMIC ERP
+                    </p>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation Links -->
+            <nav class="hidden lg:flex items-center space-x-6 text-xs font-semibold text-slate-600">
+                <a href="#who-we-are" class="hover:text-blue-600 transition">Who We Are</a>
+                <a href="#philosophy" class="hover:text-blue-600 transition">Why Us</a>
+                <a href="#feedback" class="hover:text-blue-600 transition">Feedback</a>
+                <a href="#curriculum" class="hover:text-blue-600 transition">Curriculum</a>
+                <a href="#schedule" class="hover:text-blue-600 transition">Schedule & Live Hub</a>
+                <a href="#student-portal" class="hover:text-blue-600 transition">Student ERP</a>
+                <a href="#where-we-are" class="hover:text-blue-600 transition">Where We Are</a>
+                <a href="#faq" class="hover:text-blue-600 transition">FAQ</a>
+                <a href="#contact" class="hover:text-blue-600 transition">Contact</a>
+            </nav>
+
+            <!-- Action Controls -->
+            <div class="flex items-center space-x-2.5">
+               <!-- <button type="button" onclick="window.LMSCore.toggleTheme()" class="theme-toggle-btn shadow-sm py-1.5 px-3 text-xs" title="Toggle Light/Dark Theme">
+                    <i class="fa-solid fa-moon text-indigo-600 mr-1.5"></i>
+                    <span>Dark Mode</span>
+                </button> -->
+                
+                <a href="#student-portal" class="hidden sm:inline-flex items-center space-x-1.5 bg-slate-100 hover:bg-slate-200 text-slate-800 px-3.5 py-2 rounded-full text-xs font-bold transition border border-slate-300">
+                    <i class="fa-solid fa-graduation-cap text-blue-600"></i>
+                    <span>Student Login</span>
+                </a>
+
+                <a href="https://wa.me/94717812092?text=Hello%20Mr.%20Laknath,%20I%20would%20like%20to%20inquire%20about%20enrolling%20my%20child%20in%20Science%20with%20Laknath." target="_blank" class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-4 py-2 rounded-full text-xs font-bold flex items-center space-x-2 shadow-md shadow-blue-500/20 transition">
+                    <i class="fa-brands fa-whatsapp text-sm text-emerald-300"></i>
+                    <span>WhatsApp Us</span>
+                </a>
+
+                <!-- Mobile Menu Button -->
+                <button type="button" onclick="toggleMobileMenu()" class="lg:hidden p-2 rounded-xl text-slate-600 hover:bg-slate-100 focus:outline-none" aria-label="Toggle Navigation">
+                    <i class="fa-solid fa-bars text-lg" id="mobileMenuIcon"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer Menu -->
+        <div id="mobileMenu" class="hidden lg:hidden px-4 pt-3 pb-4 border-t border-slate-200 mt-2 space-y-2 bg-white/95 backdrop-blur-md">
+            <a href="#who-we-are" onclick="toggleMobileMenu()" class="block py-2 text-xs font-semibold text-slate-700 hover:text-blue-600">Who We Are</a>
+            <a href="#philosophy" onclick="toggleMobileMenu()" class="block py-2 text-xs font-semibold text-slate-700 hover:text-blue-600">Why Us & Pillars</a>
+            <a href="#feedback" onclick="toggleMobileMenu()" class="block py-2 text-xs font-semibold text-slate-700 hover:text-blue-600">Parent Feedback</a>
+            <a href="#curriculum" onclick="toggleMobileMenu()" class="block py-2 text-xs font-semibold text-slate-700 hover:text-blue-600">Curriculum (Grades 6–11)</a>
+            <a href="#schedule" onclick="toggleMobileMenu()" class="block py-2 text-xs font-semibold text-slate-700 hover:text-blue-600">Schedule & Live Hub</a>
+            <a href="#student-portal" onclick="toggleMobileMenu()" class="block py-2 text-xs font-semibold text-slate-700 hover:text-blue-600">Student ERP Login</a>
+            <a href="#where-we-are" onclick="toggleMobileMenu()" class="block py-2 text-xs font-semibold text-slate-700 hover:text-blue-600">Where We Are</a>
+            <a href="#faq" onclick="toggleMobileMenu()" class="block py-2 text-xs font-semibold text-slate-700 hover:text-blue-600">FAQ</a>
+            <a href="#contact" onclick="toggleMobileMenu()" class="block py-2 text-xs font-semibold text-slate-700 hover:text-blue-600">Contact & Apply</a>
+            <div class="pt-2 flex flex-col gap-2 border-t border-slate-100">
+                <a href="admin_login.html" class="text-center py-2 bg-slate-100 rounded-xl text-xs font-bold text-slate-800">
+                    <i class="fa-solid fa-user-gear mr-1 text-indigo-600"></i> Teacher / Admin Portal
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ========================================================================= -->
+    <!-- 1. HERO SECTION (Mirroring theicschool.com)                              -->
+    <!-- ========================================================================= -->
+    <section class="relative overflow-hidden py-14 sm:py-20 lg:py-24 border-b border-slate-200/60 bg-gradient-to-b from-blue-50/50 via-white to-slate-50/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Hero Text & Calls to Action -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    
+                    <!-- Eyebrow Pill Badge -->
+                    <div class="inline-flex items-center space-x-2 bg-blue-500/10 border border-blue-500/30 px-3.5 py-1.5 rounded-full text-blue-700 text-xs font-bold tracking-wide">
+                        <span class="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
+                        <span>Personalised Science Education in Sri Lanka | Grades 6 to 11</span>
+                    </div>
+
+                    <!-- Headline (Exact format of theicschool.com) -->
+                    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-cinzel text-slate-900 tracking-tight leading-[1.15]">
+                        Sri Lanka's 1st Modern Science Academy, Delivering a <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-amber-600">Personalised Syllabus</span>
+                    </h1>
+
+                    <!-- Subhead -->
+                    <p class="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
+                        Preparing students for profound conceptual understanding, exam distinction, and success in an AI and STEM-driven future.
+                    </p>
+
+                    <!-- CTAs -->
+                    <div class="flex flex-wrap items-center justify-center lg:justify-start gap-3.5 pt-2">
+                        <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-7 py-3.5 rounded-full text-sm shadow-lg shadow-blue-500/25 transition flex items-center space-x-2">
+                            <i class="fa-regular fa-calendar-check"></i>
+                            <span>Book an Interview</span>
+                        </a>
+                        
+                        <a href="#student-portal" class="bg-white hover:bg-slate-50 text-slate-800 font-bold px-6 py-3.5 rounded-full text-sm border border-slate-300 shadow-sm transition flex items-center space-x-2">
+                            <i class="fa-solid fa-chart-line text-blue-600"></i>
+                            <span>Explore Student ERP</span>
+                        </a>
+
+                        <a href="https://wa.me/94717812092?text=Hello%20Mr.%20Laknath,%20I%20would%20like%20to%20book%20a%20visit%20to%20Science%20with%20Laknath." target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-6 py-3.5 rounded-full text-sm shadow-md shadow-emerald-600/20 transition flex items-center space-x-2">
+                            <i class="fa-brands fa-whatsapp text-lg"></i>
+                            <span>WhatsApp to Book a Visit</span>
+                        </a>
+                    </div>
+
+                    <!-- Key Feature Badges Row (Modeled after theicschool.com) -->
+                    <div class="pt-6 border-t border-slate-200/70 grid grid-cols-2 sm:grid-cols-3 gap-3 text-left">
+                        <div class="flex items-center space-x-2">
+                            <div class="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xs flex-shrink-0">
+                                <i class="fa-solid fa-book-bookmark"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-bold text-slate-900">Cambridge & National</h4>
+                                <p class="text-[11px] text-slate-500">Bilingual Curricula</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-2">
+                            <div class="w-8 h-8 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center text-xs flex-shrink-0">
+                                <i class="fa-solid fa-user-check"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-bold text-slate-900">Personalised</h4>
+                                <p class="text-[11px] text-slate-500">For Every Child</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-2">
+                            <div class="w-8 h-8 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center text-xs flex-shrink-0">
+                                <i class="fa-solid fa-clock"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-bold text-slate-900">Weekend & Evening</h4>
+                                <p class="text-[11px] text-slate-500">Flexible Sessions</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-2">
+                            <div class="w-8 h-8 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center text-xs flex-shrink-0">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-bold text-slate-900">Kalalgoda / Pannipitiya</h4>
+                                <p class="text-[11px] text-slate-500">Thalawathugoda Campus</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-2">
+                            <div class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-xs flex-shrink-0">
+                                <i class="fa-solid fa-graduation-cap"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-bold text-slate-900">Grades 6 to 11</h4>
+                                <p class="text-[11px] text-slate-500">Science Specialisation</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-2">
+                            <div class="w-8 h-8 rounded-full bg-cyan-100 text-cyan-600 flex items-center justify-center text-xs flex-shrink-0">
+                                <i class="fa-solid fa-microchip"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-bold text-slate-900">AI & ERP Ready</h4>
+                                <p class="text-[11px] text-slate-500">Progress Telemetry</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Right Artwork & Profile Poster Card -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative w-full max-w-md">
+                        <!-- Subtle Glow Accent behind artwork -->
+                        <div class="absolute -inset-2 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-3xl blur-xl opacity-20 -z-10"></div>
+                        
+                        <div class="glass-panel p-4 border-white/80 shadow-2xl relative rounded-3xl overflow-hidden bg-white/90">
+                            <img src="assets/images/teacher_banner.png" alt="Mr. Laknath Amarasinghe" class="branding-teacher-photo rounded-2xl w-full h-80 object-cover object-top border border-slate-200">
+                            
+                            <!-- Overlay Badge -->
+                            <div class="mt-4 p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-1">
+                                <div class="flex justify-between items-center">
+                                    <h3 class="text-base font-extrabold font-cinzel text-slate-900 branding-teacher-name">Mr. Laknath Amarasinghe</h3>
+                                    <span class="text-[10px] bg-blue-100 text-blue-700 font-bold px-2 py-0.5 rounded-full uppercase">Lead Specialist</span>
+                                </div>
+                                <p class="text-xs text-slate-500 font-medium branding-teacher-title">Head Science Specialist & IT Systems Lead</p>
+                                <p class="text-xs text-indigo-700 font-mono font-bold pt-1">
+                                    <i class="fa-solid fa-phone mr-1"></i> Hotlines: <span class="branding-hotlines">071 355 8648</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- 2. "WHAT IF YOUR CHILD LOVED GOING TO SCHOOL / STUDYING SCIENCE?"          -->
+    <!-- (Iconic Philosophical Core from theicschool.com)                          -->
+    <!-- ========================================================================= -->
+    <section id="philosophy" class="py-16 sm:py-24 bg-white border-b border-slate-200/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+                <span class="pill-badge bg-blue-50 text-blue-700 border border-blue-200">A New Educational Philosophy</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold font-cinzel text-slate-900 tracking-tight">
+                    What if your child loved studying science?
+                </h2>
+                <p class="text-base text-slate-600 leading-relaxed font-normal">
+                    When understanding replaces memorisation and curiosity replaces exam fear, academic engagement strengthens in lasting and transformative ways. At Science with Laknath, we re-imagine how science learning happens when children feel safe, respected, and genuinely mentored as individuals.
+                </p>
+            </div>
+
+            <!-- 4 Pillar Cards (Holistic, AI-Ready, Wellbeing, Democratic Values) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Pillar 1: Holistic Learning -->
+                <div class="glass-panel p-8 rounded-3xl border-slate-200/80 custom-card-hover flex flex-col justify-between space-y-6">
+                    <div class="space-y-4">
+                        <div class="w-12 h-12 rounded-2xl bg-blue-500/10 border border-blue-500/20 text-blue-600 flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-flask-vial"></i>
+                        </div>
+                        <h3 class="text-lg font-bold font-cinzel text-slate-900">Holistic Learning</h3>
+                        <p class="text-xs text-slate-500 font-semibold uppercase tracking-wider">Specimens, Experiments & Hands-On Discovery</p>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Science comes alive through tangible physical models, plant & animal tissue microscopy, chemical demonstrations, and interactive lab sessions rather than textbook memorization.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-slate-100 text-[11px] font-bold text-blue-600 flex items-center justify-between">
+                        <span>Hands-On Mastery</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+                </div>
+
+                <!-- Pillar 2: AI-Ready Skills -->
+                <div class="glass-panel p-8 rounded-3xl border-slate-200/80 custom-card-hover flex flex-col justify-between space-y-6">
+                    <div class="space-y-4">
+                        <div class="w-12 h-12 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-600 flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-brain"></i>
+                        </div>
+                        <h3 class="text-lg font-bold font-cinzel text-slate-900">AI-Ready Skills</h3>
+                        <p class="text-xs text-slate-500 font-semibold uppercase tracking-wider">Future-Forward Scientific Inquiry</p>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Equipping students with analytical reasoning, critical scientific thinking, and modern digital ERP scorecards that prepare them for tomorrow's technology landscape.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-slate-100 text-[11px] font-bold text-indigo-600 flex items-center justify-between">
+                        <span>Built-in From Day One</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+                </div>
+
+                <!-- Pillar 3: Wellbeing & Confidence -->
+                <div class="glass-panel p-8 rounded-3xl border-slate-200/80 custom-card-hover flex flex-col justify-between space-y-6">
+                    <div class="space-y-4">
+                        <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-heart-pulse"></i>
+                        </div>
+                        <h3 class="text-lg font-bold font-cinzel text-slate-900">Student Wellbeing</h3>
+                        <p class="text-xs text-slate-500 font-semibold uppercase tracking-wider">Eliminating Exam Anxiety & Fear</p>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Mistakes are treated as essential learning milestones. Students develop genuine self-confidence, academic resilience, and an enthusiastic mindset towards examinations.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-slate-100 text-[11px] font-bold text-emerald-600 flex items-center justify-between">
+                        <span>Nurturing Potential</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+                </div>
+
+                <!-- Pillar 4: Democratic Values & Mentorship -->
+                <div class="glass-panel p-8 rounded-3xl border-slate-200/80 custom-card-hover flex flex-col justify-between space-y-6">
+                    <div class="space-y-4">
+                        <div class="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/20 text-amber-600 flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-comments"></i>
+                        </div>
+                        <h3 class="text-lg font-bold font-cinzel text-slate-900">Democratic Values</h3>
+                        <p class="text-xs text-slate-500 font-semibold uppercase tracking-wider">Every Child Has a Voice & is Heard</p>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Direct teacher accessibility with 1-on-1 doubt clearance, active WhatsApp Q&A, and personalized feedback that respects each student's unique learning pace.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-slate-100 text-[11px] font-bold text-amber-600 flex items-center justify-between">
+                        <span>1-on-1 Mentorship</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- 3. PARENT & STUDENT FEEDBACK (Heartfelt Testimonials)                      -->
+    <!-- ========================================================================= -->
+    <section id="feedback" class="py-16 sm:py-24 bg-slate-50/50 border-b border-slate-200/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-2xl mx-auto space-y-3 mb-14">
+                <span class="pill-badge bg-amber-100 text-amber-800 border border-amber-300">Community Voices</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold font-cinzel text-slate-900 tracking-tight">
+                    What Parents & Students Say
+                </h2>
+                <p class="text-xs sm:text-sm text-slate-600">
+                    Real transformations from students and families across Sri Lanka who found joy and academic distinction.
+                </p>
+            </div>
+
+            <!-- Featured Large Testimonial (Matching theicschool.com layout) -->
+            <div class="max-w-4xl mx-auto mb-12">
+                <div class="glass-panel p-8 sm:p-12 rounded-3xl border-slate-200/80 shadow-xl bg-white relative overflow-hidden">
+                    <div class="flex items-center space-x-1 text-amber-400 text-sm mb-4">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <span class="text-slate-400 text-xs font-semibold ml-2">Verified Parent Feedback</span>
+                    </div>
+
+                    <blockquote class="text-lg sm:text-xl md:text-2xl text-slate-800 font-medium leading-relaxed italic ics-quote">
+                        “Finding an academy like Science with Laknath has really been a gift for our family. My child is able to be themselves, happy and confident, while still learning so well. We have seen a dramatic leap from 52% to 92% in term marks, and honestly I am very thankful to Mr. Laknath and the whole team for the care, dedication and lovely experience they have given our children and us parents.”
+                    </blockquote>
+
+                    <div class="mt-8 pt-6 border-t border-slate-100 flex flex-col sm:flex-row justify-between sm:items-center gap-2">
+                        <div>
+                            <h4 class="text-sm font-bold text-slate-900">Parents of a Grade 10 Student</h4>
+                            <p class="text-xs text-slate-500">2 and a half years at Science with Laknath</p>
+                        </div>
+                        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-200">
+                            <i class="fa-solid fa-certificate text-blue-500 mr-1.5"></i> Academic Distinction
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3 Grid Feedback Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <div class="glass-panel p-6 rounded-3xl border-slate-200/80 bg-white space-y-4">
+                    <div class="flex text-amber-400 text-xs">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-xs text-slate-600 leading-relaxed italic">
+                        “The real-time student ERP and weekly progress tracking allow us to see exactly where our daughter needs help. The practical sessions on Zoom and in-person make science her favorite subject!”
+                    </p>
+                    <div class="pt-3 border-t border-slate-100 flex items-center space-x-3">
+                        <div class="w-9 h-9 rounded-full bg-indigo-100 text-indigo-700 font-bold flex items-center justify-center text-xs">SS</div>
+                        <div>
+                            <h5 class="text-xs font-bold text-slate-900">Parent of Sarala Nilukshi</h5>
+                            <p class="text-[10px] text-slate-500">Grade 06 Science (ST-84093)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-panel p-6 rounded-3xl border-slate-200/80 bg-white space-y-4">
+                    <div class="flex text-amber-400 text-xs">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-xs text-slate-600 leading-relaxed italic">
+                        “Clear conceptual explanations, top 500 question banks, and past paper revisions helped me secure an 'A' grade with distinction. Learning with Sir Laknath is never stressful.”
+                    </p>
+                    <div class="pt-3 border-t border-slate-100 flex items-center space-x-3">
+                        <div class="w-9 h-9 rounded-full bg-blue-100 text-blue-700 font-bold flex items-center justify-center text-xs">AJ</div>
+                        <div>
+                            <h5 class="text-xs font-bold text-slate-900">Anudi Samarasinghe</h5>
+                            <p class="text-[10px] text-slate-500">Grade 11 Student (ST-84092)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-panel p-6 rounded-3xl border-slate-200/80 bg-white space-y-4">
+                    <div class="flex text-amber-400 text-xs">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-xs text-slate-600 leading-relaxed italic">
+                        “Unlike large tuition halls where students get lost in the crowd, Mr. Laknath gives personal feedback on every paper and answers WhatsApp questions immediately.”
+                    </p>
+                    <div class="pt-3 border-t border-slate-100 flex items-center space-x-3">
+                        <div class="w-9 h-9 rounded-full bg-emerald-100 text-emerald-700 font-bold flex items-center justify-center text-xs">DP</div>
+                        <div>
+                            <h5 class="text-xs font-bold text-slate-900">Parent of Pathum Sandeep</h5>
+                            <p class="text-[10px] text-slate-500">Grade 06 Science (ST-84079)</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- 4. "COME SEE WHAT WE DO DIFFERENTLY" CALLOUT BANNER                        -->
+    <!-- (Directly inspired by theicschool.com hallmark section)                    -->
+    <!-- ========================================================================= -->
+    <section class="py-16 bg-gradient-to-r from-blue-900 via-indigo-900 to-slate-900 text-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 space-y-6">
+            <span class="px-4 py-1.5 rounded-full text-xs font-extrabold uppercase tracking-widest bg-blue-500/20 text-blue-300 border border-blue-400/30">
+                Experience Personalised Science Education
+            </span>
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold font-cinzel tracking-tight text-white">
+                COME SEE WHAT WE DO DIFFERENTLY
+            </h2>
+            <p class="text-sm sm:text-base text-slate-300 max-w-2xl mx-auto font-light leading-relaxed">
+                Visit our physical academy in Kalalgoda / Pannipitiya or join a live online diagnostic session to observe how our interactive approach unlocks your child's scientific curiosity.
+            </p>
+            <div class="pt-4 flex flex-wrap items-center justify-center gap-4">
+                <a href="https://wa.me/94717812092?text=Hello%20Mr.%20Laknath,%20I%20would%20like%20to%20WhatsApp%20to%20book%20a%20visit%20to%20Science%20with%20Laknath." target="_blank" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-8 py-4 rounded-full text-xs sm:text-sm shadow-xl shadow-emerald-500/30 transition flex items-center space-x-2 uppercase tracking-wider">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>WhatsApp Us To Book a Visit</span>
+                </a>
+                <a href="#contact" class="bg-white/10 hover:bg-white/20 text-white font-bold px-8 py-4 rounded-full text-xs sm:text-sm border border-white/30 backdrop-blur-md transition flex items-center space-x-2 uppercase tracking-wider">
+                    <i class="fa-regular fa-envelope"></i>
+                    <span>Enrolment Inquiry Form</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- 5. ATMOSPHERE & VISUAL GALLERY SHOWCASE                                    -->
+    <!-- (Inspired by theicschool.com Workstation, Specimens & Classroom grid)     -->
+    <!-- ========================================================================= -->
+    <section class="py-16 sm:py-20 bg-white border-b border-slate-200/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto space-y-3 mb-12">
+                <span class="pill-badge bg-slate-100 text-slate-800 border border-slate-300">Campus & Learning Spaces</span>
+                <h2 class="text-3xl font-extrabold font-cinzel text-slate-900 tracking-tight">
+                    Inside Science with Laknath
+                </h2>
+                <p class="text-xs sm:text-sm text-slate-600">
+                    A vibrant atmosphere combining hands-on laboratory apparatus, individual workstations, and real-time digital ERP terminals.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                
+                <!-- Card 1: Workstation -->
+                <div class="group relative rounded-3xl overflow-hidden bg-slate-100 aspect-square shadow-md">
+                    <img src="assets/images/lms_background.png" alt="Interactive Classroom Workstation" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent p-4 flex flex-col justify-end text-white">
+                        <span class="text-[10px] uppercase font-bold text-amber-300 tracking-wider">Learning Space</span>
+                        <h4 class="text-xs sm:text-sm font-bold">Interactive Science Workstations</h4>
+                    </div>
+                </div>
+
+                <!-- Card 2: Teacher Mentorship -->
+                <div class="group relative rounded-3xl overflow-hidden bg-slate-100 aspect-square shadow-md">
+                    <img src="assets/images/teacher.png" alt="Mr. Laknath Amarasinghe Mentorship" class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent p-4 flex flex-col justify-end text-white">
+                        <span class="text-[10px] uppercase font-bold text-blue-300 tracking-wider">Specialist Faculty</span>
+                        <h4 class="text-xs sm:text-sm font-bold">Dedicated Teacher Mentorship</h4>
+                    </div>
+                </div>
+
+                <!-- Card 3: Laboratory Exploration -->
+                <div class="group relative rounded-3xl overflow-hidden bg-slate-100 aspect-square shadow-md">
+                    <div class="w-full h-full bg-gradient-to-br from-indigo-900 to-blue-950 flex flex-col items-center justify-center p-6 text-center text-white">
+                        <i class="fa-solid fa-microscope text-4xl text-blue-400 mb-3 group-hover:scale-110 transition"></i>
+                        <h4 class="text-xs sm:text-sm font-bold">Hands-On Microscopy</h4>
+                        <p class="text-[10px] text-slate-300 mt-1">Plant & animal tissue investigations</p>
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent p-4 flex flex-col justify-end text-white">
+                        <span class="text-[10px] uppercase font-bold text-emerald-300 tracking-wider">Laboratory</span>
+                        <h4 class="text-xs sm:text-sm font-bold">Live Practical Protocol</h4>
+                    </div>
+                </div>
+
+                <!-- Card 4: Digital ERP Tracking -->
+                <div class="group relative rounded-3xl overflow-hidden bg-slate-100 aspect-square shadow-md">
+                    <div class="w-full h-full bg-gradient-to-br from-slate-900 to-indigo-950 flex flex-col items-center justify-center p-6 text-center text-white">
+                        <i class="fa-solid fa-chart-pie text-4xl text-amber-400 mb-3 group-hover:scale-110 transition"></i>
+                        <h4 class="text-xs sm:text-sm font-bold">Telemetry & Analytics</h4>
+                        <p class="text-[10px] text-slate-300 mt-1">Weekly marks & unit test radar</p>
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent p-4 flex flex-col justify-end text-white">
+                        <span class="text-[10px] uppercase font-bold text-amber-300 tracking-wider">Cloud ERP</span>
+                        <h4 class="text-xs sm:text-sm font-bold">Parent & Student Portal</h4>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- 6. PROGRAMMES & GRADE-BY-GRADE CURRICULUM (Grades 6 to 11)                -->
+    <!-- ========================================================================= -->
+    <section id="curriculum" class="py-16 sm:py-24 bg-slate-50/50 border-b border-slate-200/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+                <span class="pill-badge bg-blue-100 text-blue-800 border border-blue-300">Comprehensive Academic Pathways</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold font-cinzel text-slate-900 tracking-tight">
+                    Curriculum & Grade Offerings
+                </h2>
+                <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+                    Delivering structured syllabus mastery aligned with Cambridge and National curricula. Every grade includes Master Guidebooks, weekly unit tests, and continuous evaluation.
+                </p>
+            </div>
+
+            <!-- Grade Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Grade 06 Science -->
+                <div class="glass-panel p-6 rounded-3xl border-slate-200/80 bg-white flex flex-col justify-between space-y-6 shadow-sm custom-card-hover">
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs font-bold text-blue-600 bg-blue-50 px-3 py-1 rounded-full border border-blue-200">Grade 06</span>
+                            <span class="text-[10px] font-semibold text-slate-500">Ages 10–11</span>
+                        </div>
+                        <h3 class="text-lg font-bold font-cinzel text-slate-900">Foundational Science</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Living world biodiversity, plant and animal classification, matter and states, heat, sound, energy fundamentals, and measuring instruments.
+                        </p>
+                        <ul class="text-xs text-slate-600 space-y-1.5 pt-2">
+                            <li class="flex items-center space-x-2"><i class="fa-solid fa-check text-blue-500"></i><span>Living World Classification</span></li>
+                            <li class="flex items-center space-x-2"><i class="fa-solid fa-check text-blue-500"></i><span>Matter, Density & Energy Basics</span></li>
+                            <li class="flex items-center space-x-2"><i class="fa-solid fa-check text-blue-500"></i><span>Term Revisions & Weekly Question Sets</span></li>
+                        </ul>
+                    </div>
+                    <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs">
+                        <span class="font-mono text-slate-500">Active ERP Roster</span>
+                        <a href="#student-portal" class="font-bold text-blue-600 hover:underline">View Portal &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- Grade 07 Science -->
+                <div class="glass-panel p-6 rounded-3xl border-slate-200/80 bg-white flex flex-col justify-between space-y-6 shadow-sm custom-card-hover">
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs font-bold text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full border border-indigo-200">Grade 07</span>
+                            <span class="text-[10px] font-semibold text-slate-500">Ages 11–12</span>
+                        </div>
+                        <h3 class="text-lg font-bold font-cinzel text-slate-900">Intermediate Dynamics</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Plant & animal tissues, simple electrical circuits, chemical solutions and solubility, forces, and environmental ecosystems.
+                        </p>
+                        <ul class="text-xs text-slate-600 space-y-1.5 pt-2">
+                            <li class="flex items-center space-x-2"><i class="fa-solid fa-check text-indigo-500"></i><span>Tissue Lab Practical Protocols</span></li>
+                            <li class="flex items-center space-x-2"><i class="fa-solid fa-check text-indigo-500"></i><span>Electric Circuits & Components</span></li>
+                            <li class="flex items-center space-x-2"><i class="fa-solid fa-check text-indigo-500"></i><span>Solutions & Separation Techniques</span></li>
+                        </ul>
+                    </div>
+                    <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs">
+                        <span class="font-mono text-slate-500">In-Person & Zoom</span>
+                        <a href="#contact" class="font-bold text-indigo-600 hover:underline">Enquire &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- Grade 08 Science -->
+                <div class="glass-panel p-6 rounded-3xl border-slate-200/80 bg-white flex flex-col justify-between space-y-6 shadow-sm custom-card-hover">
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs font-bold text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">Grade 08</span>
+                            <span class="text-[10px] font-semibold text-slate-500">Ages 12–13</span>
+                        </div>
+                        <h3 class="text-lg font-bold font-cinzel text-slate-900">Exploratory Systems</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Microorganisms, human digestive and respiratory organs, optical reflection and refraction, mechanical levers, and elements & compounds.
+                        </p>
+                        <ul class="text-xs text-slate-600 space-y-1.5 pt-2">
+                            <li class="flex items-center space-x-2"><i class="fa-solid fa-check text-emerald-500"></i><span>Microbiology & Health Biology</span></li>
+                            <li class="flex items-center space-x-2"><i class="fa-solid fa-check text-emerald-500"></i><span>Optics, Light & Mirrors</span></li>
+                            <li class="flex items-center space-x-2"><i class="fa-solid fa-check text-emerald-500"></i><span>Simple Machines & Mechanical Advantage</span></li>
+                        </ul>
+                    </div>
+                    <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs">
+                        <span class="font-mono text-slate-500">Lesson Plans Active</span>
+                        <a href="#contact" class="font-bold text-emerald-600 hover:underline">Enquire &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- Grade 09 Science -->
+                <div class="glass-panel p-6 rounded-3xl border-slate-200/80 bg-white flex flex-col justify-between space-y-6 shadow-sm custom-card-hover">
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs font-bold text-amber-600 bg-amber-50 px-3 py-1 rounded-full border border-amber-200">Grade 09</span>
+                            <span class="text-[10px] font-semibold text-slate-500">Ages 13–14</span>
+                        </div>
+                        <h3 class="text-lg font-bold font-cinzel text-slate-900">Advanced Conceptual Building</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Cellular biology and organelles, acids, bases and indicators, thermal physics, expansion, and biosphere geochemical cycles.
+                        </p>
+                        <ul class="text-xs text-slate-600 space-y-1.5 pt-2">
+                            <li class="flex items-center space-x-2"><i class="fa-solid fa-check text-amber-500"></i><span>Acids, Bases & Neutralization</span></li>
+                            <li class="flex items-center space-x-2"><i class="fa-solid fa-check text-amber-500"></i><span>Thermal Conduction & Radiation</span></li>
+                            <li class="flex items-center space-x-2"><i class="fa-solid fa-check text-amber-500"></i><span>Pre-O/L Diagnostic Benchmark</span></li>
+                        </ul>
+                    </div>
+                    <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs">
+                        <span class="font-mono text-slate-500">Pre-O/L Track</span>
+                        <a href="#contact" class="font-bold text-amber-600 hover:underline">Enquire &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- Grade 10 Science -->
+                <div class="glass-panel p-6 rounded-3xl border-slate-200/80 bg-white flex flex-col justify-between space-y-6 shadow-sm custom-card-hover">
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs font-bold text-rose-600 bg-rose-50 px-3 py-1 rounded-full border border-rose-200">Grade 10</span>
+                            <span class="text-[10px] font-semibold text-slate-500">Ages 14–15</span>
+                        </div>
+                        <h3 class="text-lg font-bold font-cinzel text-slate-900">O/L Year 1 Specialization</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Chemical bonding, periodic trends, genetics and Mendelian inheritance, Newton's laws of motion, work, power, and electric circuits.
+                        </p>
+                        <ul class="text-xs text-slate-600 space-y-1.5 pt-2">
+                            <li class="flex items-center space-x-2"><i class="fa-solid fa-check text-rose-500"></i><span>Chemical Reactions & Equations</span></li>
+                            <li class="flex items-center space-x-2"><i class="fa-solid fa-check text-rose-500"></i><span>Kinematics & Newtonian Mechanics</span></li>
+                            <li class="flex items-center space-x-2"><i class="fa-solid fa-check text-rose-500"></i><span>Genetics & Biological Inheritance</span></li>
+                        </ul>
+                    </div>
+                    <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs">
+                        <span class="font-mono text-slate-500">O/L Part 1 Roster</span>
+                        <a href="#contact" class="font-bold text-rose-600 hover:underline">Enquire &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- Grade 11 Science -->
+                <div class="glass-panel p-6 rounded-3xl border-blue-500/40 bg-gradient-to-b from-blue-50/40 to-white flex flex-col justify-between space-y-6 shadow-md custom-card-hover relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-gradient-to-l from-amber-500 to-rose-500 text-white text-[9px] font-black px-3 py-1 rounded-bl-xl uppercase tracking-wider">
+                        O/L Examination Year
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs font-bold text-blue-700 bg-blue-100 px-3 py-1 rounded-full border border-blue-300">Grade 11</span>
+                            <span class="text-[10px] font-semibold text-slate-500">Ages 15–16</span>
+                        </div>
+                        <h3 class="text-lg font-bold font-cinzel text-slate-900">O/L Master Revision & Distinction</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Organic chemistry, reaction rates, electromagnetic waves, human coordination, electronics, and Top 500 Past Paper Question Drills.
+                        </p>
+                        <ul class="text-xs text-slate-600 space-y-1.5 pt-2">
+                            <li class="flex items-center space-x-2"><i class="fa-solid fa-check text-blue-600"></i><span>Top 500 Curated O/L Question Bank</span></li>
+                            <li class="flex items-center space-x-2"><i class="fa-solid fa-check text-blue-600"></i><span>Past Paper Analysis & Marking Rubrics</span></li>
+                            <li class="flex items-center space-x-2"><i class="fa-solid fa-check text-blue-600"></i><span>Targeted 'A' Distinction Preparation</span></li>
+                        </ul>
+                    </div>
+                    <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs">
+                        <span class="font-mono text-blue-700 font-bold">High Distinction Track</span>
+                        <a href="#contact" class="font-bold text-blue-700 hover:underline">Apply Now &rarr;</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- 7. LIVE DIGITAL CLASSROOM, CALENDAR & ANALOGUE CLOCK HUB                  -->
+    <!-- ========================================================================= -->
+    <section id="schedule" class="py-16 sm:py-24 bg-white border-b border-slate-200/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-2xl mx-auto space-y-3 mb-14">
+                <span class="pill-badge bg-emerald-100 text-emerald-800 border border-emerald-300">Synchronous Hybrid Learning</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold font-cinzel text-slate-900 tracking-tight">
+                    Live Sessions & Academic Schedule
+                </h2>
+                <p class="text-xs sm:text-sm text-slate-600">
+                    Real-time class connectivity via WhatsApp and Zoom, synchronized with our Colombo Academic Calendar.
+                </p>
+            </div>
+
+            <!-- Live Session Cards (WhatsApp & Zoom) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+                
+                <!-- Live WhatsApp Support Card -->
+                <div class="glass-panel p-6 sm:p-8 rounded-3xl border-emerald-500/30 bg-gradient-to-br from-emerald-50/50 to-white shadow-lg space-y-4">
+                    <div class="flex justify-between items-center">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 rounded-2xl bg-emerald-500/15 text-emerald-600 flex items-center justify-center text-xl">
+                                <i class="fa-brands fa-whatsapp"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-sm sm:text-base font-bold text-slate-900">Live WhatsApp Classroom & Support</h3>
+                                <p class="text-[11px] text-slate-500">Direct Teacher Q&A & Daily Broadcasts</p>
+                            </div>
+                        </div>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold bg-emerald-500/10 text-emerald-700 border border-emerald-500/20">
+                            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                            <span id="waStatusText">LIVE ON WHATSAPP</span>
+                        </span>
+                    </div>
+
+                    <div class="p-3.5 rounded-2xl bg-white border border-slate-200/80 text-xs text-slate-700 space-y-1.5">
+                        <p class="font-bold text-slate-900" id="waTitleText">Grade 06 Science - Live Class WhatsApp Q&A & Support</p>
+                        <p class="text-[11px] text-slate-500" id="waBroadcastText">
+                            "Hello students, today's Science Master Guidebook and practical review questions are now published."
+                        </p>
+                    </div>
+
+                    <div class="pt-2 flex flex-wrap items-center justify-between gap-3">
+                        <a href="https://chat.whatsapp.com/ScienceWithLaknath" id="waGroupLink" target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold px-5 py-2.5 rounded-full transition flex items-center space-x-2 shadow-md shadow-emerald-500/20">
+                            <i class="fa-brands fa-whatsapp"></i>
+                            <span>Join Class WhatsApp Group</span>
+                        </a>
+                        <span class="text-[11px] text-slate-500 font-mono">Teacher Hotline: 071 355 8648</span>
+                    </div>
+                </div>
+
+                <!-- Live Zoom Classroom Card -->
+                <div class="glass-panel p-6 sm:p-8 rounded-3xl border-blue-500/30 bg-gradient-to-br from-blue-50/50 to-white shadow-lg space-y-4">
+                    <div class="flex justify-between items-center">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 rounded-2xl bg-blue-500/15 text-blue-600 flex items-center justify-center text-xl">
+                                <i class="fa-solid fa-video"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-sm sm:text-base font-bold text-slate-900">Live Zoom Theory & Practical Session</h3>
+                                <p class="text-[11px] text-slate-500">Interactive High-Definition Virtual Lab</p>
+                            </div>
+                        </div>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold bg-blue-500/10 text-blue-700 border border-blue-500/20">
+                            <span class="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
+                            <span id="zoomStatusText">LIVE ON ZOOM</span>
+                        </span>
+                    </div>
+
+                    <div class="p-3.5 rounded-2xl bg-white border border-slate-200/80 text-xs text-slate-700 grid grid-cols-2 gap-2 font-mono">
+                        <div>
+                            <span class="text-[10px] text-slate-400 block font-sans">Meeting ID:</span>
+                            <strong class="text-slate-900" id="zoomIdText">987 654 3210</strong>
+                        </div>
+                        <div>
+                            <span class="text-[10px] text-slate-400 block font-sans">Passcode:</span>
+                            <strong class="text-slate-900" id="zoomPassText">SCIENCE2026</strong>
+                        </div>
+                        <div class="col-span-2 pt-1 border-t border-slate-100 flex justify-between items-center font-sans text-[11px]">
+                            <span class="text-slate-500"><i class="fa-solid fa-calendar-day mr-1 text-blue-500"></i><span id="zoomTimeText">Saturday 8:00 AM - 10:30 AM</span></span>
+                            <span class="text-indigo-600 font-bold" id="zoomHostText">Host: Mr. Laknath Amarasinghe</span>
+                        </div>
+                    </div>
+
+                    <div class="pt-2 flex flex-wrap items-center justify-between gap-3">
+                        <a href="https://zoom.us/j/9876543210?pwd=SCIENCE2026CLASS" id="zoomJoinLink" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-5 py-2.5 rounded-full transition flex items-center space-x-2 shadow-md shadow-blue-500/20">
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            <span>Launch Live Zoom Session</span>
+                        </a>
+                        <span class="text-[11px] text-slate-500">Recording available in ERP Vault</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- iOS Widgets Deck: Analogue Clock & Academic Calendar -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+                
+                <!-- Left: Apple iOS Analogue Clock Dial (5 columns) -->
+                <div class="lg:col-span-5 glass-panel p-6 sm:p-8 rounded-3xl border-slate-200/80 flex flex-col items-center justify-between shadow-lg relative overflow-hidden bg-white">
+                    <div class="w-full flex items-center justify-between border-b border-slate-100 pb-3 mb-4">
+                        <div class="flex items-center space-x-2">
+                            <div class="w-8 h-8 rounded-xl bg-blue-500/10 text-blue-600 flex items-center justify-center text-xs font-bold">
+                                <i class="fa-solid fa-clock"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xs font-bold text-slate-900">Analogue Precision Dial</h3>
+                                <p class="text-[10px] text-slate-500">Apple iOS Real-Time Widget</p>
+                            </div>
+                        </div>
+                        <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/10 text-emerald-600 border border-emerald-500/20">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> LIVE
+                        </span>
+                    </div>
+
+                    <!-- Circular Watch Dial -->
+                    <div class="my-2">
+                        <div class="ios-clock-dial" id="analogueClock">
+                            <!-- Clock Numbers -->
+                            <div class="ios-clock-num" style="top: 8px; left: calc(50% - 10px);">12</div>
+                            <div class="ios-clock-num" style="top: calc(50% - 10px); right: 8px;">3</div>
+                            <div class="ios-clock-num" style="bottom: 8px; left: calc(50% - 10px);">6</div>
+                            <div class="ios-clock-num" style="top: calc(50% - 10px); left: 8px;">9</div>
+
+                            <!-- Clock Hands -->
+                            <div class="ios-clock-hand ios-clock-hour" id="clockHourHand"></div>
+                            <div class="ios-clock-hand ios-clock-minute" id="clockMinuteHand"></div>
+                            <div class="ios-clock-hand ios-clock-second" id="clockSecondHand"></div>
+                            
+                            <!-- Center Pin -->
+                            <div class="ios-clock-center-pin"></div>
+                        </div>
+                    </div>
+
+                    <!-- Digital Clock & Date Summary -->
+                    <div class="w-full pt-4 mt-2 border-t border-slate-100 text-center space-y-1">
+                        <div class="text-2xl font-extrabold font-mono text-slate-900 tracking-tight" id="digitalClockText">
+                            --:--:-- --
+                        </div>
+                        <div class="text-xs font-semibold text-slate-600" id="digitalDateText">
+                            Loading date...
+                        </div>
+                        <div class="pt-1">
+                            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-semibold bg-blue-50 text-blue-700 border border-blue-200/60">
+                                <i class="fa-solid fa-location-dot text-blue-500"></i> Sri Lanka Standard Time (UTC+05:30)
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Apple iOS General Academic Calendar Widget (7 columns) -->
+                <div class="lg:col-span-7 glass-panel p-6 sm:p-8 rounded-3xl border-slate-200/80 flex flex-col justify-between shadow-lg relative overflow-hidden bg-white">
+                    <!-- Calendar Header & Navigation Controls -->
+                    <div class="flex items-center justify-between border-b border-slate-100 pb-3 mb-3">
+                        <div class="flex items-center space-x-2">
+                            <div class="w-8 h-8 rounded-xl bg-indigo-500/10 text-indigo-600 flex items-center justify-center text-xs font-bold">
+                                <i class="fa-solid fa-calendar-days"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xs font-bold text-slate-900">Academic Calendar</h3>
+                                <p class="text-[10px] text-slate-500">Monthly Schedule & Class Days</p>
+                            </div>
+                        </div>
+
+                        <!-- Navigation Month Switcher -->
+                        <div class="flex items-center space-x-1.5">
+                            <button type="button" id="calPrevBtn" class="w-8 h-8 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center text-xs transition font-bold" title="Previous Month">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </button>
+                            <button type="button" id="calTodayBtn" class="px-3 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold transition shadow-sm" title="Jump to Today">
+                                Today
+                            </button>
+                            <button type="button" id="calNextBtn" class="w-8 h-8 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center text-xs transition font-bold" title="Next Month">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Month Display Banner -->
+                    <div class="flex items-center justify-between mb-2">
+                        <h4 class="text-sm font-extrabold text-slate-900 font-cinzel" id="calMonthTitle">September 2026</h4>
+                        <span class="text-[10px] font-semibold text-amber-600 bg-amber-50 px-2.5 py-0.5 rounded-full border border-amber-200/60">
+                            <i class="fa-solid fa-circle text-[7px] mr-1 text-amber-500"></i>Weekend Science Classes
+                        </span>
+                    </div>
+
+                    <!-- Calendar Weekday Headers -->
+                    <div class="grid grid-cols-7 gap-1 text-center mb-1">
+                        <span class="ios-cal-weekday text-rose-500">Sun</span>
+                        <span class="ios-cal-weekday">Mon</span>
+                        <span class="ios-cal-weekday">Tue</span>
+                        <span class="ios-cal-weekday">Wed</span>
+                        <span class="ios-cal-weekday">Thu</span>
+                        <span class="ios-cal-weekday">Fri</span>
+                        <span class="ios-cal-weekday text-indigo-500">Sat</span>
+                    </div>
+
+                    <!-- Dynamic Calendar Day Grid -->
+                    <div class="ios-calendar-grid" id="calDaysGrid">
+                        <!-- Populated dynamically by JavaScript -->
+                    </div>
+
+                    <!-- Selected Date Status Bar -->
+                    <div id="calSelectedInfo" class="mt-4 p-2.5 rounded-2xl bg-slate-50 border border-slate-200/80 flex items-center justify-between text-xs text-slate-700">
+                        <span class="flex items-center gap-2">
+                            <i class="fa-regular fa-calendar-check text-blue-600"></i>
+                            <span id="calSelectedText">Select any date to view class details</span>
+                        </span>
+                        <span class="text-[10px] text-slate-500 font-mono" id="calAcademicStatus">ERP Active</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- 8. DUAL ACCESS ERP PORTALS (Student Scorecard & Teacher Vault)            -->
+    <!-- ========================================================================= -->
+    <section id="student-portal" class="py-16 sm:py-24 bg-slate-50/50 border-b border-slate-200/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-2xl mx-auto space-y-3 mb-14">
+                <span class="pill-badge bg-blue-100 text-blue-800 border border-blue-300">Digital Academic System</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold font-cinzel text-slate-900 tracking-tight">
+                    Access Academic Portals
+                </h2>
+                <p class="text-xs sm:text-sm text-slate-600">
+                    Encrypted individual access for students, parents, and authorized academic faculty.
+                </p>
+            </div>
+
+            <!-- Dual Cards Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+                
+                <!-- Left: Student Account Portal Card (7 cols) -->
+                <div class="lg:col-span-7 glass-panel p-8 sm:p-10 rounded-3xl border-slate-200/80 shadow-xl bg-white flex flex-col justify-between space-y-6">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-12 h-12 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-600 text-xl">
+                                    <i class="fa-solid fa-graduation-cap"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold font-cinzel text-slate-900">Student & Parent Portal</h3>
+                                    <p class="text-xs text-slate-500">Live Progress, Unit Tests & Guidebooks</p>
+                                </div>
+                            </div>
+                            <span class="text-[10px] bg-emerald-50 text-emerald-700 font-bold px-2.5 py-1 rounded-full border border-emerald-200 font-mono">
+                                ST-ID ACCESS
+                            </span>
+                        </div>
+
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Enter your Student ID / Username and Password to access your personal academic marks, unit test scorecards, radar progress analytics, and join live classes.
+                        </p>
+
+                        <!-- Student Login Error -->
+                        <div id="stLoginError" class="hidden p-3 bg-red-500/10 border border-red-500/30 rounded-2xl text-red-600 text-xs text-center font-semibold">
+                            Invalid Student ID, Username or Password. Please try again.
+                        </div>
+
+                        <!-- Student Login Form -->
+                        <form id="studentAccessForm" class="space-y-4 pt-1">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">Student ID / Username:</label>
+                                <div class="relative">
+                                    <i class="fa-solid fa-id-card absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                                    <input type="text" id="studentUserInput" placeholder="e.g. ST-84092 or alex" required class="w-full bg-slate-50 border border-slate-300 rounded-2xl pl-10 pr-4 py-3 text-sm text-slate-900 focus:outline-none focus:border-blue-500 font-mono tracking-wider">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">Account Password:</label>
+                                <div class="relative">
+                                    <i class="fa-solid fa-lock absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                                    <input type="password" id="studentPassInput" required placeholder="••••••••" class="w-full bg-slate-50 border border-slate-300 rounded-2xl pl-10 pr-4 py-3 text-sm text-slate-900 focus:outline-none focus:border-blue-500 font-mono tracking-wider">
+                                </div>
+                            </div>
+
+                            <!-- Demo Quick Fill Pill -->
+                            <div class="p-3 bg-blue-50/70 border border-blue-200/70 rounded-2xl flex flex-col sm:flex-row justify-between sm:items-center gap-2">
+                                <span class="text-[11px] text-slate-600">
+                                    Demo Credentials: <strong class="text-blue-700 font-mono">ST-84092 / student123</strong>
+                                </span>
+                                <button type="button" onclick="fillDemoStudent()" class="text-[11px] font-bold text-blue-700 hover:text-blue-900 bg-white px-2.5 py-1 rounded-lg border border-blue-200 shadow-xs transition">
+                                    <i class="fa-solid fa-bolt mr-1 text-amber-500"></i>Auto Fill Demo
+                                </button>
+                            </div>
+
+                            <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold py-3.5 rounded-2xl text-xs uppercase tracking-wider flex items-center justify-center space-x-2 shadow-lg shadow-blue-500/20 transition">
+                                <i class="fa-solid fa-right-to-bracket"></i>
+                                <span>Log In to Student Dashboard</span>
+                            </button>
+                        </form>
+                    </div>
+
+                    <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+                        <span><i class="fa-solid fa-shield-check text-emerald-500 mr-1"></i> 256-Bit Encrypted Portal</span>
+                        <a href="students_directory.html" class="font-bold text-blue-600 hover:underline">Browse Student Directory &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- Right: Teacher & Admin Portal Card (5 cols) -->
+                <div class="lg:col-span-5 glass-panel p-8 sm:p-10 rounded-3xl border-slate-200/80 shadow-xl bg-white flex flex-col justify-between space-y-6">
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-12 h-12 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-600 text-xl">
+                                <i class="fa-solid fa-user-gear"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold font-cinzel text-slate-900">Teacher & Admin Center</h3>
+                                <p class="text-xs text-indigo-600 font-medium">LMS Academic Vault & Operations</p>
+                            </div>
+                        </div>
+
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Authorized workspace for <span class="font-bold text-slate-900 branding-teacher-name">Mr. Laknath Amarasinghe</span>, senior science educators, and academic administrators. Manage student rosters, enter unit evaluations, and update curriculum files.
+                        </p>
+
+                        <div class="space-y-2 pt-2">
+                            <div class="p-3 rounded-2xl bg-slate-50 border border-slate-200/80 flex items-center justify-between text-xs">
+                                <span class="font-medium text-slate-700"><i class="fa-solid fa-vault mr-2 text-indigo-500"></i>Teacher Documents Vault</span>
+                                <a href="teacher_documents.html" class="text-blue-600 font-bold hover:underline">Access &rarr;</a>
+                            </div>
+                            <div class="p-3 rounded-2xl bg-slate-50 border border-slate-200/80 flex items-center justify-between text-xs">
+                                <span class="font-medium text-slate-700"><i class="fa-solid fa-sliders mr-2 text-indigo-500"></i>Admin ERP Control Center</span>
+                                <a href="admin.html" class="text-blue-600 font-bold hover:underline">Manage &rarr;</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3 pt-4 border-t border-slate-100">
+                        <a href="admin_login.html" class="w-full bg-slate-900 hover:bg-black text-white font-bold py-3.5 rounded-2xl text-xs uppercase tracking-wider flex items-center justify-center space-x-2 transition shadow-md">
+                            <i class="fa-solid fa-key text-amber-400"></i>
+                            <span>Sign In to Teacher Portal</span>
+                        </a>
+                        <p class="text-[11px] text-center text-slate-400"><strong class="text-slate-600 font-mono"></strong></p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- 9. FREQUENTLY ASKED QUESTIONS (Accordion FAQ matching theicschool.com)   -->
+    <!-- ========================================================================= -->
+    <section id="faq" class="py-16 sm:py-24 bg-white border-b border-slate-200/60">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center space-y-3 mb-14">
+                <span class="pill-badge bg-slate-100 text-slate-800 border border-slate-300">Got Questions?</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold font-cinzel text-slate-900 tracking-tight">
+                    Frequently Asked Questions
+                </h2>
+                <p class="text-xs sm:text-sm text-slate-600">
+                    Everything you need to know about our teaching approach, scheduling, and student evaluation.
+                </p>
+            </div>
+
+            <div class="space-y-4" id="faqAccordion">
+                
+                <!-- Q1 -->
+                <div class="border border-slate-200/80 rounded-2xl overflow-hidden bg-white">
+                    <button type="button" onclick="toggleFaq(1)" class="w-full text-left px-6 py-4 flex justify-between items-center text-sm font-bold text-slate-900 hover:bg-slate-50 transition">
+                        <span>How is Science with Laknath different from ordinary mass tuition classes?</span>
+                        <i class="fa-solid fa-chevron-down text-xs text-slate-400 transition-transform duration-200" id="faqIcon1"></i>
+                    </button>
+                    <div id="faqAnswer1" class="px-6 pb-4 pt-1 text-xs text-slate-600 leading-relaxed border-t border-slate-100 hidden">
+                        Unlike traditional mass tuition where hundreds of children passively listen without individual engagement, Science with Laknath emphasizes personalized mastery. We focus on deep conceptual understanding, practical lab demonstrations, weekly progress telemetry, and direct teacher accessibility with 1-on-1 doubt clearing on WhatsApp and in-person.
+                    </div>
+                </div>
+
+                <!-- Q2 -->
+                <div class="border border-slate-200/80 rounded-2xl overflow-hidden bg-white">
+                    <button type="button" onclick="toggleFaq(2)" class="w-full text-left px-6 py-4 flex justify-between items-center text-sm font-bold text-slate-900 hover:bg-slate-50 transition">
+                        <span>Can students join both in-person in Kalalgoda and online via Zoom?</span>
+                        <i class="fa-solid fa-chevron-down text-xs text-slate-400 transition-transform duration-200" id="faqIcon2"></i>
+                    </button>
+                    <div id="faqAnswer2" class="px-6 pb-4 pt-1 text-xs text-slate-600 leading-relaxed border-t border-slate-100 hidden">
+                        Yes! We offer a synchronous hybrid system. Students in the Colombo / Thalawathugoda / Pannipitiya area can attend physical sessions at our Kalalgoda academy, while students across Sri Lanka or abroad participate via our live interactive Zoom sessions and digital ERP student portal. All sessions include access to class recordings.
+                    </div>
+                </div>
+
+                <!-- Q3 -->
+                <div class="border border-slate-200/80 rounded-2xl overflow-hidden bg-white">
+                    <button type="button" onclick="toggleFaq(3)" class="w-full text-left px-6 py-4 flex justify-between items-center text-sm font-bold text-slate-900 hover:bg-slate-50 transition">
+                        <span>How do parents monitor marks and academic improvement?</span>
+                        <i class="fa-solid fa-chevron-down text-xs text-slate-400 transition-transform duration-200" id="faqIcon3"></i>
+                    </button>
+                    <div id="faqAnswer3" class="px-6 pb-4 pt-1 text-xs text-slate-600 leading-relaxed border-t border-slate-100 hidden">
+                        Every enrolled student is issued a unique Student ID (e.g. ST-84092). Parents can log in anytime to view weekly progress charts, attendance, unit test marks, and downloadable official guidebooks. Furthermore, our system sends automated WhatsApp summary updates directly to parents.
+                    </div>
+                </div>
+
+                <!-- Q4 -->
+                <div class="border border-slate-200/80 rounded-2xl overflow-hidden bg-white">
+                    <button type="button" onclick="toggleFaq(4)" class="w-full text-left px-6 py-4 flex justify-between items-center text-sm font-bold text-slate-900 hover:bg-slate-50 transition">
+                        <span>What curricula and examination syllabi are covered?</span>
+                        <i class="fa-solid fa-chevron-down text-xs text-slate-400 transition-transform duration-200" id="faqIcon4"></i>
+                    </button>
+                    <div id="faqAnswer4" class="px-6 pb-4 pt-1 text-xs text-slate-600 leading-relaxed border-t border-slate-100 hidden">
+                        We specialize in Grade 06 through Grade 11 Science, covering both the Sri Lankan National Curriculum (English & Sinhala mediums) and the Cambridge International syllabus. We provide specialized O/L revision question banks featuring over 500 past paper questions with official marking schemes.
+                    </div>
+                </div>
+
+                <!-- Q5 -->
+                <div class="border border-slate-200/80 rounded-2xl overflow-hidden bg-white">
+                    <button type="button" onclick="toggleFaq(5)" class="w-full text-left px-6 py-4 flex justify-between items-center text-sm font-bold text-slate-900 hover:bg-slate-50 transition">
+                        <span>How do we apply or schedule an initial assessment?</span>
+                        <i class="fa-solid fa-chevron-down text-xs text-slate-400 transition-transform duration-200" id="faqIcon5"></i>
+                    </button>
+                    <div id="faqAnswer5" class="px-6 pb-4 pt-1 text-xs text-slate-600 leading-relaxed border-t border-slate-100 hidden">
+                        You can send a direct WhatsApp message to +94 71 355 8648 or complete our online application form below. We will arrange a friendly diagnostic interview and assessment to understand your child's current learning pace and craft a tailored progression plan.
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- 10. WHERE WE ARE & APPLICATION / CONTACT FORM                             -->
+    <!-- ========================================================================= -->
+    <section id="where-we-are" class="py-16 sm:py-24 bg-slate-50/50 border-b border-slate-200/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                
+                <!-- Left: Where We Are & Contact Info (5 cols) -->
+                <div class="lg:col-span-5 space-y-6">
+                    <span class="pill-badge bg-blue-100 text-blue-800 border border-blue-300">Where We Are</span>
+                    <h2 class="text-3xl font-extrabold font-cinzel text-slate-900 tracking-tight">
+                        Visit Our Academy or Connect With Us
+                    </h2>
+                    <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                        Conveniently located in the Pannipitiya / Thalawathugoda educational corridor, easily accessible with dedicated learning spaces and ample parking.
+                    </p>
+
+                    <div class="space-y-4 pt-2">
+                        <!-- Location Card -->
+                        <div class="flex items-start space-x-3.5 p-4 rounded-2xl bg-white border border-slate-200/80 shadow-xs">
+                            <div class="w-10 h-10 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center text-sm flex-shrink-0">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-bold text-slate-900">Campus Address</h4>
+                                <p class="text-xs text-slate-600 mt-0.5">Gramodhya Mawatha, Kalalgoda, Pannipitiya / Thalawathugoda, Western Province, Sri Lanka.</p>
+                            </div>
+                        </div>
+
+                        <!-- Phone Card -->
+                        <div class="flex items-start space-x-3.5 p-4 rounded-2xl bg-white border border-slate-200/80 shadow-xs">
+                            <div class="w-10 h-10 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-sm flex-shrink-0">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-bold text-slate-900">Hotlines & Direct Calls</h4>
+                                <p class="text-xs text-slate-600 mt-0.5 font-mono branding-hotlines">071 355 8648</p>
+                            </div>
+                        </div>
+
+                        <!-- WhatsApp Card -->
+                        <div class="flex items-start space-x-3.5 p-4 rounded-2xl bg-white border border-slate-200/80 shadow-xs">
+                            <div class="w-10 h-10 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-sm flex-shrink-0">
+                                <i class="fa-brands fa-whatsapp"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-bold text-slate-900">WhatsApp Admissions</h4>
+                                <p class="text-xs text-slate-600 mt-0.5 font-mono">+94 71 781 2092</p>
+                                <a href="https://wa.me/94717812092" target="_blank" class="text-[11px] font-bold text-emerald-600 hover:underline inline-block mt-1">Chat on WhatsApp &rarr;</a>
+                            </div>
+                        </div>
+
+                        <!-- Email Card -->
+                        <div class="flex items-start space-x-3.5 p-4 rounded-2xl bg-white border border-slate-200/80 shadow-xs">
+                            <div class="w-10 h-10 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center text-sm flex-shrink-0">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-bold text-slate-900">Official Email</h4>
+                                <p class="text-xs text-slate-600 mt-0.5">info@sciencewithlaknath.lk</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Enrolment Application & Interview Booking Form (7 cols) -->
+                <div id="contact" class="lg:col-span-7 glass-panel p-8 sm:p-10 rounded-3xl border-slate-200/80 shadow-xl bg-white space-y-6">
+                    <div>
+                        <span class="pill-badge bg-emerald-50 text-emerald-700 border border-emerald-200">Enrolment Application</span>
+                        <h3 class="text-2xl font-bold font-cinzel text-slate-900 mt-2">
+                            Book an Interview / Consultation
+                        </h3>
+                        <p class="text-xs text-slate-500 mt-1">
+                            Fill out the details below to schedule a personalized academic diagnostic session or book an academy visit.
+                        </p>
+                    </div>
+
+                    <form id="applicationForm" class="space-y-4" onsubmit="handleApplicationSubmit(event)">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">Parent's Full Name *</label>
+                                <input type="text" id="parentName" required placeholder="e.g. Mrs. Sunethra Perera" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-xs text-slate-900 focus:outline-none focus:border-blue-500">
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">Student's Full Name *</label>
+                                <input type="text" id="studentName" required placeholder="e.g. Kaveen Perera" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-xs text-slate-900 focus:outline-none focus:border-blue-500">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">Student's Grade *</label>
+                                <select id="studentGrade" required class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-xs text-slate-900 focus:outline-none focus:border-blue-500 font-semibold">
+                                    <option value="Grade 06 Science">Grade 06 Science</option>
+                                    <option value="Grade 07 Science">Grade 07 Science</option>
+                                    <option value="Grade 08 Science">Grade 08 Science</option>
+                                    <option value="Grade 09 Science">Grade 09 Science</option>
+                                    <option value="Grade 10 Science">Grade 10 Science</option>
+                                    <option value="Grade 11 Science (O/L)">Grade 11 Science (O/L)</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">Parent WhatsApp Number *</label>
+                                <input type="tel" id="parentWhatsapp" required placeholder="e.g. 077 123 4567" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-xs text-slate-900 focus:outline-none focus:border-blue-500 font-mono">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Preferred Learning Mode</label>
+                            <div class="grid grid-cols-2 gap-3">
+                                <label class="flex items-center space-x-2 p-2.5 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 cursor-pointer text-xs font-semibold text-slate-700">
+                                    <input type="radio" name="learningMode" value="Physical Class (Kalalgoda Campus)" checked class="text-blue-600 focus:ring-0">
+                                    <span>Physical</span>
+                                </label>
+                                <label class="flex items-center space-x-2 p-2.5 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 cursor-pointer text-xs font-semibold text-slate-700">
+                                    <input type="radio" name="learningMode" value="Online Live (Interactive Zoom)" class="text-blue-600 focus:ring-0">
+                                    <span>Online (Zoom Live)</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Additional Notes / Child's Specific Needs</label>
+                            <textarea id="appNotes" rows="3" placeholder="Tell us about your child's learning interests or topics needing focus..." class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2 text-xs text-slate-900 focus:outline-none focus:border-blue-500"></textarea>
+                        </div>
+
+                        <div id="formSuccessAlert" class="hidden p-3.5 rounded-2xl bg-emerald-50 border border-emerald-300 text-emerald-700 text-xs font-bold flex items-center space-x-2">
+                            <i class="fa-solid fa-circle-check text-base"></i>
+                            <span>Application recorded! Opening WhatsApp to connect with Mr. Laknath Amarasinghe...</span>
+                        </div>
+
+                        <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold py-3.5 rounded-2xl text-xs uppercase tracking-wider flex items-center justify-center space-x-2 shadow-lg shadow-blue-500/20 transition">
+                            <i class="fa-brands fa-whatsapp text-base text-emerald-300"></i>
+                            <span>Submit Application & Connect via WhatsApp</span>
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- 11. WHO WE ARE & FACULTY SHOWCASE                                         -->
+    <!-- ========================================================================= -->
+    <section id="who-we-are" class="py-16 sm:py-20 bg-white border-b border-slate-200/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <div class="lg:col-span-5 flex justify-center">
+                    <img src="assets/images/teacher_banner.png" alt="Mr. Laknath Amarasinghe" class="rounded-3xl shadow-xl border-2 border-slate-200/80 w-full max-w-sm object-cover">
+                </div>
+                <div class="lg:col-span-7 space-y-4">
+                    <span class="pill-badge bg-indigo-100 text-indigo-800 border border-indigo-300">Academic Leadership</span>
+                    <h2 class="text-3xl font-extrabold font-cinzel text-slate-900 tracking-tight">
+                        About Mr. Laknath Amarasinghe
+                    </h2>
+                    <h4 class="text-sm font-semibold text-blue-600 branding-teacher-title">
+                        Head Science Specialist & IT Systems Lead
+                    </h4>
+                    <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+                        With over 15 years of dedicated scientific pedagogical experience and IT systems engineering background, Mr. Laknath Amarasinghe has pioneered an innovative, student-centric method for mastering Grade 6–11 Science in Sri Lanka.
+                    </p>
+                    <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+                        Recognizing that the conventional model of rote memorization creates anxiety and superficial learning, Mr. Laknath introduced the <em>"Understand Today, Succeed Tomorrow"</em> framework. This integrates physical experiments, visual conceptual diagrams, and continuous telemetry through our bespoke Student ERP Portal.
+                    </p>
+                    <div class="pt-2 flex flex-wrap gap-2 text-xs">
+                        <span class="px-3 py-1 bg-slate-100 text-slate-800 rounded-full font-semibold border border-slate-200"><i class="fa-solid fa-atom text-blue-500 mr-1.5"></i>Conceptual Clarity</span>
+                        <span class="px-3 py-1 bg-slate-100 text-slate-800 rounded-full font-semibold border border-slate-200"><i class="fa-solid fa-chart-line text-emerald-500 mr-1.5"></i>Data-Driven Tracking</span>
+                        <span class="px-3 py-1 bg-slate-100 text-slate-800 rounded-full font-semibold border border-slate-200"><i class="fa-solid fa-hand-holding-heart text-rose-500 mr-1.5"></i>Zero-Fear Pedagogy</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- 12. FOOTER                                                                -->
+    <!-- ========================================================================= -->
+    <footer class="py-12 bg-slate-900 text-slate-400 text-xs transition">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+            
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 pb-8 border-b border-slate-800">
+                <!-- Col 1: Brand Info -->
+                <div class="md:col-span-5 space-y-3">
+                    <div class="flex items-center space-x-3">
+                        <img src="assets/images/logo.png" alt="Logo" class="h-9 w-9 object-contain rounded-xl bg-white p-0.5">
+                        <h3 class="text-base font-bold font-cinzel text-white tracking-wider branding-academy-name">SCIENCE with LAKNATH</h3>
+                    </div>
+                    <p class="text-slate-400 text-xs leading-relaxed max-w-sm branding-motto">
+                        UNDERSTAND TODAY, SUCCEED TOMORROW
+                    </p>
+                    <p class="text-[11px] text-slate-500">
+                        Sri Lanka's 1st Modern Science Academy delivering a personalised syllabus and digital learning management ERP for students aged 10–16 (Grades 6 to 11).
+                    </p>
+                </div>
+
+                <!-- Col 2: Quick Links -->
+                <div class="md:col-span-3 space-y-2">
+                    <h4 class="text-xs font-bold text-white uppercase tracking-wider">Quick Navigation</h4>
+                    <ul class="space-y-1.5 text-[11px]">
+                        <li><a href="#who-we-are" class="hover:text-white transition">Who We Are</a></li>
+                        <li><a href="#philosophy" class="hover:text-white transition">Educational Philosophy</a></li>
+                        <li><a href="#feedback" class="hover:text-white transition">Parent Testimonials</a></li>
+                        <li><a href="#curriculum" class="hover:text-white transition">Curriculum (Grades 6–11)</a></li>
+                        <li><a href="#schedule" class="hover:text-white transition">Live Classes & Calendar</a></li>
+                        <li><a href="#where-we-are" class="hover:text-white transition">Campus Location</a></li>
+                        <li><a href="#faq" class="hover:text-white transition">Frequently Asked Questions</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Portal & System Links -->
+                <div class="md:col-span-4 space-y-2">
+                    <h4 class="text-xs font-bold text-white uppercase tracking-wider">Digital Systems & Portals</h4>
+                    <ul class="space-y-1.5 text-[11px]">
+                        <li><a href="#student-portal" class="hover:text-white transition"><i class="fa-solid fa-graduation-cap text-blue-400 mr-1.5"></i>Student Account Portal</a></li>
+                        <li><a href="students_directory.html" class="hover:text-white transition"><i class="fa-solid fa-address-book text-indigo-400 mr-1.5"></i>Public Student Directory</a></li>
+                        <li><a href="admin_login.html" class="hover:text-white transition"><i class="fa-solid fa-lock text-amber-400 mr-1.5"></i>Teacher & Admin Sign In</a></li>
+                        <li><a href="teacher_documents.html" class="hover:text-white transition"><i class="fa-solid fa-folder-closed text-emerald-400 mr-1.5"></i>Teacher Documents Vault</a></li>
+                        <li><a href="https://wa.me/94717812092" target="_blank" class="hover:text-white transition"><i class="fa-brands fa-whatsapp text-emerald-400 mr-1.5"></i>Official WhatsApp Hotline</a></li>
+                    </ul>
+                    <div class="pt-2 text-[10px] text-slate-500 font-mono">
+                        Server: Cloud MySQL & Pure JSON Dual Engine
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Copyright & Security -->
+            <div class="flex flex-col sm:flex-row justify-between items-center text-center sm:text-left gap-4 text-[11px] text-slate-500">
+                <p>&copy; 2026 Science with Laknath. All Rights Reserved. Personalised Science Education & School ERP System.</p>
+                <div class="flex items-center space-x-4">
+                    <span><i class="fa-solid fa-shield-halved text-emerald-400 mr-1"></i> SSL 256-Bit Secured</span>
+                    <span>Pannipitiya, Sri Lanka</span>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- Local Core Engine -->
+    <script src="assets/js/lms-core.js"></script>
+    <script>
+        // =========================================================================
+        // 1. MOBILE MENU TOGGLE
+        // =========================================================================
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const icon = document.getElementById('mobileMenuIcon');
+            if (menu) {
+                menu.classList.toggle('hidden');
+                if (menu.classList.contains('hidden')) {
+                    icon.className = 'fa-solid fa-bars text-lg';
+                } else {
+                    icon.className = 'fa-solid fa-xmark text-lg';
+                }
+            }
+        }
+
+        // =========================================================================
+        // 2. FAQ ACCORDION TOGGLE
+        // =========================================================================
+        function toggleFaq(num) {
+            const ans = document.getElementById(`faqAnswer${num}`);
+            const icon = document.getElementById(`faqIcon${num}`);
+            if (ans) {
+                const isHidden = ans.classList.contains('hidden');
+                // Close all
+                for (let i = 1; i <= 5; i++) {
+                    const a = document.getElementById(`faqAnswer${i}`);
+                    const ic = document.getElementById(`faqIcon${i}`);
+                    if (a) a.classList.add('hidden');
+                    if (ic) ic.style.transform = 'rotate(0deg)';
+                }
+                if (isHidden) {
+                    ans.classList.remove('hidden');
+                    if (icon) icon.style.transform = 'rotate(180deg)';
+                }
+            }
+        }
+
+        // =========================================================================
+        // 3. APPLICATION & INTERVIEW BOOKING FORM HANDLER
+        // =========================================================================
+        function handleApplicationSubmit(e) {
+            e.preventDefault();
+            const parentName = document.getElementById('parentName').value.trim();
+            const studentName = document.getElementById('studentName').value.trim();
+            const grade = document.getElementById('studentGrade').value;
+            const whatsapp = document.getElementById('parentWhatsapp').value.trim();
+            const mode = document.querySelector('input[name="learningMode"]:checked')?.value || 'Physical Class';
+            const notes = document.getElementById('appNotes').value.trim();
+
+            const alertBox = document.getElementById('formSuccessAlert');
+            if (alertBox) {
+                alertBox.classList.remove('hidden');
+            }
+
+            // Construct WhatsApp direct message
+            const message = `Hello Mr. Laknath Amarasinghe,%0A%0AI would like to book an interview / enrolment consultation for Science with Laknath:%0A%0A*Parent Name:* ${encodeURIComponent(parentName)}%0A*Student Name:* ${encodeURIComponent(studentName)}%0A*Grade:* ${encodeURIComponent(grade)}%0A*Contact:* ${encodeURIComponent(whatsapp)}%0A*Learning Mode:* ${encodeURIComponent(mode)}%0A*Notes:* ${encodeURIComponent(notes || 'N/A')}%0A%0APlease let us know the available dates for an assessment. Thank you!`;
+
+            setTimeout(() => {
+                window.open(`https://wa.me/94717812092?text=${message}`, '_blank');
+            }, 1200);
+        }
+
+        // =========================================================================
+        // 4. DEMO CREDENTIALS AUTOFILL
+        // =========================================================================
+        function fillDemoStudent() {
+            const userInput = document.getElementById('studentUserInput');
+            const passInput = document.getElementById('studentPassInput');
+            if (userInput && passInput) {
+                userInput.value = 'ST-84092';
+                passInput.value = 'student123';
+                userInput.focus();
+            }
+        }
+
+        // =========================================================================
+        // 5. APPLE iOS ANALOGUE CLOCK LOGIC
+        // =========================================================================
+        function initAnalogueClock() {
+            const dial = document.getElementById('analogueClock');
+            if (!dial) return;
+
+            // Generate 60 tick marks around the clock perimeter
+            for (let i = 0; i < 60; i++) {
+                if (i % 15 === 0) continue; // Skip 12, 3, 6, 9 positions (have numbers)
+                const mark = document.createElement('div');
+                mark.className = 'ios-clock-mark' + (i % 5 === 0 ? ' major' : '');
+                mark.style.transform = `rotate(${i * 6}deg)`;
+                dial.appendChild(mark);
+            }
+
+            const hourHand = document.getElementById('clockHourHand');
+            const minuteHand = document.getElementById('clockMinuteHand');
+            const secondHand = document.getElementById('clockSecondHand');
+            const digitalTime = document.getElementById('digitalClockText');
+            const digitalDate = document.getElementById('digitalDateText');
+
+            function updateClock() {
+                const now = new Date();
+
+                const ms = now.getMilliseconds();
+                const seconds = now.getSeconds() + ms / 1000;
+                const minutes = now.getMinutes() + seconds / 60;
+                const hours = (now.getHours() % 12) + minutes / 60;
+
+                const secondAngle = seconds * 6;
+                const minuteAngle = minutes * 6;
+                const hourAngle = hours * 30;
+
+                if (secondHand) secondHand.style.transform = `rotate(${secondAngle}deg)`;
+                if (minuteHand) minuteHand.style.transform = `rotate(${minuteAngle}deg)`;
+                if (hourHand) hourHand.style.transform = `rotate(${hourAngle}deg)`;
+
+                if (digitalTime) {
+                    digitalTime.textContent = now.toLocaleTimeString('en-US', {
+                        hour: '2-digit',
+                        minute: '2-digit',
+                        second: '2-digit',
+                        hour12: true
+                    });
+                }
+
+                if (digitalDate) {
+                    digitalDate.textContent = now.toLocaleDateString('en-US', {
+                        weekday: 'long',
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric'
+                    });
+                }
+            }
+
+            updateClock();
+            setInterval(updateClock, 1000);
+        }
+
+        // =========================================================================
+        // 6. APPLE iOS GENERAL ACADEMIC CALENDAR LOGIC
+        // =========================================================================
+        function initGeneralCalendar() {
+            let currentDate = new Date();
+            let selectedDate = new Date();
+
+            const monthTitle = document.getElementById('calMonthTitle');
+            const daysGrid = document.getElementById('calDaysGrid');
+            const prevBtn = document.getElementById('calPrevBtn');
+            const nextBtn = document.getElementById('calNextBtn');
+            const todayBtn = document.getElementById('calTodayBtn');
+            const selectedText = document.getElementById('calSelectedText');
+            const statusText = document.getElementById('calAcademicStatus');
+
+            const monthNames = [
+                'January', 'February', 'March', 'April', 'May', 'June',
+                'July', 'August', 'September', 'October', 'November', 'December'
+            ];
+
+            function renderCalendar() {
+                const year = currentDate.getFullYear();
+                const month = currentDate.getMonth();
+
+                if (monthTitle) {
+                    monthTitle.textContent = `${monthNames[month]} ${year}`;
+                }
+
+                if (!daysGrid) return;
+                daysGrid.innerHTML = '';
+
+                const firstDayIndex = new Date(year, month, 1).getDay();
+                const totalDays = new Date(year, month + 1, 0).getDate();
+                const prevMonthDays = new Date(year, month, 0).getDate();
+                const today = new Date();
+
+                // Previous month padding
+                for (let i = firstDayIndex; i > 0; i--) {
+                    const dayNum = prevMonthDays - i + 1;
+                    const cell = document.createElement('div');
+                    cell.className = 'ios-cal-day other-month';
+                    cell.textContent = dayNum;
+                    daysGrid.appendChild(cell);
+                }
+
+                // Current month days
+                for (let day = 1; day <= totalDays; day++) {
+                    const cell = document.createElement('div');
+                    cell.className = 'ios-cal-day';
+                    cell.textContent = day;
+
+                    const dateObj = new Date(year, month, day);
+                    const dayOfWeek = dateObj.getDay();
+
+                    if (
+                        day === today.getDate() &&
+                        month === today.getMonth() &&
+                        year === today.getFullYear()
+                    ) {
+                        cell.classList.add('today');
+                    }
+
+                    if (
+                        day === selectedDate.getDate() &&
+                        month === selectedDate.getMonth() &&
+                        year === selectedDate.getFullYear()
+                    ) {
+                        cell.classList.add('selected');
+                    }
+
+                    // Weekend class session indicator (Saturday & Sunday)
+                    if (dayOfWeek === 0 || dayOfWeek === 6) {
+                        cell.classList.add('has-event');
+                    }
+
+                    cell.addEventListener('click', () => {
+                        selectedDate = new Date(year, month, day);
+                        renderCalendar();
+                        updateSelectedInfo(selectedDate);
+                    });
+
+                    daysGrid.appendChild(cell);
+                }
+
+                const totalCellsSoFar = firstDayIndex + totalDays;
+                const nextMonthDaysNeeded = (7 - (totalCellsSoFar % 7)) % 7;
+                for (let day = 1; day <= nextMonthDaysNeeded; day++) {
+                    const cell = document.createElement('div');
+                    cell.className = 'ios-cal-day other-month';
+                    cell.textContent = day;
+                    daysGrid.appendChild(cell);
+                }
+            }
+
+            function updateSelectedInfo(date) {
+                if (!selectedText) return;
+                const formatted = date.toLocaleDateString('en-US', {
+                    weekday: 'short',
+                    month: 'short',
+                    day: 'numeric',
+                    year: 'numeric'
+                });
+                const dayOfWeek = date.getDay();
+                if (dayOfWeek === 6 || dayOfWeek === 0) {
+                    selectedText.textContent = `${formatted}: Live Science Theory & Practical Session`;
+                    if (statusText) {
+                        statusText.textContent = "Class Day";
+                        statusText.className = "text-[10px] text-amber-600 font-bold font-mono bg-amber-50 px-2 py-0.5 rounded";
+                    }
+                } else {
+                    selectedText.textContent = `${formatted}: Academic Study & Revision Portal Active`;
+                    if (statusText) {
+                        statusText.textContent = "Self Study";
+                        statusText.className = "text-[10px] text-blue-600 font-bold font-mono bg-blue-50 px-2 py-0.5 rounded";
+                    }
+                }
+            }
+
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    currentDate.setMonth(currentDate.getMonth() - 1);
+                    renderCalendar();
+                });
+            }
+
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    currentDate.setMonth(currentDate.getMonth() + 1);
+                    renderCalendar();
+                });
+            }
+
+            if (todayBtn) {
+                todayBtn.addEventListener('click', () => {
+                    currentDate = new Date();
+                    selectedDate = new Date();
+                    renderCalendar();
+                    updateSelectedInfo(selectedDate);
+                });
+            }
+
+            renderCalendar();
+            updateSelectedInfo(new Date());
+        }
+
+        // =========================================================================
+        // 7. INITIALIZATION & LIVE CONFIG SYNC
+        // =========================================================================
+        document.addEventListener('DOMContentLoaded', async () => {
+            if (window.LMSCore) {
+                window.LMSCore.applyThemeAndBranding();
+
+                // Populate dynamic WhatsApp and Zoom cards from live config
+                try {
+                    const wa = window.LMSCore.getWhatsappSession();
+                    if (wa) {
+                        if (document.getElementById('waStatusText')) document.getElementById('waStatusText').textContent = wa.statusText || 'LIVE ON WHATSAPP';
+                        if (document.getElementById('waTitleText')) document.getElementById('waTitleText').textContent = wa.title || 'Grade 06 Science - Live Class WhatsApp Q&A & Support';
+                        if (document.getElementById('waBroadcastText')) document.getElementById('waBroadcastText').textContent = `"${wa.broadcastText || ''}"`;
+                        if (document.getElementById('waGroupLink') && wa.whatsappGroupUrl) document.getElementById('waGroupLink').href = wa.whatsappGroupUrl;
+                    }
+
+                    const zm = window.LMSCore.getZoomSession();
+                    if (zm) {
+                        if (document.getElementById('zoomStatusText')) document.getElementById('zoomStatusText').textContent = zm.statusText || 'LIVE ON ZOOM';
+                        if (document.getElementById('zoomIdText')) document.getElementById('zoomIdText').textContent = zm.meetingId || '987 654 3210';
+                        if (document.getElementById('zoomPassText')) document.getElementById('zoomPassText').textContent = zm.passcode || 'SCIENCE2026';
+                        if (document.getElementById('zoomTimeText')) document.getElementById('zoomTimeText').textContent = zm.startTime || 'Saturday 8:00 AM - 10:30 AM';
+                        if (document.getElementById('zoomHostText')) document.getElementById('zoomHostText').textContent = `Host: ${zm.hostName || 'Mr. Laknath Amarasinghe'}`;
+                        if (document.getElementById('zoomJoinLink') && zm.meetingUrl) document.getElementById('zoomJoinLink').href = zm.meetingUrl;
+                    }
+                } catch (err) {
+                    console.error('Live session sync error:', err);
+                }
+            }
+
+            initAnalogueClock();
+            initGeneralCalendar();
+        });
+
+        // =========================================================================
+        // 8. STUDENT AUTHENTICATION FORM HANDLER
+        // =========================================================================
+        document.getElementById('studentAccessForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const userVal = document.getElementById('studentUserInput').value.trim();
+            const passVal = document.getElementById('studentPassInput').value.trim();
+            const errBox = document.getElementById('stLoginError');
+
+            if (window.LMSCore) {
+                const authenticatedStudent = await window.LMSCore.authenticateStudent(userVal, passVal);
+                if (authenticatedStudent) {
+                    window.location.href = `student.html?id=${encodeURIComponent(authenticatedStudent.student_info.student_id)}`;
+                } else {
+                    errBox.classList.remove('hidden');
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>

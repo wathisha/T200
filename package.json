@@ -1,0 +1,30 @@
+{
+  "name": "science-with-laknath-erp",
+  "version": "4.0.0",
+  "description": "Science with Laknath ERP - Cloud-Ready Multi-User Learning Management System with MySQL Database Support",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "migrate": "node migrate-json-to-mysql.js",
+    "test:db": "node test-mysql-connection.js"
+  },
+  "keywords": [
+    "lms",
+    "education",
+    "mysql",
+    "cloud-database",
+    "school-management",
+    "nodejs",
+    "science-with-laknath-erp"
+  ],
+  "author": "Wathisha & Laknath Amarasinghe",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "mysql2": "^3.9.7"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
