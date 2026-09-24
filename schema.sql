@@ -1,12 +1,14 @@
 -- =============================================================================
--- Science with Laknath ERP - Complete Cloud MySQL Database Schema & Seed Data
+-- Independent Collective School (ICS) ERP - TiDB Cloud & MySQL Database Schema
 -- =============================================================================
--- Database: science_lms_db
--- Compatibility: MySQL 5.7+, MySQL 8.0+, TiDB Cloud, Aiven MySQL, MariaDB 10.3+
+-- Cluster: ics-school-cluster (TiDB Cloud Serverless)
+-- Target Host: gateway01.ap-southeast-1.prod.aws.tidbcloud.com (Port: 4000)
+-- Target Database: ics_school_db
+-- Compatibility: TiDB Cloud Serverless, MySQL 5.7+, MySQL 8.0+, Aiven, Railway, RDS
 -- =============================================================================
 
-CREATE DATABASE IF NOT EXISTS science_lms_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-USE science_lms_db;
+CREATE DATABASE IF NOT EXISTS ics_school_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE ics_school_db;
 
 -- -----------------------------------------------------------------------------
 -- 1. Table: users (Multi-User Admin, Teacher & Staff Accounts with RBAC)

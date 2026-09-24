@@ -1,24 +1,49 @@
 /**
  * ============================================================================
- * Science with Laknath ERP - Universal Database Engine
- * ============================================================================
- * Supports:
- *  1. Cloud MySQL Database (Aiven, TiDB Cloud Serverless, Clever Cloud, Railway, AWS RDS)
- *  2. Local Pure JSON File Storage Fallback
+ * Independent Collective School (ICS) ERP - Universal Database Engine
+ * Optimized for TiDB Cloud Serverless (ics-school-cluster) & MySQL
  * ============================================================================
  */
 
 const fs = require('fs');
 const path = require('path');
 
-// Try loading dotenv if present
+// Auto-load environment variables (.env / .env.example) with zero-dependency fallback
 try {
-    require('dotenv').config();
-} catch (e) {
-    // dotenv not installed or .env not loaded, fallback to process.env
-}
+    require('dotenv').config({ path: path.join(__dirname, '.env') });
+} catch (e) {}
+try {
+    const candidatePaths = [
+        path.join(__dirname, '.env'),
+        path.resolve(process.cwd(), '.env'),
+        path.join(__dirname, '.env.example'),
+        path.resolve(process.cwd(), '.env.example')
+    ];
+    for (const envPath of candidatePaths) {
+        if (fs.existsSync(envPath)) {
+            const raw = fs.readFileSync(envPath, 'utf8');
+            const lines = raw.split(/\r?\n/);
+            for (const line of lines) {
+                const trimmed = line.trim();
+                if (!trimmed || trimmed.startsWith('#')) continue;
+                const eqIdx = trimmed.indexOf('=');
+                if (eqIdx !== -1) {
+                    const key = trimmed.slice(0, eqIdx).trim();
+                    let val = trimmed.slice(eqIdx + 1).trim();
+                    if ((val.startsWith('"') && val.endsWith('"')) || (val.startsWith("'") && val.endsWith("'"))) {
+                        val = val.slice(1, -1);
+                    }
+                    if (process.env[key] === undefined) {
+                        process.env[key] = val;
+                    }
+                }
+            }
+            break;
+        }
+    }
+} catch (err) {}
 
-const DATA_DIR = path.join(__dirname, 'assets', 'data');
+const DATA_DIR = process.env.DATA_DIR ? path.resolve(process.env.DATA_DIR) : path.join(__dirname, 'assets', 'data');
 const STUDENTS_FILE = path.join(DATA_DIR, 'students.json');
 const CONFIG_FILE = path.join(DATA_DIR, 'erp-config.json');
 const USERS_FILE = path.join(DATA_DIR, 'users.json');
@@ -176,16 +201,39 @@ async function init() {
 
     if (DB_TYPE === 'mysql' && mysql) {
         try {
-            const sslOption = process.env.DB_SSL === 'true' || process.env.DB_SSL === '1'
-                ? { rejectUnauthorized: false }
-                : undefined;
+            const host = process.env.DB_HOST || 'gateway01.ap-southeast-1.prod.aws.tidbcloud.com';
+            const port = parseInt(process.env.DB_PORT || '4000', 10);
+            const user = process.env.DB_USER || '287vGtA52xzWe45.root';
+            const password = process.env.DB_PASSWORD || 'Jw4G8J9vbkYFOBI3';
+            const targetDb = process.env.DB_NAME || 'test';
+            const isTiDB = host.includes('tidbcloud.com') || (process.env.MYSQL_URI && process.env.MYSQL_URI.includes('tidbcloud.com'));
+            const sslRequired = process.env.DB_SSL === 'false' ? false : true;
+
+            let sslOption = undefined;
+            if (sslRequired) {
+                sslOption = { minVersion: 'TLSv1.2' };
+                const caPath = process.env.CA_PATH || process.env.DB_CA;
+                if (caPath && fs.existsSync(caPath)) {
+                    try {
+                        sslOption.ca = fs.readFileSync(caPath);
+                        sslOption.rejectUnauthorized = true;
+                    } catch (e) {
+                        console.warn('⚠️ Could not read CA file at ' + caPath + ': ' + e.message);
+                        sslOption.rejectUnauthorized = false;
+                    }
+                } else if (process.env.DB_SSL_REJECT_UNAUTHORIZED === 'true') {
+                    sslOption.rejectUnauthorized = true;
+                } else {
+                    sslOption.rejectUnauthorized = false;
+                }
+            }
 
             let poolConfig = {
-                host: process.env.DB_HOST || 'localhost',
-                port: parseInt(process.env.DB_PORT || '3306', 10),
-                user: process.env.DB_USER || 'root',
-                password: process.env.DB_PASSWORD || '',
-                database: process.env.DB_NAME || 'science_lms_db',
+                host,
+                port,
+                user,
+                password,
+                database: targetDb,
                 waitForConnections: process.env.DB_WAIT_FOR_CONNECTIONS !== 'false',
                 connectionLimit: parseInt(process.env.DB_CONNECTION_LIMIT || '10', 10),
                 queueLimit: parseInt(process.env.DB_QUEUE_LIMIT || '0', 10),
@@ -196,6 +244,20 @@ async function init() {
                 poolConfig.ssl = sslOption;
             }
 
+            // First verify or auto-create target database on TiDB Cloud using 'test' database
+            if (targetDb !== 'test' && targetDb !== 'sys') {
+                try {
+                    const bootstrapConfig = { ...poolConfig, database: 'test' };
+                    const tempConn = await mysql.createConnection(bootstrapConfig);
+                    await tempConn.query('CREATE DATABASE IF NOT EXISTS `' + targetDb + '` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;');
+                    await tempConn.end();
+                    console.log('✅ [TiDB Cloud] Database `' + targetDb + '` verified/created.');
+                } catch (dbErr) {
+                    console.warn('ℹ️  [TiDB Cloud Notice]: ' + dbErr.message);
+                }
+            }
+
+            // Create pool
             if (process.env.MYSQL_URI) {
                 pool = mysql.createPool(process.env.MYSQL_URI);
             } else {
@@ -203,8 +265,25 @@ async function init() {
             }
 
             // Test connection
-            const connection = await pool.getConnection();
-            console.log(`✅ [MySQL Engine] Connected successfully to MySQL Database '${poolConfig.database}' at ${poolConfig.host}:${poolConfig.port}`);
+            let connection;
+            try {
+                connection = await pool.getConnection();
+            } catch (connErr) {
+                if (connErr.code === 'ER_BAD_DB_ERROR') {
+                    console.log('ℹ️  [TiDB Cloud] Target database not found. Creating database `' + targetDb + '`...');
+                    const bootstrapConfig = { ...poolConfig, database: 'test' };
+                    const tempConn = await mysql.createConnection(bootstrapConfig);
+                    await tempConn.query('CREATE DATABASE IF NOT EXISTS `' + targetDb + '` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;');
+                    await tempConn.end();
+                    pool = mysql.createPool(poolConfig);
+                    connection = await pool.getConnection();
+                } else {
+                    throw connErr;
+                }
+            }
+
+            const clusterName = isTiDB ? (process.env.TIDB_CLUSTER_NAME || 'ics-school-cluster') : 'Cloud MySQL';
+            console.log('✅ [' + clusterName + '] Connected successfully to Database `' + poolConfig.database + '` at ' + poolConfig.host + ':' + poolConfig.port);
             
             // Create tables if they do not exist
             await connection.query(CREATE_TABLE_USERS);
@@ -221,7 +300,7 @@ async function init() {
             isInitialized = true;
             return true;
         } catch (err) {
-            console.error('❌ [MySQL Engine Error] Could not connect to MySQL:', err.message);
+            console.error('❌ [MySQL / TiDB Engine Error] Could not connect:', err.message);
             console.warn('⚠️  Falling back to local JSON database storage.');
             pool = null;
         }
@@ -324,12 +403,16 @@ async function getStatus() {
             const [logs] = await pool.query('SELECT COUNT(*) as count FROM activity_logs');
             const [cfg] = await pool.query('SELECT COUNT(*) as count FROM erp_config');
 
+            const isTiDB = (process.env.DB_HOST && process.env.DB_HOST.includes('tidbcloud.com')) ||
+                           (process.env.MYSQL_URI && process.env.MYSQL_URI.includes('tidbcloud.com'));
             return {
-                engine: 'MySQL Cloud Database',
+                engine: isTiDB ? 'TiDB Cloud Serverless (MySQL)' : 'MySQL Cloud Database',
+                cluster: isTiDB ? (process.env.TIDB_CLUSTER_NAME || 'ics-school-cluster') : undefined,
                 connected: true,
-                host: process.env.DB_HOST || 'localhost',
-                database: process.env.DB_NAME || 'science_lms_db',
-                ssl: process.env.DB_SSL === 'true',
+                host: process.env.DB_HOST || 'gateway01.ap-southeast-1.prod.aws.tidbcloud.com',
+                port: parseInt(process.env.DB_PORT || (isTiDB ? '4000' : '3306'), 10),
+                database: process.env.DB_NAME || 'test',
+                ssl: true,
                 stats: {
                     usersCount: users[0].count,
                     studentsCount: students[0].count,
@@ -355,6 +438,7 @@ async function getStatus() {
         return {
             engine: 'Pure JSON Storage (Local)',
             connected: true,
+            isFallback: true,
             stats: {
                 usersCount: users.length,
                 studentsCount: students.length,
@@ -611,6 +695,80 @@ async function getStudentById(id) {
     return students.find(s => s.student_info && s.student_info.student_id.toLowerCase() === cleanId.toLowerCase()) || null;
 }
 
+async function createStudent(s) {
+    await init();
+    if (!s) throw new Error('Student payload required');
+
+    const sInfo = s.student_info || {};
+    const studentId = sInfo.student_id || s.tab_name || ('ST-' + Math.floor(10000 + Math.random() * 90000));
+    const name = sInfo.name || s.tab_name || 'Unknown Student';
+    const username = sInfo.username || '';
+    const password = sInfo.password || '';
+    const gradeClass = sInfo.grade_class || '';
+    const homeroomTeacher = sInfo.homeroom_teacher || '';
+    const parentWhatsapp = sInfo.parent_whatsapp || '';
+    const rawData = JSON.stringify(s);
+
+    if (pool) {
+        const sql = `
+            INSERT INTO students (
+                student_id, tab_name, name, username, password, grade_class,
+                homeroom_teacher, parent_whatsapp, student_info, weekly_progress,
+                monthly_progress, assessments, summary, teacher_notes, student_files, raw_data
+            )
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            ON DUPLICATE KEY UPDATE
+                tab_name = VALUES(tab_name),
+                name = VALUES(name),
+                username = VALUES(username),
+                password = VALUES(password),
+                grade_class = VALUES(grade_class),
+                homeroom_teacher = VALUES(homeroom_teacher),
+                parent_whatsapp = VALUES(parent_whatsapp),
+                student_info = VALUES(student_info),
+                weekly_progress = VALUES(weekly_progress),
+                monthly_progress = VALUES(monthly_progress),
+                assessments = VALUES(assessments),
+                summary = VALUES(summary),
+                teacher_notes = VALUES(teacher_notes),
+                student_files = VALUES(student_files),
+                raw_data = VALUES(raw_data)
+        `;
+
+        await pool.query(sql, [
+            studentId,
+            s.tab_name || '',
+            name,
+            username,
+            password,
+            gradeClass,
+            homeroomTeacher,
+            parentWhatsapp,
+            JSON.stringify(s.student_info || {}),
+            JSON.stringify(s.weekly_progress || []),
+            JSON.stringify(s.monthly_progress || {}),
+            JSON.stringify(s.assessments || []),
+            JSON.stringify(s.summary || {}),
+            JSON.stringify(s.teacher_notes || ''),
+            JSON.stringify(s.student_files || []),
+            rawData
+        ]);
+        console.log('✅ [TiDB Cloud] Saved student `' + name + '` (' + studentId + ') directly to database.');
+    }
+
+    // Always keep local cache synchronized
+    let local = readJsonFile(STUDENTS_FILE, []);
+    const idx = local.findIndex(x => x && x.student_info && x.student_info.student_id === studentId);
+    if (idx !== -1) {
+        local[idx] = s;
+    } else {
+        local.push(s);
+    }
+    writeJsonFile(STUDENTS_FILE, local);
+
+    return s;
+}
+
 async function saveStudents(studentsArray) {
     await init();
     if (!Array.isArray(studentsArray)) throw new Error('Students payload must be an array');
@@ -666,10 +824,10 @@ async function saveStudents(studentsArray) {
                     parentWhatsapp,
                     JSON.stringify(s.student_info || {}),
                     JSON.stringify(s.weekly_progress || []),
-                    JSON.stringify(s.monthly_progress || []),
+                    JSON.stringify(s.monthly_progress || {}),
                     JSON.stringify(s.assessments || []),
                     JSON.stringify(s.summary || {}),
-                    JSON.stringify(s.teacher_notes || []),
+                    JSON.stringify(s.teacher_notes || ''),
                     JSON.stringify(s.student_files || []),
                     rawData
                 ]);
@@ -789,7 +947,7 @@ async function saveDocument(doc) {
             newDoc.fileUrl || '',
             newDoc.fileSize || 'N/A',
             newDoc.uploadDate,
-            newDoc.uploadedBy || 'Mr. Laknath Amarasinghe',
+            newDoc.uploadedBy || 'Mrs. Sheshadi Amarasinghe',
             newDoc.description || '',
             JSON.stringify(newDoc)
         ]);
@@ -901,7 +1059,7 @@ async function exportFullDb() {
 
     return {
         exportTimestamp: new Date().toISOString(),
-        academy: 'Science with Laknath ERP',
+        academy: 'Sathsarani Science Academy LMS',
         databaseEngine: pool ? 'MySQL Cloud Database' : 'JSON Storage',
         students,
         config,
@@ -941,6 +1099,7 @@ module.exports = {
     getStudents,
     getStudentById,
     saveStudents,
+    createStudent,
     getConfig,
     saveConfig,
     getDocuments,
@@ -949,5 +1108,7 @@ module.exports = {
     getLogs,
     addLog,
     exportFullDb,
-    importFullDb
+    importFullDb,
+    getPool: () => pool,
+    isCloudConnected: () => !!pool
 };

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Academic Results & Progress Portal | Science with Laknath ERP</title>
+    <title>Student Academic Results & Progress Portal | Sathsarani Science Academy LMS</title>
     <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Rajdhani:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -31,10 +31,10 @@
     <header class="bg-slate-950/90 border-b border-rose-900/40 sticky top-0 z-50 backdrop-blur-md no-print">
         <div class="max-w-7xl mx-auto px-4 flex justify-between items-center h-20">
             <div class="flex items-center space-x-3">
-                <img src="assets/images/logo.png" alt="Logo" class="h-12 w-12 object-contain rounded-xl border border-amber-500/30 p-1 bg-slate-950 branding-logo">
+                <img src="assets/images/logo.png" alt="Logo" class="branding-logo h-12 w-12 object-contain rounded-xl border border-amber-500/30 p-1 bg-slate-950">
                 <div>
                     <h1 class="text-xl font-bold font-cinzel text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-yellow-400 to-rose-400 branding-academy-name">
-                        SCIENCE with LAKNATH
+                        SCIENCE with SHESHADI
                     </h1>
                     <p class="text-xs text-cyan-400 font-rajdhani tracking-widest uppercase branding-tagline">Student Academic Portal</p>
                 </div>
@@ -145,27 +145,22 @@
                             </div>
                         </div>
 
-                        <!-- Custom Evaluation Column Breakdown Pie Chart -->
+                        <!-- Practical Results Breakdown Pie Chart -->
                         <div class="bg-slate-950/90 border border-emerald-500/30 p-5 rounded-2xl space-y-3">
-                            <div class="flex items-center justify-between gap-1">
-                                <h4 class="text-xs font-bold font-cinzel text-emerald-300 uppercase tracking-wider flex items-center gap-1.5">
-                                    <i class="fa-solid fa-chart-pie text-emerald-400"></i> Evaluation Pie Chart
-                                </h4>
-                                <select id="stColumnPieSelect" onchange="changeStudentSidebarPie(this.value)" class="bg-slate-900 border border-slate-700 rounded-lg px-2 py-0.5 text-[10px] text-emerald-400 focus:outline-none max-w-[120px] truncate">
-                                    <!-- Populated dynamically -->
-                                </select>
-                            </div>
+                            <h4 class="text-xs font-bold font-cinzel text-emerald-300 uppercase tracking-wider flex items-center justify-between">
+                                <span><i class="fa-solid fa-chart-pie mr-1.5 text-emerald-400"></i>Practical Results Breakdown</span>
+                                <span class="text-[10px] text-slate-400 font-mono">Pie Chart</span>
+                            </h4>
                             <div class="h-48 relative flex items-center justify-center">
                                 <canvas id="stPracticalPieChart"></canvas>
                             </div>
-                            <div id="stSidebarPieLegend" class="text-[10px] text-slate-400 text-center font-mono"></div>
                         </div>
 
                         <!-- Student Statistics & Verification QR -->
                         <div class="space-y-3 text-sm">
                             <div class="flex justify-between items-center text-slate-300">
                                 <span class="text-slate-400">Homeroom Educator:</span>
-                                <span id="stTeacher" class="font-semibold text-slate-200 branding-teacher-name">Mr. Laknath Amarasinghe</span>
+                                <span id="stTeacher" class="font-semibold text-slate-200 branding-teacher-name">Mrs. Sheshadi Amarasinghe</span>
                             </div>
                             <div class="flex justify-between items-center text-slate-300">
                                 <span class="text-slate-400">Annual Unit Test Avg:</span>
@@ -230,27 +225,6 @@
                                         <!-- Dynamically populated -->
                                     </tbody>
                                 </table>
-                            </div>
-                        </div>
-
-                        <!-- Weekly Evaluation Columns Pie Charts Summary Gallery -->
-                        <div class="glass-panel p-6 space-y-4 border-emerald-500/30">
-                            <div class="flex items-center justify-between pb-3 border-b border-slate-800">
-                                <div>
-                                    <h4 class="text-base font-bold font-cinzel text-emerald-400 flex items-center gap-2">
-                                        <i class="fa-solid fa-chart-pie text-emerald-400 text-lg"></i>
-                                        <span>Weekly Evaluation Summary (Pie Charts)</span>
-                                    </h4>
-                                    <p class="text-xs text-slate-400">Visual performance breakdowns across all customized evaluation criteria for <span id="stPieScopeLabel" class="text-amber-400 font-bold">January</span>.</p>
-                                </div>
-                                <span class="text-[10px] text-slate-400 font-mono bg-slate-900 px-3 py-1 rounded-full border border-slate-800">
-                                    All Columns Breakdown
-                                </span>
-                            </div>
-
-                            <!-- Dynamic Grid of Pie Charts (one per manually added column) -->
-                            <div id="stAllColumnsPieGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                                <!-- Populated dynamically by JS -->
                             </div>
                         </div>
 
@@ -369,7 +343,7 @@
 
     <!-- Footer -->
     <footer class="bg-slate-950 border-t border-slate-800 py-6 text-center text-xs text-slate-500 no-print">
-        <p>&copy; 2026 Science with Laknath. Student Academic Results Portal.</p>
+        <p>&copy; 2026 Sathsarani Science Academy. Student Academic Results Portal.</p>
     </footer>
 
     <!-- Core LMS Engine & Scripts -->
@@ -686,9 +660,6 @@
             document.getElementById('selectedMonthLabel').textContent = monthName;
             document.getElementById('tableMonthTitle').textContent = monthName;
             renderMonthTabs();
-            if (typeof renderStudentAllColumnPieCharts === 'function') {
-                renderStudentAllColumnPieCharts();
-            }
 
             const theadRow = document.getElementById('stWeeklyTableHeadRow');
             const tbody = document.getElementById('stWeeklyTableBody');
@@ -878,51 +849,24 @@
                 }
             });
 
-            // 3. Render Custom Evaluation Columns Pie Charts Suite
-            renderStudentAllColumnPieCharts();
-        }
-
-        let studentColumnCharts = {};
-        let activeStudentColKey = '';
-
-        function changeStudentSidebarPie(colKey) {
-            activeStudentColKey = colKey;
-            renderStudentSidebarPie(colKey);
-        }
-
-        function renderStudentSidebarPie(colKey) {
-            const canvasEl = document.getElementById('stPracticalPieChart');
-            if (!canvasEl) return;
-
-            if (stPracticalPieChart) {
-                stPracticalPieChart.destroy();
-                stPracticalPieChart = null;
-            }
-
-            const pData = window.LMSCore.getColumnPieData(currentStudent, colKey, selectedMonth);
-            const legendDiv = document.getElementById('stSidebarPieLegend');
-
-            if (!pData || pData.labels.length === 0 || pData.totalEntries === 0) {
-                if (legendDiv) legendDiv.textContent = 'No evaluation data recorded.';
-                return;
-            }
-
-            stPracticalPieChart = new Chart(canvasEl.getContext('2d'), {
-                type: 'doughnut',
+            // 3. Practical Results Pie Chart
+            const pieCounts = window.LMSCore.getPracticalPieData(currentStudent);
+            stPracticalPieChart = new Chart(document.getElementById('stPracticalPieChart').getContext('2d'), {
+                type: 'pie',
                 data: {
-                    labels: pData.labels,
+                    labels: Object.keys(pieCounts),
                     datasets: [{
-                        data: pData.data,
-                        backgroundColor: pData.colors,
-                        borderColor: '#0c0710',
-                        borderWidth: 2
+                        data: Object.values(pieCounts),
+                        backgroundColor: ['#10b981', '#f59e0b', '#06b6d4', '#ef4444', '#64748b'],
+                        borderWidth: 2,
+                        borderColor: '#0c0710'
                     }]
                 },
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
                     plugins: {
-                        legend: { position: 'bottom', labels: { color: '#cbd5e1', font: { size: 9 }, boxWidth: 10 } },
+                        legend: { position: 'bottom', labels: { color: '#cbd5e1', font: { size: 10 }, boxWidth: 12 } },
                         tooltip: {
                             callbacks: {
                                 label: function(context) {
@@ -935,150 +879,6 @@
                         }
                     }
                 }
-            });
-
-            if (legendDiv) {
-                legendDiv.textContent = `${pData.totalEvaluated} / ${pData.totalEntries} evaluated (${selectedMonth})`;
-            }
-        }
-
-        function renderStudentAllColumnPieCharts() {
-            // Update scope label text
-            const scopeLabel = document.getElementById('stPieScopeLabel');
-            if (scopeLabel) scopeLabel.textContent = selectedMonth;
-
-            // Destroy previous chart instances
-            Object.keys(studentColumnCharts).forEach(key => {
-                if (studentColumnCharts[key]) {
-                    studentColumnCharts[key].destroy();
-                }
-            });
-            studentColumnCharts = {};
-
-            const cols = window.LMSCore.getWeeklyColumns();
-            const grid = document.getElementById('stAllColumnsPieGrid');
-            const sidebarSelect = document.getElementById('stColumnPieSelect');
-
-            // 1. Sidebar select dropdown
-            if (sidebarSelect) {
-                sidebarSelect.innerHTML = '';
-                if (cols.length === 0) {
-                    sidebarSelect.innerHTML = '<option value="">No columns</option>';
-                    renderStudentSidebarPie('');
-                } else {
-                    cols.forEach(c => {
-                        const opt = document.createElement('option');
-                        opt.value = c.key;
-                        opt.textContent = c.label;
-                        if (c.key === activeStudentColKey) opt.selected = true;
-                        sidebarSelect.appendChild(opt);
-                    });
-                    if (!activeStudentColKey || !cols.some(c => c.key === activeStudentColKey)) {
-                        activeStudentColKey = cols[0].key;
-                    }
-                    renderStudentSidebarPie(activeStudentColKey);
-                }
-            }
-
-            // 2. Main Grid
-            if (!grid) return;
-            grid.innerHTML = '';
-
-            if (cols.length === 0) {
-                grid.innerHTML = `
-                    <div class="col-span-full p-8 text-center bg-slate-950/40 rounded-2xl border border-slate-800 space-y-2">
-                        <i class="fa-solid fa-chart-pie text-3xl text-slate-600 mb-1"></i>
-                        <h5 class="text-sm font-bold text-slate-300">No Evaluation Columns Configured</h5>
-                        <p class="text-xs text-slate-400 max-w-md mx-auto">
-                            The teacher has not added customized weekly evaluation columns yet. Once columns are added, real-time Pie Chart summaries will appear here.
-                        </p>
-                    </div>
-                `;
-                return;
-            }
-
-            // Render a card for every manually added column
-            cols.forEach(c => {
-                const pData = window.LMSCore.getColumnPieData(currentStudent, c.key, selectedMonth);
-
-                const card = document.createElement('div');
-                card.className = "p-4 rounded-2xl bg-slate-950/70 border border-slate-800 flex flex-col justify-between space-y-3 shadow-lg hover:border-emerald-500/30 transition";
-
-                let legendHtml = '<div class="space-y-1">';
-                pData.labels.forEach((lbl, idx) => {
-                    const count = pData.data[idx];
-                    const total = pData.data.reduce((a, b) => a + b, 0);
-                    const pct = total > 0 ? ((count / total) * 100).toFixed(0) : 0;
-                    legendHtml += `
-                        <div class="flex items-center justify-between text-[11px]">
-                            <span class="flex items-center gap-1.5 truncate">
-                                <span class="w-2.5 h-2.5 rounded-full inline-block flex-shrink-0" style="background-color: ${pData.colors[idx]}"></span>
-                                <span class="text-slate-300 truncate">${lbl}</span>
-                            </span>
-                            <span class="font-mono text-slate-400 font-semibold">${count} <span class="text-slate-500 text-[10px]">(${pct}%)</span></span>
-                        </div>
-                    `;
-                });
-                legendHtml += '</div>';
-
-                card.innerHTML = `
-                    <div class="flex items-center justify-between border-b border-slate-800/80 pb-2">
-                        <div class="truncate mr-2">
-                            <h5 class="text-xs font-bold text-emerald-300 truncate flex items-center gap-1.5">
-                                <i class="fa-solid fa-chart-pie text-emerald-400"></i> ${pData.columnLabel}
-                            </h5>
-                            <span class="text-[9px] text-slate-400 font-mono">[${pData.columnType === 'number' ? 'Marks (0-100)' : (pData.columnType === 'text' ? 'Text Status' : 'Dropdown')}]</span>
-                        </div>
-                        <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 flex-shrink-0">
-                            ${pData.totalEvaluated} / ${pData.totalEntries} Eval
-                        </span>
-                    </div>
-
-                    <div class="relative h-44 w-full flex items-center justify-center">
-                        <canvas id="stColChart_${pData.columnKey}"></canvas>
-                    </div>
-
-                    <div class="pt-2 border-t border-slate-800/80">
-                        ${legendHtml}
-                    </div>
-                `;
-
-                grid.appendChild(card);
-
-                setTimeout(() => {
-                    const canvas = document.getElementById(`stColChart_${pData.columnKey}`);
-                    if (canvas) {
-                        studentColumnCharts[pData.columnKey] = new Chart(canvas.getContext('2d'), {
-                            type: 'pie',
-                            data: {
-                                labels: pData.labels,
-                                datasets: [{
-                                    data: pData.data,
-                                    backgroundColor: pData.colors,
-                                    borderColor: '#0c0710',
-                                    borderWidth: 2
-                                }]
-                            },
-                            options: {
-                                responsive: true,
-                                maintainAspectRatio: false,
-                                plugins: {
-                                    legend: { display: false },
-                                    tooltip: {
-                                        callbacks: {
-                                            label: function(context) {
-                                                const total = context.dataset.data.reduce((a, b) => a + b, 0);
-                                                const val = context.raw;
-                                                const pct = total > 0 ? ((val / total) * 100).toFixed(1) : 0;
-                                                return ` ${context.label}: ${val} (${pct}%)`;
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        });
-                    }
-                }, 10);
             });
         }
     </script>

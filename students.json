@@ -1,0 +1,6489 @@
+[
+  {
+    "tab_name": "Alex ST-84092",
+    "student_info": {
+      "name": "Alex Johnson",
+      "student_id": "ST-84092",
+      "username": "alex",
+      "password": "student123",
+      "grade_class": "06 - Science",
+      "homeroom_teacher": "Mrs. Sheshadi Amarasinghe",
+      "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Alex Johnson",
+      "qr_code_key": "QR-ST-84092",
+      "access_url": "student.html?id=ST-84092",
+      "parent_whatsapp": "+94771614260"
+    },
+    "weekly_progress": [
+      {
+        "week": "1 week",
+        "master_guide_1": "Completed",
+        "master_guide_2": "Completed",
+        "past_paper": "Completed",
+        "practical": "Completed",
+        "unit_test": 67
+      },
+      {
+        "week": "2 week",
+        "master_guide_1": "Completed",
+        "master_guide_2": "Completed",
+        "past_paper": "Incomplete",
+        "practical": "Completed",
+        "unit_test": 69
+      },
+      {
+        "week": "3 week",
+        "master_guide_1": "Completed",
+        "master_guide_2": "0.5 Done",
+        "past_paper": "Completed",
+        "practical": "0.5 Done",
+        "unit_test": 71
+      },
+      {
+        "week": "4 week",
+        "master_guide_1": "0.5 Done",
+        "master_guide_2": "Completed",
+        "past_paper": "Completed",
+        "practical": "Completed",
+        "unit_test": 73
+      }
+    ],
+    "monthly_progress": {
+      "January": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 67
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Incomplete",
+          "practical": "Completed",
+          "unit_test": 69
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 71
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 73
+        }
+      ],
+      "February": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 69
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Incomplete",
+          "practical": "Completed",
+          "unit_test": 71
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 73
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 75
+        }
+      ],
+      "March": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 71
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Incomplete",
+          "practical": "Completed",
+          "unit_test": 73
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 75
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 77
+        }
+      ],
+      "April": [
+        {
+          "week": "1 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 73
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Incomplete",
+          "practical": "Completed",
+          "unit_test": 75
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 77
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 79
+        }
+      ],
+      "May": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 75
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Incomplete",
+          "practical": "Completed",
+          "unit_test": 77
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 79
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 81
+        }
+      ],
+      "June": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 77
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Incomplete",
+          "practical": "Completed",
+          "unit_test": 79
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 81
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 83
+        }
+      ],
+      "July": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 79
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Incomplete",
+          "practical": "Completed",
+          "unit_test": 81
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 83
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 85
+        }
+      ],
+      "August": [
+        {
+          "week": "1 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 81
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Incomplete",
+          "practical": "Completed",
+          "unit_test": 83
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Pending",
+          "master_guide_2": "Pending",
+          "past_paper": "Pending",
+          "practical": "Pending",
+          "unit_test": null
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Pending",
+          "master_guide_2": "Pending",
+          "past_paper": "Pending",
+          "practical": "Pending",
+          "unit_test": null
+        }
+      ],
+      "September": [
+        {
+          "week": "1 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        }
+      ],
+      "October": [
+        {
+          "week": "1 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        }
+      ],
+      "November": [
+        {
+          "week": "1 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        }
+      ],
+      "December": [
+        {
+          "week": "1 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        }
+      ]
+    },
+    "assessments": [
+      {
+        "term": "Term 1 Exam",
+        "score": null
+      },
+      {
+        "term": "Term 2 Exam",
+        "score": null
+      },
+      {
+        "term": "Final Exam",
+        "score": null
+      }
+    ],
+    "summary": {
+      "attendance": "90%",
+      "average_unit_test": 76.4,
+      "overall_status": "Active Progress"
+    },
+    "teacher_notes": "Active participant in 06 - Science theory discussions and lab practicals.",
+    "student_files": [
+      {
+        "id": "SF-ST-84092-1",
+        "title": "Grade 06 Science Practical Log Sheet",
+        "category": "Lab Practical",
+        "fileSize": "2.8 MB",
+        "uploadDate": "2026-08-04",
+        "fileUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+        "uploadedBy": "Student Submission"
+      },
+      {
+        "id": "SF-ST-84092-2",
+        "title": "Unit Revision Assignment & Diagram Notes",
+        "category": "Assignment",
+        "fileSize": "1.5 MB",
+        "uploadDate": "2026-08-10",
+        "fileUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+        "uploadedBy": "Student Submission"
+      }
+    ]
+  },
+  {
+    "tab_name": "Sarah ST-84093",
+    "student_info": {
+      "name": "Sarah Smith",
+      "student_id": "ST-84093",
+      "username": "sarah",
+      "password": "student123",
+      "grade_class": "06 - Science",
+      "homeroom_teacher": "Mrs. Sheshadi Amarasinghe",
+      "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah Smith",
+      "qr_code_key": "QR-ST-84093",
+      "access_url": "student.html?id=ST-84093",
+      "parent_whatsapp": "+94771614260"
+    },
+    "weekly_progress": [
+      {
+        "week": "1 week",
+        "master_guide_1": "Completed",
+        "master_guide_2": "Completed",
+        "past_paper": "Completed",
+        "practical": "Completed",
+        "unit_test": 69
+      },
+      {
+        "week": "2 week",
+        "master_guide_1": "Completed",
+        "master_guide_2": "Completed",
+        "past_paper": "Incomplete",
+        "practical": "0.5 Done",
+        "unit_test": 71
+      },
+      {
+        "week": "3 week",
+        "master_guide_1": "Completed",
+        "master_guide_2": "0.5 Done",
+        "past_paper": "Completed",
+        "practical": "Completed",
+        "unit_test": 73
+      },
+      {
+        "week": "4 week",
+        "master_guide_1": "0.5 Done",
+        "master_guide_2": "Completed",
+        "past_paper": "Completed",
+        "practical": "Completed",
+        "unit_test": 75
+      }
+    ],
+    "monthly_progress": {
+      "January": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 69
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Incomplete",
+          "practical": "0.5 Done",
+          "unit_test": 71
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 73
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 75
+        }
+      ],
+      "February": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 71
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Incomplete",
+          "practical": "0.5 Done",
+          "unit_test": 73
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 75
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 77
+        }
+      ],
+      "March": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 73
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Incomplete",
+          "practical": "0.5 Done",
+          "unit_test": 75
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 77
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 79
+        }
+      ],
+      "April": [
+        {
+          "week": "1 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 75
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Incomplete",
+          "practical": "0.5 Done",
+          "unit_test": 77
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 79
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 81
+        }
+      ],
+      "May": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 77
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Incomplete",
+          "practical": "0.5 Done",
+          "unit_test": 79
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 81
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 83
+        }
+      ],
+      "June": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 79
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Incomplete",
+          "practical": "0.5 Done",
+          "unit_test": 81
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 83
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 85
+        }
+      ],
+      "July": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 81
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Incomplete",
+          "practical": "0.5 Done",
+          "unit_test": 83
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 85
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 87
+        }
+      ],
+      "August": [
+        {
+          "week": "1 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 83
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Incomplete",
+          "practical": "0.5 Done",
+          "unit_test": 85
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Pending",
+          "master_guide_2": "Pending",
+          "past_paper": "Pending",
+          "practical": "Pending",
+          "unit_test": null
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Pending",
+          "master_guide_2": "Pending",
+          "past_paper": "Pending",
+          "practical": "Pending",
+          "unit_test": null
+        }
+      ],
+      "September": [
+        {
+          "week": "1 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        }
+      ],
+      "October": [
+        {
+          "week": "1 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        }
+      ],
+      "November": [
+        {
+          "week": "1 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        }
+      ],
+      "December": [
+        {
+          "week": "1 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        }
+      ]
+    },
+    "assessments": [
+      {
+        "term": "Term 1 Exam",
+        "score": null
+      },
+      {
+        "term": "Term 2 Exam",
+        "score": null
+      },
+      {
+        "term": "Final Exam",
+        "score": null
+      }
+    ],
+    "summary": {
+      "attendance": "91%",
+      "average_unit_test": 78.4,
+      "overall_status": "Active Progress"
+    },
+    "teacher_notes": "Active participant in 06 - Science theory discussions and lab practicals.",
+    "student_files": [
+      {
+        "id": "SF-ST-84093-1",
+        "title": "Grade 06 Science Practical Log Sheet",
+        "category": "Lab Practical",
+        "fileSize": "2.8 MB",
+        "uploadDate": "2026-08-04",
+        "fileUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+        "uploadedBy": "Student Submission"
+      },
+      {
+        "id": "SF-ST-84093-2",
+        "title": "Unit Revision Assignment & Diagram Notes",
+        "category": "Assignment",
+        "fileSize": "1.5 MB",
+        "uploadDate": "2026-08-10",
+        "fileUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+        "uploadedBy": "Student Submission"
+      }
+    ]
+  },
+  {
+    "tab_name": "Samantha ST-90001",
+    "student_info": {
+      "name": "Samantha Perera",
+      "student_id": "ST-90001",
+      "username": "samantha",
+      "password": "student123",
+      "grade_class": "06 - Science",
+      "homeroom_teacher": "Mrs. Sheshadi Amarasinghe",
+      "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Samantha Perera",
+      "qr_code_key": "QR-ST-90001",
+      "access_url": "student.html?id=ST-90001",
+      "parent_whatsapp": "+94771614260"
+    },
+    "weekly_progress": [
+      {
+        "week": "1 week",
+        "master_guide_1": "Completed",
+        "master_guide_2": "Completed",
+        "past_paper": "Completed",
+        "practical": "0.5 Done",
+        "unit_test": 77
+      },
+      {
+        "week": "2 week",
+        "master_guide_1": "Completed",
+        "master_guide_2": "Completed",
+        "past_paper": "Incomplete",
+        "practical": "Completed",
+        "unit_test": 79
+      },
+      {
+        "week": "3 week",
+        "master_guide_1": "Completed",
+        "master_guide_2": "0.5 Done",
+        "past_paper": "Completed",
+        "practical": "Completed",
+        "unit_test": 81
+      },
+      {
+        "week": "4 week",
+        "master_guide_1": "0.5 Done",
+        "master_guide_2": "Completed",
+        "past_paper": "Completed",
+        "practical": "0.5 Done",
+        "unit_test": 83
+      }
+    ],
+    "monthly_progress": {
+      "January": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 77
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Incomplete",
+          "practical": "Completed",
+          "unit_test": 79
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 81
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 83
+        }
+      ],
+      "February": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 79
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Incomplete",
+          "practical": "Completed",
+          "unit_test": 81
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 83
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 85
+        }
+      ],
+      "March": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 81
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Incomplete",
+          "practical": "Completed",
+          "unit_test": 83
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 85
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 87
+        }
+      ],
+      "April": [
+        {
+          "week": "1 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 83
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Incomplete",
+          "practical": "Completed",
+          "unit_test": 85
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 87
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 89
+        }
+      ],
+      "May": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 85
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Incomplete",
+          "practical": "Completed",
+          "unit_test": 87
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 89
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 91
+        }
+      ],
+      "June": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 87
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Incomplete",
+          "practical": "Completed",
+          "unit_test": 89
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 91
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 93
+        }
+      ],
+      "July": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 89
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Incomplete",
+          "practical": "Completed",
+          "unit_test": 91
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 93
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 95
+        }
+      ],
+      "August": [
+        {
+          "week": "1 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 91
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Incomplete",
+          "practical": "Completed",
+          "unit_test": 93
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Pending",
+          "master_guide_2": "Pending",
+          "past_paper": "Pending",
+          "practical": "Pending",
+          "unit_test": null
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Pending",
+          "master_guide_2": "Pending",
+          "past_paper": "Pending",
+          "practical": "Pending",
+          "unit_test": null
+        }
+      ],
+      "September": [
+        {
+          "week": "1 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        }
+      ],
+      "October": [
+        {
+          "week": "1 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        }
+      ],
+      "November": [
+        {
+          "week": "1 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        }
+      ],
+      "December": [
+        {
+          "week": "1 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        }
+      ]
+    },
+    "assessments": [
+      {
+        "term": "Term 1 Exam",
+        "score": null
+      },
+      {
+        "term": "Term 2 Exam",
+        "score": null
+      },
+      {
+        "term": "Final Exam",
+        "score": null
+      }
+    ],
+    "summary": {
+      "attendance": "92%",
+      "average_unit_test": 86.4,
+      "overall_status": "Active Progress"
+    },
+    "teacher_notes": "Active participant in 06 - Science theory discussions and lab practicals.",
+    "student_files": [
+      {
+        "id": "SF-ST-90001-1",
+        "title": "Grade 06 Science Practical Log Sheet",
+        "category": "Lab Practical",
+        "fileSize": "2.8 MB",
+        "uploadDate": "2026-08-04",
+        "fileUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+        "uploadedBy": "Student Submission"
+      },
+      {
+        "id": "SF-ST-90001-2",
+        "title": "Unit Revision Assignment & Diagram Notes",
+        "category": "Assignment",
+        "fileSize": "1.5 MB",
+        "uploadDate": "2026-08-10",
+        "fileUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+        "uploadedBy": "Student Submission"
+      }
+    ]
+  },
+  {
+    "tab_name": "David ST-84094",
+    "student_info": {
+      "name": "David Perera",
+      "student_id": "ST-84094",
+      "username": "david",
+      "password": "student123",
+      "grade_class": "07 - Science",
+      "homeroom_teacher": "Mrs. Sheshadi Amarasinghe",
+      "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=David Perera",
+      "qr_code_key": "QR-ST-84094",
+      "access_url": "student.html?id=ST-84094",
+      "parent_whatsapp": "+94771614260"
+    },
+    "weekly_progress": [
+      {
+        "week": "1 week",
+        "master_guide_1": "Completed",
+        "master_guide_2": "Completed",
+        "past_paper": "Completed",
+        "practical": "Completed",
+        "unit_test": 79
+      },
+      {
+        "week": "2 week",
+        "master_guide_1": "Completed",
+        "master_guide_2": "Completed",
+        "past_paper": "Incomplete",
+        "practical": "Completed",
+        "unit_test": 81
+      },
+      {
+        "week": "3 week",
+        "master_guide_1": "Completed",
+        "master_guide_2": "0.5 Done",
+        "past_paper": "Completed",
+        "practical": "0.5 Done",
+        "unit_test": 83
+      },
+      {
+        "week": "4 week",
+        "master_guide_1": "0.5 Done",
+        "master_guide_2": "Completed",
+        "past_paper": "Completed",
+        "practical": "Completed",
+        "unit_test": 85
+      }
+    ],
+    "monthly_progress": {
+      "January": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 79
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Incomplete",
+          "practical": "Completed",
+          "unit_test": 81
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 83
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 85
+        }
+      ],
+      "February": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 81
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Incomplete",
+          "practical": "Completed",
+          "unit_test": 83
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 85
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 87
+        }
+      ],
+      "March": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 83
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Incomplete",
+          "practical": "Completed",
+          "unit_test": 85
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 87
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 89
+        }
+      ],
+      "April": [
+        {
+          "week": "1 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 85
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Incomplete",
+          "practical": "Completed",
+          "unit_test": 87
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 89
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 91
+        }
+      ],
+      "May": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 87
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Incomplete",
+          "practical": "Completed",
+          "unit_test": 89
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 91
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 93
+        }
+      ],
+      "June": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 89
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Incomplete",
+          "practical": "Completed",
+          "unit_test": 91
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 93
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 95
+        }
+      ],
+      "July": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 91
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Incomplete",
+          "practical": "Completed",
+          "unit_test": 93
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 95
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 97
+        }
+      ],
+      "August": [
+        {
+          "week": "1 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 93
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Incomplete",
+          "practical": "Completed",
+          "unit_test": 95
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Pending",
+          "master_guide_2": "Pending",
+          "past_paper": "Pending",
+          "practical": "Pending",
+          "unit_test": null
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Pending",
+          "master_guide_2": "Pending",
+          "past_paper": "Pending",
+          "practical": "Pending",
+          "unit_test": null
+        }
+      ],
+      "September": [
+        {
+          "week": "1 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        }
+      ],
+      "October": [
+        {
+          "week": "1 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        }
+      ],
+      "November": [
+        {
+          "week": "1 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        }
+      ],
+      "December": [
+        {
+          "week": "1 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        }
+      ]
+    },
+    "assessments": [
+      {
+        "term": "Term 1 Exam",
+        "score": null
+      },
+      {
+        "term": "Term 2 Exam",
+        "score": null
+      },
+      {
+        "term": "Final Exam",
+        "score": null
+      }
+    ],
+    "summary": {
+      "attendance": "93%",
+      "average_unit_test": 88.4,
+      "overall_status": "Active Progress"
+    },
+    "teacher_notes": "Active participant in 07 - Science theory discussions and lab practicals.",
+    "student_files": [
+      {
+        "id": "SF-ST-84094-1",
+        "title": "Grade 07 Science Practical Log Sheet",
+        "category": "Lab Practical",
+        "fileSize": "2.8 MB",
+        "uploadDate": "2026-08-04",
+        "fileUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+        "uploadedBy": "Student Submission"
+      },
+      {
+        "id": "SF-ST-84094-2",
+        "title": "Unit Revision Assignment & Diagram Notes",
+        "category": "Assignment",
+        "fileSize": "1.5 MB",
+        "uploadDate": "2026-08-10",
+        "fileUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+        "uploadedBy": "Student Submission"
+      }
+    ]
+  },
+  {
+    "tab_name": "Nethmi ST-84096",
+    "student_info": {
+      "name": "Nethmi Bandara",
+      "student_id": "ST-84096",
+      "username": "nethmi",
+      "password": "student123",
+      "grade_class": "07 - Science",
+      "homeroom_teacher": "Mrs. Sheshadi Amarasinghe",
+      "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Nethmi Bandara",
+      "qr_code_key": "QR-ST-84096",
+      "access_url": "student.html?id=ST-84096",
+      "parent_whatsapp": "+94771614260"
+    },
+    "weekly_progress": [
+      {
+        "week": "1 week",
+        "master_guide_1": "Completed",
+        "master_guide_2": "Completed",
+        "past_paper": "Completed",
+        "practical": "Completed",
+        "unit_test": 87
+      },
+      {
+        "week": "2 week",
+        "master_guide_1": "Completed",
+        "master_guide_2": "Completed",
+        "past_paper": "Incomplete",
+        "practical": "0.5 Done",
+        "unit_test": 89
+      },
+      {
+        "week": "3 week",
+        "master_guide_1": "Completed",
+        "master_guide_2": "0.5 Done",
+        "past_paper": "Completed",
+        "practical": "Completed",
+        "unit_test": 91
+      },
+      {
+        "week": "4 week",
+        "master_guide_1": "0.5 Done",
+        "master_guide_2": "Completed",
+        "past_paper": "Completed",
+        "practical": "Completed",
+        "unit_test": 93
+      }
+    ],
+    "monthly_progress": {
+      "January": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 87
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Incomplete",
+          "practical": "0.5 Done",
+          "unit_test": 89
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 91
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 93
+        }
+      ],
+      "February": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 89
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Incomplete",
+          "practical": "0.5 Done",
+          "unit_test": 91
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 93
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 95
+        }
+      ],
+      "March": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 91
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Incomplete",
+          "practical": "0.5 Done",
+          "unit_test": 93
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 95
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 97
+        }
+      ],
+      "April": [
+        {
+          "week": "1 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 93
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Incomplete",
+          "practical": "0.5 Done",
+          "unit_test": 95
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 97
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 99
+        }
+      ],
+      "May": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 95
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Incomplete",
+          "practical": "0.5 Done",
+          "unit_test": 97
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 99
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 100
+        }
+      ],
+      "June": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 97
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Incomplete",
+          "practical": "0.5 Done",
+          "unit_test": 99
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 100
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 100
+        }
+      ],
+      "July": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 99
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Incomplete",
+          "practical": "0.5 Done",
+          "unit_test": 100
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 100
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 100
+        }
+      ],
+      "August": [
+        {
+          "week": "1 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 100
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Incomplete",
+          "practical": "0.5 Done",
+          "unit_test": 100
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Pending",
+          "master_guide_2": "Pending",
+          "past_paper": "Pending",
+          "practical": "Pending",
+          "unit_test": null
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Pending",
+          "master_guide_2": "Pending",
+          "past_paper": "Pending",
+          "practical": "Pending",
+          "unit_test": null
+        }
+      ],
+      "September": [
+        {
+          "week": "1 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        }
+      ],
+      "October": [
+        {
+          "week": "1 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        }
+      ],
+      "November": [
+        {
+          "week": "1 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        }
+      ],
+      "December": [
+        {
+          "week": "1 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        }
+      ]
+    },
+    "assessments": [
+      {
+        "term": "Term 1 Exam",
+        "score": null
+      },
+      {
+        "term": "Term 2 Exam",
+        "score": null
+      },
+      {
+        "term": "Final Exam",
+        "score": null
+      }
+    ],
+    "summary": {
+      "attendance": "94%",
+      "average_unit_test": 95.8,
+      "overall_status": "Active Progress"
+    },
+    "teacher_notes": "Active participant in 07 - Science theory discussions and lab practicals.",
+    "student_files": [
+      {
+        "id": "SF-ST-84096-1",
+        "title": "Grade 07 Science Practical Log Sheet",
+        "category": "Lab Practical",
+        "fileSize": "2.8 MB",
+        "uploadDate": "2026-08-04",
+        "fileUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+        "uploadedBy": "Student Submission"
+      },
+      {
+        "id": "SF-ST-84096-2",
+        "title": "Unit Revision Assignment & Diagram Notes",
+        "category": "Assignment",
+        "fileSize": "1.5 MB",
+        "uploadDate": "2026-08-10",
+        "fileUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+        "uploadedBy": "Student Submission"
+      }
+    ]
+  },
+  {
+    "tab_name": "Kavisha ST-84095",
+    "student_info": {
+      "name": "Kavisha Silva",
+      "student_id": "ST-84095",
+      "username": "kavisha",
+      "password": "student123",
+      "grade_class": "08 - Science",
+      "homeroom_teacher": "Mrs. Sheshadi Amarasinghe",
+      "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Kavisha Silva",
+      "qr_code_key": "QR-ST-84095",
+      "access_url": "student.html?id=ST-84095",
+      "parent_whatsapp": "+94771614260"
+    },
+    "weekly_progress": [
+      {
+        "week": "1 week",
+        "master_guide_1": "Completed",
+        "master_guide_2": "Completed",
+        "past_paper": "Completed",
+        "practical": "0.5 Done",
+        "unit_test": 64
+      },
+      {
+        "week": "2 week",
+        "master_guide_1": "Completed",
+        "master_guide_2": "Completed",
+        "past_paper": "Incomplete",
+        "practical": "Completed",
+        "unit_test": 66
+      },
+      {
+        "week": "3 week",
+        "master_guide_1": "Completed",
+        "master_guide_2": "0.5 Done",
+        "past_paper": "Completed",
+        "practical": "Completed",
+        "unit_test": 68
+      },
+      {
+        "week": "4 week",
+        "master_guide_1": "0.5 Done",
+        "master_guide_2": "Completed",
+        "past_paper": "Completed",
+        "practical": "0.5 Done",
+        "unit_test": 70
+      }
+    ],
+    "monthly_progress": {
+      "January": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 64
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Incomplete",
+          "practical": "Completed",
+          "unit_test": 66
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 68
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 70
+        }
+      ],
+      "February": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 66
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Incomplete",
+          "practical": "Completed",
+          "unit_test": 68
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 70
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 72
+        }
+      ],
+      "March": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 68
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Incomplete",
+          "practical": "Completed",
+          "unit_test": 70
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 72
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 74
+        }
+      ],
+      "April": [
+        {
+          "week": "1 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 70
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Incomplete",
+          "practical": "Completed",
+          "unit_test": 72
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 74
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 76
+        }
+      ],
+      "May": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 72
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Incomplete",
+          "practical": "Completed",
+          "unit_test": 74
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 76
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 78
+        }
+      ],
+      "June": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 74
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Incomplete",
+          "practical": "Completed",
+          "unit_test": 76
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 78
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 80
+        }
+      ],
+      "July": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 76
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Incomplete",
+          "practical": "Completed",
+          "unit_test": 78
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 80
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 82
+        }
+      ],
+      "August": [
+        {
+          "week": "1 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 78
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Incomplete",
+          "practical": "Completed",
+          "unit_test": 80
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Pending",
+          "master_guide_2": "Pending",
+          "past_paper": "Pending",
+          "practical": "Pending",
+          "unit_test": null
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Pending",
+          "master_guide_2": "Pending",
+          "past_paper": "Pending",
+          "practical": "Pending",
+          "unit_test": null
+        }
+      ],
+      "September": [
+        {
+          "week": "1 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        }
+      ],
+      "October": [
+        {
+          "week": "1 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        }
+      ],
+      "November": [
+        {
+          "week": "1 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        }
+      ],
+      "December": [
+        {
+          "week": "1 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        }
+      ]
+    },
+    "assessments": [
+      {
+        "term": "Term 1 Exam",
+        "score": null
+      },
+      {
+        "term": "Term 2 Exam",
+        "score": null
+      },
+      {
+        "term": "Final Exam",
+        "score": null
+      }
+    ],
+    "summary": {
+      "attendance": "95%",
+      "average_unit_test": 73.4,
+      "overall_status": "Active Progress"
+    },
+    "teacher_notes": "Active participant in 08 - Science theory discussions and lab practicals.",
+    "student_files": [
+      {
+        "id": "SF-ST-84095-1",
+        "title": "Grade 08 Science Practical Log Sheet",
+        "category": "Lab Practical",
+        "fileSize": "2.8 MB",
+        "uploadDate": "2026-08-04",
+        "fileUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+        "uploadedBy": "Student Submission"
+      },
+      {
+        "id": "SF-ST-84095-2",
+        "title": "Unit Revision Assignment & Diagram Notes",
+        "category": "Assignment",
+        "fileSize": "1.5 MB",
+        "uploadDate": "2026-08-10",
+        "fileUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+        "uploadedBy": "Student Submission"
+      }
+    ]
+  },
+  {
+    "tab_name": "Dineth ST-84097",
+    "student_info": {
+      "name": "Dineth Jayasuriya",
+      "student_id": "ST-84097",
+      "username": "dineth",
+      "password": "student123",
+      "grade_class": "08 - Science",
+      "homeroom_teacher": "Mrs. Sheshadi Amarasinghe",
+      "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Dineth Jayasuriya",
+      "qr_code_key": "QR-ST-84097",
+      "access_url": "student.html?id=ST-84097",
+      "parent_whatsapp": "+94771614260"
+    },
+    "weekly_progress": [
+      {
+        "week": "1 week",
+        "master_guide_1": "Completed",
+        "master_guide_2": "Completed",
+        "past_paper": "Completed",
+        "practical": "Completed",
+        "unit_test": 72
+      },
+      {
+        "week": "2 week",
+        "master_guide_1": "Completed",
+        "master_guide_2": "Completed",
+        "past_paper": "Incomplete",
+        "practical": "Completed",
+        "unit_test": 74
+      },
+      {
+        "week": "3 week",
+        "master_guide_1": "Completed",
+        "master_guide_2": "0.5 Done",
+        "past_paper": "Completed",
+        "practical": "0.5 Done",
+        "unit_test": 76
+      },
+      {
+        "week": "4 week",
+        "master_guide_1": "0.5 Done",
+        "master_guide_2": "Completed",
+        "past_paper": "Completed",
+        "practical": "Completed",
+        "unit_test": 78
+      }
+    ],
+    "monthly_progress": {
+      "January": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 72
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Incomplete",
+          "practical": "Completed",
+          "unit_test": 74
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 76
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 78
+        }
+      ],
+      "February": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 74
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Incomplete",
+          "practical": "Completed",
+          "unit_test": 76
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 78
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 80
+        }
+      ],
+      "March": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 76
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Incomplete",
+          "practical": "Completed",
+          "unit_test": 78
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 80
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 82
+        }
+      ],
+      "April": [
+        {
+          "week": "1 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 78
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Incomplete",
+          "practical": "Completed",
+          "unit_test": 80
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 82
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 84
+        }
+      ],
+      "May": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 80
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Incomplete",
+          "practical": "Completed",
+          "unit_test": 82
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 84
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 86
+        }
+      ],
+      "June": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 82
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Incomplete",
+          "practical": "Completed",
+          "unit_test": 84
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 86
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 88
+        }
+      ],
+      "July": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 84
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Incomplete",
+          "practical": "Completed",
+          "unit_test": 86
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 88
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 90
+        }
+      ],
+      "August": [
+        {
+          "week": "1 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 86
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Incomplete",
+          "practical": "Completed",
+          "unit_test": 88
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Pending",
+          "master_guide_2": "Pending",
+          "past_paper": "Pending",
+          "practical": "Pending",
+          "unit_test": null
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Pending",
+          "master_guide_2": "Pending",
+          "past_paper": "Pending",
+          "practical": "Pending",
+          "unit_test": null
+        }
+      ],
+      "September": [
+        {
+          "week": "1 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        }
+      ],
+      "October": [
+        {
+          "week": "1 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        }
+      ],
+      "November": [
+        {
+          "week": "1 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        }
+      ],
+      "December": [
+        {
+          "week": "1 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        }
+      ]
+    },
+    "assessments": [
+      {
+        "term": "Term 1 Exam",
+        "score": null
+      },
+      {
+        "term": "Term 2 Exam",
+        "score": null
+      },
+      {
+        "term": "Final Exam",
+        "score": null
+      }
+    ],
+    "summary": {
+      "attendance": "96%",
+      "average_unit_test": 81.4,
+      "overall_status": "Active Progress"
+    },
+    "teacher_notes": "Active participant in 08 - Science theory discussions and lab practicals.",
+    "student_files": [
+      {
+        "id": "SF-ST-84097-1",
+        "title": "Grade 08 Science Practical Log Sheet",
+        "category": "Lab Practical",
+        "fileSize": "2.8 MB",
+        "uploadDate": "2026-08-04",
+        "fileUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+        "uploadedBy": "Student Submission"
+      },
+      {
+        "id": "SF-ST-84097-2",
+        "title": "Unit Revision Assignment & Diagram Notes",
+        "category": "Assignment",
+        "fileSize": "1.5 MB",
+        "uploadDate": "2026-08-10",
+        "fileUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+        "uploadedBy": "Student Submission"
+      }
+    ]
+  },
+  {
+    "tab_name": "Chamodi ST-84098",
+    "student_info": {
+      "name": "Chamodi Wickramasinghe",
+      "student_id": "ST-84098",
+      "username": "chamodi",
+      "password": "student123",
+      "grade_class": "09 - Science",
+      "homeroom_teacher": "Mrs. Sheshadi Amarasinghe",
+      "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Chamodi Wickramasinghe",
+      "qr_code_key": "QR-ST-84098",
+      "access_url": "student.html?id=ST-84098",
+      "parent_whatsapp": "+94771614260"
+    },
+    "weekly_progress": [
+      {
+        "week": "1 week",
+        "master_guide_1": "Completed",
+        "master_guide_2": "Completed",
+        "past_paper": "Completed",
+        "practical": "Completed",
+        "unit_test": 74
+      },
+      {
+        "week": "2 week",
+        "master_guide_1": "Completed",
+        "master_guide_2": "Completed",
+        "past_paper": "Incomplete",
+        "practical": "0.5 Done",
+        "unit_test": 76
+      },
+      {
+        "week": "3 week",
+        "master_guide_1": "Completed",
+        "master_guide_2": "0.5 Done",
+        "past_paper": "Completed",
+        "practical": "Completed",
+        "unit_test": 78
+      },
+      {
+        "week": "4 week",
+        "master_guide_1": "0.5 Done",
+        "master_guide_2": "Completed",
+        "past_paper": "Completed",
+        "practical": "Completed",
+        "unit_test": 80
+      }
+    ],
+    "monthly_progress": {
+      "January": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 74
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Incomplete",
+          "practical": "0.5 Done",
+          "unit_test": 76
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 78
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 80
+        }
+      ],
+      "February": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 76
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Incomplete",
+          "practical": "0.5 Done",
+          "unit_test": 78
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 80
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 82
+        }
+      ],
+      "March": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 78
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Incomplete",
+          "practical": "0.5 Done",
+          "unit_test": 80
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 82
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 84
+        }
+      ],
+      "April": [
+        {
+          "week": "1 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 80
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Incomplete",
+          "practical": "0.5 Done",
+          "unit_test": 82
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 84
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 86
+        }
+      ],
+      "May": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 82
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Incomplete",
+          "practical": "0.5 Done",
+          "unit_test": 84
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 86
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 88
+        }
+      ],
+      "June": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 84
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Incomplete",
+          "practical": "0.5 Done",
+          "unit_test": 86
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 88
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 90
+        }
+      ],
+      "July": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 86
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Incomplete",
+          "practical": "0.5 Done",
+          "unit_test": 88
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 90
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 92
+        }
+      ],
+      "August": [
+        {
+          "week": "1 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 88
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Incomplete",
+          "practical": "0.5 Done",
+          "unit_test": 90
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Pending",
+          "master_guide_2": "Pending",
+          "past_paper": "Pending",
+          "practical": "Pending",
+          "unit_test": null
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Pending",
+          "master_guide_2": "Pending",
+          "past_paper": "Pending",
+          "practical": "Pending",
+          "unit_test": null
+        }
+      ],
+      "September": [
+        {
+          "week": "1 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        }
+      ],
+      "October": [
+        {
+          "week": "1 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        }
+      ],
+      "November": [
+        {
+          "week": "1 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        }
+      ],
+      "December": [
+        {
+          "week": "1 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        }
+      ]
+    },
+    "assessments": [
+      {
+        "term": "Term 1 Exam",
+        "score": null
+      },
+      {
+        "term": "Term 2 Exam",
+        "score": null
+      },
+      {
+        "term": "Final Exam",
+        "score": null
+      }
+    ],
+    "summary": {
+      "attendance": "97%",
+      "average_unit_test": 83.4,
+      "overall_status": "Active Progress"
+    },
+    "teacher_notes": "Active participant in 09 - Science theory discussions and lab practicals.",
+    "student_files": [
+      {
+        "id": "SF-ST-84098-1",
+        "title": "Grade 09 Science Practical Log Sheet",
+        "category": "Lab Practical",
+        "fileSize": "2.8 MB",
+        "uploadDate": "2026-08-04",
+        "fileUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+        "uploadedBy": "Student Submission"
+      },
+      {
+        "id": "SF-ST-84098-2",
+        "title": "Unit Revision Assignment & Diagram Notes",
+        "category": "Assignment",
+        "fileSize": "1.5 MB",
+        "uploadDate": "2026-08-10",
+        "fileUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+        "uploadedBy": "Student Submission"
+      }
+    ]
+  },
+  {
+    "tab_name": "Thisura ST-84099",
+    "student_info": {
+      "name": "Thisura Gunaratne",
+      "student_id": "ST-84099",
+      "username": "thisura",
+      "password": "student123",
+      "grade_class": "09 - Science",
+      "homeroom_teacher": "Mrs. Sheshadi Amarasinghe",
+      "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Thisura Gunaratne",
+      "qr_code_key": "QR-ST-84099",
+      "access_url": "student.html?id=ST-84099",
+      "parent_whatsapp": "+94771614260"
+    },
+    "weekly_progress": [
+      {
+        "week": "1 week",
+        "master_guide_1": "Completed",
+        "master_guide_2": "Completed",
+        "past_paper": "Completed",
+        "practical": "0.5 Done",
+        "unit_test": 82
+      },
+      {
+        "week": "2 week",
+        "master_guide_1": "Completed",
+        "master_guide_2": "Completed",
+        "past_paper": "Incomplete",
+        "practical": "Completed",
+        "unit_test": 84
+      },
+      {
+        "week": "3 week",
+        "master_guide_1": "Completed",
+        "master_guide_2": "0.5 Done",
+        "past_paper": "Completed",
+        "practical": "Completed",
+        "unit_test": 86
+      },
+      {
+        "week": "4 week",
+        "master_guide_1": "0.5 Done",
+        "master_guide_2": "Completed",
+        "past_paper": "Completed",
+        "practical": "0.5 Done",
+        "unit_test": 88
+      }
+    ],
+    "monthly_progress": {
+      "January": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 82
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Incomplete",
+          "practical": "Completed",
+          "unit_test": 84
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 86
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 88
+        }
+      ],
+      "February": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 84
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Incomplete",
+          "practical": "Completed",
+          "unit_test": 86
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 88
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 90
+        }
+      ],
+      "March": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 86
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Incomplete",
+          "practical": "Completed",
+          "unit_test": 88
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 90
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 92
+        }
+      ],
+      "April": [
+        {
+          "week": "1 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 88
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Incomplete",
+          "practical": "Completed",
+          "unit_test": 90
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 92
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 94
+        }
+      ],
+      "May": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 90
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Incomplete",
+          "practical": "Completed",
+          "unit_test": 92
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 94
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 96
+        }
+      ],
+      "June": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 92
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Incomplete",
+          "practical": "Completed",
+          "unit_test": 94
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 96
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 98
+        }
+      ],
+      "July": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 94
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Incomplete",
+          "practical": "Completed",
+          "unit_test": 96
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 98
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 100
+        }
+      ],
+      "August": [
+        {
+          "week": "1 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 96
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Incomplete",
+          "practical": "Completed",
+          "unit_test": 98
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Pending",
+          "master_guide_2": "Pending",
+          "past_paper": "Pending",
+          "practical": "Pending",
+          "unit_test": null
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Pending",
+          "master_guide_2": "Pending",
+          "past_paper": "Pending",
+          "practical": "Pending",
+          "unit_test": null
+        }
+      ],
+      "September": [
+        {
+          "week": "1 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        }
+      ],
+      "October": [
+        {
+          "week": "1 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        }
+      ],
+      "November": [
+        {
+          "week": "1 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        }
+      ],
+      "December": [
+        {
+          "week": "1 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        }
+      ]
+    },
+    "assessments": [
+      {
+        "term": "Term 1 Exam",
+        "score": null
+      },
+      {
+        "term": "Term 2 Exam",
+        "score": null
+      },
+      {
+        "term": "Final Exam",
+        "score": null
+      }
+    ],
+    "summary": {
+      "attendance": "90%",
+      "average_unit_test": 91.4,
+      "overall_status": "Active Progress"
+    },
+    "teacher_notes": "Active participant in 09 - Science theory discussions and lab practicals.",
+    "student_files": [
+      {
+        "id": "SF-ST-84099-1",
+        "title": "Grade 09 Science Practical Log Sheet",
+        "category": "Lab Practical",
+        "fileSize": "2.8 MB",
+        "uploadDate": "2026-08-04",
+        "fileUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+        "uploadedBy": "Student Submission"
+      },
+      {
+        "id": "SF-ST-84099-2",
+        "title": "Unit Revision Assignment & Diagram Notes",
+        "category": "Assignment",
+        "fileSize": "1.5 MB",
+        "uploadDate": "2026-08-10",
+        "fileUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+        "uploadedBy": "Student Submission"
+      }
+    ]
+  },
+  {
+    "tab_name": "Praveen ST-84100",
+    "student_info": {
+      "name": "Praveen Rathnayake",
+      "student_id": "ST-84100",
+      "username": "praveen",
+      "password": "student123",
+      "grade_class": "10 - Science",
+      "homeroom_teacher": "Mrs. Sheshadi Amarasinghe",
+      "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Praveen Rathnayake",
+      "qr_code_key": "QR-ST-84100",
+      "access_url": "student.html?id=ST-84100",
+      "parent_whatsapp": "+94771614260"
+    },
+    "weekly_progress": [
+      {
+        "week": "1 week",
+        "master_guide_1": "Completed",
+        "master_guide_2": "Completed",
+        "past_paper": "Completed",
+        "practical": "Completed",
+        "unit_test": 84
+      },
+      {
+        "week": "2 week",
+        "master_guide_1": "Completed",
+        "master_guide_2": "Completed",
+        "past_paper": "Incomplete",
+        "practical": "Completed",
+        "unit_test": 86
+      },
+      {
+        "week": "3 week",
+        "master_guide_1": "Completed",
+        "master_guide_2": "0.5 Done",
+        "past_paper": "Completed",
+        "practical": "0.5 Done",
+        "unit_test": 88
+      },
+      {
+        "week": "4 week",
+        "master_guide_1": "0.5 Done",
+        "master_guide_2": "Completed",
+        "past_paper": "Completed",
+        "practical": "Completed",
+        "unit_test": 90
+      }
+    ],
+    "monthly_progress": {
+      "January": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 84
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Incomplete",
+          "practical": "Completed",
+          "unit_test": 86
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 88
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 90
+        }
+      ],
+      "February": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 86
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Incomplete",
+          "practical": "Completed",
+          "unit_test": 88
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 90
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 92
+        }
+      ],
+      "March": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 88
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Incomplete",
+          "practical": "Completed",
+          "unit_test": 90
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 92
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 94
+        }
+      ],
+      "April": [
+        {
+          "week": "1 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 90
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Incomplete",
+          "practical": "Completed",
+          "unit_test": 92
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 94
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 96
+        }
+      ],
+      "May": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 92
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Incomplete",
+          "practical": "Completed",
+          "unit_test": 94
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 96
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 98
+        }
+      ],
+      "June": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 94
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Incomplete",
+          "practical": "Completed",
+          "unit_test": 96
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 98
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 100
+        }
+      ],
+      "July": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 96
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Incomplete",
+          "practical": "Completed",
+          "unit_test": 98
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 100
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 100
+        }
+      ],
+      "August": [
+        {
+          "week": "1 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 98
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Incomplete",
+          "practical": "Completed",
+          "unit_test": 100
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Pending",
+          "master_guide_2": "Pending",
+          "past_paper": "Pending",
+          "practical": "Pending",
+          "unit_test": null
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Pending",
+          "master_guide_2": "Pending",
+          "past_paper": "Pending",
+          "practical": "Pending",
+          "unit_test": null
+        }
+      ],
+      "September": [
+        {
+          "week": "1 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        }
+      ],
+      "October": [
+        {
+          "week": "1 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        }
+      ],
+      "November": [
+        {
+          "week": "1 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        }
+      ],
+      "December": [
+        {
+          "week": "1 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        }
+      ]
+    },
+    "assessments": [
+      {
+        "term": "Term 1 Exam",
+        "score": null
+      },
+      {
+        "term": "Term 2 Exam",
+        "score": null
+      },
+      {
+        "term": "Final Exam",
+        "score": null
+      }
+    ],
+    "summary": {
+      "attendance": "91%",
+      "average_unit_test": 93.3,
+      "overall_status": "Active Progress"
+    },
+    "teacher_notes": "Active participant in 10 - Science theory discussions and lab practicals.",
+    "student_files": [
+      {
+        "id": "SF-ST-84100-1",
+        "title": "Grade 10 Science Practical Log Sheet",
+        "category": "Lab Practical",
+        "fileSize": "2.8 MB",
+        "uploadDate": "2026-08-04",
+        "fileUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+        "uploadedBy": "Student Submission"
+      },
+      {
+        "id": "SF-ST-84100-2",
+        "title": "Unit Revision Assignment & Diagram Notes",
+        "category": "Assignment",
+        "fileSize": "1.5 MB",
+        "uploadDate": "2026-08-10",
+        "fileUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+        "uploadedBy": "Student Submission"
+      }
+    ]
+  },
+  {
+    "tab_name": "Hiruni ST-84101",
+    "student_info": {
+      "name": "Hiruni Senaratne",
+      "student_id": "ST-84101",
+      "username": "hiruni",
+      "password": "student123",
+      "grade_class": "10 - Science",
+      "homeroom_teacher": "Mrs. Sheshadi Amarasinghe",
+      "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Hiruni Senaratne",
+      "qr_code_key": "QR-ST-84101",
+      "access_url": "student.html?id=ST-84101",
+      "parent_whatsapp": "+94771614260"
+    },
+    "weekly_progress": [
+      {
+        "week": "1 week",
+        "master_guide_1": "Completed",
+        "master_guide_2": "Completed",
+        "past_paper": "Completed",
+        "practical": "Completed",
+        "unit_test": 67
+      },
+      {
+        "week": "2 week",
+        "master_guide_1": "Completed",
+        "master_guide_2": "Completed",
+        "past_paper": "Incomplete",
+        "practical": "0.5 Done",
+        "unit_test": 69
+      },
+      {
+        "week": "3 week",
+        "master_guide_1": "Completed",
+        "master_guide_2": "0.5 Done",
+        "past_paper": "Completed",
+        "practical": "Completed",
+        "unit_test": 71
+      },
+      {
+        "week": "4 week",
+        "master_guide_1": "0.5 Done",
+        "master_guide_2": "Completed",
+        "past_paper": "Completed",
+        "practical": "Completed",
+        "unit_test": 73
+      }
+    ],
+    "monthly_progress": {
+      "January": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 67
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Incomplete",
+          "practical": "0.5 Done",
+          "unit_test": 69
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 71
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 73
+        }
+      ],
+      "February": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 69
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Incomplete",
+          "practical": "0.5 Done",
+          "unit_test": 71
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 73
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 75
+        }
+      ],
+      "March": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 71
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Incomplete",
+          "practical": "0.5 Done",
+          "unit_test": 73
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 75
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 77
+        }
+      ],
+      "April": [
+        {
+          "week": "1 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 73
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Incomplete",
+          "practical": "0.5 Done",
+          "unit_test": 75
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 77
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 79
+        }
+      ],
+      "May": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 75
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Incomplete",
+          "practical": "0.5 Done",
+          "unit_test": 77
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 79
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 81
+        }
+      ],
+      "June": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 77
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Incomplete",
+          "practical": "0.5 Done",
+          "unit_test": 79
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 81
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 83
+        }
+      ],
+      "July": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 79
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Incomplete",
+          "practical": "0.5 Done",
+          "unit_test": 81
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 83
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 85
+        }
+      ],
+      "August": [
+        {
+          "week": "1 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 81
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Incomplete",
+          "practical": "0.5 Done",
+          "unit_test": 83
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Pending",
+          "master_guide_2": "Pending",
+          "past_paper": "Pending",
+          "practical": "Pending",
+          "unit_test": null
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Pending",
+          "master_guide_2": "Pending",
+          "past_paper": "Pending",
+          "practical": "Pending",
+          "unit_test": null
+        }
+      ],
+      "September": [
+        {
+          "week": "1 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        }
+      ],
+      "October": [
+        {
+          "week": "1 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        }
+      ],
+      "November": [
+        {
+          "week": "1 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        }
+      ],
+      "December": [
+        {
+          "week": "1 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        }
+      ]
+    },
+    "assessments": [
+      {
+        "term": "Term 1 Exam",
+        "score": null
+      },
+      {
+        "term": "Term 2 Exam",
+        "score": null
+      },
+      {
+        "term": "Final Exam",
+        "score": null
+      }
+    ],
+    "summary": {
+      "attendance": "92%",
+      "average_unit_test": 76.4,
+      "overall_status": "Active Progress"
+    },
+    "teacher_notes": "Active participant in 10 - Science theory discussions and lab practicals.",
+    "student_files": [
+      {
+        "id": "SF-ST-84101-1",
+        "title": "Grade 10 Science Practical Log Sheet",
+        "category": "Lab Practical",
+        "fileSize": "2.8 MB",
+        "uploadDate": "2026-08-04",
+        "fileUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+        "uploadedBy": "Student Submission"
+      },
+      {
+        "id": "SF-ST-84101-2",
+        "title": "Unit Revision Assignment & Diagram Notes",
+        "category": "Assignment",
+        "fileSize": "1.5 MB",
+        "uploadDate": "2026-08-10",
+        "fileUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+        "uploadedBy": "Student Submission"
+      }
+    ]
+  },
+  {
+    "tab_name": "Kusal ST-84102",
+    "student_info": {
+      "name": "Kusal Mendis",
+      "student_id": "ST-84102",
+      "username": "kusal",
+      "password": "student123",
+      "grade_class": "11 - Science",
+      "homeroom_teacher": "Mrs. Sheshadi Amarasinghe",
+      "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Kusal Mendis",
+      "qr_code_key": "QR-ST-84102",
+      "access_url": "student.html?id=ST-84102",
+      "parent_whatsapp": "+94771614260"
+    },
+    "weekly_progress": [
+      {
+        "week": "1 week",
+        "master_guide_1": "Completed",
+        "master_guide_2": "Completed",
+        "past_paper": "Completed",
+        "practical": "0.5 Done",
+        "unit_test": 69
+      },
+      {
+        "week": "2 week",
+        "master_guide_1": "Completed",
+        "master_guide_2": "Completed",
+        "past_paper": "Incomplete",
+        "practical": "Completed",
+        "unit_test": 71
+      },
+      {
+        "week": "3 week",
+        "master_guide_1": "Completed",
+        "master_guide_2": "0.5 Done",
+        "past_paper": "Completed",
+        "practical": "Completed",
+        "unit_test": 73
+      },
+      {
+        "week": "4 week",
+        "master_guide_1": "0.5 Done",
+        "master_guide_2": "Completed",
+        "past_paper": "Completed",
+        "practical": "0.5 Done",
+        "unit_test": 75
+      }
+    ],
+    "monthly_progress": {
+      "January": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 69
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Incomplete",
+          "practical": "Completed",
+          "unit_test": 71
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 73
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 75
+        }
+      ],
+      "February": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 71
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Incomplete",
+          "practical": "Completed",
+          "unit_test": 73
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 75
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 77
+        }
+      ],
+      "March": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 73
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Incomplete",
+          "practical": "Completed",
+          "unit_test": 75
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 77
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 79
+        }
+      ],
+      "April": [
+        {
+          "week": "1 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 75
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Incomplete",
+          "practical": "Completed",
+          "unit_test": 77
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 79
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 81
+        }
+      ],
+      "May": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 77
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Incomplete",
+          "practical": "Completed",
+          "unit_test": 79
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 81
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 83
+        }
+      ],
+      "June": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 79
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Incomplete",
+          "practical": "Completed",
+          "unit_test": 81
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 83
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 85
+        }
+      ],
+      "July": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 81
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Incomplete",
+          "practical": "Completed",
+          "unit_test": 83
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 85
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 87
+        }
+      ],
+      "August": [
+        {
+          "week": "1 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 83
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Incomplete",
+          "practical": "Completed",
+          "unit_test": 85
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Pending",
+          "master_guide_2": "Pending",
+          "past_paper": "Pending",
+          "practical": "Pending",
+          "unit_test": null
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Pending",
+          "master_guide_2": "Pending",
+          "past_paper": "Pending",
+          "practical": "Pending",
+          "unit_test": null
+        }
+      ],
+      "September": [
+        {
+          "week": "1 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        }
+      ],
+      "October": [
+        {
+          "week": "1 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        }
+      ],
+      "November": [
+        {
+          "week": "1 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        }
+      ],
+      "December": [
+        {
+          "week": "1 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        }
+      ]
+    },
+    "assessments": [
+      {
+        "term": "Term 1 Exam",
+        "score": null
+      },
+      {
+        "term": "Term 2 Exam",
+        "score": null
+      },
+      {
+        "term": "Final Exam",
+        "score": null
+      }
+    ],
+    "summary": {
+      "attendance": "93%",
+      "average_unit_test": 78.4,
+      "overall_status": "Active Progress"
+    },
+    "teacher_notes": "Active participant in 11 - Science theory discussions and lab practicals.",
+    "student_files": [
+      {
+        "id": "SF-ST-84102-1",
+        "title": "Grade 11 Science Practical Log Sheet",
+        "category": "Lab Practical",
+        "fileSize": "2.8 MB",
+        "uploadDate": "2026-08-04",
+        "fileUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+        "uploadedBy": "Student Submission"
+      },
+      {
+        "id": "SF-ST-84102-2",
+        "title": "Unit Revision Assignment & Diagram Notes",
+        "category": "Assignment",
+        "fileSize": "1.5 MB",
+        "uploadDate": "2026-08-10",
+        "fileUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+        "uploadedBy": "Student Submission"
+      }
+    ]
+  },
+  {
+    "tab_name": "Ananya ST-84103",
+    "student_info": {
+      "name": "Ananya Fernando",
+      "student_id": "ST-84103",
+      "username": "ananya",
+      "password": "student123",
+      "grade_class": "11 - Science",
+      "homeroom_teacher": "Mrs. Sheshadi Amarasinghe",
+      "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Ananya Fernando",
+      "qr_code_key": "QR-ST-84103",
+      "access_url": "student.html?id=ST-84103",
+      "parent_whatsapp": "+94771614260"
+    },
+    "weekly_progress": [
+      {
+        "week": "1 week",
+        "master_guide_1": "Completed",
+        "master_guide_2": "Completed",
+        "past_paper": "Completed",
+        "practical": "Completed",
+        "unit_test": 77
+      },
+      {
+        "week": "2 week",
+        "master_guide_1": "Completed",
+        "master_guide_2": "Completed",
+        "past_paper": "Incomplete",
+        "practical": "Completed",
+        "unit_test": 79
+      },
+      {
+        "week": "3 week",
+        "master_guide_1": "Completed",
+        "master_guide_2": "0.5 Done",
+        "past_paper": "Completed",
+        "practical": "0.5 Done",
+        "unit_test": 81
+      },
+      {
+        "week": "4 week",
+        "master_guide_1": "0.5 Done",
+        "master_guide_2": "Completed",
+        "past_paper": "Completed",
+        "practical": "Completed",
+        "unit_test": 83
+      }
+    ],
+    "monthly_progress": {
+      "January": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 77
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Incomplete",
+          "practical": "Completed",
+          "unit_test": 79
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 81
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 83
+        }
+      ],
+      "February": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 79
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Incomplete",
+          "practical": "Completed",
+          "unit_test": 81
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 83
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 85
+        }
+      ],
+      "March": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 81
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Incomplete",
+          "practical": "Completed",
+          "unit_test": 83
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 85
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 87
+        }
+      ],
+      "April": [
+        {
+          "week": "1 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 83
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Incomplete",
+          "practical": "Completed",
+          "unit_test": 85
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 87
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 89
+        }
+      ],
+      "May": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 85
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Incomplete",
+          "practical": "Completed",
+          "unit_test": 87
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 89
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 91
+        }
+      ],
+      "June": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 87
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Incomplete",
+          "practical": "Completed",
+          "unit_test": 89
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 91
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 93
+        }
+      ],
+      "July": [
+        {
+          "week": "1 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 89
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Incomplete",
+          "practical": "Completed",
+          "unit_test": 91
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Completed",
+          "practical": "0.5 Done",
+          "unit_test": 93
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 95
+        }
+      ],
+      "August": [
+        {
+          "week": "1 week",
+          "master_guide_1": "0.5 Done",
+          "master_guide_2": "Completed",
+          "past_paper": "Completed",
+          "practical": "Completed",
+          "unit_test": 91
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "Completed",
+          "master_guide_2": "0.5 Done",
+          "past_paper": "Incomplete",
+          "practical": "Completed",
+          "unit_test": 93
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "Pending",
+          "master_guide_2": "Pending",
+          "past_paper": "Pending",
+          "practical": "Pending",
+          "unit_test": null
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "Pending",
+          "master_guide_2": "Pending",
+          "past_paper": "Pending",
+          "practical": "Pending",
+          "unit_test": null
+        }
+      ],
+      "September": [
+        {
+          "week": "1 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        }
+      ],
+      "October": [
+        {
+          "week": "1 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        }
+      ],
+      "November": [
+        {
+          "week": "1 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        }
+      ],
+      "December": [
+        {
+          "week": "1 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "2 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "3 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        },
+        {
+          "week": "4 week",
+          "master_guide_1": "(Still not attended)",
+          "master_guide_2": "(Still not attended)",
+          "past_paper": "(Still not attended)",
+          "practical": "(Still not attended)",
+          "unit_test": null
+        }
+      ]
+    },
+    "assessments": [
+      {
+        "term": "Term 1 Exam",
+        "score": null
+      },
+      {
+        "term": "Term 2 Exam",
+        "score": null
+      },
+      {
+        "term": "Final Exam",
+        "score": null
+      }
+    ],
+    "summary": {
+      "attendance": "94%",
+      "average_unit_test": 86.4,
+      "overall_status": "Active Progress"
+    },
+    "teacher_notes": "Active participant in 11 - Science theory discussions and lab practicals.",
+    "student_files": [
+      {
+        "id": "SF-ST-84103-1",
+        "title": "Grade 11 Science Practical Log Sheet",
+        "category": "Lab Practical",
+        "fileSize": "2.8 MB",
+        "uploadDate": "2026-08-04",
+        "fileUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+        "uploadedBy": "Student Submission"
+      },
+      {
+        "id": "SF-ST-84103-2",
+        "title": "Unit Revision Assignment & Diagram Notes",
+        "category": "Assignment",
+        "fileSize": "1.5 MB",
+        "uploadDate": "2026-08-10",
+        "fileUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+        "uploadedBy": "Student Submission"
+      }
+    ]
+  }
+]

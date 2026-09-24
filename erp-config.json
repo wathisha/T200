@@ -1,0 +1,8 @@
+{
+  "settings": {
+    "academyName": "Sathsarani Science Academy",
+    "logo": "assets/images/logo.png",
+    "teacherPhoto": "assets/images/teacher.png",
+    "bannerImage": "assets/images/teacher_banner.png"
+  }
+}

@@ -1,0 +1,252 @@
+[
+  {
+    "id": "USR-101",
+    "username": "sheshadi",
+    "password": "password123",
+    "name": "Mrs. Sheshadi Amarasinghe",
+    "email": "sheshadi@scienceacademy.lk",
+    "phone": "071 781 2092",
+    "role": "super_admin",
+    "roleName": "Super Admin (Head Specialist)",
+    "title": "B.Sc. (Chemistry Special), Grad.Chem (IChem) | Head Science Specialist",
+    "avatar": "assets/images/teacher_banner.png",
+    "permissions": [
+      "manage_users",
+      "edit_system_settings",
+      "manage_students",
+      "delete_students",
+      "grade_students",
+      "manage_content",
+      "view_teacher_vault",
+      "database_admin"
+    ],
+    "status": "active",
+    "createdDate": "2026-01-10",
+    "lastLogin": "2026-08-21 23:45",
+    "lastDevice": "PC / Desktop (Windows)",
+    "deviceSessions": [
+      {
+        "deviceType": "PC / Desktop",
+        "os": "Windows 11",
+        "browser": "Chrome 128",
+        "ip": "192.168.1.10",
+        "loginTime": "2026-08-21 23:45"
+      },
+      {
+        "deviceType": "Tablet / iPad",
+        "os": "iPadOS 17",
+        "browser": "Safari",
+        "ip": "192.168.1.25",
+        "loginTime": "2026-08-20 19:15"
+      },
+      {
+        "deviceType": "Mobile Phone",
+        "os": "iOS 18",
+        "browser": "Mobile Safari",
+        "ip": "192.168.1.42",
+        "loginTime": "2026-08-19 14:20"
+      }
+    ]
+  },
+  {
+    "id": "USR-102",
+    "username": "wathisha",
+    "password": "admin2026",
+    "name": "Wathisha Amarasinghe",
+    "email": "wathisha@scienceacademy.lk",
+    "phone": "077 161 4260",
+    "role": "super_admin",
+    "roleName": "Super Admin (Tech Lead)",
+    "title": "Lead Cloud & Systems Architect",
+    "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Wathisha&clothing=blazerAndShirt",
+    "permissions": [
+      "manage_users",
+      "edit_system_settings",
+      "manage_students",
+      "delete_students",
+      "grade_students",
+      "manage_content",
+      "view_teacher_vault",
+      "database_admin"
+    ],
+    "status": "active",
+    "createdDate": "2026-01-10",
+    "lastLogin": "2026-08-21 22:10",
+    "lastDevice": "PC / Desktop (Mac)",
+    "deviceSessions": [
+      {
+        "deviceType": "PC / Desktop",
+        "os": "macOS Sequoia",
+        "browser": "Chrome 128",
+        "ip": "192.168.1.15",
+        "loginTime": "2026-08-21 22:10"
+      },
+      {
+        "deviceType": "Mobile Phone",
+        "os": "Android 14",
+        "browser": "Chrome Mobile",
+        "ip": "192.168.1.55",
+        "loginTime": "2026-08-21 16:30"
+      }
+    ]
+  },
+  {
+    "id": "USR-103",
+    "username": "samantha",
+    "password": "admin123",
+    "name": "Dr. Samantha Jayawardena",
+    "email": "samantha@scienceacademy.lk",
+    "phone": "077 982 1144",
+    "role": "admin",
+    "roleName": "Administrator",
+    "title": "Academic Director & Curriculum Coordinator",
+    "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Samantha&clothing=collarAndSweater",
+    "permissions": [
+      "manage_students",
+      "grade_students",
+      "manage_content",
+      "view_teacher_vault"
+    ],
+    "status": "active",
+    "createdDate": "2026-02-01",
+    "lastLogin": "2026-08-20 18:20",
+    "lastDevice": "Tablet / iPad (iPadOS)",
+    "deviceSessions": [
+      {
+        "deviceType": "Tablet / iPad",
+        "os": "iPadOS 17",
+        "browser": "Safari Mobile",
+        "ip": "192.168.1.33",
+        "loginTime": "2026-08-20 18:20"
+      }
+    ]
+  },
+  {
+    "id": "USR-104",
+    "username": "nipuna",
+    "password": "teacher123",
+    "name": "Nipuna Perera",
+    "email": "nipuna@scienceacademy.lk",
+    "phone": "072 441 5590",
+    "role": "teacher",
+    "roleName": "Senior Science Educator",
+    "title": "Senior Science Educator (Grade 9-11)",
+    "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Nipuna&hair=shortHairShortFlat",
+    "permissions": [
+      "grade_students",
+      "manage_content",
+      "view_teacher_vault"
+    ],
+    "status": "active",
+    "createdDate": "2026-02-15",
+    "lastLogin": "2026-08-21 15:40",
+    "lastDevice": "Mobile Phone (Android)",
+    "deviceSessions": [
+      {
+        "deviceType": "Mobile Phone",
+        "os": "Android 14",
+        "browser": "Chrome Mobile",
+        "ip": "192.168.1.72",
+        "loginTime": "2026-08-21 15:40"
+      },
+      {
+        "deviceType": "PC / Desktop",
+        "os": "Windows 10",
+        "browser": "Firefox",
+        "ip": "192.168.1.18",
+        "loginTime": "2026-08-19 11:00"
+      }
+    ]
+  },
+  {
+    "id": "USR-105",
+    "username": "kavindi",
+    "password": "teacher123",
+    "name": "Kavindi Wijesinghe",
+    "email": "kavindi@scienceacademy.lk",
+    "phone": "076 331 8820",
+    "role": "assistant_teacher",
+    "roleName": "Assistant Science Teacher",
+    "title": "Assistant Teacher (Grade 6-8 Lab Demonstrator)",
+    "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Kavindi&hair=longHairBob",
+    "permissions": [
+      "grade_students",
+      "manage_content"
+    ],
+    "status": "active",
+    "createdDate": "2026-03-01",
+    "lastLogin": "2026-08-21 11:25",
+    "lastDevice": "Tablet / iPad (Android Tab)",
+    "deviceSessions": [
+      {
+        "deviceType": "Tablet / iPad",
+        "os": "Android 13 Tab",
+        "browser": "Chrome Mobile",
+        "ip": "192.168.1.61",
+        "loginTime": "2026-08-21 11:25"
+      }
+    ]
+  },
+  {
+    "id": "USR-106",
+    "username": "kamal",
+    "password": "staff123",
+    "name": "Kamal Silva",
+    "email": "kamal@scienceacademy.lk",
+    "phone": "078 554 9912",
+    "role": "staff",
+    "roleName": "Student Registrar & Data Officer",
+    "title": "Student Registrar & Records Management Officer",
+    "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Kamal&hair=shortHairCurly",
+    "permissions": [
+      "manage_students"
+    ],
+    "status": "active",
+    "createdDate": "2026-03-10",
+    "lastLogin": "2026-08-21 09:15",
+    "lastDevice": "Mobile Phone (iPhone)",
+    "deviceSessions": [
+      {
+        "deviceType": "Mobile Phone",
+        "os": "iOS 17",
+        "browser": "Mobile Safari",
+        "ip": "192.168.1.88",
+        "loginTime": "2026-08-21 09:15"
+      },
+      {
+        "deviceType": "PC / Desktop",
+        "os": "Windows 11",
+        "browser": "Edge",
+        "ip": "192.168.1.20",
+        "loginTime": "2026-08-18 10:45"
+      }
+    ]
+  },
+  {
+    "id": "USR-100",
+    "username": "admin",
+    "password": "password123",
+    "name": "Master Administrator",
+    "email": "admin@scienceacademy.lk",
+    "phone": "071 781 2092",
+    "role": "super_admin",
+    "roleName": "Super Admin (System Fallback)",
+    "title": "Central System Administrator",
+    "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=MasterAdmin",
+    "permissions": [
+      "manage_users",
+      "edit_system_settings",
+      "manage_students",
+      "delete_students",
+      "grade_students",
+      "manage_content",
+      "view_teacher_vault",
+      "database_admin"
+    ],
+    "status": "active",
+    "createdDate": "2026-01-01",
+    "lastLogin": "2026-08-21 21:00",
+    "lastDevice": "PC / Desktop",
+    "deviceSessions": []
+  }
+]

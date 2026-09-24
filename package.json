@@ -1,7 +1,7 @@
 {
-  "name": "science-with-laknath-erp",
+  "name": "ics-school-erp-lms",
   "version": "4.0.0",
-  "description": "Science with Laknath ERP - Cloud-Ready Multi-User Learning Management System with MySQL Database Support",
+  "description": "Independent Collective School (ICS) ERP - Cloud-Ready Multi-User School Management System with TiDB Cloud Serverless Support (ics-school-cluster)",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -10,15 +10,17 @@
     "test:db": "node test-mysql-connection.js"
   },
   "keywords": [
+    "ics-school",
+    "cambridge",
     "lms",
-    "education",
+    "erp",
+    "tidb-cloud",
     "mysql",
-    "cloud-database",
+    "education",
     "school-management",
-    "nodejs",
-    "science-with-laknath-erp"
+    "nodejs"
   ],
-  "author": "Wathisha & Laknath Amarasinghe",
+  "author": "Independent Collective School (ICS)",
   "license": "MIT",
   "dependencies": {
     "dotenv": "^16.4.5",

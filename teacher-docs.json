@@ -1,0 +1,57 @@
+[
+  {
+    "id": "TDOC-101",
+    "title": "Grade 06 - Term 2 Master Examination Paper & Marking Rubric",
+    "grade": "06 - Science",
+    "category": "Official Marking Scheme",
+    "fileUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+    "fileSize": "4.8 MB",
+    "uploadDate": "2026-08-10",
+    "uploadedBy": "Mrs. Sheshadi Amarasinghe",
+    "description": "Confidential official marking scheme and evaluation criteria for Term 2 Science paper."
+  },
+  {
+    "id": "TDOC-102",
+    "title": "Grade 07 - Plant & Animal Tissue Lab Practical Protocol Guide",
+    "grade": "07 - Science",
+    "category": "Lab Practical Protocol",
+    "fileUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+    "fileSize": "6.2 MB",
+    "uploadDate": "2026-08-08",
+    "uploadedBy": "Mrs. Sheshadi Amarasinghe",
+    "description": "Detailed laboratory setup, chemical reagent preparations, and teacher notes."
+  },
+  {
+    "id": "TDOC-103",
+    "title": "Grade 08 - Annual Syllabus Timeline & Teaching Lesson Plans",
+    "grade": "08 - Science",
+    "category": "Lesson Plan",
+    "fileUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+    "fileSize": "3.5 MB",
+    "uploadDate": "2026-08-02",
+    "uploadedBy": "Mrs. Sheshadi Amarasinghe",
+    "description": "Curriculum breakdown, unit targets, and weekly pedagogical timeline."
+  },
+  {
+    "id": "TDOC-104",
+    "title": "Grade 10 & 11 - O/L Chemistry Master Question Bank (Top 500 Questions)",
+    "grade": "11 - Science",
+    "category": "Question Bank",
+    "fileUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+    "fileSize": "12.4 MB",
+    "uploadDate": "2026-08-12",
+    "uploadedBy": "Mrs. Sheshadi Amarasinghe",
+    "description": "Curated collection of national past paper questions with step-by-step chemical equations."
+  },
+  {
+    "id": "TDOC-105",
+    "title": "Confidential - Academic Year Student Performance Master Roster",
+    "grade": "Confidential Master Files",
+    "category": "Secretarial Record",
+    "fileUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+    "fileSize": "2.1 MB",
+    "uploadDate": "2026-08-14",
+    "uploadedBy": "Wathisha Amarasinghe",
+    "description": "Master administrative student records, contact numbers, and parent communication log."
+  }
+]

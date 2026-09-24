@@ -1,0 +1,340 @@
+/* -------------------------------------------------------------
+ * Science with Sheshadi - Modern Student LMS Portal Styles
+ * Complete Light Mode (Default) & Dark Mode Dual Theming System
+ * ------------------------------------------------------------- */
+
+/* ============================================================
+   1. THEME VARIABLES DEFINITIONS
+   ============================================================ */
+
+:root,
+body.theme-light,
+html.theme-light {
+    --bg-main: #f8fafc;
+    --panel-bg: rgba(255, 255, 255, 0.94);
+    --panel-card-bg: #ffffff;
+    --panel-inner-bg: #f1f5f9;
+    --panel-hover-bg: #ffffff;
+    --border-color: rgba(203, 213, 225, 0.85);
+    --border-hover: #d97706;
+    --gold-accent: #d97706;
+    --crimson-accent: #be123c;
+    --amber-glow: #f59e0b;
+    --cyan-accent: #0284c7;
+    --emerald-accent: #059669;
+    --text-main: #0f172a;
+    --text-muted: #475569;
+    --text-subtle: #64748b;
+    --header-bg: rgba(255, 255, 255, 0.95);
+    --header-border: #e2e8f0;
+    --input-bg: #ffffff;
+    --input-border: #cbd5e1;
+    --input-text: #0f172a;
+    --table-header-bg: #f1f5f9;
+    --table-row-even: #ffffff;
+    --table-row-odd: #f8fafc;
+    --table-border: #e2e8f0;
+    --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.07), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+}
+
+body.theme-dark,
+html.theme-dark {
+    --bg-main: #0c0710;
+    --panel-bg: rgba(24, 14, 30, 0.85);
+    --panel-card-bg: #0f172a;
+    --panel-inner-bg: #030712;
+    --panel-hover-bg: rgba(35, 20, 44, 0.92);
+    --border-color: rgba(225, 29, 72, 0.30);
+    --border-hover: #fbbf24;
+    --gold-accent: #f59e0b;
+    --crimson-accent: #e11d48;
+    --amber-glow: #fbbf24;
+    --cyan-accent: #06b6d4;
+    --emerald-accent: #10b981;
+    --text-main: #f8fafc;
+    --text-muted: #cbd5e1;
+    --text-subtle: #94a3b8;
+    --header-bg: rgba(12, 7, 16, 0.92);
+    --header-border: rgba(225, 29, 72, 0.40);
+    --input-bg: #030712;
+    --input-border: #334155;
+    --input-text: #f8fafc;
+    --table-header-bg: rgba(3, 7, 18, 0.9);
+    --table-row-even: rgba(15, 23, 42, 0.5);
+    --table-row-odd: rgba(3, 7, 18, 0.4);
+    --table-border: #1e293b;
+    --card-shadow: 0 12px 35px rgba(0, 0, 0, 0.45);
+}
+
+/* ============================================================
+   2. BASE BODY & BACKGROUND STYLING
+   ============================================================ */
+
+body {
+    font-family: 'Plus Jakarta Sans', 'Rajdhani', sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    min-height: 100vh;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.theme-light {
+    background-image: 
+        linear-gradient(135deg, rgba(248, 250, 252, 0.96) 0%, rgba(241, 245, 249, 0.94) 50%, rgba(254, 243, 199, 0.40) 100%),
+        radial-gradient(circle at 50% 0%, rgba(245, 158, 11, 0.08) 0%, transparent 60%),
+        radial-gradient(circle at 90% 80%, rgba(225, 29, 72, 0.05) 0%, transparent 50%),
+        url('../images/lms_background.png');
+    background-size: cover;
+    background-position: center top;
+    background-attachment: fixed;
+}
+
+body.theme-dark {
+    background-image: 
+        linear-gradient(to bottom, rgba(12, 7, 16, 0.88), rgba(15, 8, 20, 0.94)),
+        radial-gradient(circle at 50% 0%, rgba(225, 29, 72, 0.20) 0%, transparent 60%),
+        radial-gradient(circle at 90% 80%, rgba(245, 158, 11, 0.15) 0%, transparent 50%),
+        url('../images/lms_background.png');
+    background-size: cover;
+    background-position: center top;
+    background-attachment: fixed;
+}
+
+/* ============================================================
+   3. GLASSMORPHISM PANELS & CARD OVERRIDES
+   ============================================================ */
+
+.glass-panel {
+    background: var(--panel-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--card-shadow);
+    border-radius: 1.25rem;
+    transition: all 0.25s ease;
+}
+
+.glass-panel:hover {
+    border-color: var(--border-hover);
+}
+
+body.theme-light .glass-panel {
+    color: #0f172a;
+}
+
+body.theme-light .glass-panel h1,
+body.theme-light .glass-panel h2,
+body.theme-light .glass-panel h3,
+body.theme-light .glass-panel h4,
+body.theme-light .glass-panel h5 {
+    color: #0f172a;
+}
+
+body.theme-light .text-slate-100,
+body.theme-light .text-slate-200 {
+    color: #0f172a !important;
+}
+
+body.theme-light .text-slate-300 {
+    color: #1e293b !important;
+}
+
+body.theme-light .text-slate-400 {
+    color: #475569 !important;
+}
+
+body.theme-light .text-slate-500 {
+    color: #64748b !important;
+}
+
+body.theme-light .bg-slate-950,
+body.theme-light .bg-slate-950\/90,
+body.theme-light .bg-slate-950\/80,
+body.theme-light .bg-slate-950\/50,
+body.theme-light .bg-slate-900,
+body.theme-light .bg-slate-900\/80,
+body.theme-light .bg-slate-900\/60,
+body.theme-light .bg-slate-900\/50 {
+    background-color: #f8fafc !important;
+    border-color: #cbd5e1 !important;
+    color: #0f172a !important;
+}
+
+body.theme-light .border-slate-800,
+body.theme-light .border-slate-700,
+body.theme-light .border-slate-700\/70,
+body.theme-light .border-slate-700\/80 {
+    border-color: #e2e8f0 !important;
+}
+
+body.theme-light header {
+    background-color: rgba(255, 255, 255, 0.95) !important;
+    border-bottom-color: #e2e8f0 !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+body.theme-light footer {
+    background-color: #f8fafc !important;
+    border-top-color: #e2e8f0 !important;
+    color: #64748b !important;
+}
+
+body.theme-light input[type="text"],
+body.theme-light input[type="password"],
+body.theme-light input[type="number"],
+body.theme-light input[type="url"],
+body.theme-light input[type="date"],
+body.theme-light select,
+body.theme-light textarea {
+    background-color: #ffffff !important;
+    color: #0f172a !important;
+    border-color: #cbd5e1 !important;
+}
+
+body.theme-light input:focus,
+body.theme-light select:focus,
+body.theme-light textarea:focus {
+    border-color: #f59e0b !important;
+    box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.15) !important;
+}
+
+/* ============================================================
+   4. TABS, BUTTONS & BADGES
+   ============================================================ */
+
+.student-tab-btn, .admin-tab-btn {
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    border-bottom: 3px solid transparent;
+}
+
+body.theme-light .student-tab-btn:hover,
+body.theme-light .admin-tab-btn:hover {
+    color: #b45309;
+    background: rgba(245, 158, 11, 0.12);
+}
+
+body.theme-light .student-tab-btn.active,
+body.theme-light .admin-tab-btn.active {
+    color: #b45309;
+    border-bottom-color: #f59e0b;
+    background: rgba(245, 158, 11, 0.18);
+    font-weight: 700;
+}
+
+body.theme-light .bg-slate-800,
+body.theme-light .bg-slate-800\/80 {
+    background-color: #e2e8f0 !important;
+    color: #1e293b !important;
+}
+
+/* Theme Toggle Button Style */
+.theme-toggle-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 0.85rem;
+    border-radius: 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    border: 1px solid var(--border-color);
+    background: var(--panel-bg);
+}
+
+body.theme-light .theme-toggle-btn {
+    background: #ffffff;
+    color: #0f172a;
+    border-color: #cbd5e1;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+body.theme-light .theme-toggle-btn:hover {
+    background: #f1f5f9;
+    border-color: #f59e0b;
+}
+
+body.theme-dark .theme-toggle-btn {
+    background: #0f172a;
+    color: #f8fafc;
+    border-color: #334155;
+}
+
+body.theme-dark .theme-toggle-btn:hover {
+    background: #1e293b;
+    border-color: #fbbf24;
+}
+
+/* ============================================================
+   5. GOOGLE CALENDAR GRID & CELLS
+   ============================================================ */
+
+body.theme-light #calendarGridCells,
+body.theme-light #stCalendarGridCells {
+    background-color: #cbd5e1 !important;
+}
+
+body.theme-light #calendarGridCells > div,
+body.theme-light #stCalendarGridCells > div {
+    background-color: #ffffff !important;
+    border-color: #e2e8f0 !important;
+    color: #0f172a !important;
+}
+
+body.theme-light #calendarGridCells > div:hover,
+body.theme-light #stCalendarGridCells > div:hover {
+    background-color: #f8fafc !important;
+}
+
+body.theme-light .gcal-day-cell {
+    background: #ffffff !important;
+    border: 1px solid #cbd5e1 !important;
+    color: #0f172a !important;
+}
+
+/* ============================================================
+   6. SCROLLBARS & PRINT STYLES
+   ============================================================ */
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+body.theme-light ::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+
+body.theme-light ::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+}
+
+body.theme-dark ::-webkit-scrollbar-track {
+    background: #0d0714;
+}
+
+body.theme-dark ::-webkit-scrollbar-thumb {
+    background: #2b1328;
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+}
+
+@media print {
+    body {
+        background: white !important;
+        color: black !important;
+    }
+    .no-print {
+        display: none !important;
+    }
+    .glass-panel {
+        background: white !important;
+        color: black !important;
+        border: 1px solid #ccc !important;
+        box-shadow: none !important;
+    }
+    .text-slate-100, .text-slate-200, .text-slate-300, .text-slate-400 {
+        color: #111 !important;
+    }
+}

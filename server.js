@@ -1,12 +1,7 @@
 /**
  * ============================================================================
- * Science with Laknath ERP - Cloud-Ready Multi-User Server
- * ============================================================================
- * Database Support:
- *  - Cloud MySQL (TiDB Cloud Serverless, Aiven MySQL, Clever Cloud, Railway, AWS RDS)
- *  - Pure JSON Fallback Engine (Zero configuration local storage)
- * ============================================================================
- * Usage: node server.js
+ * Independent Collective School (ICS) ERP - Cloud-Ready Multi-User Server
+ * TiDB Cloud Serverless (ics-school-cluster) / MySQL Engine
  * ============================================================================
  */
 
@@ -16,9 +11,40 @@ const path = require('path');
 const os = require('os');
 const db = require('./db');
 
+// Auto-load environment variables (.env / .env.example) with zero-dependency fallback
 try {
-    require('dotenv').config();
+    require('dotenv').config({ path: path.join(__dirname, '.env') });
 } catch (e) {}
+try {
+    const candidatePaths = [
+        path.join(__dirname, '.env'),
+        path.resolve(process.cwd(), '.env'),
+        path.join(__dirname, '.env.example'),
+        path.resolve(process.cwd(), '.env.example')
+    ];
+    for (const envPath of candidatePaths) {
+        if (fs.existsSync(envPath)) {
+            const raw = fs.readFileSync(envPath, 'utf8');
+            const lines = raw.split(/\r?\n/);
+            for (const line of lines) {
+                const trimmed = line.trim();
+                if (!trimmed || trimmed.startsWith('#')) continue;
+                const eqIdx = trimmed.indexOf('=');
+                if (eqIdx !== -1) {
+                    const key = trimmed.slice(0, eqIdx).trim();
+                    let val = trimmed.slice(eqIdx + 1).trim();
+                    if ((val.startsWith('"') && val.endsWith('"')) || (val.startsWith("'") && val.endsWith("'"))) {
+                        val = val.slice(1, -1);
+                    }
+                    if (process.env[key] === undefined) {
+                        process.env[key] = val;
+                    }
+                }
+            }
+            break;
+        }
+    }
+} catch (err) {}
 
 const PORT = process.env.PORT || 3000;
 const HOST = process.env.HOST || '0.0.0.0';
@@ -140,7 +166,7 @@ const server = http.createServer(async (req, res) => {
             const dbStatus = await db.getStatus();
             return sendJson(res, 200, {
                 status: 'online',
-                service: 'Science with Laknath ERP - Universal Cloud Engine',
+                service: 'Science with Sheshadi LMS - Universal Cloud Engine',
                 version: '4.0.0-MySQL-Cloud',
                 serverTime: new Date().toISOString(),
                 uptimeSeconds: Math.round(process.uptime()),
@@ -298,7 +324,7 @@ const server = http.createServer(async (req, res) => {
             }
 
             // Prevent deleting the primary super admin
-            if (userToDelete.username === 'laknath' || userToDelete.username === 'sheshadi' || userToDelete.username === 'wathisha') {
+            if (userToDelete.username === 'sheshadi' || userToDelete.username === 'wathisha') {
                 return sendJson(res, 403, { error: 'Cannot delete primary owner/super-administrator account.' });
             }
 
@@ -328,23 +354,36 @@ const server = http.createServer(async (req, res) => {
 
         if (pathname === '/api/students' && method === 'POST') {
             const body = await parseBody(req);
-            if (!Array.isArray(body)) {
-                return sendJson(res, 400, { error: 'Payload must be an array of student records.' });
+
+            if (Array.isArray(body)) {
+                await db.saveStudents(body);
+                const updated = await db.getStudents();
+                await db.addLog({
+                    username: req.headers['x-admin-user'] || 'system',
+                    userFullName: 'Teacher / Admin',
+                    role: 'Educator',
+                    action: 'STUDENTS_SYNC',
+                    deviceType: detectDevice(userAgent, req.headers['x-device-type']),
+                    ip: clientIp,
+                    details: `Synchronized student database with ${body.length} records in TiDB.`
+                });
+                return sendJson(res, 200, { status: 'success', message: 'Students database updated in TiDB!', count: updated.length, students: updated });
+            } else if (body && typeof body === 'object' && (body.student_info || body.name || body.student_id)) {
+                const created = await db.createStudent(body);
+                const updated = await db.getStudents();
+                await db.addLog({
+                    username: req.headers['x-admin-user'] || 'system',
+                    userFullName: 'Teacher / Admin',
+                    role: 'Educator',
+                    action: 'STUDENT_REGISTER',
+                    deviceType: detectDevice(userAgent, req.headers['x-device-type']),
+                    ip: clientIp,
+                    details: `Registered new student '${created.student_info?.name || 'Unknown'}' (${created.student_info?.student_id || 'ID'}) in TiDB.`
+                });
+                return sendJson(res, 200, { status: 'success', message: 'Student registered successfully in TiDB!', student: created, students: updated });
+            } else {
+                return sendJson(res, 400, { error: 'Payload must be an array of students or a single student record.' });
             }
-
-            await db.saveStudents(body);
-
-            await db.addLog({
-                username: req.headers['x-admin-user'] || 'system',
-                userFullName: 'Teacher / Admin',
-                role: 'Educator',
-                action: 'STUDENTS_SYNC',
-                deviceType: detectDevice(userAgent, req.headers['x-device-type']),
-                ip: clientIp,
-                details: `Synchronized student database with ${body.length} records.`
-            });
-
-            return sendJson(res, 200, { status: 'success', message: 'Students database updated successfully!', count: body.length });
         }
 
         if (pathname.startsWith('/api/students/') && method === 'GET') {
@@ -472,7 +511,7 @@ const server = http.createServer(async (req, res) => {
                 if (err.code === 'ENOENT') {
                     fs.readFile(path.join(__dirname, '404.html'), (err404, content404) => {
                         res.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8' });
-                        res.end(content404 || '<!DOCTYPE html><html><head><title>404 Not Found</title></head><body><h1>404 Not Found</h1><p>Requested file does not exist on Science LMS Server.</p><a href="/">Back to Home</a></body></html>');
+                        res.end(content404 || '<!DOCTYPE html><html><head><title>404 Not Found</title></head><body><h1>404 Not Found</h1><p>Requested file does not exist on ICS School ERP Server.</p><a href="/">Back to Home</a></body></html>');
                     });
                 } else {
                     res.writeHead(500, { 'Content-Type': 'text/plain' });
@@ -498,7 +537,7 @@ db.init().then(() => {
     server.listen(PORT, HOST, () => {
         const networkIps = getNetworkIps();
         console.log('============================================================================');
-        console.log(' Science with Laknath ERP - Cloud-Ready Multi-User Server');
+        console.log(' Independent Collective School (ICS) ERP - TiDB Cloud (ics-school-cluster)');
         console.log('============================================================================');
         console.log(` Status: Server running on port ${PORT}`);
         console.log(` Local Access:        http://localhost:${PORT}`);
