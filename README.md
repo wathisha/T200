@@ -1,6 +1,6 @@
 # 🚀 Independent Collective School (ICS) ERP & LMS - TiDB Cloud Architecture
 
-A high-performance, responsive **Learning Management System (LMS)** and **Student Academic Progress Tracker** designed for **Sathsarani Science Academy** (Led by Mrs. Sheshadi Amarasinghe & Wathisha Amarasinghe).
+A high-performance, responsive **Learning Management System (LMS)** styled in the sleek electric tech theme of [Yadea Abans Sri Lanka](https://yadeaabans.lk/) and **Student Academic Progress Tracker** designed for **Sathsarani Science Academy** (Led by Mrs. Sheshadi Amarasinghe & Wathisha Amarasinghe).
 
 This repository is optimized and configured for **TiDB Cloud Serverless** (`ics-school-cluster`), providing high availability, auto-scaling, and full MySQL 8.0 wire compatibility, alongside a local JSON fallback engine for offline development.
 
@@ -14,7 +14,7 @@ This repository is optimized and configured for **TiDB Cloud Serverless** (`ics-
 - **Port**: `4000` (Standard TiDB Cloud MySQL protocol port)
 - **Security & Encryption**: Mandatory TLS v1.2 (`DB_SSL=true`)
 - **Auto-Provisioning**:
-  - Automatically initializes `ics_school_db` if not yet present on cluster.
+  - Connects directly to target database `ics_school_db` if not yet present on cluster.
   - Automatically creates tables with indexes (`users`, `students`, `erp_config`, `teacher_docs`, `activity_logs`).
   - Automatically seeds production data from local JSON backups on first boot.
 - **Failover & Resilience**: Automatically falls back to local JSON storage if the cloud database is temporarily unreachable.
@@ -51,8 +51,8 @@ DB_TYPE=mysql
 DB_HOST=gateway01.ap-southeast-1.prod.aws.tidbcloud.com
 DB_PORT=4000
 DB_USER=287vGtA52xzWe45.root
-DB_PASSWORD=Jw4G8J9vbkYFOBI3
-DB_NAME=ics_school_db
+DB_PASSWORD=Jw4G8J9vbkYF0BI3
+DB_NAME=test
 
 # TLS / SSL Settings (Required for TiDB Cloud public endpoint)
 DB_SSL=true
@@ -67,7 +67,7 @@ DB_QUEUE_LIMIT=0
 DB_WAIT_FOR_CONNECTIONS=true
 
 # Alternative Direct Connection URI String
-MYSQL_URI=mysql://287vGtA52xzWe45.root:Jw4G8J9vbkYFOBI3@gateway01.ap-southeast-1.prod.aws.tidbcloud.com:4000/ics_school_db?ssl={"minVersion":"TLSv1.2","rejectUnauthorized":false}
+MYSQL_URI=mysql://287vGtA52xzWe45.root:Jw4G8J9vbkYF0BI3@gateway01.ap-southeast-1.prod.aws.tidbcloud.com:4000/test?ssl={"minVersion":"TLSv1.2","rejectUnauthorized":false}
 
 JWT_SECRET=ics_school_cluster_jwt_secret_2026
 ```

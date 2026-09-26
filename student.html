@@ -19,21 +19,37 @@
                         cinzel: ['Cinzel', 'serif'],
                         rajdhani: ['Rajdhani', 'sans-serif'],
                         sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#fff7ed',
+                            100: '#ffedd5',
+                            500: '#ff5900',
+                            600: '#ea580c',
+                            700: '#c2410c',
+                        },
+                        yadea: {
+                            orange: '#ff5900',
+                            dark: '#0b0e14',
+                            carbon: '#12161f',
+                            cyan: '#00d2ff',
+                        }
                     }
                 }
             }
+        }
         }
     </script>
 </head>
 <body class="antialiased text-slate-100 min-h-screen flex flex-col justify-between">
 
     <!-- Header Navigation -->
-    <header class="bg-slate-950/90 border-b border-rose-900/40 sticky top-0 z-50 backdrop-blur-md no-print">
+    <header class="bg-slate-950/90 border-b border-orange-500/30 sticky top-0 z-50 backdrop-blur-md no-print">
         <div class="max-w-7xl mx-auto px-4 flex justify-between items-center h-20">
             <div class="flex items-center space-x-3">
                 <img src="assets/images/logo.png" alt="Logo" class="branding-logo h-12 w-12 object-contain rounded-xl border border-amber-500/30 p-1 bg-slate-950">
                 <div>
-                    <h1 class="text-xl font-bold font-cinzel text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-yellow-400 to-rose-400 branding-academy-name">
+                    <h1 class="text-xl font-bold font-cinzel text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-amber-400 to-yellow-300 branding-academy-name">
                         SCIENCE with SHESHADI
                     </h1>
                     <p class="text-xs text-cyan-400 font-rajdhani tracking-widest uppercase branding-tagline">Student Academic Portal</p>
@@ -50,7 +66,7 @@
                     <i class="fa-solid fa-print"></i>
                     <span class="hidden sm:inline">Print Scorecard</span>
                 </button>
-                <a href="index.html" class="bg-rose-500/20 hover:bg-rose-500/30 text-rose-300 border border-rose-500/40 px-3.5 py-2 rounded-xl text-xs font-bold flex items-center space-x-1.5 transition">
+                <a href="index.html" class="bg-orange-500/20 hover:bg-orange-500/30 text-orange-300 border border-orange-500/40 px-3.5 py-2 rounded-xl text-xs font-bold flex items-center space-x-1.5 transition">
                     <i class="fa-solid fa-right-from-bracket"></i>
                     <span>Portal Home</span>
                 </a>
@@ -77,7 +93,7 @@
         <div id="studentProfileContent" class="space-y-8">
 
             <!-- Class-Wise Live WhatsApp & Zoom Session Alert Banner -->
-            <section id="stLiveClassBanner" class="hidden bg-gradient-to-r from-emerald-950/90 via-slate-900 to-rose-950/90 border-2 border-emerald-400/60 p-6 rounded-3xl relative overflow-hidden shadow-2xl no-print animate-pulse">
+            <section id="stLiveClassBanner" class="hidden bg-gradient-to-r from-emerald-950/90 via-slate-900 to-orange-950/90 border-2 border-emerald-400/60 p-6 rounded-3xl relative overflow-hidden shadow-2xl no-print animate-pulse">
                 <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
                     <div class="flex items-center space-x-4">
                         <div class="w-12 h-12 rounded-2xl bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 flex items-center justify-center text-2xl animate-bounce">
@@ -117,7 +133,7 @@
                 </button>
                 <button onclick="switchStTab('notifs')" id="st-tab-btn-notifs" class="pb-3 text-slate-400 hover:text-slate-200 flex items-center gap-2 whitespace-nowrap relative">
                     <i class="fa-solid fa-bullhorn"></i> Class Notices & Announcements
-                    <span id="stNotifBadgeCount" class="ml-1.5 px-1.5 py-0.2 bg-rose-500 text-white text-[10px] font-bold rounded-full">3</span>
+                    <span id="stNotifBadgeCount" class="ml-1.5 px-1.5 py-0.2 bg-[#FF5900] text-white text-[10px] font-bold rounded-full">3</span>
                 </button>
                 <button onclick="switchStTab('cal')" id="st-tab-btn-cal" class="pb-3 text-slate-400 hover:text-slate-200 flex items-center gap-2 whitespace-nowrap">
                     <i class="fa-solid fa-calendar-days"></i> Academic Calendar (Google Calendar View)
@@ -242,7 +258,7 @@
 
                             <div class="glass-panel p-5 space-y-3">
                                 <div class="flex justify-between items-center">
-                                    <h5 class="text-sm font-bold text-slate-200 font-cinzel"><i class="fa-solid fa-chart-column text-rose-400 mr-2"></i>Term Assessment Marks</h5>
+                                    <h5 class="text-sm font-bold text-slate-200 font-cinzel"><i class="fa-solid fa-chart-column text-orange-400 mr-2"></i>Term Assessment Marks</h5>
                                     <span class="text-[10px] text-slate-400 font-mono">Blank by Default</span>
                                 </div>
                                 <div class="h-56 relative">
@@ -528,7 +544,7 @@
                 card.className = "bg-slate-950 p-5 rounded-2xl border border-slate-800 space-y-2";
                 
                 const getPriorityBadge = (p) => {
-                    if (p.includes('Exam')) return 'bg-rose-500/20 text-rose-300 border-rose-500/40';
+                    if (p.includes('Exam')) return 'bg-rose-500/20 text-orange-300 border-orange-500/40';
                     if (p.includes('Live')) return 'bg-sky-500/20 text-sky-300 border-sky-500/40';
                     if (p.includes('Homework')) return 'bg-amber-500/20 text-amber-300 border-amber-500/40';
                     return 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40';
@@ -690,7 +706,7 @@
                 if (s === 'completed' || s === 'good' || s === 'excellent') return 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30';
                 if (s === '0.5 done' || s === 'average') return 'bg-amber-500/20 text-amber-300 border border-amber-500/30';
                 if (s === 'pending') return 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/30';
-                if (s === 'incomplete' || s === 'bad' || s === 'needs improvement') return 'bg-rose-500/20 text-rose-300 border border-rose-500/30';
+                if (s === 'incomplete' || s === 'bad' || s === 'needs improvement') return 'bg-rose-500/20 text-orange-300 border border-orange-500/30';
                 return 'bg-slate-800/80 text-slate-400 border border-slate-700'; // (Still not attended)
             };
 

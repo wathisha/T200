@@ -50,7 +50,7 @@ async function runDiagnostic() {
     const host = process.env.DB_HOST || 'gateway01.ap-southeast-1.prod.aws.tidbcloud.com';
     const port = parseInt(process.env.DB_PORT || '4000', 10);
     const user = process.env.DB_USER || '287vGtA52xzWe45.root';
-    const password = process.env.DB_PASSWORD || 'Jw4G8J9vbkYFOBI3';
+    const password = process.env.DB_PASSWORD || 'Jw4G8J9vbkYF0BI3';
     const dbName = process.env.DB_NAME || 'test';
     const isTiDB = host.includes('tidbcloud.com') || (process.env.MYSQL_URI && process.env.MYSQL_URI.includes('tidbcloud.com'));
 
@@ -124,7 +124,7 @@ async function runDiagnostic() {
         if (err.code === 'ER_ACCESS_DENIED_ERROR') {
             console.log('  ⚠️  AUTHENTICATION ERROR:');
             console.log('     Username or Password does not match your TiDB cluster.');
-            console.log('     1. Password check: In "Jw4G8J9vbkYFOBI3", verify if the 13th character is 0 (zero) -> Jw4G8J9vbkYF0BI3.');
+            console.log('     1. Password check: In "Jw4G8J9vbkYF0BI3", verify if the 13th character is 0 (zero) -> Jw4G8J9vbkYF0BI3.');
             console.log('     2. Or reset your root password in TiDB Cloud Console -> Security -> Reset Password.');
         } else if (err.code === 'ETIMEDOUT' || err.code === 'ECONNREFUSED' || (err.message && err.message.includes('timeout'))) {
             console.log('  ⚠️  FIREWALL / NETWORK BLOCKED:');

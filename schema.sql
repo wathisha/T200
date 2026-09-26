@@ -3,12 +3,12 @@
 -- =============================================================================
 -- Cluster: ics-school-cluster (TiDB Cloud Serverless)
 -- Target Host: gateway01.ap-southeast-1.prod.aws.tidbcloud.com (Port: 4000)
--- Target Database: ics_school_db
+-- Target Database: test
 -- Compatibility: TiDB Cloud Serverless, MySQL 5.7+, MySQL 8.0+, Aiven, Railway, RDS
 -- =============================================================================
 
-CREATE DATABASE IF NOT EXISTS ics_school_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-USE ics_school_db;
+CREATE DATABASE IF NOT EXISTS test CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE test;
 
 -- -----------------------------------------------------------------------------
 -- 1. Table: users (Multi-User Admin, Teacher & Staff Accounts with RBAC)

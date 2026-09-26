@@ -21,21 +21,38 @@
                     fontFamily: {
                         cinzel: ['Cinzel', 'serif'],
                         rajdhani: ['Rajdhani', 'sans-serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#fff7ed',
+                            100: '#ffedd5',
+                            500: '#ff5900',
+                            600: '#ea580c',
+                            700: '#c2410c',
+                        },
+                        yadea: {
+                            orange: '#ff5900',
+                            dark: '#0b0e14',
+                            carbon: '#12161f',
+                            cyan: '#00d2ff',
+                        }
                     }
                 }
             }
+        }
         }
     </script>
 </head>
 <body class="antialiased text-slate-100 min-h-screen flex flex-col justify-between">
 
     <!-- Header Navigation -->
-    <header class="bg-slate-950/90 border-b border-rose-900/40 sticky top-0 z-50 backdrop-blur-md no-print">
+    <header class="bg-slate-950/90 border-b border-orange-500/30 sticky top-0 z-50 backdrop-blur-md no-print">
         <div class="max-w-7xl mx-auto px-4 flex justify-between items-center h-20">
             <div class="flex items-center space-x-3">
                 <img src="assets/images/logo.png" alt="Logo" class="branding-logo h-12 w-12 object-contain rounded-xl border border-amber-500/30 p-1 bg-slate-950">
                 <div>
-                    <h1 class="text-xl font-bold font-cinzel text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-yellow-400 to-rose-400 branding-academy-name">
+                    <h1 class="text-xl font-bold font-cinzel text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-amber-400 to-yellow-300 branding-academy-name">
                         SCIENCE with SHESHADI
                     </h1>
                     <p class="text-xs text-amber-400 font-rajdhani tracking-widest uppercase">Teacher Document Storage Vault</p>
@@ -64,13 +81,13 @@
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow w-full space-y-8">
 
         <!-- Top Showcase Banner -->
-        <section class="glass-panel p-6 sm:p-8 relative overflow-hidden border-rose-500/30">
+        <section class="glass-panel p-6 sm:p-8 relative overflow-hidden border-orange-500/30">
             <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
                 <div class="flex items-center space-x-5">
                     <img src="assets/images/teacher_banner.png" alt="Teacher Avatar" class="branding-teacher-photo w-20 h-24 sm:w-24 sm:h-28 object-cover rounded-2xl border-2 border-amber-400 shadow-xl bg-slate-950">
                     <div class="space-y-1">
                         <div class="flex items-center space-x-2">
-                            <span class="px-3 py-0.5 bg-rose-500/20 border border-rose-500/40 text-rose-300 text-xs font-bold rounded-full uppercase tracking-wider">
+                            <span class="px-3 py-0.5 bg-rose-500/20 border border-orange-500/40 text-rose-300 text-xs font-bold rounded-full uppercase tracking-wider">
                                 Restricted Teacher Vault
                             </span>
                             <span class="px-3 py-0.5 bg-amber-500/20 border border-amber-500/40 text-amber-300 text-xs font-mono font-bold rounded-full branding-motto">
@@ -236,7 +253,7 @@
                 </div>
                 <div class="flex items-center space-x-2 pt-2">
                     <button onclick="applyQuickBg(false)" class="flex-1 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold py-2 rounded-xl text-xs transition">Apply This Page</button>
-                    <button onclick="applyQuickBg(true)" class="flex-1 bg-rose-600 hover:bg-rose-500 text-white font-bold py-2 rounded-xl text-xs transition">Apply Globally</button>
+                    <button onclick="applyQuickBg(true)" class="flex-1 bg-[#FF5900] hover:bg-rose-500 text-white font-bold py-2 rounded-xl text-xs transition">Apply Globally</button>
                 </div>
                 <button onclick="resetQuickBg()" class="w-full bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs py-1.5 rounded-xl border border-slate-700 transition">Reset to Default</button>
             </div>
@@ -375,7 +392,7 @@
                             <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-500/20 border border-amber-500/40 text-amber-300 uppercase font-mono">
                                 ${doc.grade || '06 - Science'}
                             </span>
-                            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-rose-500/20 border border-rose-500/40 text-rose-300 uppercase font-mono">
+                            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-rose-500/20 border border-orange-500/40 text-rose-300 uppercase font-mono">
                                 ${doc.category || 'Official Document'}
                             </span>
                         </div>
@@ -385,7 +402,7 @@
 
                         <div class="flex items-center justify-between text-[11px] text-slate-400 font-mono pt-2 border-t border-slate-800">
                             <span><i class="fa-regular fa-calendar-check mr-1 text-amber-400"></i>${doc.uploadDate || '2026-08-15'}</span>
-                            <span><i class="fa-solid fa-file-pdf mr-1 text-rose-400"></i>${doc.fileSize || '3.5 MB'}</span>
+                            <span><i class="fa-solid fa-file-pdf mr-1 text-orange-400"></i>${doc.fileSize || '3.5 MB'}</span>
                         </div>
                     </div>
 
